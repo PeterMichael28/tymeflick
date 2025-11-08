@@ -11,6 +11,7 @@ import ResetPassword from './features/login/resetPassword'
 import CheckEmail from './features/login/checkEmail'
 import CreatePassword from './features/login/createPassword'
 import PasswordUpdate from './features/login/passwordUpdate'
+import Dashboard from './page/dashboard'
 
 const App = () => {
   return (
@@ -23,6 +24,7 @@ const App = () => {
           <Route path="create-password" element={<CreatePassword />} />
           <Route path='password-update' element={<PasswordUpdate/>} />
         </Route>
+        <Route path='/' element={<Dashboard/>}/>
       </Routes>
     </Router>
   )
