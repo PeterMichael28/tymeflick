@@ -1,13 +1,16 @@
 import { Formik, Form, Field } from 'formik'
 import * as Yup from 'yup'
-import Input from './ui/input'
+import Input from '../../components/ui/input'
 import { Eye, EyeOff } from 'lucide-react'
 import { useState } from 'react'
-import Button from './ui/button'
+import Button from '../../components/button/button'
 import { useNavigate } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { openCreateAccountModal } from '../../redux/slice/modalSlice'
 
 const Index = () => {
   const [showPassword, setShowPassword] = useState(false)
+  const dispatch = useDispatch()
   const navigate = useNavigate()
   const validationSchema = Yup.object({
     email: Yup.string().email('Invalid email').required('Email is Required'),
@@ -20,7 +23,10 @@ const Index = () => {
         <p className="text-officeBrow font-bricolage text-[26px] font-bold">
           Stay on Schedule
         </p>
-        <p className="text-primary font-bricolage text-[26px] font-bold">
+        <p
+          className="text-primary font-bricolage cursor-pointer text-[26px] font-bold"
+          onClick={() => dispatch(openCreateAccountModal())}
+        >
           Create Account
         </p>
       </div>
@@ -54,7 +60,7 @@ const Index = () => {
               )}
             </button>
           </div>
-        <Button type="submit">Sign in</Button>
+          <Button type="submit">Sign in</Button>
           <div className="flex gap-5">
             <Field
               type={'checkbox'}

@@ -1,5 +1,5 @@
-import Button from './ui/button'
-import Input from './ui/input'
+import Button from '../../components/button/button'
+import Input from '../../components/ui/input'
 import { Formik, Form } from 'formik'
 import * as Yup from 'yup'
 import { useState } from 'react'
@@ -63,7 +63,7 @@ const CreatePassword = () => {
               onClick={() => setConfirmPassword((prev) => !prev)}
               className="absolute top-[60px] right-4 text-sm text-[#000000] focus:outline-none"
             >
-              {showPassword ? (
+              {confirmPassword ? (
                 <EyeOff className="text-primary50 size-[25px]" />
               ) : (
                 <Eye className="text-primary50 size-[25px]" />
@@ -71,7 +71,7 @@ const CreatePassword = () => {
             </button>
           </div>
 
-          <Button type='submit'>Update Password</Button>
+          <Button type="submit">Update Password</Button>
         </Form>
       </Formik>
       <div className="mt-3 flex items-center justify-center">

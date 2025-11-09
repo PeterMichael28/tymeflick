@@ -1,4 +1,4 @@
-import Button from './ui/button'
+import Button from '../../components/button/button'
 import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import type { RootState } from '../../redux/store'

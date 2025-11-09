@@ -1,5 +1,5 @@
-import Button from './ui/button'
-import Input from './ui/input'
+import Button from '../../components/button/button'
+import Input from '../../components/ui/input'
 import { Formik, Form } from 'formik'
 import * as Yup from 'yup'
 import { useNavigate } from 'react-router-dom'
