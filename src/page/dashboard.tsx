@@ -4,9 +4,11 @@ import { PanelLeftClose } from 'lucide-react'
 import { PanelRightClose } from 'lucide-react'
 import { useState } from 'react'
 import Header from '../components/ui/header'
+import { useNavigate } from 'react-router-dom'
 
 const Dashboard = () => {
   const [showPanel, setShowPanel] = useState(true)
+  const navigate = useNavigate()
   const dashboardList = [
     {
       title: 'Dashboard',
@@ -109,7 +111,7 @@ const Dashboard = () => {
             ))}
           </aside>
         </div>
-        <div className="font-bricolage ml-4 flex items-center gap-3 text-[14px]">
+        <div className="font-bricolage ml-4 flex items-center gap-3 text-[14px]" onClick={() => navigate('/login')}>
           <img src="/icon/sign-out.svg" alt="" className="size-5" />
           <p>Log out</p>
         </div>
