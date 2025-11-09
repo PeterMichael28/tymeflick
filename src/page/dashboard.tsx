@@ -68,45 +68,51 @@ const Dashboard = () => {
   return (
     <div className="flex h-screen">
       <div
-        className={`flex flex-col gap-7 border-r border-[#D2D9DF] p-4 transition-all duration-300 ${showPanel ? 'w-[17vw]' : 'w-[5vw] items-center'}`}
+        className={`flex flex-col justify-between border-r border-[#D2D9DF] p-4 transition-all duration-300 ${showPanel ? 'w-[17vw]' : 'w-[5vw] items-center'}`}
       >
-        <div className="flex items-center justify-between">
-          {showPanel && <img src="/icon/Group (4).svg" alt="Icon" />}
-          <button>
-            {showPanel ? (
-              <PanelLeftClose onClick={() => setShowPanel(false)} />
-            ) : (
-              <PanelRightClose onClick={() => setShowPanel(true)} />
-            )}
-          </button>
-        </div>
-        <aside className="flex flex-col gap-5">
-          {dashboardList.map((item, index) => (
-            <NavLink
-              to={item.path}
-              key={index}
-              end={item.end}
-              className={({ isActive }) =>
-                `font-bricolage flex items-center gap-3 rounded-[10px] text-[14px] transition-all duration-200 ${
-                  isActive
-                    ? 'text-primary border-r-2 bg-[#F5F0FA]'
-                    : 'text-[#2B323B]'
-                } ${showPanel ? 'px-4 py-3' : 'justifycenter px-2 py-3'}`
-              }
-            >
-              {({ isActive }: { isActive: boolean }) => (
-                <div className="flex gap-3">
-                  <img
-                    src={isActive ? item.activeImage : item.image}
-                    alt={item.title}
-                    className="size-5"
-                  />
-                  {showPanel && <span>{item.title}</span>}
-                </div>
+        <div className="flex flex-col gap-7">
+          <div className="flex items-center justify-between">
+            {showPanel && <img src="/icon/Group (4).svg" alt="Icon" />}
+            <button>
+              {showPanel ? (
+                <PanelLeftClose onClick={() => setShowPanel(false)} />
+              ) : (
+                <PanelRightClose onClick={() => setShowPanel(true)} />
               )}
-            </NavLink>
-          ))}
-        </aside>
+            </button>
+          </div>
+          <aside className="flex flex-col gap-5">
+            {dashboardList.map((item, index) => (
+              <NavLink
+                to={item.path}
+                key={index}
+                end={item.end}
+                className={({ isActive }) =>
+                  `font-bricolage flex items-center gap-3 rounded-[10px] text-[14px] transition-all duration-200 ${
+                    isActive
+                      ? 'text-primary border-r-2 bg-[#F5F0FA]'
+                      : 'text-[#2B323B]'
+                  } ${showPanel ? 'px-4 py-3' : 'justifycenter px-2 py-3'}`
+                }
+              >
+                {({ isActive }: { isActive: boolean }) => (
+                  <div className="flex gap-3">
+                    <img
+                      src={isActive ? item.activeImage : item.image}
+                      alt={item.title}
+                      className="size-5"
+                    />
+                    {showPanel && <span>{item.title}</span>}
+                  </div>
+                )}
+              </NavLink>
+            ))}
+          </aside>
+        </div>
+        <div className="font-bricolage ml-4 flex items-center gap-3 text-[14px]">
+          <img src="/icon/sign-out.svg" alt="" className="size-5" />
+          <p>Log out</p>
+        </div>
       </div>
 
       <main className="w-full">
