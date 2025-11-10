@@ -113,7 +113,7 @@ const Dashboard = () => {
         </div>
         <div className="font-bricolage ml-4 flex items-center gap-3 text-[14px]" onClick={() => navigate('/login')}>
           <img src="/icon/sign-out.svg" alt="" className="size-5" />
-          <p>Log out</p>
+          {showPanel && <p>Log out</p>}
         </div>
       </div>
 
