@@ -21,6 +21,7 @@
     "react-redux": "^9.2.0",
     "react-router-dom": "^7.9.5",
     "react-spinners": "^0.17.0",
+    "recharts": "^3.4.1",
     "tailwindcss": "^4.1.17",
     "yup": "^1.7.1",
     "yup-phone-lite": "^2.0.1"
