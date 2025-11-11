@@ -68,7 +68,7 @@ const Dashboard = () => {
   ]
 
   return (
-    <div className="flex h-screen">
+    <div className="flex h-screen overflow-hidden">
       <div
         className={`flex flex-col justify-between border-r border-[#D2D9DF] p-4 transition-all duration-300 ${showPanel ? 'w-[17vw]' : 'w-[5vw] items-center'}`}
       >
@@ -111,16 +111,19 @@ const Dashboard = () => {
             ))}
           </aside>
         </div>
-        <div className="font-bricolage ml-4 flex items-center gap-3 text-[14px]" onClick={() => navigate('/login')}>
+        <div
+          className="font-bricolage ml-4 flex items-center gap-3 text-[14px]"
+          onClick={() => navigate('/login')}
+        >
           <img src="/icon/sign-out.svg" alt="" className="size-5" />
           {showPanel && <p>Log out</p>}
         </div>
       </div>
 
-      <main className="w-full">
+      <main className="w-full ">
         <Header />
 
-        <div className="bg-[#f2f2f2] p-4">
+        <div className="bg-[#f2f2f2] p-4 overflow-y-scroll h-full">
           <Suspense fallback={<div>Loading...</div>}>
             <Outlet />
           </Suspense>

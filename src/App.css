@@ -1,0 +1,39 @@
+/* global.css or index.css */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F2F0F5; /* gray-800 */
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #9966CC; /* gray-600 */
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #9966CC; /* gray-400 */
+}
+
+/* a div with class="custom-scroll" */
+.custom-scroll::-webkit-scrollbar {
+  width: 4px;
+}
+
+.custom-scroll::-webkit-scrollbar-thumb {
+  background: #fff1eb;
+  border-radius: 10px;
+}
+
+/* Hide scrollbar globally */
+.hide-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
