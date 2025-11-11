@@ -8,20 +8,20 @@ import Snaps from './components/snaps'
 
 const DashBoardIndex = () => {
   return (
-    <div className='mb-32'>
+    <div className="mb-32">
       <Hero title="Time Insight at a glance" isDashboard />
       <TimeSummary />
       <ProjectTime />
-     <div className='flex gap-4'>
-         <div className='flex-2'>
-             <Task />
-         </div>
-            <div className='flex-1'>
-                <PendingTask />
-            </div>
-     </div>
-     <RecentTime />
-     <Snaps />
+      <div className="flex gap-4">
+        <div className="flex-2">
+          <Task />
+        </div>
+        <div className="flex-1">
+          <PendingTask />
+        </div>
+      </div>
+      <RecentTime />
+      <Snaps />
     </div>
   )
 }

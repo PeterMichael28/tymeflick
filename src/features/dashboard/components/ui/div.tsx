@@ -21,7 +21,7 @@ const Div: FC<DivProps> = ({
   isBillable,
 }) => {
   return (
-    <div className="flex flex-col justifycenter rounded-md border border-[#F2F0F5] p-4">
+    <div className="justifycenter flex flex-col rounded-md border border-[#F2F0F5] p-4">
       <div className="mb-2 flex items-center justify-between">
         <p className="font-inter text-[14px] text-[#0B0D0F]">{title}</p>
         <img src={imageUrl} alt={title} />
@@ -37,21 +37,23 @@ const Div: FC<DivProps> = ({
         </div>
       )}
       {isWeekly && (
-        <div className="w-full max-w-md rounded-2xl mt-5">
+        <div className="mt-5 w-full max-w-md rounded-2xl">
           <div className="h-1 w-full overflow-hidden rounded-full bg-gray-700">
             <div
-              className="h-1 bg-green-500 transition-all duration-500 ease-in-out rounded-full"
+              className="h-1 rounded-full bg-green-500 transition-all duration-500 ease-in-out"
               style={{ width: `${weeklypercentage}%` }}
             />
           </div>
-          <p className="mt-2  text-xs text-[#606060] ">
+          <p className="mt-2 text-xs text-[#606060]">
             +{weeklypercentage}% of 50h weekly goal
           </p>
         </div>
       )}
-        {isBillable && (    
-            < p className="font-bricolage text-[12px] text-[#606060] mt-6">Rate: $75/hr •43.3h billable</p>
-        )}
+      {isBillable && (
+        <p className="font-bricolage mt-6 text-[12px] text-[#606060]">
+          Rate: $75/hr •43.3h billable
+        </p>
+      )}
     </div>
   )
 }
