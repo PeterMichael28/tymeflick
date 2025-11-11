@@ -30,6 +30,7 @@ import CreateEnterpriseAccount from './features/signUp/enterpriseAccount/createA
 import CreateContactPersonaccount from './features/signUp/enterpriseAccount/createContactPersonaccount'
 import SpecificRequirement from './features/signUp/enterpriseAccount/specificRequirement'
 import DashBoardIndex from './features/dashboard'
+import Project from './features/project'
 
 const App = () => {
   return (
@@ -110,6 +111,9 @@ const App = () => {
         </Route>
         <Route path="/" element={<Dashboard />}>
           <Route element={<DashBoardIndex />} index />
+          <Route path="project" element={<Project />} >
+          
+          </Route>
         </Route>
       </Routes>
     </Router>

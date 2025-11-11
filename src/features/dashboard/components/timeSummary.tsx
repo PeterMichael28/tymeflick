@@ -1,6 +1,8 @@
 import { Upload, Download, ChevronDown } from 'lucide-react'
 import Div from './ui/div'
 import Chart from './ui/chart'
+import { useDispatch } from 'react-redux'
+import { openUploadTimeLogModal } from '../../../redux/slice/modalSlice'
 
 const list = [
   {
@@ -11,7 +13,6 @@ const list = [
     isHourly: true,
     isWeekly: false,
     weeklypercentage: 0,
-    
   },
   {
     title: 'This Week',
@@ -39,7 +40,7 @@ const list = [
     isHourly: false,
     isWeekly: false,
     weeklypercentage: 0,
-   isBillable: true,
+    isBillable: true,
   },
   {
     title: 'Tasks Completed',
@@ -102,8 +103,9 @@ const avgPerWeekDropdownOptions = [
 ]
 
 const TimeSummary = () => {
+  const dispatch = useDispatch()
   return (
-    <div className="mt-4 rounded-lg bg-white p-4 w-full">
+    <div className="mt-4 w-full rounded-lg bg-white p-4">
       <div className="flex items-center justify-between">
         <p className="font-bricolage text-[18px] font-bold text-black">
           Time Summary
@@ -115,17 +117,20 @@ const TimeSummary = () => {
             </p>
             <ChevronDown size={16} />
           </span>
-          <span className="bg-primary flex cursor-pointer items-center gap-1 rounded-md p-2.5 font-semibold text-white text-xs font-inter">
+          <span
+            className="bg-primary font-inter flex cursor-pointer items-center gap-1 rounded-md p-2.5 text-xs font-semibold text-white"
+            onClick={() => dispatch(openUploadTimeLogModal())}
+          >
             <Upload size={16} />
             <p>Upload Time Log</p>
           </span>
-          <span className="bg-primary flex cursor-pointer items-center gap-1 rounded-md p-2.5 font-semibold text-white text-xs font-inter">
+          <span className="bg-primary font-inter flex cursor-pointer items-center gap-1 rounded-md p-2.5 text-xs font-semibold text-white">
             <p>Export</p>
             <Download size={16} />
           </span>
         </div>
       </div>
-      <div className="mt-5 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 w-full">
+      <div className="mt-5 grid w-full grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
         {list.map((item, index) => (
           <Div
             key={index}
@@ -167,8 +172,6 @@ const TimeSummary = () => {
           }}
         />
       </div>
-
-    
     </div>
   )
 }

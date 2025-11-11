@@ -5,17 +5,17 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #F2F0F5; /* gray-800 */
+  background: #f2f0f5; /* gray-800 */
   border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #9966CC; /* gray-600 */
+  background: #9966cc; /* gray-600 */
   border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #9966CC; /* gray-400 */
+  background: #9966cc; /* gray-400 */
 }
 
 /* a div with class="custom-scroll" */

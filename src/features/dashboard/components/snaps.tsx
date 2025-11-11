@@ -1,51 +1,58 @@
-
-
 const snapList = [
-    {
-        image:'/deleteForProduction/image (4).png', time:'9:00am'
-    },
-    {
-        image:'/deleteForProduction/image (5).png', time:'10:00am'
-    },
-    {
-        image:'/deleteForProduction/image (6).png', time:'11:00am'
-    },
-    {
-        image:'/deleteForProduction/image (4).png', time:'9:00am'
-    },
-    {
-        image:'/deleteForProduction/image (5).png', time:'10:00am'
-    },
-    {
-        image:'/deleteForProduction/image (6).png', time:'11:00am'
-    },
-   
+  {
+    image: '/deleteForProduction/image (4).png',
+    time: '9:00am',
+  },
+  {
+    image: '/deleteForProduction/image (5).png',
+    time: '10:00am',
+  },
+  {
+    image: '/deleteForProduction/image (6).png',
+    time: '11:00am',
+  },
+  {
+    image: '/deleteForProduction/image (4).png',
+    time: '9:00am',
+  },
+  {
+    image: '/deleteForProduction/image (5).png',
+    time: '10:00am',
+  },
+  {
+    image: '/deleteForProduction/image (6).png',
+    time: '11:00am',
+  },
 ]
 
 const Snaps = () => {
   return (
-    <div className="mt-4 bg-white p-4 rounded-lg">
-      <div className="flex justify-between mb-4">
-        <p className="font-bold text-[16px] font-bricolage">Recent Snapshots</p>
-        <p className="font-bold text-[16px] font-bricolage text-primary">See All</p>
+    <div className="mt-4 rounded-lg bg-white p-4">
+      <div className="mb-4 flex justify-between">
+        <p className="font-bricolage text-[16px] font-bold">Recent Snapshots</p>
+        <p className="font-bricolage text-primary text-[16px] font-bold">
+          See All
+        </p>
       </div>
       <div className="flex gap-3">
         {snapList.map((item, index) => (
-          <div key={index} className="relative w-full h-full rounded-lg overflow-hidden">
+          <div
+            key={index}
+            className="relative h-full w-full overflow-hidden rounded-lg"
+          >
             <img
               src={item.image}
               alt={`snap-${index}`}
-              className="w-full h-full object-cover"
+              className="h-full w-full object-cover"
             />
-            <p className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white font-bold px-2 py-1  bg-[#FB3748] rounded-full ">
+            <p className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transform rounded-full bg-[#FB3748] px-2 py-1 font-bold text-white">
               {item.time}
             </p>
           </div>
         ))}
       </div>
     </div>
-  );
-};
-
+  )
+}
 
 export default Snaps

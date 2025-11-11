@@ -27,7 +27,7 @@ const Dashboard = () => {
       title: 'Projects',
       image: '/icon/folder.svg',
       activeImage: '/icon/folderActive.svg',
-      path: '/projects',
+      path: '/project',
     },
     {
       title: 'Project Template',
@@ -120,10 +120,10 @@ const Dashboard = () => {
         </div>
       </div>
 
-      <main className="w-full ">
+      <main className="w-full">
         <Header />
 
-        <div className="bg-[#f2f2f2] p-4 overflow-y-scroll h-full">
+        <div className="h-full overflow-y-scroll bg-[#f2f2f2] p-4">
           <Suspense fallback={<div>Loading...</div>}>
             <Outlet />
           </Suspense>
