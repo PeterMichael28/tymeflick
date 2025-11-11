@@ -37,7 +37,7 @@ const Snaps = () => {
               alt={`snap-${index}`}
               className="w-full h-full object-cover"
             />
-            <p className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white font-bold px-2 py-1 rounded bg-[#FB3748] rounded-full ">
+            <p className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white font-bold px-2 py-1  bg-[#FB3748] rounded-full ">
               {item.time}
             </p>
           </div>
