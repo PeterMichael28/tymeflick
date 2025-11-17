@@ -123,7 +123,7 @@ const Dashboard = () => {
       <main className="w-full">
         <Header />
 
-        <div className="h-full overflow-y-scroll bg-[#f2f2f2] p-4">
+        <div className="h-full w-full overflow-y-scroll bg-[#f2f2f2] p-4">
           <Suspense fallback={<div>Loading...</div>}>
             <Outlet />
           </Suspense>

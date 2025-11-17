@@ -10,12 +10,12 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #9966cc; /* gray-600 */
+  background: #66c61c; /* gray-600 */
   border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #9966cc; /* gray-400 */
+  background: #66c61c; /* gray-400 */
 }
 
 /* a div with class="custom-scroll" */
