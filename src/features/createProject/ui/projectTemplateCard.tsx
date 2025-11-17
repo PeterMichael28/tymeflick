@@ -14,7 +14,7 @@ const ProjectTemplateCard: FC<Props> = ({
   description,
   text,
   list,
-  viewDetailsLink,
+  // viewDetailsLink,
   useTemplateLink,
 }) => {
   const navigate = useNavigate()
