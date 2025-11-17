@@ -1,9 +1,9 @@
-import { useDispatch } from "react-redux"
-import { closeUploadFailedModal } from "../../../../redux/slice/modalSlice"
-import { openUploadTimeLogModal } from "../../../../redux/slice/modalSlice"
+import { useDispatch } from 'react-redux'
+import { closeUploadFailedModal } from '../../../../redux/slice/modalSlice'
+import { openUploadTimeLogModal } from '../../../../redux/slice/modalSlice'
 
 const UploadFailed = () => {
-    const dispatch = useDispatch()
+  const dispatch = useDispatch()
   const handleCloseModal = () => {
     dispatch(closeUploadFailedModal())
     dispatch(openUploadTimeLogModal())
@@ -25,53 +25,59 @@ const UploadFailed = () => {
     'Make sure your date, time, and project codes are in the correct format',
   ]
   return (
-  <div className="absolute inset-0 flex items-center justify-center z-50">
-  <div className="w-[40vw] max-h-[80vh] bg-white rounded-lg overflow-y-auto">
-    <div className="relative flex items-center justify-center">
-      <img src="/icon/Ellipse 13 (5).svg" alt="Base" />
-      <img
-        src="/icon/Vector (19).svg"
-        alt="Overlay"
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-      />
-    </div>
+    <div className="absolute inset-0 z-50 flex items-center justify-center">
+      <div className="max-h-[80vh] w-[40vw] overflow-y-auto rounded-lg bg-white">
+        <div className="relative flex items-center justify-center">
+          <img src="/icon/Ellipse 13 (5).svg" alt="Base" />
+          <img
+            src="/icon/Vector (19).svg"
+            alt="Overlay"
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+          />
+        </div>
 
-    <div className="p-4 flex justify-center flex-col items-center gap-3">
-      <p className="font-bold font-bricolage text-[32px] text-[#D00416]">
-        Upload Failed
-      </p>
-      <p className="text-[#606060] text-center font-normal text-[16px]">
-        We encountered errors while parsing your file. Please review the issues
-        below and try again.
-      </p>
+        <div className="flex flex-col items-center justify-center gap-3 p-4">
+          <p className="font-bricolage text-[32px] font-bold text-[#D00416]">
+            Upload Failed
+          </p>
+          <p className="text-center text-[16px] font-normal text-[#606060]">
+            We encountered errors while parsing your file. Please review the
+            issues below and try again.
+          </p>
 
-      <div className="w-full border border-[#D00416] rounded-lg p-4 bg-[#FB37481A]">
-        <p className="text-[20px] font-bold text-[#D00416]">⚠️ Errors Found</p>
-        {errorList.map((item, index) => (
-          <div key={index} className="flex items-center gap-3">
-            <p className="font-bold">Row {item.row}</p>
-            <p>{item.error}</p>
+          <div className="w-full rounded-lg border border-[#D00416] bg-[#FB37481A] p-4">
+            <p className="text-[20px] font-bold text-[#D00416]">
+              ⚠️ Errors Found
+            </p>
+            {errorList.map((item, index) => (
+              <div key={index} className="flex items-center gap-3">
+                <p className="font-bold">Row {item.row}</p>
+                <p>{item.error}</p>
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
 
-      <div className="w-full border border-[#FF8800] rounded-lg p-4 bg-[#FFDB431A]">
-        <p className="text-[20px] font-bold text-[#FF8800]">💡 Quick Fix Tips</p>
-        {quickFixTips.map((tip, index) => (
-          <div key={index} className="flex gap-2">
-            <span>.</span>
-            <p>{tip}</p>
+          <div className="w-full rounded-lg border border-[#FF8800] bg-[#FFDB431A] p-4">
+            <p className="text-[20px] font-bold text-[#FF8800]">
+              💡 Quick Fix Tips
+            </p>
+            {quickFixTips.map((tip, index) => (
+              <div key={index} className="flex gap-2">
+                <span>.</span>
+                <p>{tip}</p>
+              </div>
+            ))}
           </div>
-        ))}
+
+          <button
+            className="h-16 w-full rounded-lg bg-[#F2F0F5] font-bold"
+            onClick={() => handleCloseModal()}
+          >
+            Back to Upload
+          </button>
+        </div>
       </div>
-
-      <button className="bg-[#F2F0F5] w-full h-16 rounded-lg font-bold" onClick={() => handleCloseModal()} >
-        Back to Upload
-      </button>
     </div>
-  </div>
-</div>
-
   )
 }
 

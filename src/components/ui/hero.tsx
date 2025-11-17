@@ -30,7 +30,7 @@ const Hero: FC<Heroprop> = ({ title, description, isDashboard }) => {
       <div className="flex justify-between rounded-md bg-[#F3F3F3]">
         <div className="flex w-[50%] flex-col gap-5 px-4 py-2">
           <p className="font-inter text-[24px] font-medium">{title}</p>
-          {description && <p>{description}</p>}
+          {description && <p className="text-[14px]">{description}</p>}
           {isDashboard && (
             <span className="flex w-[320px] justify-between gap-4 rounded-lg border border-[#D2D9DF] bg-white px-3 py-2">
               <p className="text-[14px] font-normal text-[#2B323B]">
