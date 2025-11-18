@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState } from 'react'
 import IndexChecker from '../../ui/checker/indexChecker'
 import DropDown from '../../ui/dropdown'
 import { ArrowRight, ArrowLeft } from 'lucide-react'
@@ -15,30 +15,31 @@ const Story = ({ onNext, onPrev }: StoryProps) => {
   const [stories, setStories] = useState([{ id: 1 }])
 
   const addStory = () => {
-    setStories(prev => [...prev, { id: prev.length + 1 }])
+    setStories((prev) => [...prev, { id: prev.length + 1 }])
   }
 
   const removeStory = (id: number) => {
     if (id === 1) return
-    setStories(prev => prev.filter(item => item.id !== id))
+    setStories((prev) => prev.filter((item) => item.id !== id))
   }
 
   return (
-    <div className='bg-[#F9F9F9] p-5 rounded-3xl flex flex-col gap-4'>
-
+    <div className="flex flex-col gap-4 rounded-3xl bg-[#F9F9F9] p-5">
       {/* Header */}
-      <div className='flex justify-between'>
-        <div className='flex items-center gap-2'>
-          <span className='font-bold font-bricolage text-[16px]'>Project Epic (Epic 1)</span>
-           <img src="/icon/Group (7).svg" alt="Icon" />
-          <p className='font-normal text-[#2B323B] text-[14px]'>Features</p>
+      <div className="flex justify-between">
+        <div className="flex items-center gap-2">
+          <span className="font-bricolage text-[16px] font-bold">
+            Project Epic (Epic 1)
+          </span>
           <img src="/icon/Group (7).svg" alt="Icon" />
-          <p className='font-normal text-[#2B323B] text-[14px]'>Stories</p>
+          <p className="text-[14px] font-normal text-[#2B323B]">Features</p>
+          <img src="/icon/Group (7).svg" alt="Icon" />
+          <p className="text-[14px] font-normal text-[#2B323B]">Stories</p>
         </div>
 
         <button
           onClick={addStory}
-          className='bg-primary py-2 px-3 rounded-md text-[12px] text-white font-inter font-semibold flex gap-2'
+          className="bg-primary font-inter flex gap-2 rounded-md px-3 py-2 text-[12px] font-semibold text-white"
         >
           <img src="/icon/AddCross.svg" alt="Icon" />
           Add Story
@@ -46,49 +47,65 @@ const Story = ({ onNext, onPrev }: StoryProps) => {
       </div>
 
       {/* Step Progress */}
-      <div className='w-[75%]'>
+      <div className="w-[75%]">
         <IndexChecker steps={stepList} currentStep={3} />
       </div>
 
       {/* STORY CARDS */}
       {stories.map((story, index) => (
-        <div key={story.id} className='bg-white p-3 rounded-lg mb-4'>
-          <div className='bg-[#F5F0FA] p-4 border border-primary rounded-lg'>
-            <div className='flex justify-between items-center gap-5'>
-              <p className='text-grey900 font-medium text-base flex-1'>
+        <div key={story.id} className="mb-4 rounded-lg bg-white p-3">
+          <div className="border-primary rounded-lg border bg-[#F5F0FA] p-4">
+            <div className="flex items-center justify-between gap-5">
+              <p className="text-grey900 flex-1 text-base font-medium">
                 Story {index + 1}
               </p>
 
               <input
                 type="text"
-                placeholder='Add story title'
-                className='flex-7 bg-white px-4 py-2 rounded-lg border border-primary'
+                placeholder="Add story title"
+                className="border-primary flex-7 rounded-lg border bg-white px-4 py-2"
               />
 
               <button
                 onClick={() => removeStory(story.id)}
-                className='bg-[#D00416] size-[43px] text-white rounded-lg'
+                className="size-[43px] rounded-lg bg-[#D00416] text-white"
               >
                 X
               </button>
             </div>
 
-            <div className='flex flex-col gap-3 mt-3'>
-              <DropDown label='Assigned To' onChange={() => {}} options={[]} value='' placeholder='' />
-              <DropDown label='Priority' onChange={() => {}} options={[]} value='' placeholder='' />
-            <div className='flex flex-col gap-2'>
-                <label className='text-grey900 text-[14px] font-inter font-normal'>Acceptance Criteria</label>
+            <div className="mt-3 flex flex-col gap-3">
+              <DropDown
+                label="Assigned To"
+                onChange={() => {}}
+                options={[]}
+                value=""
+                placeholder=""
+              />
+              <DropDown
+                label="Priority"
+                onChange={() => {}}
+                options={[]}
+                value=""
+                placeholder=""
+              />
+              <div className="flex flex-col gap-2">
+                <label className="text-grey900 font-inter text-[14px] font-normal">
+                  Acceptance Criteria
+                </label>
                 <textarea
-                  placeholder='Click to Enter'
-                  className="font-bricolage w-full bg-white rounded-md border border-[#D0D5DD] resize-none p-2 text-[13px] text-[#667185]"
+                  placeholder="Click to Enter"
+                  className="font-bricolage w-full resize-none rounded-md border border-[#D0D5DD] bg-white p-2 text-[13px] text-[#667185]"
                 ></textarea>
               </div>
 
-              <div className='flex flex-col gap-2'>
-                <label className='text-grey900 text-[14px] font-inter font-normal'>Description</label>
+              <div className="flex flex-col gap-2">
+                <label className="text-grey900 font-inter text-[14px] font-normal">
+                  Description
+                </label>
                 <textarea
-                  placeholder='Click to Enter'
-                  className="font-bricolage w-full bg-white rounded-md border border-[#D0D5DD] resize-none p-2 text-[13px] text-[#667185]"
+                  placeholder="Click to Enter"
+                  className="font-bricolage w-full resize-none rounded-md border border-[#D0D5DD] bg-white p-2 text-[13px] text-[#667185]"
                 ></textarea>
               </div>
             </div>
@@ -97,9 +114,9 @@ const Story = ({ onNext, onPrev }: StoryProps) => {
       ))}
 
       {/* Navigation */}
-      <div className='flex justify-between mt-7'>
+      <div className="mt-7 flex justify-between">
         <button
-          className='flex gap-3 items-center text-[#1E1E1E] font-inter font-normal text-xs cursor-pointer'
+          className="font-inter flex cursor-pointer items-center gap-3 text-xs font-normal text-[#1E1E1E]"
           onClick={onPrev}
         >
           <ArrowLeft size={15} />
@@ -107,7 +124,7 @@ const Story = ({ onNext, onPrev }: StoryProps) => {
         </button>
 
         <button
-          className='flex gap-3 items-center text-[#1E1E1E] font-inter font-normal text-xs cursor-pointer'
+          className="font-inter flex cursor-pointer items-center gap-3 text-xs font-normal text-[#1E1E1E]"
           onClick={onNext}
         >
           Next

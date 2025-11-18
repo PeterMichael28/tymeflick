@@ -1,7 +1,6 @@
 import { useField } from 'formik'
 import type { FC } from 'react'
 
-
 type InputProps = {
   label: string
   name: string
@@ -9,20 +8,30 @@ type InputProps = {
   isRequired?: boolean
   placeholder?: string
 }
-const Input:FC<InputProps> = ({label, name, type, isRequired, placeholder}) => {
+const Input: FC<InputProps> = ({
+  label,
+  name,
+  type,
+  isRequired,
+  placeholder,
+}) => {
   return (
-    <div className='flex flex-col gap-2 w-full'>
-        <label htmlFor={name} className='text-grey900 text-[14px] font-inter font-normal'>{label}</label>
+    <div className="flex w-full flex-col gap-2">
+      <label
+        htmlFor={name}
+        className="text-grey900 font-inter text-[14px] font-normal"
+      >
+        {label}
+      </label>
 
-        <input 
-          id={name} 
-          type={type} 
-          placeholder={placeholder} 
-          {...useField({ name })}
-          required={isRequired}
-          className="border border-[#D0D5DD] p-2 rounded-lg focus:outline-primary " 
-        />
-      
+      <input
+        id={name}
+        type={type}
+        placeholder={placeholder}
+        {...useField({ name })}
+        required={isRequired}
+        className="focus:outline-primary rounded-lg border border-[#D0D5DD] p-2"
+      />
     </div>
   )
 }

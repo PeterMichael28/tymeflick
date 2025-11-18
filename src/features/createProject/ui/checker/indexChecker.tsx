@@ -39,11 +39,11 @@ const IndexChecker = ({ steps, currentStep }: IndexCheckerProps) => {
       {/* Circles + Connector */}
       <div className="relative mt-6 flex items-center justify-between">
         {/* Base gray line */}
-        <div className="absolute top-1/2 left-0 right-0 h-0.5 -translate-y-1/2 bg-gray-300 z-0" />
+        <div className="absolute top-1/2 right-0 left-0 z-0 h-0.5 -translate-y-1/2 bg-gray-300" />
 
         {/* Animated primary progress line */}
         <div
-          className="absolute top-1/2 left-0 h-0.5 -translate-y-1/2 bg-primary z-0 transition-all duration-500"
+          className="bg-primary absolute top-1/2 left-0 z-0 h-0.5 -translate-y-1/2 transition-all duration-500"
           style={{
             width:
               steps.length === 1

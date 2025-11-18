@@ -14,7 +14,6 @@ const App = () => {
     <Router>
       <GlobalModal />
       <Routes>
-
         {/* LOGIN */}
         <Route path="/login" element={<Login />}>
           {loginRoutes.map((r, i) => (
@@ -64,10 +63,9 @@ const App = () => {
               </Route>
             ) : (
               <Route key={i} path={r.path} element={r.element} />
-            ),
+            )
           )}
         </Route>
-
       </Routes>
     </Router>
   )

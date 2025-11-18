@@ -23,7 +23,7 @@ const DropDown: FC<DropDownProps> = ({
   value,
   placeholder,
   className,
-  label
+  label,
 }) => {
   const [open, setOpen] = useState(false)
   const ref = useRef<HTMLDivElement>(null)
@@ -50,21 +50,23 @@ const DropDown: FC<DropDownProps> = ({
 
   return (
     <div className={` ${className || ''}`} ref={ref}>
-    <div className='flex flex-col gap-2'>
-           <label className='text-grey900 text-[14px] font-inter font-normal'>{label}</label>
-      <div
-        className="font-bricolage flex  w-full cursor-pointer items-center justify-between bg-white rounded-md border border-[#D0D5DD]  p-2 text-[13px] text-[#667185] capitalize"
-        onClick={() => setOpen((prev) => !prev)}
-      >
-        <p>{value || placeholder}</p>
-        <ChevronDown
-          size="16"
-          className={`ml-2 transition-transform ${
-            open ? 'rotate-180' : 'rotate-0'
-          }`}
-        />
+      <div className="flex flex-col gap-2">
+        <label className="text-grey900 font-inter text-[14px] font-normal">
+          {label}
+        </label>
+        <div
+          className="font-bricolage flex w-full cursor-pointer items-center justify-between rounded-md border border-[#D0D5DD] bg-white p-2 text-[13px] text-[#667185] capitalize"
+          onClick={() => setOpen((prev) => !prev)}
+        >
+          <p>{value || placeholder}</p>
+          <ChevronDown
+            size="16"
+            className={`ml-2 transition-transform ${
+              open ? 'rotate-180' : 'rotate-0'
+            }`}
+          />
+        </div>
       </div>
-    </div>
 
       {/* Overlay */}
       {open &&

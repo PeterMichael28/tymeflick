@@ -31,7 +31,7 @@ const CreateProject = () => {
         'Sign-off Checkpoints',
         'Structured Planning',
       ],
-      useTemplateLink: '',
+      useTemplateLink: '/create-project/waterfall',
     },
     {
       title: 'Hybrid Project Template',
@@ -50,8 +50,8 @@ const CreateProject = () => {
   ]
 
   return (
-    <div className=" flex h-screen w-full flex-col gap-3 overflow-y-scroll">
-      <div className="flex flex-col gap-2 rounded-lg bg-white p-5 min-h-[calc(90vh-80px)] pt-5">
+    <div className="flex h-screen w-full flex-col gap-3 overflow-y-scroll">
+      <div className="flex min-h-[calc(90vh-80px)] flex-col gap-2 rounded-lg bg-white p-5 pt-5">
         <div className="w-full">
           <div className="flex justify-between">
             {stepList.map((step, index) => (

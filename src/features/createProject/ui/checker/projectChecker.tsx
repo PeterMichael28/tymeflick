@@ -1,16 +1,21 @@
-import type { FC } from "react";
+import type { FC } from 'react'
 
 interface Props {
-    label:string;
-    onCheck:boolean
+  label: string
+  onCheck: boolean
 }
 
-const ProjectChecker:FC<Props> = ({label, onCheck}) => {
-    console.log(onCheck)
+const ProjectChecker: FC<Props> = ({ label, onCheck }) => {
+  console.log(onCheck)
   return (
-    <div className="w-full flex gap-4  border border-[#D0D5DD] p-2 rounded-md bg-[#FAF9FB]">
-        <input type="checkbox" className=" size-4 accent-primary checked:text-white " />
-        <label className='text-grey900 text-[14px] font-bricolage font-normal '>{label}</label>
+    <div className="flex w-full gap-4 rounded-md border border-[#D0D5DD] bg-[#FAF9FB] p-2">
+      <input
+        type="checkbox"
+        className="accent-primary size-4 checked:text-white"
+      />
+      <label className="text-grey900 font-bricolage text-[14px] font-normal">
+        {label}
+      </label>
     </div>
   )
 }
