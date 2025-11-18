@@ -33,13 +33,19 @@ export const signupRoutes = {
   ],
   medium: [
     { path: 'create-account', element: <CreateMediumBusinessAccount /> },
-    { path: 'create-admin-account', element: <CreateAdminMeduminBusinessAccount /> },
+    {
+      path: 'create-admin-account',
+      element: <CreateAdminMeduminBusinessAccount />,
+    },
     { path: 'create-password', element: <CreateMediumBusinessPassword /> },
     { path: 'confirm-email', element: <ConfirmMediumBusinessEmail /> },
   ],
   enterprise: [
     { path: 'create-account', element: <CreateEnterpriseAccount /> },
-    { path: 'create-contact-person-account', element: <CreateContactPersonaccount /> },
+    {
+      path: 'create-contact-person-account',
+      element: <CreateContactPersonaccount />,
+    },
     { path: 'specific-requirements', element: <SpecificRequirement /> },
   ],
 }

@@ -1,18 +1,23 @@
 import IndexChecker from '../ui/checker/indexChecker'
 import { useNavigate } from 'react-router-dom'
 
-const CreatedAgile = () => {
-  const steps = ['Select Template', 'Configure Setup', 'Confirm']
-  const stepList = ['Step 1', 'Step 2', 'Step 3']
+const CreatedWaterfall = () => {
+  const steps = [
+    'Select Template',
+    'Configure Setup',
+    'Preview Structure',
+    'Confirm',
+  ]
+  const stepList = ['Step 1', 'Step 2', 'Step 3', 'Step 4']
   const navigate = useNavigate()
 
   const list = [
-    { title: 'Project Type', label: 'Agile' },
-    { title: 'Sprint Duration', label: '2 Weeks' },
-    { title: 'Sprint Count', label: '4' },
-    { title: 'Start Date', label: 'April 15, 2023' },
-    { title: 'Epics:', label: '2' },
-    { title: 'Agile Rituals', label: '4/4' },
+    { title: 'Project Type', label: 'Water' },
+    { title: 'Phases', label: '2 ' },
+    { title: 'Start Date:', label: 'April 15, 2023' },
+    { title: 'End Date', label: 'April 15, 2023' },
+    { title: 'Tasks Created:', label: '2' },
+    { title: 'Milestones:', label: '4' },
   ]
   return (
     <div className="mb-20 h-full overflow-x-hidden overflow-y-scroll">
@@ -26,7 +31,7 @@ const CreatedAgile = () => {
             </div>
           ))}
         </div>
-        <IndexChecker steps={steps} currentStep={3} />
+        <IndexChecker steps={steps} currentStep={4} />
       </div>
       <div className="mt-5 flex flex-col items-center justify-center gap-4">
         <div>
@@ -35,7 +40,7 @@ const CreatedAgile = () => {
 
         <div className="text-officeBrown700 font-bricolage flex flex-col items-center justify-center">
           <p className="text-[20px] font-bold">
-            Agile Project "Website Revamp" Created with 4 Sprint Cycles
+            Waterfall Project "Audit Readiness" Created with 6 Sequential Phases
           </p>
           <p className="text-[14px] font-normal">
             Your project structure has been generated and is ready for team
@@ -79,4 +84,4 @@ const CreatedAgile = () => {
   )
 }
 
-export default CreatedAgile
+export default CreatedWaterfall

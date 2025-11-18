@@ -7,49 +7,49 @@ interface FeatureProps {
   onNext: () => void
   onPrev: () => void
 }
-const Feature = ({ onNext, onPrev }: FeatureProps) => {
-  const stepList = ['Add Epics', 'Add Features', 'Add Stories', 'Add Tasks']
+
+const AgileCeremonies = ({ onNext, onPrev }: FeatureProps) => {
+      const stepList = ['Add Epics', 'Add Features', 'Add Stories', 'Add Tasks']
 
   // STATE TO HOLD FEATURES
-  const [features, setFeatures] = useState([{ id: 1 }])
+  const [epics, setEpics] = useState([{ id: 1 }])
 
-  const addFeature = () => {
-    setFeatures((prev) => [...prev, { id: prev.length + 1 }])
+  const addEpics = () => {
+    setEpics((prev) => [...prev, { id: prev.length + 1 }])
   }
 
-  const removeFeature = (id: number) => {
+  const removeEpics  = (id: number) => {
     if (id === 1) return
-    setFeatures((prev) => prev.filter((item) => item.id !== id))
+    setEpics((prev) => prev.filter((item) => item.id !== id))
   }
-
   return (
     <div className="flex flex-col gap-4 rounded-3xl bg-[#F9F9F9] p-5">
-      {/* Header */}
+         {/* Header */}
       <div className="flex justify-between">
         <div className="flex items-center gap-2">
           <span className="font-bricolage text-[16px] font-bold">
-            Project Epics (Epic 1)
+          Agile Ceremonies
           </span>
-          <img src="/icon/Group (7).svg" alt="Icon" />
-          <p className="text-[14px] font-normal text-[#2B323B]">Features</p>
+          {/* <img src="/icon/Group (7).svg" alt="Icon" />
+          <p className="text-[14px] font-normal text-[#2B323B]">Features</p> */}
         </div>
 
         <button
-          onClick={addFeature}
+          onClick={addEpics}
           className="bg-primary font-inter flex gap-2 rounded-md px-3 py-2 text-[12px] font-semibold text-white"
         >
           <img src="/icon/AddCross.svg" alt="Icon" />
-          Add Feature
+          Add Epics
         </button>
       </div>
 
       {/* Step Progress */}
       <div className="w-[75%]">
-        <IndexChecker steps={stepList} currentStep={2} />
+        <IndexChecker steps={stepList} currentStep={1} />
       </div>
 
-      {/* FEATURE CARDS */}
-      {features.map((feature, index) => (
+       {/* FEATURE CARDS */}
+      {epics.map((feature, index) => (
         <div key={feature.id} className="mb-4 rounded-lg bg-white p-3">
           <div className="border-primary rounded-lg border bg-[#F5F0FA] p-4">
             <div className="flex items-center justify-between gap-5">
@@ -64,7 +64,7 @@ const Feature = ({ onNext, onPrev }: FeatureProps) => {
               />
 
               <button
-                onClick={() => removeFeature(feature.id)}
+                onClick={() => removeEpics(feature.id)}
                 className="size-[43px] rounded-lg bg-[#D00416] text-white"
               >
                 X
@@ -86,6 +86,11 @@ const Feature = ({ onNext, onPrev }: FeatureProps) => {
                 value=""
                 placeholder=""
               />
+
+              <div className="flex flex-col gap-2">
+                 <label htmlFor="" className="text-grey900 font-inter text-[14px] font-normal">Due date</label>
+                 <input type="date"   className="font-bricolage w-full resize-none rounded-md border border-[#D0D5DD] bg-white p-2 text-[13px] text-[#667185]" />
+              </div>
 
               <div className="flex flex-col gap-2">
                 <label className="text-grey900 font-inter text-[14px] font-normal">
@@ -119,8 +124,10 @@ const Feature = ({ onNext, onPrev }: FeatureProps) => {
           <ArrowRight size={15} />
         </button>
       </div>
+
+      
     </div>
   )
 }
 
-export default Feature
+export default AgileCeremonies

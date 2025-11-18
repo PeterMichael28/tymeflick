@@ -115,7 +115,7 @@ const TimeLogPreview = () => {
             type="checkbox"
             checked={markAll}
             onChange={handleToggleAll}
-            className="cursor-pointer accent-primary"
+            className="accent-primary cursor-pointer"
           />
           <p className="text-grey900 text-[14px]">Mark All as Billable</p>
         </div>
@@ -156,7 +156,7 @@ const TimeLogPreview = () => {
                         type="checkbox"
                         checked={!!val}
                         onChange={() => handleToggleBillable(i)}
-                        className="cursor-pointer accent-primary"
+                        className="accent-primary cursor-pointer"
                       />
                     ) : (
                       (val as any)
