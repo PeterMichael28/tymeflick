@@ -44,11 +44,11 @@ const ProjectTemplateCard: FC<Props> = ({
       </ul>
 
       <div className="flex justify-between gap-2">
-        <button className="bg-primary font-inter w-full rounded-md px-3 py-1 text-center text-sm text-white">
+        <button className="bg-primary font-inter w-full rounded-md px-3 py-1 text-center text-sm text-white cursor-pointer">
           View Details
         </button>
         <button
-          className="border-primary font-inter text-primary w-full rounded-md border px-3 py-1 text-center text-sm"
+          className="border-primary font-inter text-primary w-full rounded-md border px-3 py-1 text-center text-sm cursor-pointer"
           onClick={() => navigate(useTemplateLink)}
         >
           Use Template

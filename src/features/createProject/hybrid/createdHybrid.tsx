@@ -1,8 +1,8 @@
 import IndexChecker from '../ui/checker/indexChecker'
 import { useNavigate } from 'react-router-dom'
 
-const CreatedWaterfall = () => {
-  const steps = [
+const CreatedHybrid = () => {
+    const steps = [
     'Select Template',
     'Configure Setup',
     'Preview Structure',
@@ -11,16 +11,19 @@ const CreatedWaterfall = () => {
   const stepList = ['Step 1', 'Step 2', 'Step 3', 'Step 4']
   const navigate = useNavigate()
 
-  const list = [
+   const list = [
     { title: 'Project Type', label: 'Water' },
-    { title: 'Phases', label: '2 ' },
-    { title: 'Start Date:', label: 'April 15, 2023' },
-    { title: 'End Date', label: 'April 15, 2023' },
-    { title: 'Tasks Created:', label: '2' },
-    { title: 'Milestones:', label: '4' },
+    { title: 'Project Name', label: 'Website Revamping' },
+    { title: 'Client:', label: 'Acme Inc.' },
+    { title: 'Total Duration:', label: '12 weeks' },
+    { title: 'Planning:', label: '5 weeks' },
+    { title: 'Execution', label: '4 weeks' },
+    { title: 'Final Phase :', label: '3 weeks' },
+    { title: 'Est. Start:', label: 'Jan 1, 2025' },
+    { title: 'Est. Completion: ', label: 'Apr 15, 2025' },
   ]
   return (
-    <div className="mb-20 h-full overflow-x-hidden overflow-y-scroll">
+    <div className="mb20 min-h-[calc(130vh-80px)] overflow-x-hidden overflow-y-scroll">
       <div className="w-full">
         <div className="flex justify-between">
           {stepList.map((step, index) => (
@@ -84,4 +87,4 @@ const CreatedWaterfall = () => {
   )
 }
 
-export default CreatedWaterfall
+export default CreatedHybrid

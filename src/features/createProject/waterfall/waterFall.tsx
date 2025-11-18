@@ -101,11 +101,13 @@ const WaterFallIndex = () => {
         <PhaseManagement />
 
         <div className="mt-7 flex justify-between gap-5">
-          <button className="font-bricolage flex-1 font-bold text-[#404C59]">
+          <button className="font-bricolage flex-1 font-bold text-[#404C59] cursor-pointer"
+           onClick={() => navigate('/create-project')}
+          >
             Previous
           </button>
           <button
-            className="bg-primary flex-1 rounded-lg py-4 font-bold text-white"
+            className="bg-primary flex-1 rounded-lg py-4 font-bold text-white cursor-pointer"
             onClick={() => navigate('/create-project/review-waterfall')}
           >
             Next

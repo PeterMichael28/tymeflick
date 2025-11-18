@@ -1,8 +1,8 @@
 import IndexChecker from '../ui/checker/indexChecker'
 import { useNavigate } from 'react-router-dom'
 
-const ReviewWaterFall = () => {
-  const steps = [
+const ProjectPreviewHybrid = () => {
+    const steps = [
     'Select Template',
     'Configure Setup',
     'Preview Structure',
@@ -10,8 +10,19 @@ const ReviewWaterFall = () => {
   ]
   const stepList = ['Step 1', 'Step 2', 'Step 3', 'Step 4']
   const navigate = useNavigate()
+    const list = [
+    { title: 'Project Type', label: 'Water' },
+    { title: 'Project Name', label: 'Website Revamping' },
+    { title: 'Client:', label: 'Acme Inc.' },
+    { title: 'Total Duration:', label: '12 weeks' },
+    { title: 'Planning:', label: '5 weeks' },
+    { title: 'Execution', label: '4 weeks' },
+    { title: 'Final Phase :', label: '3 weeks' },
+    { title: 'Est. Start:', label: 'Jan 1, 2025' },
+    { title: 'Est. Completion: ', label: 'Apr 15, 2025' },
+  ]
 
-  const dataList = [
+    const dataList = [
     {
       title: 'Design',
       time: '6 weeks',
@@ -51,7 +62,7 @@ const ReviewWaterFall = () => {
   ]
   return (
     <div>
-      <div className="mb-32 flex h-full flex-col gap-4 overflow-y-scroll rounded-lg bg-white p-5">
+         <div className="mb-32 flex h-full flex-col gap-4 overflow-y-scroll rounded-lg bg-white p-5">
         <div className="w-full">
           <div className="flex justify-between">
             {stepList.map((step, index) => (
@@ -67,10 +78,10 @@ const ReviewWaterFall = () => {
 
         <div>
           <p className="font-inter text-[18px] font-bold">
-            Waterfall Project Setup
+         Hybrid Project Preview
           </p>
           <p className="text-[14px] font-normal text-[#8898AA]">
-            Review your sequential phases and milestones
+            Review the project structure combining waterfall planning and agile execution.
           </p>
         </div>
 
@@ -122,21 +133,45 @@ const ReviewWaterFall = () => {
               </div>
             ))}
           </div>
+          <div className='flex gap-3 items-center mt-3'>
+              <p className='text-[#0B54FF] font-bold font-inter text-[16px]'>Handoff</p>
+              <div className='border-t-2 w-full border-dashed border-[#0B54FF] '/>
+          </div>
+
+          <div className='mt-3'>
+             <div className="w-full">
+          <p className="font-bricolage text-grey900">Project Summary</p>
+          <div className="flex flex-col gap-4 rounded-lg bg-[#CCDBFF33] p-4">
+            {list.map((item, index) => (
+              <div
+                key={index}
+                className="flex items-center justify-between gap-4"
+              >
+                <div className="text-grey900 text-[14px]">{item.title}:</div>
+                <div className="text-[16px] font-bold text-black">
+                  {item.label}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+          </div>
           <div className="mt-7 flex justify-between gap-5">
             <button className="font-bricolage flex-1 font-bold text-[#404C59]">
               Previous
             </button>
             <button
               className="bg-primary flex-1 rounded-lg py-4 font-bold text-white"
-              onClick={() => navigate('/create-project/created-waterfall')}
+              onClick={() => navigate('/create-project/hybrid/created')}
             >
               Next
             </button>
           </div>
         </div>
       </div>
+      
     </div>
   )
 }
 
-export default ReviewWaterFall
+export default ProjectPreviewHybrid
