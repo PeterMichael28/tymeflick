@@ -6,6 +6,8 @@ import UploadTimeLog from '../features/dashboard/components/modal/uploadTimeLog'
 import TimeLogPreview from '../features/dashboard/components/modal/timeLogPreview'
 import UploadFailed from '../features/dashboard/components/modal/uploadFailed'
 import UploadSuccessful from '../features/dashboard/components/modal/uploadSuccessful'
+import AddManualEntryModal from '../features/timeTracker/components/modals/AddManualEntry'
+import SubmissionSentModal from '../features/timeTracker/components/modals/SubmissionSent' // ✅ NEW IMPORT
 
 const GlobalModal = () => {
   const {
@@ -15,26 +17,18 @@ const GlobalModal = () => {
     reviewTimeLogModal,
     uploadFailedModal,
     uploadSuccessModal,
+    addTimeManualEntryModal,
+    submissionSentModal, // ✅ NEW STATE
   } = useSelector((state: RootState) => state.modal)
 
-  if (createAccountModal) {
-    return <CreateAccount />
-  }
-  if (enterPriceSuccessModal) {
-    return <SuccessModal />
-  }
-  if (uploadTimeLogModal) {
-    return <UploadTimeLog />
-  }
-  if (reviewTimeLogModal) {
-    return <TimeLogPreview />
-  }
-  if (uploadFailedModal) {
-    return <UploadFailed />
-  }
-  if (uploadSuccessModal) {
-    return <UploadSuccessful />
-  }
+  if (createAccountModal) return <CreateAccount />
+  if (enterPriceSuccessModal) return <SuccessModal />
+  if (uploadTimeLogModal) return <UploadTimeLog />
+  if (reviewTimeLogModal) return <TimeLogPreview />
+  if (uploadFailedModal) return <UploadFailed />
+  if (uploadSuccessModal) return <UploadSuccessful />
+  if (addTimeManualEntryModal) return <AddManualEntryModal />
+  if (submissionSentModal) return <SubmissionSentModal /> // ✅ NEW CONDITIONAL RENDER
 
   return null
 }

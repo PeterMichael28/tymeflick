@@ -1,5 +1,16 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit'
 
+interface TimeEntryPayload {
+  id?: string | number
+  date?: string
+  startTime?: string
+  endTime?: string
+  description?: string
+  billable?: boolean
+  client?: string
+  project?: string
+}
+
 interface ModalSlice {
   createAccountModal: boolean
   enterPriceSuccessModal: boolean
@@ -8,6 +19,17 @@ interface ModalSlice {
   selectedFile: File | null
   uploadSuccessModal: boolean
   uploadFailedModal: boolean
+
+  // Already existing Edit Time Entry Modal
+  editTimeEntryModal: boolean
+  selectedTimeEntry: TimeEntryPayload | null
+
+  // NEW — Add Time Manually Modal
+  addTimeManualEntryModal: boolean
+  selectedManualTimeEntry: TimeEntryPayload | null
+
+  // ✅ NEW — Submission Sent Modal
+  submissionSentModal: boolean
 }
 
 const initialState: ModalSlice = {
@@ -18,6 +40,15 @@ const initialState: ModalSlice = {
   selectedFile: null,
   uploadSuccessModal: false,
   uploadFailedModal: false,
+
+  editTimeEntryModal: false,
+  selectedTimeEntry: null,
+
+  addTimeManualEntryModal: false,
+  selectedManualTimeEntry: null,
+
+  // NEW default
+  submissionSentModal: false,
 }
 
 const modalSlice = createSlice({
@@ -62,6 +93,40 @@ const modalSlice = createSlice({
     closeUploadFailedModal: (state) => {
       state.uploadFailedModal = false
     },
+
+    // Existing Edit Modal
+    openEditTimeEntryModal: (
+      state,
+      action: PayloadAction<TimeEntryPayload | null>
+    ) => {
+      state.editTimeEntryModal = true
+      state.selectedTimeEntry = action.payload
+    },
+    closeEditTimeEntryModal: (state) => {
+      state.editTimeEntryModal = false
+      state.selectedTimeEntry = null
+    },
+
+    // NEW — Add Time Manual Entry
+    openAddTimeManualEntryModal: (
+      state,
+      action: PayloadAction<TimeEntryPayload | null>
+    ) => {
+      state.addTimeManualEntryModal = true
+      state.selectedManualTimeEntry = action.payload
+    },
+    closeAddTimeManualEntryModal: (state) => {
+      state.addTimeManualEntryModal = false
+      state.selectedManualTimeEntry = null
+    },
+
+    // ✅ NEW — Submission Sent Modal
+    openSubmissionSentModal: (state) => {
+      state.submissionSentModal = true
+    },
+    closeSubmissionSentModal: (state) => {
+      state.submissionSentModal = false
+    },
   },
 })
 
@@ -78,6 +143,13 @@ export const {
   closeUploadSuccessModal,
   openUploadFailedModal,
   closeUploadFailedModal,
+  openEditTimeEntryModal,
+  closeEditTimeEntryModal,
+  openAddTimeManualEntryModal,
+  closeAddTimeManualEntryModal,
+  // ✅ NEW exports
+  openSubmissionSentModal,
+  closeSubmissionSentModal,
 } = modalSlice.actions
 
 export default modalSlice.reducer

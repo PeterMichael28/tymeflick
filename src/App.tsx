@@ -31,6 +31,9 @@ import CreateContactPersonaccount from './features/signUp/enterpriseAccount/crea
 import SpecificRequirement from './features/signUp/enterpriseAccount/specificRequirement'
 import DashBoardIndex from './features/dashboard'
 import Project from './features/project'
+import TimetrackerIndex from './features/timeTracker'
+import SubmitWeeklyTimeLogs from './features/timeTracker/components/screens/submitWeeklyTimelog'
+import ViewAllPage from './features/timeTracker/components/screens/viewAll'
 
 const App = () => {
   return (
@@ -112,9 +115,13 @@ const App = () => {
         <Route path="/" element={<Dashboard />}>
           <Route element={<DashBoardIndex />} index />
           <Route path="project" element={<Project />} >
-          
           </Route>
+          <Route path="timeTracker" element={<TimetrackerIndex/>} >
+          </Route>
+          <Route path="submitWeeklyTimelog" element={<SubmitWeeklyTimeLogs />} />
+          <Route path="viewAll" element={<ViewAllPage />} />
         </Route>
+        
       </Routes>
     </Router>
   )
