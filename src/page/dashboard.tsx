@@ -5,10 +5,13 @@ import { PanelRightClose } from 'lucide-react'
 import { useState } from 'react'
 import Header from '../components/ui/header'
 import { useNavigate } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 
 const Dashboard = () => {
   const [showPanel, setShowPanel] = useState(true)
   const navigate = useNavigate()
+  const location = useLocation()
+
   const dashboardList = [
     {
       title: 'Dashboard',
@@ -84,31 +87,44 @@ const Dashboard = () => {
             </button>
           </div>
           <aside className="flex flex-col gap-5">
-            {dashboardList.map((item, index) => (
-              <NavLink
-                to={item.path}
-                key={index}
-                end={item.end}
-                className={({ isActive }) =>
-                  `font-bricolage flex items-center gap-3 rounded-[10px] text-[14px] transition-all duration-200 ${
-                    isActive
-                      ? 'text-primary border-r-2 bg-[#F5F0FA]'
-                      : 'text-[#2B323B]'
-                  } ${showPanel ? 'px-4 py-3' : 'justifycenter px-2 py-3'}`
-                }
-              >
-                {({ isActive }: { isActive: boolean }) => (
-                  <div className="flex gap-3">
-                    <img
-                      src={isActive ? item.activeImage : item.image}
-                      alt={item.title}
-                      className="size-5"
-                    />
-                    {showPanel && <span>{item.title}</span>}
-                  </div>
-                )}
-              </NavLink>
-            ))}
+            {dashboardList.map((item, index) => {
+              const isCreateProject = location.pathname === '/create-project'
+              const isProjectTemplate = item.path === '/project-template'
+
+              return (
+                <NavLink
+                  to={item.path}
+                  key={index}
+                  end={item.end}
+                  className={({ isActive }) => {
+                    const activeState =
+                      isActive || (isProjectTemplate && isCreateProject)
+
+                    return `font-bricolage flex items-center gap-3 rounded-[10px] text-[14px] transition-all duration-200 ${
+                      activeState
+                        ? 'text-primary border-r-2 bg-[#F5F0FA]'
+                        : 'text-[#2B323B]'
+                    } ${showPanel ? 'px-4 py-3' : 'justifycenter px-2 py-3'}`
+                  }}
+                >
+                  {({ isActive }) => {
+                    const activeState =
+                      isActive || (isProjectTemplate && isCreateProject)
+
+                    return (
+                      <div className="flex gap-3">
+                        <img
+                          src={activeState ? item.activeImage : item.image}
+                          alt={item.title}
+                          className="size-5"
+                        />
+                        {showPanel && <span>{item.title}</span>}
+                      </div>
+                    )
+                  }}
+                </NavLink>
+              )
+            })}
           </aside>
         </div>
         <div
@@ -123,7 +139,7 @@ const Dashboard = () => {
       <main className="w-full">
         <Header />
 
-        <div className="h-full overflow-y-scroll bg-[#f2f2f2] p-4">
+        <div className="h-screen w-full overflow-y-scroll bg-[#f2f2f2] p-4">
           <Suspense fallback={<div>Loading...</div>}>
             <Outlet />
           </Suspense>

@@ -14,6 +14,7 @@ import SubmissionRejectedModal from '../features/timeTracker/components/modals/S
 // ✅ NEW IMPORTS
 import ApprovalNotesModal from '../features/timeTracker/components/modals/ApprovalNotesModal'
 import RejectionNotesModal from '../features/timeTracker/components/modals/RejectionNotesModal'
+import TemplateReady from '../features/projectTemplate/modal/templateReady'
 
 const GlobalModal = () => {
   const {
@@ -29,6 +30,7 @@ const GlobalModal = () => {
     submissionRejectedModal,
     approvalNotesModal, // ✅ new
     rejectionNotesModal, // ✅ new
+    templateReadyModal,
   } = useSelector((state: RootState) => state.modal)
 
   if (createAccountModal) return <CreateAccount />
@@ -43,6 +45,9 @@ const GlobalModal = () => {
   if (submissionRejectedModal) return <SubmissionRejectedModal />
   if (approvalNotesModal) return <ApprovalNotesModal /> // ✅ added
   if (rejectionNotesModal) return <RejectionNotesModal /> // ✅ added
+  if (templateReadyModal) {
+    return <TemplateReady />
+  }
 
   return null
 }

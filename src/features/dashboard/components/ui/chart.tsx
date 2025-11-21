@@ -56,9 +56,9 @@ const Chart: FC<ChartProps> = ({
 
             <defs>
               <linearGradient id="colorValue" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="#EBE0F5" />
-                <stop offset="50%" stopColor="#E0D1F0" />
-                <stop offset="100%" stopColor="#EBE0F5" />
+                <stop offset="0%" stopColor="#66C61C" />
+                <stop offset="50%" stopColor="#66C61C" />
+                <stop offset="100%" stopColor="#66C61C" />
               </linearGradient>
             </defs>
 
@@ -72,7 +72,7 @@ const Chart: FC<ChartProps> = ({
             <Line
               type="monotone"
               dataKey="value"
-              stroke="#9966CC"
+              stroke="#66C61C"
               strokeWidth={2}
               dot={false}
               isAnimationActive={true}

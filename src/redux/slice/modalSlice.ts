@@ -19,6 +19,8 @@ interface ModalSlice {
   selectedFile: File | null
   uploadSuccessModal: boolean
   uploadFailedModal: boolean
+  templateReadyModal: boolean
+  templateText: string
 
   editTimeEntryModal: boolean
   selectedTimeEntry: TimeEntryPayload | null
@@ -57,6 +59,8 @@ const initialState: ModalSlice = {
   // ✅ Defaults for new modals
   approvalNotesModal: false,
   rejectionNotesModal: false,
+  templateReadyModal: false,
+  templateText: '',
 }
 
 const modalSlice = createSlice({
@@ -151,6 +155,13 @@ const modalSlice = createSlice({
     closeRejectionNotesModal: (state) => {
       state.rejectionNotesModal = false
     },
+    openTemplateReadyModal: (state, action: PayloadAction<any>) => {
+      state.templateReadyModal = true
+      state.templateText = action.payload.templateText || ''
+    },
+    closeTemplateReadyModal: (state) => {
+      state.templateReadyModal = false
+    },
   },
 })
 
@@ -182,6 +193,8 @@ export const {
   closeApprovalNotesModal,
   openRejectionNotesModal,
   closeRejectionNotesModal,
+  openTemplateReadyModal,
+  closeTemplateReadyModal,
 } = modalSlice.actions
 
 export default modalSlice.reducer

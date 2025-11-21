@@ -28,9 +28,9 @@ const Hero: FC<Heroprop> = ({ title, description, isDashboard }) => {
   return (
     <div className="w-full rounded-lg bg-white p-4">
       <div className="flex justify-between rounded-md bg-[#F3F3F3]">
-        <div className="flex w-[50%] flex-col gap-5 px-4 py-2">
+        <div className="flex w-[70%] flex-col px-4 py-6">
           <p className="font-inter text-[24px] font-medium">{title}</p>
-          {description && <p>{description}</p>}
+          {description && <p className="text-[14px]">{description}</p>}
           {isDashboard && (
             <span className="flex w-[320px] justify-between gap-4 rounded-lg border border-[#D2D9DF] bg-white px-3 py-2">
               <p className="text-[14px] font-normal text-[#2B323B]">
@@ -43,7 +43,7 @@ const Hero: FC<Heroprop> = ({ title, description, isDashboard }) => {
         <img
           src="/image/Mask group (1).png"
           alt="Hero Image"
-          className="w-[50%]"
+          className="w-[30%]"
         />
       </div>
     </div>

@@ -16,8 +16,8 @@ const UploadSuccessful = () => {
     dispatch(openUploadFailedModal())
   }
   return (
-    <div className="absolute inset-0 flex items-center justify-center z-50">
-      <div className="w-[40vw] bg-white rounded-lg">
+    <div className="absolute inset-0 z-50 flex items-center justify-center">
+      <div className="w-[40vw] rounded-lg bg-white">
         <div className="relative flex items-center justify-center">
           {/* Base image */}
           <img src="/icon/Ellipse 13 (4).svg" alt="Base" />
@@ -29,29 +29,43 @@ const UploadSuccessful = () => {
             className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
           />
         </div>
-       
-       <div className='p-4 flex justify-center flex-col items-center gap-3'>
-          <p className='font-bold font-bricolage text-[32px]'>Upload Successful!</p>
-        <div className='text-[#606060] text-center font-normal text-[16px]'>  
-          Your time logs have been saved successfully. 15 entries totalling 42.5
-          hours have been added to your timesheet.
-        </div>
-        <div className='w-full  border border-primary rounded-lg p-4 bg-[#F5F0FA]'>
-          <p className='text-[20px] font-bold text-primary'>📊 Summary</p>
-          <div className='flex flex-col gap-2 mt-4'>
-            {list.map((item, index) => (
-            <div key={index} className="flex items-center justify-between gap-3">
-              <p className='text-[16px] font-inter font-normal'>{item.tile}</p>
-              <p className='font-bold '>{item.number}</p>
+
+        <div className="flex flex-col items-center justify-center gap-3 p-4">
+          <p className="font-bricolage text-[32px] font-bold">
+            Upload Successful!
+          </p>
+          <div className="text-center text-[16px] font-normal text-[#606060]">
+            Your time logs have been saved successfully. 15 entries totalling
+            42.5 hours have been added to your timesheet.
+          </div>
+          <div className="border-primary w-full rounded-lg border bg-[#F5F0FA] p-4">
+            <p className="text-primary text-[20px] font-bold">📊 Summary</p>
+            <div className="mt-4 flex flex-col gap-2">
+              {list.map((item, index) => (
+                <div
+                  key={index}
+                  className="flex items-center justify-between gap-3"
+                >
+                  <p className="font-inter text-[16px] font-normal">
+                    {item.tile}
+                  </p>
+                  <p className="font-bold">{item.number}</p>
+                </div>
+              ))}
             </div>
-          ))}
+          </div>
+          <div className="flex w-full flex-col gap-3">
+            <Button className="h-16 w-full" onClick={handleCloseModal}>
+              View my time logs
+            </Button>
+            <button
+              className="h-16 w-full rounded-lg bg-[#F2F0F5] font-bold"
+              onClick={() => dispatch(closeUploadSuccessModal())}
+            >
+              Back to dashboard
+            </button>
           </div>
         </div>
-        <div className='w-full flex flex-col gap-3 '>
-          <Button className="w-full h-16" onClick={handleCloseModal}>View my time logs</Button>
-          <button className='bg-[#F2F0F5] w-full h-16 rounded-lg font-bold' onClick={() => dispatch(closeUploadSuccessModal())}>Back to dashboard</button>
-        </div>
-       </div>
       </div>
     </div>
   )

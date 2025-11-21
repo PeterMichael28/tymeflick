@@ -7,7 +7,7 @@ import { openUploadTimeLogModal } from '../../../redux/slice/modalSlice'
 const list = [
   {
     title: "Today's Hours",
-    imageUrl: '/icon/dashboardIcon1.svg',
+    imageUrl: '/icon/clock.svg',
     number: '6h 30m',
     description: 'Billable: 6h 30m',
     isHourly: true,
@@ -53,7 +53,7 @@ const list = [
   },
   {
     title: 'Avg Daily Hours',
-    imageUrl: '/icon/dashboardIcon6.svg',
+    imageUrl: '/icon/alarm-clock-active.svg',
     number: '7h 20min',
     description: 'last 7 days',
     isHourly: false,
