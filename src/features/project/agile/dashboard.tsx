@@ -223,7 +223,8 @@ const AgileDashboard = () => {
         </div>
       </div>
 
-      <div className="mt-4 flex items-center justify-between rounded-lg bg-[#F3F3F3] p-2">
+   <div className='bg-[#F9F9F9] p-4 mt-4 rounded-lg'>
+        <div className=" flex items-center justify-between rounded-lg bg-[#F3F3F3] p-2">
         <p>All Project</p>
 
         <div className="flex w-[65%] items-center gap-2">
@@ -266,7 +267,7 @@ const AgileDashboard = () => {
           />
         </div>
       </div>
-      <div className="mt-4">
+      <div className="mt-4 bg-white">
         <AgileAccordionTable
           columns={columns}
           data={currentData}
@@ -277,7 +278,7 @@ const AgileDashboard = () => {
         />
 
          {pageCount > 1 && (
-        <div className="flex justify-end mt-4">
+        <div className="flex justify-end mt-4 bg-white">
           <ReactPaginate
             previousLabel={'← Previous'}
             nextLabel={'Next →'}
@@ -285,13 +286,14 @@ const AgileDashboard = () => {
             onPageChange={(selected) => setCurrentPage(selected.selected)}
             containerClassName="flex items-center justify-between w-full max-w-full"
             pageClassName="px-3 py-1  rounded cursor-pointer"
-            previousClassName="px-3 py-1 text-[#757575] rounded cursor-pointer flex-1"
-            nextClassName="px-3 py-1 text-[#757575]  rounded cursor-pointer flex-1 text-end"
+            previousClassName="px-3 py-1 text-[#757575] rounded cursor-pointer flex-1 font-normal text-sm"
+            nextClassName="px-3 py-1 text-[#757575]  rounded cursor-pointer flex-1 text-end font-normal text-sm"
             activeClassName="bg-primary text-white"
           />
         </div>
       )}
       </div>
+   </div>
     </div>
   )
 }
