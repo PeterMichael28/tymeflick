@@ -24,7 +24,7 @@ const Dashboard = () => {
       title: 'Time Tracker',
       image: '/icon/alarm-clock.svg',
       activeImage: '/icon/alarm-clock-active.svg',
-      path: '/time-tracker',
+      path: '/timeTracker',
     },
     {
       title: 'Projects',
@@ -71,7 +71,7 @@ const Dashboard = () => {
   ]
 
   return (
-    <div className="flex h-screen overflow-hidden">
+    <div className="flex h-full overflow-hidden">
       <div
         className={`flex flex-col justify-between border-r border-[#D2D9DF] p-4 transition-all duration-300 ${showPanel ? 'w-[17vw]' : 'w-[5vw] items-center'}`}
       >
