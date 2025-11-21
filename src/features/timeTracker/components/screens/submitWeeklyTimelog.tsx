@@ -2,7 +2,7 @@
 
 import { Clock } from "lucide-react";
 import Button from "../../../../components/button/button";
-import SubmitWeeklyTimeLogsTable from "../../../../features/timeTracker/components/submitWeeklyTimelogTable";
+import SubmitWeeklyTimeLogsTable from "../tables/submitWeeklyTimelogTable";
 import Hero from "../../../../components/ui/hero";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -12,7 +12,11 @@ import { openSubmissionSentModal } from "../../../../redux/slice/modalSlice";
 export default function SubmitWeeklyTimeLogs() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    
+
+    const handleContinue = () => {
+        dispatch(openSubmissionSentModal());
+      };
+
   return (
     <div className="bg-[#F8F9FB] min-h-screen w-full space-y-6 overflow-y-visible">
       {/* Hero Section */}
@@ -58,7 +62,7 @@ export default function SubmitWeeklyTimeLogs() {
             Cancel
           </button>
           <Button className="bg-[#70C94C] hover:bg-[#5BB63B] text-white font-semibold px-8 py-3 rounded-lg"
-          onClick={() => dispatch(openSubmissionSentModal())}>
+          onClick={handleContinue}>
             Submit for approval
           </Button>
         </div>

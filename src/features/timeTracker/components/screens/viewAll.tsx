@@ -1,7 +1,7 @@
 "use client";
 
 import Hero from "../../../../components/ui/hero";
-import TimeTrackerTable from "../../../../features/timeTracker/components/TimeTrackerTable";
+import TimeTrackerTable from "../tables/TimeTrackerTable";
 import { Calendar } from "lucide-react";
 
 export default function ViewAllPage() {

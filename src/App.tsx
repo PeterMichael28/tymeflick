@@ -34,6 +34,15 @@ import Project from './features/project'
 import TimetrackerIndex from './features/timeTracker'
 import SubmitWeeklyTimeLogs from './features/timeTracker/components/screens/submitWeeklyTimelog'
 import ViewAllPage from './features/timeTracker/components/screens/viewAll'
+import TeamSubmissions from './features/timeTracker/components/screens/teamSubmissions'
+import ReviewDetails from './features/timeTracker/components/screens/teamSubmissions/reviewDetails'
+import Approve from './features/timeTracker/components/screens/teamSubmissions/approve'
+import Reject from './features/timeTracker/components/screens/teamSubmissions/reject'
+import TeamSubmissionForAdmin from './features/timeTracker/components/screens/teamSubmissionForAdmin'
+import ReviewDetailsForAdmin from './features/timeTracker/components/screens/teamSubmissionsForAdmin/reviewDetails'
+import ForceApproveAdmin from './features/timeTracker/components/screens/teamSubmissionsForAdmin/forceApprove'
+import ForceRejectAdmin from './features/timeTracker/components/screens/teamSubmissionsForAdmin/forceReject'
+
 
 const App = () => {
   return (
@@ -120,6 +129,14 @@ const App = () => {
           </Route>
           <Route path="submitWeeklyTimelog" element={<SubmitWeeklyTimeLogs />} />
           <Route path="viewAll" element={<ViewAllPage />} />
+          <Route path="teamSubmissions" element={<TeamSubmissions />} />
+          <Route path="reviewDetails" element={<ReviewDetails />} />
+          <Route path="approve" element={<Approve />} />
+          <Route path="reject" element={<Reject />} />
+          <Route path="teamSubmissionForAdmin" element={<TeamSubmissionForAdmin />} />
+          <Route path="reviewDetailsAdmin" element={<ReviewDetailsForAdmin />} />
+          <Route path="forceApprove" element={<ForceApproveAdmin />} />
+          <Route path="forceReject" element={<ForceRejectAdmin />} /> 
         </Route>
         
       </Routes>

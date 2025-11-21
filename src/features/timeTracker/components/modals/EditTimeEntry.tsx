@@ -145,7 +145,7 @@ const EditTimeEntry = () => {
         {/* Actions */}
         <div className="flex flex-col gap-3">
           <Button
-            className="h-14 w-full"
+            className="h-14 w-full bg-[#66C61C]"
             onClick={handleSave}
           >
             Save Changes

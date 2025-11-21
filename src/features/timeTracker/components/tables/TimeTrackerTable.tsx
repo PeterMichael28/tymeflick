@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { ChevronDown, ChevronUp, MoreVertical } from "lucide-react";
-import ChildLogTable from "./ChildLogTable";
+import ChildLogTable from "../ChildLogTable";
 
 const logs = [
   {

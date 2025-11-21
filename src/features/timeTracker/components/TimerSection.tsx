@@ -17,7 +17,7 @@ export default function TimerSection() {
       <div className="flex justify-end gap-3">
         {/* Admin Submissions */}
         <button className="flex items-center gap-2 border border-[#66CC33] text-[#66CC33] bg-white px-4 py-2 rounded-md text-xs font-medium hover:bg-[#E9F9E4]"
-          onClick={() => navigate("/features/timeTracker/components/screens/teamSubmissionForAdmin")}
+          onClick={() => navigate("/teamSubmissionForAdmin")}
         >
           <Users size={14} />
           Team Submissions (for admin)
@@ -25,7 +25,7 @@ export default function TimerSection() {
 
         {/* Member Submissions */}
         <button className="flex items-center gap-2 border border-[#66CC33] text-[#66CC33] bg-white px-4 py-2 rounded-md text-xs font-medium hover:bg-[#E9F9E4]"
-          onClick={() => navigate("/features/timeTracker/components/screens/teamSubmissions")}
+          onClick={() => navigate("/teamSubmissions")}
         >
           <Users size={14} />
           Team Submissions

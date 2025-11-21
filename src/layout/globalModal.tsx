@@ -7,7 +7,13 @@ import TimeLogPreview from '../features/dashboard/components/modal/timeLogPrevie
 import UploadFailed from '../features/dashboard/components/modal/uploadFailed'
 import UploadSuccessful from '../features/dashboard/components/modal/uploadSuccessful'
 import AddManualEntryModal from '../features/timeTracker/components/modals/AddManualEntry'
-import SubmissionSentModal from '../features/timeTracker/components/modals/SubmissionSent' // ✅ NEW IMPORT
+import SubmissionSentModal from '../features/timeTracker/components/modals/SubmissionSent'
+import SubmissionApprovedModal from '../features/timeTracker/components/modals/SubmissionApprovedModal'
+import SubmissionRejectedModal from '../features/timeTracker/components/modals/SubmissionRejectedModal'
+
+// ✅ NEW IMPORTS
+import ApprovalNotesModal from '../features/timeTracker/components/modals/ApprovalNotesModal'
+import RejectionNotesModal from '../features/timeTracker/components/modals/RejectionNotesModal'
 
 const GlobalModal = () => {
   const {
@@ -18,7 +24,11 @@ const GlobalModal = () => {
     uploadFailedModal,
     uploadSuccessModal,
     addTimeManualEntryModal,
-    submissionSentModal, // ✅ NEW STATE
+    submissionSentModal,
+    submissionApprovedModal,
+    submissionRejectedModal,
+    approvalNotesModal, // ✅ new
+    rejectionNotesModal, // ✅ new
   } = useSelector((state: RootState) => state.modal)
 
   if (createAccountModal) return <CreateAccount />
@@ -28,7 +38,11 @@ const GlobalModal = () => {
   if (uploadFailedModal) return <UploadFailed />
   if (uploadSuccessModal) return <UploadSuccessful />
   if (addTimeManualEntryModal) return <AddManualEntryModal />
-  if (submissionSentModal) return <SubmissionSentModal /> // ✅ NEW CONDITIONAL RENDER
+  if (submissionSentModal) return <SubmissionSentModal />
+  if (submissionApprovedModal) return <SubmissionApprovedModal />
+  if (submissionRejectedModal) return <SubmissionRejectedModal />
+  if (approvalNotesModal) return <ApprovalNotesModal /> // ✅ added
+  if (rejectionNotesModal) return <RejectionNotesModal /> // ✅ added
 
   return null
 }

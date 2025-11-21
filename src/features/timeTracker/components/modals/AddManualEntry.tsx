@@ -7,7 +7,7 @@ import {
   // openSaveEntrySuccessModal
 } from "../../../../redux/slice/modalSlice";
 import Button from "../../../../components/button/button";
-import { Calendar, Clock } from "lucide-react";
+//import { Calendar, Clock } from "lucide-react";
 import { useState } from "react";
 
 const AddManualEntryModal = () => {
@@ -148,7 +148,7 @@ const AddManualEntryModal = () => {
 
         {/* ACTION BUTTONS */}
         <Button
-          className="h-[48px] w-full"
+          className="h-[48px] w-full bg-[#66C61C]"
           onClick={handleSaveEntry}
         >
           Save Entry
