@@ -3,7 +3,7 @@ import Hero from '../../components/ui/hero'
 import { useNavigate } from "react-router-dom";
 import TimerSection from './components/TimerSection';
 import TimeTrackerTable from './components/tables/TimeTrackerTable';
-import { Calendar, Plus } from "lucide-react";
+import { Calendar } from "lucide-react";
 import AddManualEntryButton from './components/AddManualEntryButton';
 
 const TimetrackerIndex = () => {

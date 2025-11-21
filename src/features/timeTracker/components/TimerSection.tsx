@@ -1,12 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import { Play, Clock, ChevronDown, Users, FileText } from "lucide-react";
-import { useDispatch } from "react-redux";
+import { Play, Clock, ChevronDown, Users } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 export default function TimerSection() {
-  const dispatch = useDispatch();
   const [isRunning, setIsRunning] = useState(false);
   const navigate = useNavigate();
 
