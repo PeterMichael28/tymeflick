@@ -56,12 +56,11 @@ const App = () => {
         <Route path="/" element={<Dashboard />}>
           {dashboardRoutes.map((r, i) =>
             r.children ? (
-             <Route key={i} path={r.path} element={r.element}>
-              {r.children.map((c, j) => (
-                <Route key={j} path={c.path} element={c.element} />
-              ))}
-            </Route>
-
+              <Route key={i} path={r.path} element={r.element}>
+                {r.children.map((c, j) => (
+                  <Route key={j} path={c.path} element={c.element} />
+                ))}
+              </Route>
             ) : (
               <Route key={i} path={r.path} element={r.element} />
             )

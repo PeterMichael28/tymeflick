@@ -14,7 +14,7 @@ const ProjectTemplateCard: FC<Props> = ({
   description,
   text,
   list,
-  // viewDetailsLink,
+  viewDetailsLink,
   useTemplateLink,
 }) => {
   const navigate = useNavigate()
@@ -44,11 +44,14 @@ const ProjectTemplateCard: FC<Props> = ({
       </ul>
 
       <div className="flex justify-between gap-2">
-        <button className="bg-primary font-inter w-full rounded-md px-3 py-1 text-center text-sm text-white cursor-pointer">
+        <button
+          className="bg-primary font-inter w-full cursor-pointer rounded-md px-3 py-1 text-center text-sm text-white"
+          onClick={() => navigate(viewDetailsLink)}
+        >
           View Details
         </button>
         <button
-          className="border-primary font-inter text-primary w-full rounded-md border px-3 py-1 text-center text-sm cursor-pointer"
+          className="border-primary font-inter text-primary w-full cursor-pointer rounded-md border px-3 py-1 text-center text-sm"
           onClick={() => navigate(useTemplateLink)}
         >
           Use Template

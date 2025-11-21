@@ -9,7 +9,7 @@ interface FeatureProps {
 }
 
 const AgileCeremonies = ({ onNext, onPrev }: FeatureProps) => {
-      const stepList = ['Add Epics', 'Add Features', 'Add Stories', 'Add Tasks']
+  const stepList = ['Add Epics', 'Add Features', 'Add Stories', 'Add Tasks']
 
   // STATE TO HOLD FEATURES
   const [epics, setEpics] = useState([{ id: 1 }])
@@ -18,17 +18,17 @@ const AgileCeremonies = ({ onNext, onPrev }: FeatureProps) => {
     setEpics((prev) => [...prev, { id: prev.length + 1 }])
   }
 
-  const removeEpics  = (id: number) => {
+  const removeEpics = (id: number) => {
     if (id === 1) return
     setEpics((prev) => prev.filter((item) => item.id !== id))
   }
   return (
     <div className="flex flex-col gap-4 rounded-3xl bg-[#F9F9F9] p-5">
-         {/* Header */}
+      {/* Header */}
       <div className="flex justify-between">
         <div className="flex items-center gap-2">
           <span className="font-bricolage text-[16px] font-bold">
-          Agile Ceremonies
+            Agile Ceremonies
           </span>
           {/* <img src="/icon/Group (7).svg" alt="Icon" />
           <p className="text-[14px] font-normal text-[#2B323B]">Features</p> */}
@@ -48,7 +48,7 @@ const AgileCeremonies = ({ onNext, onPrev }: FeatureProps) => {
         <IndexChecker steps={stepList} currentStep={1} />
       </div>
 
-       {/* FEATURE CARDS */}
+      {/* FEATURE CARDS */}
       {epics.map((feature, index) => (
         <div key={feature.id} className="mb-4 rounded-lg bg-white p-3">
           <div className="border-primary rounded-lg border bg-[#F5F0FA] p-4">
@@ -88,8 +88,16 @@ const AgileCeremonies = ({ onNext, onPrev }: FeatureProps) => {
               />
 
               <div className="flex flex-col gap-2">
-                 <label htmlFor="" className="text-grey900 font-inter text-[14px] font-normal">Due date</label>
-                 <input type="date"   className="font-bricolage w-full resize-none rounded-md border border-[#D0D5DD] bg-white p-2 text-[13px] text-[#667185]" />
+                <label
+                  htmlFor=""
+                  className="text-grey900 font-inter text-[14px] font-normal"
+                >
+                  Due date
+                </label>
+                <input
+                  type="date"
+                  className="font-bricolage w-full resize-none rounded-md border border-[#D0D5DD] bg-white p-2 text-[13px] text-[#667185]"
+                />
               </div>
 
               <div className="flex flex-col gap-2">
@@ -124,8 +132,6 @@ const AgileCeremonies = ({ onNext, onPrev }: FeatureProps) => {
           <ArrowRight size={15} />
         </button>
       </div>
-
-      
     </div>
   )
 }

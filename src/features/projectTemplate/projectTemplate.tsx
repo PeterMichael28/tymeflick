@@ -1,8 +1,7 @@
-
 import ProjectTemplateCard from '../createProject/ui/projectTemplateCard'
 
 const ProjectTemplate = () => {
-     const projectTemplates = [
+  const projectTemplates = [
     {
       title: 'Agile Project Template',
       text: 'AGILE',
@@ -15,6 +14,7 @@ const ProjectTemplate = () => {
         'Flexible Scheduling',
       ],
       useTemplateLink: '/create-project/agile',
+      viewDetailsLink: '/project-template/agile',
     },
     {
       title: 'Waterfall Project Template',
@@ -29,6 +29,7 @@ const ProjectTemplate = () => {
         'Structured Planning',
       ],
       useTemplateLink: '/create-project/waterfall',
+      viewDetailsLink: '/project-template/waterfall',
     },
     {
       title: 'Hybrid Project Template',
@@ -43,24 +44,24 @@ const ProjectTemplate = () => {
         'Flexible Delivery',
       ],
       useTemplateLink: '/create-project/hybrid',
+      viewDetailsLink: '/project-template/hybrid',
     },
   ]
   return (
-    <div className='bg-white p-4 rounded-lg'>
-           <div className="flex justify-between gap-5">
-            {projectTemplates.map((template, index) => (
-              <ProjectTemplateCard
-                key={index}
-                title={template.title}
-                text={template.text}
-                description={template.description}
-                list={template.list}
-                viewDetailsLink="#"
-                useTemplateLink={template.useTemplateLink}
-              />
-            ))}
-          </div>
-      
+    <div className="rounded-lg bg-white p-4">
+      <div className="flex justify-between gap-5">
+        {projectTemplates.map((template, index) => (
+          <ProjectTemplateCard
+            key={index}
+            title={template.title}
+            text={template.text}
+            description={template.description}
+            list={template.list}
+            viewDetailsLink={template.viewDetailsLink}
+            useTemplateLink={template.useTemplateLink}
+          />
+        ))}
+      </div>
     </div>
   )
 }

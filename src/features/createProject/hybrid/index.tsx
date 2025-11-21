@@ -13,10 +13,9 @@ import Story from './ui/story'
 import Task from './ui/task'
 import { useNavigate } from 'react-router-dom'
 
-
 const Hybrid = () => {
-     const [tab, setCurrentTab] = useState(0)
-     const navigate = useNavigate()
+  const [tab, setCurrentTab] = useState(0)
+  const navigate = useNavigate()
   const steps = [
     'Select Template',
     'Configure Setup',
@@ -59,29 +58,29 @@ const Hybrid = () => {
             projectName: '',
             client: '',
             projectManager: '',
-          }}    
+          }}
           validationSchema={validationSchema}
           onSubmit={(values) => {
             // Simulate form submission
             console.log('Form submitted:', values)
           }}
-          >
-            <Form className='flex flex-col gap-4'>
-                <div className='flex gap-4'>
-                     <Input
-                  label="Project Name"
-                  name="projectName"
-                  type="text"
-                  placeholder="Enter Project Name"
-                />
-                <Input
-                  label="Client Name"
-                  name="client"
-                  type="text"
-                  placeholder="Enter Client Name"
-                />
-                </div>
-                 <DropDown
+        >
+          <Form className="flex flex-col gap-4">
+            <div className="flex gap-4">
+              <Input
+                label="Project Name"
+                name="projectName"
+                type="text"
+                placeholder="Enter Project Name"
+              />
+              <Input
+                label="Client Name"
+                name="client"
+                type="text"
+                placeholder="Enter Client Name"
+              />
+            </div>
+            <DropDown
               label="Project Manager"
               placeholder="projectManager"
               options={[
@@ -93,47 +92,56 @@ const Hybrid = () => {
               onChange={() => console.log()}
               value=""
             />
-            </Form>
-          </Formik>
+          </Form>
+        </Formik>
 
-          <div className='bg-[#F9F9F9] p-4'>
-             <div className='flex justify-between'>
-                 <p className='font-bold font-bricolage text-[16px]'>Waterfall Planning - Phase Management</p>
-                 <ChevronDown/>
-             </div>
-             <div className='mt-3 bg-white flex justify-between rounded-md gap-3'>
-               <span className='flex flex-col gap-2 w-full'>
-                  <label htmlFor="" className='text-[#101928] font-inter font-normal'>Planning Start Date</label>
-                 <div className='flex border w-full border-[#D0D5DD] justify-between p-1.5 rounded-md'>
-                      <button className='text-[#2B323B] font-bricolage font-normal'>23/06/2025</button>
-                      <Calendar/>
-                 </div>
-               </span>
-                <span className='flex flex-col gap-2 w-full'>
-                  <label htmlFor=""  className='text-[#101928] font-inter font-normal'>Planning End Date</label>
-                      <div className='flex border w-full border-[#D0D5DD] justify-between p-1.5 rounded-md'>
-                      <button className='text-[#2B323B] font-bricolage font-normal'>23/06/2025</button>
-                      <Calendar/>
-                 </div>
-               </span>
-           
-             </div>
-
-           
-      <PhaseManagement/>
-              
-
-             
+        <div className="bg-[#F9F9F9] p-4">
+          <div className="flex justify-between">
+            <p className="font-bricolage text-[16px] font-bold">
+              Waterfall Planning - Phase Management
+            </p>
+            <ChevronDown />
           </div>
-          {
-            tab === 0 && (
-                <AgileCeremonies
-              onPrev={() => setCurrentTab(0)}
-              onNext={() => setCurrentTab(1)}
-              />
-            )
-          }
-           {tab === 1 && (
+          <div className="mt-3 flex justify-between gap-3 rounded-md bg-white">
+            <span className="flex w-full flex-col gap-2">
+              <label
+                htmlFor=""
+                className="font-inter font-normal text-[#101928]"
+              >
+                Planning Start Date
+              </label>
+              <div className="flex w-full justify-between rounded-md border border-[#D0D5DD] p-1.5">
+                <button className="font-bricolage font-normal text-[#2B323B]">
+                  23/06/2025
+                </button>
+                <Calendar />
+              </div>
+            </span>
+            <span className="flex w-full flex-col gap-2">
+              <label
+                htmlFor=""
+                className="font-inter font-normal text-[#101928]"
+              >
+                Planning End Date
+              </label>
+              <div className="flex w-full justify-between rounded-md border border-[#D0D5DD] p-1.5">
+                <button className="font-bricolage font-normal text-[#2B323B]">
+                  23/06/2025
+                </button>
+                <Calendar />
+              </div>
+            </span>
+          </div>
+
+          <PhaseManagement />
+        </div>
+        {tab === 0 && (
+          <AgileCeremonies
+            onPrev={() => setCurrentTab(0)}
+            onNext={() => setCurrentTab(1)}
+          />
+        )}
+        {tab === 1 && (
           <Feature
             onPrev={() => setCurrentTab(1)}
             onNext={() => setCurrentTab(2)}
@@ -153,13 +161,14 @@ const Hybrid = () => {
         )}
 
         <div className="mt-7 flex justify-between gap-5">
-          <button className="font-bricolage flex-1 font-bold text-[#404C59] cursor-pointer"
-           onClick={() => navigate('/create-project')}
+          <button
+            className="font-bricolage flex-1 cursor-pointer font-bold text-[#404C59]"
+            onClick={() => navigate('/create-project')}
           >
             Previous
           </button>
           <button
-            className="bg-primary flex-1 rounded-lg py-4 font-bold text-white cursor-pointer"
+            className="bg-primary flex-1 cursor-pointer rounded-lg py-4 font-bold text-white"
             onClick={() => navigate('/create-project/hybrid/preview')}
           >
             Next

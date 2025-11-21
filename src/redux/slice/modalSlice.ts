@@ -8,6 +8,8 @@ interface ModalSlice {
   selectedFile: File | null
   uploadSuccessModal: boolean
   uploadFailedModal: boolean
+  templateReadyModal: boolean
+  templateText: string
 }
 
 const initialState: ModalSlice = {
@@ -18,6 +20,8 @@ const initialState: ModalSlice = {
   selectedFile: null,
   uploadSuccessModal: false,
   uploadFailedModal: false,
+  templateReadyModal: false,
+  templateText: '',
 }
 
 const modalSlice = createSlice({
@@ -62,6 +66,13 @@ const modalSlice = createSlice({
     closeUploadFailedModal: (state) => {
       state.uploadFailedModal = false
     },
+    openTemplateReadyModal: (state, action: PayloadAction<any>) => {
+      state.templateReadyModal = true
+      state.templateText = action.payload.templateText || ''
+    },
+    closeTemplateReadyModal: (state) => {
+      state.templateReadyModal = false
+    },
   },
 })
 
@@ -78,6 +89,8 @@ export const {
   closeUploadSuccessModal,
   openUploadFailedModal,
   closeUploadFailedModal,
+  openTemplateReadyModal,
+  closeTemplateReadyModal,
 } = modalSlice.actions
 
 export default modalSlice.reducer
