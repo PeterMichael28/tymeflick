@@ -6,6 +6,7 @@ import UploadTimeLog from '../features/dashboard/components/modal/uploadTimeLog'
 import TimeLogPreview from '../features/dashboard/components/modal/timeLogPreview'
 import UploadFailed from '../features/dashboard/components/modal/uploadFailed'
 import UploadSuccessful from '../features/dashboard/components/modal/uploadSuccessful'
+import TemplateReady from '../features/projectTemplate/modal/templateReady'
 
 const GlobalModal = () => {
   const {
@@ -15,6 +16,7 @@ const GlobalModal = () => {
     reviewTimeLogModal,
     uploadFailedModal,
     uploadSuccessModal,
+    templateReadyModal,
   } = useSelector((state: RootState) => state.modal)
 
   if (createAccountModal) {
@@ -34,6 +36,9 @@ const GlobalModal = () => {
   }
   if (uploadSuccessModal) {
     return <UploadSuccessful />
+  }
+  if (templateReadyModal) {
+    return <TemplateReady />
   }
 
   return null

@@ -20,7 +20,7 @@ const CreatedWaterfall = () => {
     { title: 'Milestones:', label: '4' },
   ]
   return (
-    <div className="mb-20 h-full overflow-x-hidden overflow-y-scroll">
+    <div className="mb20 min-h-[calc(110vh-80px)] overflow-x-hidden overflow-y-scroll rounded-lg bg-white p-5">
       <div className="w-full">
         <div className="flex justify-between">
           {stepList.map((step, index) => (
@@ -35,7 +35,7 @@ const CreatedWaterfall = () => {
       </div>
       <div className="mt-5 flex flex-col items-center justify-center gap-4">
         <div>
-          <img src="/icon/icon (33).svg" alt="Icon" />
+          <img src="/icon/icon (33).svg" alt="Icon" className="size-24" />
         </div>
 
         <div className="text-officeBrown700 font-bricolage flex flex-col items-center justify-center">

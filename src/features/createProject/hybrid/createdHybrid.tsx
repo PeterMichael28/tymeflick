@@ -2,7 +2,7 @@ import IndexChecker from '../ui/checker/indexChecker'
 import { useNavigate } from 'react-router-dom'
 
 const CreatedHybrid = () => {
-    const steps = [
+  const steps = [
     'Select Template',
     'Configure Setup',
     'Preview Structure',
@@ -11,7 +11,7 @@ const CreatedHybrid = () => {
   const stepList = ['Step 1', 'Step 2', 'Step 3', 'Step 4']
   const navigate = useNavigate()
 
-   const list = [
+  const list = [
     { title: 'Project Type', label: 'Water' },
     { title: 'Project Name', label: 'Website Revamping' },
     { title: 'Client:', label: 'Acme Inc.' },
@@ -23,7 +23,7 @@ const CreatedHybrid = () => {
     { title: 'Est. Completion: ', label: 'Apr 15, 2025' },
   ]
   return (
-    <div className="mb20 min-h-[calc(130vh-80px)] overflow-x-hidden overflow-y-scroll">
+    <div className="mb20 min-h-[calc(130vh-80px)] overflow-x-hidden overflow-y-scroll rounded-lg bg-white p-5">
       <div className="w-full">
         <div className="flex justify-between">
           {stepList.map((step, index) => (
@@ -38,16 +38,14 @@ const CreatedHybrid = () => {
       </div>
       <div className="mt-5 flex flex-col items-center justify-center gap-4">
         <div>
-          <img src="/icon/icon (33).svg" alt="Icon" />
+          <img src="/icon/icon (33).svg" alt="Icon" className="size-24" />
         </div>
 
         <div className="text-officeBrown700 font-bricolage flex flex-col items-center justify-center">
-          <p className="text-[20px] font-bold">
-            Waterfall Project "Audit Readiness" Created with 6 Sequential Phases
-          </p>
+          <p className="text-[20px] font-bold">Hybrid Project Created</p>
           <p className="text-[14px] font-normal">
-            Your project structure has been generated and is ready for team
-            collaboration.
+            "Website Revamp" Created — Execution Begins After Planning
+            Completion
           </p>
         </div>
 

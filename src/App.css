@@ -37,3 +37,16 @@
 .hide-scrollbar::-webkit-scrollbar {
   display: none; /* Chrome, Safari, Opera */
 }
+
+@keyframes netflix-spinner {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.1;
+  }
+}
+
+.animate-spinner {
+  animation: netflix-spinner 1.2s linear infinite;
+}

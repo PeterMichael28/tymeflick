@@ -35,7 +35,7 @@ const PhaseManagement = () => {
   }
 
   return (
-    <div className="rounded-lg bg-[#F9F9F9] p4">
+    <div className="p4 rounded-lg bg-[#F9F9F9]">
       {/* <p className="font-bricolage text-[17px] font-bold text-[#2B323B]">
         Phase Management
       </p> */}

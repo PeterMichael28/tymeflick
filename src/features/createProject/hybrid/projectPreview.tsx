@@ -2,7 +2,7 @@ import IndexChecker from '../ui/checker/indexChecker'
 import { useNavigate } from 'react-router-dom'
 
 const ProjectPreviewHybrid = () => {
-    const steps = [
+  const steps = [
     'Select Template',
     'Configure Setup',
     'Preview Structure',
@@ -10,7 +10,7 @@ const ProjectPreviewHybrid = () => {
   ]
   const stepList = ['Step 1', 'Step 2', 'Step 3', 'Step 4']
   const navigate = useNavigate()
-    const list = [
+  const list = [
     { title: 'Project Type', label: 'Water' },
     { title: 'Project Name', label: 'Website Revamping' },
     { title: 'Client:', label: 'Acme Inc.' },
@@ -22,7 +22,7 @@ const ProjectPreviewHybrid = () => {
     { title: 'Est. Completion: ', label: 'Apr 15, 2025' },
   ]
 
-    const dataList = [
+  const dataList = [
     {
       title: 'Design',
       time: '6 weeks',
@@ -62,7 +62,7 @@ const ProjectPreviewHybrid = () => {
   ]
   return (
     <div>
-         <div className="mb-32 flex h-full flex-col gap-4 overflow-y-scroll rounded-lg bg-white p-5">
+      <div className="mb-32 flex h-full flex-col gap-4 overflow-y-scroll rounded-lg bg-white p-5">
         <div className="w-full">
           <div className="flex justify-between">
             {stepList.map((step, index) => (
@@ -78,10 +78,11 @@ const ProjectPreviewHybrid = () => {
 
         <div>
           <p className="font-inter text-[18px] font-bold">
-         Hybrid Project Preview
+            Hybrid Project Preview
           </p>
           <p className="text-[14px] font-normal text-[#8898AA]">
-            Review the project structure combining waterfall planning and agile execution.
+            Review the project structure combining waterfall planning and agile
+            execution.
           </p>
         </div>
 
@@ -133,28 +134,32 @@ const ProjectPreviewHybrid = () => {
               </div>
             ))}
           </div>
-          <div className='flex gap-3 items-center mt-3'>
-              <p className='text-[#0B54FF] font-bold font-inter text-[16px]'>Handoff</p>
-              <div className='border-t-2 w-full border-dashed border-[#0B54FF] '/>
+          <div className="mt-3 flex items-center gap-3">
+            <p className="font-inter text-[16px] font-bold text-[#0B54FF]">
+              Handoff
+            </p>
+            <div className="w-full border-t-2 border-dashed border-[#0B54FF]" />
           </div>
 
-          <div className='mt-3'>
-             <div className="w-full">
-          <p className="font-bricolage text-grey900">Project Summary</p>
-          <div className="flex flex-col gap-4 rounded-lg bg-[#CCDBFF33] p-4">
-            {list.map((item, index) => (
-              <div
-                key={index}
-                className="flex items-center justify-between gap-4"
-              >
-                <div className="text-grey900 text-[14px]">{item.title}:</div>
-                <div className="text-[16px] font-bold text-black">
-                  {item.label}
-                </div>
+          <div className="mt-3">
+            <div className="w-full">
+              <p className="font-bricolage text-grey900">Project Summary</p>
+              <div className="flex flex-col gap-4 rounded-lg bg-[#CCDBFF33] p-4">
+                {list.map((item, index) => (
+                  <div
+                    key={index}
+                    className="flex items-center justify-between gap-4"
+                  >
+                    <div className="text-grey900 text-[14px]">
+                      {item.title}:
+                    </div>
+                    <div className="text-[16px] font-bold text-black">
+                      {item.label}
+                    </div>
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
-        </div>
+            </div>
           </div>
           <div className="mt-7 flex justify-between gap-5">
             <button className="font-bricolage flex-1 font-bold text-[#404C59]">
@@ -169,7 +174,6 @@ const ProjectPreviewHybrid = () => {
           </div>
         </div>
       </div>
-      
     </div>
   )
 }

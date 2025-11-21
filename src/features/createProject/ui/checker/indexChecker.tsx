@@ -45,10 +45,8 @@ const IndexChecker = ({ steps, currentStep }: IndexCheckerProps) => {
         <div
           className="bg-primary absolute top-1/2 left-0 z-0 h-0.5 -translate-y-1/2 transition-all duration-500"
           style={{
-            width:
-              steps.length === 1
-                ? '0%'
-                : `${(animatedStep / (steps.length - 1)) * 100}%`,
+            width: `${(animatedStep / (steps.length - 1)) * 100}%`,
+            maxWidth: 'calc(100% - 10px)',
           }}
         />
 
