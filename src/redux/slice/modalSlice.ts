@@ -23,7 +23,6 @@ interface ModalSlice {
   templateText: string
 
   editTimeEntryModal: boolean
-  selectedTimeEntry: TimeEntryPayload | null
 
   addTimeManualEntryModal: boolean
   selectedManualTimeEntry: TimeEntryPayload | null
@@ -32,9 +31,10 @@ interface ModalSlice {
   submissionApprovedModal: boolean
   submissionRejectedModal: boolean
 
-  // ✅ NEW — Approval & Rejection Notes Modals
   approvalNotesModal: boolean
   rejectionNotesModal: boolean
+
+  deleteTimeEntryModal: boolean
 }
 
 const initialState: ModalSlice = {
@@ -47,7 +47,6 @@ const initialState: ModalSlice = {
   uploadFailedModal: false,
 
   editTimeEntryModal: false,
-  selectedTimeEntry: null,
 
   addTimeManualEntryModal: false,
   selectedManualTimeEntry: null,
@@ -56,9 +55,11 @@ const initialState: ModalSlice = {
   submissionApprovedModal: false,
   submissionRejectedModal: false,
 
-  // ✅ Defaults for new modals
   approvalNotesModal: false,
   rejectionNotesModal: false,
+
+  deleteTimeEntryModal: false,
+
   templateReadyModal: false,
   templateText: '',
 }
@@ -105,14 +106,15 @@ const modalSlice = createSlice({
     closeUploadFailedModal: (state) => {
       state.uploadFailedModal = false
     },
-    openEditTimeEntryModal: (state, action: PayloadAction<TimeEntryPayload | null>) => {
+
+    // ✅ Edit Time Entry Modal (NO PAYLOAD)
+    openEditTimeEntryModal: (state) => {
       state.editTimeEntryModal = true
-      state.selectedTimeEntry = action.payload
     },
     closeEditTimeEntryModal: (state) => {
       state.editTimeEntryModal = false
-      state.selectedTimeEntry = null
     },
+
     openAddTimeManualEntryModal: (state, action: PayloadAction<TimeEntryPayload | null>) => {
       state.addTimeManualEntryModal = true
       state.selectedManualTimeEntry = action.payload
@@ -121,6 +123,7 @@ const modalSlice = createSlice({
       state.addTimeManualEntryModal = false
       state.selectedManualTimeEntry = null
     },
+
     openSubmissionSentModal: (state) => {
       state.submissionSentModal = true
     },
@@ -140,21 +143,27 @@ const modalSlice = createSlice({
       state.submissionRejectedModal = false
     },
 
-    // ✅ NEW — Approval Notes Modal
     openApprovalNotesModal: (state) => {
       state.approvalNotesModal = true
     },
     closeApprovalNotesModal: (state) => {
       state.approvalNotesModal = false
     },
-
-    // ✅ NEW — Rejection Notes Modal
     openRejectionNotesModal: (state) => {
       state.rejectionNotesModal = true
     },
     closeRejectionNotesModal: (state) => {
       state.rejectionNotesModal = false
     },
+
+    // ✅ Delete Time Entry Modal (NO PAYLOAD)
+    openDeleteTimeEntryModal: (state) => {
+      state.deleteTimeEntryModal = true
+    },
+    closeDeleteTimeEntryModal: (state) => {
+      state.deleteTimeEntryModal = false
+    },
+
     openTemplateReadyModal: (state, action: PayloadAction<any>) => {
       state.templateReadyModal = true
       state.templateText = action.payload.templateText || ''
@@ -188,11 +197,12 @@ export const {
   closeSubmissionApprovedModal,
   openSubmissionRejectedModal,
   closeSubmissionRejectedModal,
-  // ✅ NEW EXPORTS
   openApprovalNotesModal,
   closeApprovalNotesModal,
   openRejectionNotesModal,
   closeRejectionNotesModal,
+  openDeleteTimeEntryModal,
+  closeDeleteTimeEntryModal,
   openTemplateReadyModal,
   closeTemplateReadyModal,
 } = modalSlice.actions

@@ -1,4 +1,4 @@
-// Updated TimeTrackerTable.tsx
+// Updated YourTimeLogHistoryTable.tsx
 
 "use client";
 
@@ -11,84 +11,19 @@ import { useNavigate } from "react-router-dom";
 
 const logs = [
   {
-    projectName: "TymeFlick",
-    client: "EnvyRide",
-    status: "Billable",
-    totalLog: "32h",
-    totalTime: "12:00am - 05:00pm",
-    expanded: false,
-    children: [
-      {
-        projectName: "TymeFlick",
-        client: "EnvyRide",
-        billingStatus: "Billable",
-        timeLog: "00:15:45",
-        timeRange: "12:00am - 01:00am",
-      },
-      {
-        projectName: "TymeFlick",
-        client: "EnvyRide",
-        billingStatus: "Billable",
-        timeLog: "00:45:10",
-        timeRange: "01:00am - 03:00am",
-      },
-      {
-        projectName: "TymeFlick",
-        client: "EnvyRide",
-        billingStatus: "Billable",
-        timeLog: "01:05:32",
-        timeRange: "03:00am - 06:00am",
-      },
-      {
-        projectName: "TymeFlick",
-        client: "EnvyRide",
-        billingStatus: "Billable",
-        timeLog: "00:25:20",
-        timeRange: "06:00am - 07:00am",
-      },
-    ],
-  },
-  {
     projectName: "Insight Mesh",
-    client: "Seamflex",
     status: "Billable",
-    totalLog: "40h",
-    totalTime: "12:00am - 05:00pm",
+    totalLog: "40",
+    totalTime: "120:05:45",
     expanded: false,
     children: [
-      {
-        projectName: "Insight Mesh",
-        client: "Seamflex",
-        billingStatus: "Billable",
-        timeLog: "00:20:15",
-        timeRange: "12:00am - 01:00am",
-      },
-      {
-        projectName: "Insight Mesh",
-        client: "Seamflex",
-        billingStatus: "Billable",
-        timeLog: "00:35:40",
-        timeRange: "01:00am - 03:00am",
-      },
-      {
-        projectName: "Insight Mesh",
-        client: "Seamflex",
-        billingStatus: "Billable",
-        timeLog: "00:45:50",
-        timeRange: "03:00am - 06:00am",
-      },
-      {
-        projectName: "Insight Mesh",
-        client: "Seamflex",
-        billingStatus: "Billable",
-        timeLog: "00:15:05",
-        timeRange: "06:00am - 07:00am",
-      },
+      { billingStatus: "Billable", timeLog: "00:15:45", timeRange: "12:00am - 01:00am" },
+      { billingStatus: "Billable", timeLog: "00:45:10", timeRange: "01:00am - 03:00am" },
     ],
   },
 ];
 
-export default function TimeTrackerTable() {
+export default function YourTimeLogHistoryTable() {
   const [rows, setRows] = useState(logs);
   const [selected, setSelected] = useState<number | null>(null);
   const [menuOpenIndex, setMenuOpenIndex] = useState<number | null>(null);
@@ -116,7 +51,6 @@ export default function TimeTrackerTable() {
           <tr>
             <th className="p-3 text-left"></th>
             <th className="p-3 text-left font-semibold">PROJECT NAME</th>
-            <th className="p-3 text-left font-semibold">CLIENT</th>
             <th className="p-3 text-left font-semibold">BILLING STATUS</th>
             <th className="p-3 text-left font-semibold">TOTAL LOG</th>
             <th className="p-3 text-left font-semibold">TOTAL TIME</th>
@@ -146,7 +80,6 @@ export default function TimeTrackerTable() {
                 >
                   {row.projectName}
                 </td>
-                <td className="p-3">{row.client}</td>
                 <td className="p-3">{row.status}</td>
                 <td className="p-3">{row.totalLog}</td>
                 <td className="p-3">{row.totalTime}</td>
@@ -200,7 +133,7 @@ export default function TimeTrackerTable() {
               {row.expanded && row.children.length > 0 && (
                 <tr className="bg-gray-50 border-t border-gray-100">
                   <td></td>
-                  <td colSpan={6} className="p-0">
+                  <td colSpan={5} className="p-0">
                     <ChildLogTable entries={row.children} />
                   </td>
                 </tr>
@@ -212,5 +145,3 @@ export default function TimeTrackerTable() {
     </div>
   );
 }
-
-

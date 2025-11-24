@@ -11,10 +11,14 @@ import SubmissionSentModal from '../features/timeTracker/components/modals/Submi
 import SubmissionApprovedModal from '../features/timeTracker/components/modals/SubmissionApprovedModal'
 import SubmissionRejectedModal from '../features/timeTracker/components/modals/SubmissionRejectedModal'
 
-// ✅ NEW IMPORTS
+// ✅ Existing imports
 import ApprovalNotesModal from '../features/timeTracker/components/modals/ApprovalNotesModal'
 import RejectionNotesModal from '../features/timeTracker/components/modals/RejectionNotesModal'
 import TemplateReady from '../features/projectTemplate/modal/templateReady'
+
+// ✅ New imports
+import DeleteTimeEntryModal from '../features/timeTracker/components/modals/DeleteTimeEntry'
+import EditTimeEntryModal from '../features/timeTracker/components/modals/EditTimeEntry'
 
 const GlobalModal = () => {
   const {
@@ -28,9 +32,11 @@ const GlobalModal = () => {
     submissionSentModal,
     submissionApprovedModal,
     submissionRejectedModal,
-    approvalNotesModal, // ✅ new
-    rejectionNotesModal, // ✅ new
+    approvalNotesModal,
+    rejectionNotesModal,
     templateReadyModal,
+    deleteTimeEntryModal,
+    editTimeEntryModal, // ✅ new
   } = useSelector((state: RootState) => state.modal)
 
   if (createAccountModal) return <CreateAccount />
@@ -43,11 +49,11 @@ const GlobalModal = () => {
   if (submissionSentModal) return <SubmissionSentModal />
   if (submissionApprovedModal) return <SubmissionApprovedModal />
   if (submissionRejectedModal) return <SubmissionRejectedModal />
-  if (approvalNotesModal) return <ApprovalNotesModal /> // ✅ added
-  if (rejectionNotesModal) return <RejectionNotesModal /> // ✅ added
-  if (templateReadyModal) {
-    return <TemplateReady />
-  }
+  if (approvalNotesModal) return <ApprovalNotesModal />
+  if (rejectionNotesModal) return <RejectionNotesModal />
+  if (templateReadyModal) return <TemplateReady />
+  if (deleteTimeEntryModal) return <DeleteTimeEntryModal />
+  if (editTimeEntryModal) return <EditTimeEntryModal /> // ✅ added
 
   return null
 }

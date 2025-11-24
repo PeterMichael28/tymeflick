@@ -33,6 +33,10 @@ import TeamSubmissionForAdmin from '../features/timeTracker/components/screens/t
 import ReviewDetailsForAdmin from '../features/timeTracker/components/screens/teamSubmissionsForAdmin/reviewDetails'
 import ForceApproveAdmin from '../features/timeTracker/components/screens/teamSubmissionsForAdmin/forceApprove'
 import ForceRejectAdmin from '../features/timeTracker/components/screens/teamSubmissionsForAdmin/forceReject'
+import OverallPage from '../features/timeTracker/components/screens/clientTimelogScreens/overall'
+import YourTimeLogHistoryPage from '../features/timeTracker/components/screens/clientTimelogScreens/yourTimelogHistory'
+import OtherMemberLogsPage from '../features/timeTracker/components/screens/clientTimelogScreens/otherMemberLogs'
+import RevenuePage from '../features/timeTracker/components/screens/clientTimelogScreens/revenue'
 
 export const dashboardRoutes = [
   { path: '', element: <DashBoardIndex /> },
@@ -94,4 +98,8 @@ export const dashboardRoutes = [
   { path: 'reviewDetailsAdmin', element: <ReviewDetailsForAdmin /> },
   { path: 'forceApprove', element: <ForceApproveAdmin /> },
   { path: 'forceReject', element: <ForceRejectAdmin /> },
+  { path: 'overall', element: <OverallPage /> },
+  { path: 'yourTimelogHistory', element: <YourTimeLogHistoryPage /> },
+  { path: 'otherMemberLogs', element: <OtherMemberLogsPage /> },
+  { path: 'revenue', element: <RevenuePage /> },
 ]
