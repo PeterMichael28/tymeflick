@@ -24,7 +24,7 @@ const AgileTemplate = () => {
     },
   ]
   return (
-    <div className="min-h-[calc(130vh-80px)] overflow-y-scroll rounded-lg bg-white p-4">
+    <div className="overflow-y-scroll rounded-lg bg-white p-4">
       <div className="flex flex-col gap-3">
         <span className="flex items-center gap-4">
           <img

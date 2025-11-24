@@ -1,4 +1,8 @@
 import LoaderAnimation from '../../../components/button/loaderAnimation'
+import Button from '../../../components/button/button'
+import { useState, useEffect, useRef } from 'react'
+import { useNavigate } from 'react-router-dom'
+
 const list = [
   {
     title: 'Sprint Planning',
@@ -23,22 +27,78 @@ const spritList = [
   { title: 'Sprint 3', description: 'Polish & Testing' },
 ]
 
+const workEntryList = [
+  { title: 'Epic', link: '/create-epic' },
+  { title: 'Feature', link: '/create-feature' },
+  { title: 'User Story', link: '/create-story' },
+  { title: 'Task', link: '' },
+]
+
 const AgileOverview = () => {
+  const [showDropDown, setShowDropdown] = useState(false)
+  const dropRef = useRef<HTMLDivElement>(null)
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    function handleClickOutside(e: MouseEvent) {
+      if (dropRef.current && !dropRef.current.contains(e.target as Node)) {
+        setShowDropdown(false)
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => document.removeEventListener('mousedown', handleClickOutside)
+  }, [])
+
   return (
-    <div className="mt-3">
-      <div className="grid grid-cols-3 gap-3">
+    <div className="mt-3 flex flex-col gap-4">
+      <div className="flex gap-5">
+        <div ref={dropRef} className="relative">
+          <Button
+            className="font-bricolage h-10 font-normal text-sm"
+            onClick={() => setShowDropdown(!showDropDown)}
+          >
+            Create Work Entry
+          </Button>
+
+          {showDropDown && (
+            <div className="absolute left-0 z-50 mt-2 flex w-[15vw] flex-col gap-4 rounded-lg bg-white p-4 shadow-lg">
+              {workEntryList.map((item, index) => (
+                <button
+                  key={index}
+                  className="hover:text-primary cursor-pointer p-2 text-left hover:bg-[#F5F0FA]"
+                  onClick={() => {
+                    setShowDropdown(false)
+                    navigate(item.link)
+                  }}
+                >
+                  <p>{item.title}</p>
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
+
+        <button className="font-bricolage border-primary text-primary text-sm h-10 rounded-lg border px-8 py-2 font-normal">
+          Create New Sprint
+        </button>
+      </div>
+
+      <div className="grid grid-cols-4 gap-3">
         {list.map((item, index) => (
           <div
             key={index}
             className="flex flex-col gap-2 rounded-md bg-[#F8F8F8] p-3"
           >
-            <h3 className="font-bricolage font-bold">{item.title}</h3>
-            <p className="font-bricolage text-sm">{item.description}</p>
+            <h3 className="font-bricolage text-[18px] font-bold">
+              {item.title}
+            </h3>
+            <p className="font-bricolage text-xs">{item.description}</p>
           </div>
         ))}
       </div>
 
-      <div className="mt-4 flex w-full gap-4">
+      <div className="flex w-full gap-4">
         <div className="flex flex-2 flex-col gap-3">
           <div className="rounded-md bg-[#CCDBFF33] p-4">
             <p className="font-bricolage font-bold text-[#0B54FF]">

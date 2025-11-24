@@ -19,6 +19,9 @@ import HybridTemplate from '../features/projectTemplate/hybridTemplate'
 import ProjectAgileIndex from '../features/project/agile'
 import AgileOverview from '../features/project/agile/overview'
 import AgileDashboard from '../features/project/agile/dashboard'
+import CreateNewEpic from '../features/project/agile/createNewEpic'
+import CreateNewFeature from '../features/project/agile/createNewFeature'
+import CreateNewStory from '../features/project/agile/createNewStory'
 import TimetrackerIndex from '../features/timeTracker'
 import SubmitWeeklyTimeLogs from '../features/timeTracker/components/screens/submitWeeklyTimelog'
 import ViewAllPage from '../features/timeTracker/components/screens/viewAll'
@@ -43,8 +46,20 @@ export const dashboardRoutes = [
     element: <ProjectAgileIndex />,
     children: [
       { path: '', element: <AgileOverview /> }, // overview page for agile project
-      { path: 'dashboard', element: <AgileDashboard /> }, // dashboard page for agile project
+      { path: 'dashboard', element: <AgileDashboard /> }, // dashboard page for agile projec
     ],
+  },
+  {
+    path: 'create-epic',
+    element: <CreateNewEpic />,
+  },
+  {
+    path: 'create-feature',
+    element: <CreateNewFeature />,
+  },
+  {
+    path: 'create-story',
+    element: <CreateNewStory />,
   },
   {
     path: 'create-project',

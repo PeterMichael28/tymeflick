@@ -133,14 +133,16 @@ export default function AgileAccordionTable<T extends Record<string, any>>({
         ))}
       </div>
 
-    {/* rows container with scroll */}
-    <div className="max-h-[500px] overflow-y-auto">
-      {data.length === 0 ? (
-        <div className="py-6 text-center text-gray-400">No data available</div>
-      ) : (
-        <div>{renderRows(data)}</div>
-      )}
-    </div>
+      {/* rows container with scroll */}
+      <div className="max-h-[500px] overflow-y-auto">
+        {data.length === 0 ? (
+          <div className="py-6 text-center text-gray-400">
+            No data available
+          </div>
+        ) : (
+          <div>{renderRows(data)}</div>
+        )}
+      </div>
     </div>
   )
 }

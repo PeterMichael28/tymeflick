@@ -23,7 +23,7 @@ const CreatedHybrid = () => {
     { title: 'Est. Completion: ', label: 'Apr 15, 2025' },
   ]
   return (
-    <div className="mb20 min-h-[calc(130vh-80px)] overflow-x-hidden overflow-y-scroll rounded-lg bg-white p-5">
+    <div className="mb20 overflow-x-hidden overflow-y-scroll rounded-lg bg-white p-5">
       <div className="w-full">
         <div className="flex justify-between">
           {stepList.map((step, index) => (

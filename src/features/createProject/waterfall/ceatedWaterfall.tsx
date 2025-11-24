@@ -20,7 +20,7 @@ const CreatedWaterfall = () => {
     { title: 'Milestones:', label: '4' },
   ]
   return (
-    <div className="mb20 min-h-[calc(110vh-80px)] overflow-x-hidden overflow-y-scroll rounded-lg bg-white p-5">
+    <div className="mb20 overflow-x-hidden overflow-y-scroll rounded-lg bg-white p-5">
       <div className="w-full">
         <div className="flex justify-between">
           {stepList.map((step, index) => (
