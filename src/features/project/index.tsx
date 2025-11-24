@@ -143,7 +143,7 @@ const Project = () => {
     <div>
       <Hero title="Projects" description="Manage, Edit and View Projects" />
 
-      <div className="mt-4 flex min-h-[calc(120vh-80px)] flex-col gap-4 rounded-lg bg-white p-4">
+      <div className="mt-4 flex flex-col gap-4 rounded-lg bg-white p-4">
         <button
           className="bg-primary flex w-[134px] items-center gap-2 rounded-lg px-3 py-2 text-sm text-white"
           onClick={() => navigate('/create-project')}

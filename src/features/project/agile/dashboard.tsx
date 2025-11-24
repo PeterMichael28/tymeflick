@@ -100,14 +100,14 @@ const getChildren = (row: ItemRow) => {
 const getRowId = (row: ItemRow) => `${row.itemType}-${row.title}`
 
 const AgileDashboard = () => {
-      const [currentPage, setCurrentPage] = useState(0)
-      const pageCount = Math.ceil(tableData.length / ITEMS_PER_PAGE)
-      const currentData = tableData.slice(
-            currentPage * ITEMS_PER_PAGE,
-            currentPage * ITEMS_PER_PAGE + ITEMS_PER_PAGE
-        )
+  const [currentPage, setCurrentPage] = useState(0)
+  const pageCount = Math.ceil(tableData.length / ITEMS_PER_PAGE)
+  const currentData = tableData.slice(
+    currentPage * ITEMS_PER_PAGE,
+    currentPage * ITEMS_PER_PAGE + ITEMS_PER_PAGE
+  )
   return (
-    <div className="min-h-[calc(160vh-80px)]">
+    <div>
       <div className="flex gap-4">
         <button className="flex items-center justify-center gap-2 rounded-md bg-[#66C61C] px-3 py-2 text-sm text-white">
           <img src="/icon/AddCross.svg" alt="Cross Icon" className="size-3" />
@@ -223,77 +223,77 @@ const AgileDashboard = () => {
         </div>
       </div>
 
-   <div className='bg-[#F9F9F9] p-4 mt-4 rounded-lg'>
-        <div className=" flex items-center justify-between rounded-lg bg-[#F3F3F3] p-2">
-        <p>All Project</p>
+      <div className="mt-4 rounded-lg bg-[#F9F9F9] p-4">
+        <div className="flex items-center justify-between rounded-lg bg-[#F3F3F3] p-2">
+          <p>All Project</p>
 
-        <div className="flex w-[65%] items-center gap-2">
-          <div className="flex h-10 w-full rounded-md border border-[#D9D9D9] bg-white px-4 py-3">
-            <input type="text" placeholder="Search" />
-            <Search size={15} className="ml-3" />
+          <div className="flex w-[65%] items-center gap-2">
+            <div className="flex h-10 w-full rounded-md border border-[#D9D9D9] bg-white px-4 py-3">
+              <input type="text" placeholder="Search" />
+              <Search size={15} className="ml-3" />
+            </div>
+
+            <DropDown
+              options={[
+                'All',
+                'ACME Corp',
+                'Tech innovations llc',
+                'ShopEase Ltd',
+                'Fintech Solutions',
+              ]}
+              value="All clients"
+              onChange={console.log}
+              placeholder="Filter"
+              className="w-full"
+            />
+            <DropDown
+              options={[
+                'All',
+                'Agile Project',
+                'Waterfall Project',
+                'Hybrid Project',
+              ]}
+              value="Project Type"
+              onChange={console.log}
+              placeholder="Filter"
+              className="w-full"
+            />
+            <DropDown
+              options={['All', 'Active', 'Archived']}
+              value="All status"
+              onChange={console.log}
+              placeholder="Filter"
+              className="w-full"
+            />
           </div>
+        </div>
+        <div className="mt-4 bg-white">
+          <AgileAccordionTable
+            columns={columns}
+            data={currentData}
+            gridTemplate="1.5fr 1fr 1fr 0.8fr 0.7fr 0.8fr 0.6fr 0.5fr"
+            getChildren={getChildren}
+            getRowId={getRowId}
+            indentPx={24}
+          />
 
-          <DropDown
-            options={[
-              'All',
-              'ACME Corp',
-              'Tech innovations llc',
-              'ShopEase Ltd',
-              'Fintech Solutions',
-            ]}
-            value="All clients"
-            onChange={console.log}
-            placeholder="Filter"
-            className="w-full"
-          />
-          <DropDown
-            options={[
-              'All',
-              'Agile Project',
-              'Waterfall Project',
-              'Hybrid Project',
-            ]}
-            value="Project Type"
-            onChange={console.log}
-            placeholder="Filter"
-            className="w-full"
-          />
-          <DropDown
-            options={['All', 'Active', 'Archived']}
-            value="All status"
-            onChange={console.log}
-            placeholder="Filter"
-            className="w-full"
-          />
+          {pageCount > 1 && (
+            <div className="mt-4 flex justify-end bg-white">
+              <ReactPaginate
+                previousLabel={'← Previous'}
+                nextLabel={'Next →'}
+                pageCount={pageCount}
+                onPageChange={(selected) => setCurrentPage(selected.selected)}
+                containerClassName="flex items-center justify-between w-full max-w-full"
+                pageClassName="px-3 py-1  rounded cursor-pointer"
+                previousClassName="px-3 py-1 text-[#757575] rounded cursor-pointer flex-1 font-normal text-sm"
+                nextClassName="px-3 py-1 text-[#757575]  rounded cursor-pointer flex-1 text-end font-normal text-sm"
+                activeClassName="bg-primary text-white"
+              />
+            </div>
+          )}
         </div>
       </div>
-      <div className="mt-4 bg-white">
-        <AgileAccordionTable
-          columns={columns}
-          data={currentData}
-          gridTemplate="1.5fr 1fr 1fr 0.8fr 0.7fr 0.8fr 0.6fr 0.5fr"
-          getChildren={getChildren}
-          getRowId={getRowId}
-          indentPx={24}
-        />
-
-         {pageCount > 1 && (
-        <div className="flex justify-end mt-4 bg-white">
-          <ReactPaginate
-            previousLabel={'← Previous'}
-            nextLabel={'Next →'}
-            pageCount={pageCount}
-            onPageChange={(selected) => setCurrentPage(selected.selected)}
-            containerClassName="flex items-center justify-between w-full max-w-full"
-            pageClassName="px-3 py-1  rounded cursor-pointer"
-            previousClassName="px-3 py-1 text-[#757575] rounded cursor-pointer flex-1 font-normal text-sm"
-            nextClassName="px-3 py-1 text-[#757575]  rounded cursor-pointer flex-1 text-end font-normal text-sm"
-            activeClassName="bg-primary text-white"
-          />
-        </div>
-      )}
-      </div>
-   </div>
     </div>
   )
 }

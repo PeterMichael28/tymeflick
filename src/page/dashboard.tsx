@@ -136,10 +136,10 @@ const Dashboard = () => {
         </div>
       </div>
 
-      <main className="w-full">
+      <main className="flex h-screen w-full flex-col overflow-hidden">
         <Header />
 
-        <div className="h-screen w-full overflow-y-scroll bg-[#f2f2f2] p-4">
+        <div className="w-full flex-1 overflow-y-auto bg-[#f2f2f2] p-4">
           <Suspense fallback={<div>Loading...</div>}>
             <Outlet />
           </Suspense>
