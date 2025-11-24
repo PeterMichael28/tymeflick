@@ -7,6 +7,7 @@ type InputProps = {
   isRequired?: boolean
   placeholder?: string
   height?: 'small' | 'medium' | 'large' | string
+  disabled?: boolean
 }
 
 const Input = ({
@@ -16,6 +17,7 @@ const Input = ({
   isRequired = false,
   placeholder = '',
   height = '70px',
+  disabled = false,
 }: InputProps) => {
   const [field, meta] = useField(name)
   const hasError = Boolean(meta.touched && meta.error)
@@ -44,6 +46,7 @@ const Input = ({
         id={name}
         type={type}
         placeholder={placeholder}
+        disabled={disabled}
         style={{
           height: baseHeight,
           boxSizing: 'border-box',

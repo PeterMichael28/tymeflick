@@ -31,7 +31,7 @@ const workEntryList = [
   { title: 'Epic', link: '/create-epic' },
   { title: 'Feature', link: '/create-feature' },
   { title: 'User Story', link: '/create-story' },
-  { title: 'Task', link: '' },
+  { title: 'Task', link: '/create-task' },
 ]
 
 const AgileOverview = () => {
@@ -79,7 +79,7 @@ const AgileOverview = () => {
           )}
         </div>
 
-        <button className="font-bricolage border-primary text-primary text-sm h-10 rounded-lg border px-8 py-2 font-normal">
+        <button className="font-bricolage border-primary text-primary text-sm h-10 rounded-lg border px-8 py-2 font-normal" onClick={() => navigate('/new-sprint')}>
           Create New Sprint
         </button>
       </div>

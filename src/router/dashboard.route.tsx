@@ -22,6 +22,8 @@ import AgileDashboard from '../features/project/agile/dashboard'
 import CreateNewEpic from '../features/project/agile/createNewEpic'
 import CreateNewFeature from '../features/project/agile/createNewFeature'
 import CreateNewStory from '../features/project/agile/createNewStory'
+import CreateNewTask from '../features/project/agile/createNewTask'
+import NewSprint from '../features/project/agile/newSprint'
 import TimetrackerIndex from '../features/timeTracker'
 import SubmitWeeklyTimeLogs from '../features/timeTracker/components/screens/submitWeeklyTimelog'
 import ViewAllPage from '../features/timeTracker/components/screens/viewAll'
@@ -37,6 +39,9 @@ import OverallPage from '../features/timeTracker/components/screens/clientTimelo
 import YourTimeLogHistoryPage from '../features/timeTracker/components/screens/clientTimelogScreens/yourTimelogHistory'
 import OtherMemberLogsPage from '../features/timeTracker/components/screens/clientTimelogScreens/otherMemberLogs'
 import RevenuePage from '../features/timeTracker/components/screens/clientTimelogScreens/revenue'
+
+import AddworkItem from '../features/project/agile/addworkItem'
+
 
 export const dashboardRoutes = [
   { path: '', element: <DashBoardIndex /> },
@@ -60,6 +65,18 @@ export const dashboardRoutes = [
   {
     path: 'create-story',
     element: <CreateNewStory />,
+  },
+  {
+    path: 'create-task',
+    element: <CreateNewTask />,
+  },
+  {
+    path: 'new-sprint',
+    element: <NewSprint />,
+  },
+  {
+    path: 'add-work-item',
+    element: <AddworkItem />,
   },
   {
     path: 'create-project',
