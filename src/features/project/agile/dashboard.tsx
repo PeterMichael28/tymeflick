@@ -7,6 +7,9 @@ import tableData from '../../../utils/deleteForProduction'
 const ITEMS_PER_PAGE = 8
 import { useState } from 'react'
 import ReactPaginate from 'react-paginate'
+import { useNavigate } from 'react-router-dom'
+import { useEffect, useRef } from 'react'
+import Button from '../../../components/button/button'
 
 const workThiWeekChartData = [
   { name: 'Mon', value: 8 },
@@ -33,6 +36,13 @@ type ItemRow = {
   // allow arbitrary children key names
   [k: string]: any
 }
+
+const workEntryList = [
+  { title: 'Epic', link: '/create-epic' },
+  { title: 'Feature', link: '/create-feature' },
+  { title: 'User Story', link: '/create-story' },
+  { title: 'Task', link: '/create-task' },
+]
 
 // define columns
 const columns: Column<ItemRow>[] = [
@@ -99,6 +109,7 @@ const getChildren = (row: ItemRow) => {
 // simple row id function
 const getRowId = (row: ItemRow) => `${row.itemType}-${row.title}`
 
+
 const AgileDashboard = () => {
   const [currentPage, setCurrentPage] = useState(0)
   const pageCount = Math.ceil(tableData.length / ITEMS_PER_PAGE)
@@ -106,24 +117,51 @@ const AgileDashboard = () => {
     currentPage * ITEMS_PER_PAGE,
     currentPage * ITEMS_PER_PAGE + ITEMS_PER_PAGE
   )
+    const [showDropDown, setShowDropdown] = useState(false)
+    const dropRef = useRef<HTMLDivElement>(null)
+    const navigate = useNavigate()
+  
+    useEffect(() => {
+      function handleClickOutside(e: MouseEvent) {
+        if (dropRef.current && !dropRef.current.contains(e.target as Node)) {
+          setShowDropdown(false)
+        }
+      }
+  
+      document.addEventListener('mousedown', handleClickOutside)
+      return () => document.removeEventListener('mousedown', handleClickOutside)
+    }, [])
   return (
     <div>
-      <div className="flex gap-4">
-        <button className="flex items-center justify-center gap-2 rounded-md bg-[#66C61C] px-3 py-2 text-sm text-white">
-          <img src="/icon/AddCross.svg" alt="Cross Icon" className="size-3" />
-          <p>Create New Epic</p>
-        </button>
-        <button className="flex items-center justify-center gap-2 rounded-md bg-[#0B54FF] px-3 py-2 text-sm text-white">
-          <img src="/icon/AddCross.svg" alt="Cross Icon" className="size-3" />
-          <p>Create New Feature</p>
-        </button>
-        <button className="flex items-center justify-center gap-2 rounded-md bg-[#1FC16B] px-3 py-2 text-sm text-white">
-          <img src="/icon/AddCross.svg" alt="Cross Icon" className="size-3" />
-          <p>Create New Story</p>
-        </button>
-        <button className="flex items-center justify-center gap-2 rounded-md bg-[#FF8800] px-3 py-2 text-sm text-white">
-          <img src="/icon/AddCross.svg" alt="Cross Icon" className="size-3" />
-          <p>Create New Task</p>
+        <div className="flex gap-5">
+        <div ref={dropRef} className="relative">
+          <Button
+            className="font-bricolage h-10 font-normal text-sm"
+            onClick={() => setShowDropdown(!showDropDown)}
+          >
+            Create Work Entry
+          </Button>
+
+          {showDropDown && (
+            <div className="absolute left-0 z-50 mt-2 flex w-[15vw] flex-col gap-4 rounded-lg bg-white p-4 shadow-lg">
+              {workEntryList.map((item, index) => (
+                <button
+                  key={index}
+                  className="hover:text-primary cursor-pointer p-2 text-left hover:bg-[#F5F0FA]"
+                  onClick={() => {
+                    setShowDropdown(false)
+                    navigate(item.link)
+                  }}
+                >
+                  <p>{item.title}</p>
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
+
+        <button className="font-bricolage border-primary text-primary text-sm h-10 rounded-lg border px-8 py-2 font-normal" onClick={() => navigate('/new-sprint')}>
+          Create New Sprint
         </button>
       </div>
 
