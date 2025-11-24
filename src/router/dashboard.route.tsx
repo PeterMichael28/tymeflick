@@ -22,6 +22,17 @@ import AgileDashboard from '../features/project/agile/dashboard'
 import CreateNewEpic from '../features/project/agile/createNewEpic'
 import CreateNewFeature from '../features/project/agile/createNewFeature'
 import CreateNewStory from '../features/project/agile/createNewStory'
+import TimetrackerIndex from '../features/timeTracker'
+import SubmitWeeklyTimeLogs from '../features/timeTracker/components/screens/submitWeeklyTimelog'
+import ViewAllPage from '../features/timeTracker/components/screens/viewAll'
+import TeamSubmissions from '../features/timeTracker/components/screens/teamSubmissions'
+import ReviewDetails from '../features/timeTracker/components/screens/teamSubmissions/reviewDetails'
+import Approve from '../features/timeTracker/components/screens/teamSubmissions/approve'
+import Reject from '../features/timeTracker/components/screens/teamSubmissions/reject'
+import TeamSubmissionForAdmin from '../features/timeTracker/components/screens/teamSubmissionForAdmin'
+import ReviewDetailsForAdmin from '../features/timeTracker/components/screens/teamSubmissionsForAdmin/reviewDetails'
+import ForceApproveAdmin from '../features/timeTracker/components/screens/teamSubmissionsForAdmin/forceApprove'
+import ForceRejectAdmin from '../features/timeTracker/components/screens/teamSubmissionsForAdmin/forceReject'
 
 export const dashboardRoutes = [
   { path: '', element: <DashBoardIndex /> },
@@ -71,4 +82,16 @@ export const dashboardRoutes = [
       { path: 'hybrid', element: <HybridTemplate /> }, // template for hybrid project
     ],
   },
+  // Time Tracker routes
+  { path: 'timeTracker', element: <TimetrackerIndex /> },
+  { path: 'submitWeeklyTimelog', element: <SubmitWeeklyTimeLogs /> },
+  { path: 'viewAll', element: <ViewAllPage /> },
+  { path: 'teamSubmissions', element: <TeamSubmissions /> },
+  { path: 'reviewDetails', element: <ReviewDetails /> },
+  { path: 'approve', element: <Approve /> },
+  { path: 'reject', element: <Reject /> },
+  { path: 'teamSubmissionForAdmin', element: <TeamSubmissionForAdmin /> },
+  { path: 'reviewDetailsAdmin', element: <ReviewDetailsForAdmin /> },
+  { path: 'forceApprove', element: <ForceApproveAdmin /> },
+  { path: 'forceReject', element: <ForceRejectAdmin /> },
 ]
