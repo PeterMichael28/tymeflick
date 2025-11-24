@@ -2,8 +2,8 @@
 
 interface ChildLogTableProps {
   entries: {
-    projectName: string;
-    client: string;
+    projectName?: string;
+    client?: string;
     billingStatus: string;
     timeLog: string;
     timeRange: string;
