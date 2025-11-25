@@ -41,6 +41,7 @@ import OtherMemberLogsPage from '../features/timeTracker/components/screens/clie
 import RevenuePage from '../features/timeTracker/components/screens/clientTimelogScreens/revenue'
 
 import AddworkItem from '../features/project/agile/addworkItem'
+import SprintBoard from '../features/project/agile/sprintBoard'
 
 
 export const dashboardRoutes = [
@@ -52,6 +53,7 @@ export const dashboardRoutes = [
     children: [
       { path: '', element: <AgileOverview /> }, // overview page for agile project
       { path: 'dashboard', element: <AgileDashboard /> }, // dashboard page for agile projec
+      { path: 'sprint-board', element: <SprintBoard /> }, // sprint board page for agile project
     ],
   },
   {

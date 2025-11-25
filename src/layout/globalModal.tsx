@@ -10,6 +10,8 @@ import AddManualEntryModal from '../features/timeTracker/components/modals/AddMa
 import SubmissionSentModal from '../features/timeTracker/components/modals/SubmissionSent'
 import SubmissionApprovedModal from '../features/timeTracker/components/modals/SubmissionApprovedModal'
 import SubmissionRejectedModal from '../features/timeTracker/components/modals/SubmissionRejectedModal'
+import Review from '../features/project/agile/modal/review'
+import SprintSaved from '../features/project/agile/modal/sprintSaved'
 
 // ✅ Existing imports
 import ApprovalNotesModal from '../features/timeTracker/components/modals/ApprovalNotesModal'
@@ -37,6 +39,8 @@ const GlobalModal = () => {
     templateReadyModal,
     deleteTimeEntryModal,
     editTimeEntryModal, // ✅ new
+    agileSprintModal,
+    agileSprintSuccessModal
   } = useSelector((state: RootState) => state.modal)
 
   if (createAccountModal) return <CreateAccount />
@@ -54,6 +58,8 @@ const GlobalModal = () => {
   if (templateReadyModal) return <TemplateReady />
   if (deleteTimeEntryModal) return <DeleteTimeEntryModal />
   if (editTimeEntryModal) return <EditTimeEntryModal /> // ✅ added
+  if (agileSprintModal) return <Review />
+  if (agileSprintSuccessModal) return <SprintSaved /> // ✅ added
 
   return null
 }
