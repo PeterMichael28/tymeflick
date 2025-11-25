@@ -4,6 +4,8 @@ import DropDown from "../ui/dropDown";
 import { useState } from "react";
 import Button from "../../../components/button/button";
 import { useNavigate } from "react-router-dom";
+import { openAgileSprintModal } from "../../../redux/slice/modalSlice"
+import { useDispatch } from "react-redux"
 
 // --- Type Definitions ---
 type WorkItem = {
@@ -24,6 +26,7 @@ const list: WorkItem[] = [
 ];
 
 const AddworkItem = () => {
+  const dispatch = useDispatch();
   const [workItems, setWorkItems] = useState<WorkItem[]>(list);
   const [assigned, setAssigned] = useState<WorkItem[]>([]);
   const [dragItem, setDragItem] = useState<WorkItem | null>(null);
@@ -238,7 +241,7 @@ const AddworkItem = () => {
         <button className="bg-[#F2F0F5] px-15 rounded-md font-bold font-bricolage">
             Cancel
         </button>
-        <Button className="h-13 font-bricolage ">
+        <Button className="h-13 font-bricolage " onClick={() => dispatch(openAgileSprintModal())}>
             Create Sprint
         </Button>
 

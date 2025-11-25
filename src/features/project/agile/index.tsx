@@ -19,7 +19,7 @@ const list = [
     image: '/icon/sprint.svg',
     active: '/icon/sprintActive.svg',
     text: 'Sprint Boards',
-    path: '/',
+    path: 'sprint-board',
   },
   {
     image: '/icon/retro.svg',

@@ -35,6 +35,9 @@ interface ModalSlice {
   rejectionNotesModal: boolean
 
   deleteTimeEntryModal: boolean
+
+  agileSprintModal: boolean
+  agileSprintSuccessModal: boolean
 }
 
 const initialState: ModalSlice = {
@@ -62,6 +65,8 @@ const initialState: ModalSlice = {
 
   templateReadyModal: false,
   templateText: '',
+  agileSprintModal: false,
+  agileSprintSuccessModal: false,
 }
 
 const modalSlice = createSlice({
@@ -171,6 +176,18 @@ const modalSlice = createSlice({
     closeTemplateReadyModal: (state) => {
       state.templateReadyModal = false
     },
+    openAgileSprintModal: (state) => {
+      state.agileSprintModal = true
+    },
+    closeAgileSprintModal: (state) => {
+      state.agileSprintModal = false
+    },
+    openAgileSprintSuccessModal: (state) => {
+      state.agileSprintSuccessModal = true
+    },
+    closeAgileSprintSuccessModal: (state) => {
+      state.agileSprintSuccessModal = false
+    },
   },
 })
 
@@ -205,6 +222,10 @@ export const {
   closeDeleteTimeEntryModal,
   openTemplateReadyModal,
   closeTemplateReadyModal,
+  openAgileSprintModal,
+  closeAgileSprintModal,
+  openAgileSprintSuccessModal,
+  closeAgileSprintSuccessModal,
 } = modalSlice.actions
 
 export default modalSlice.reducer
