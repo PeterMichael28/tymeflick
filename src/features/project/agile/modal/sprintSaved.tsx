@@ -1,19 +1,19 @@
-import Button from "../../../../components/button/button"
-import { closeAgileSprintSuccessModal } from "../../../../redux/slice/modalSlice"
-import { useDispatch } from "react-redux"
-import { useNavigate } from "react-router-dom"
+import Button from '../../../../components/button/button'
+import { closeAgileSprintSuccessModal } from '../../../../redux/slice/modalSlice'
+import { useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 
 const SprintSaved = () => {
-    const dispatch = useDispatch()
-    const navigate = useNavigate()
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
 
-    const handleCloseModal = () => {
-        dispatch(closeAgileSprintSuccessModal())
-        navigate("/project/agile")
-    }
+  const handleCloseModal = () => {
+    dispatch(closeAgileSprintSuccessModal())
+    navigate('/project/agile')
+  }
 
   return (
-  <div className="absolute inset-0 z-50 flex items-center justify-center bg-black/20">
+    <div className="absolute inset-0 z-50 flex items-center justify-center bg-black/20">
       <div className="p7 flex flex-col items-center justify-center gap-3 rounded-2xl bg-white md:w-[45vw]">
         <div className="relative flex items-center justify-center">
           {/* Base image */}
@@ -27,18 +27,21 @@ const SprintSaved = () => {
           />
         </div>
 
-        <div className="flex flex-col items-center justify-center gap-3 p-5 w-full">
+        <div className="flex w-full flex-col items-center justify-center gap-3 p-5">
           <p className="font-bricolage text-[32px] font-bold text-[#000000]">
-          Sprint Saved Successfully!
+            Sprint Saved Successfully!
           </p>
           <p className="text-center text-[18px] font-normal text-[#606060]">
             Your team can now begin executing the sprint plan
           </p>
-          <Button className="w-full mt-6 text-lg font-semibold font-bricolage">
-          Invite Team Members
+          <Button className="font-bricolage mt-6 w-full text-lg font-semibold">
+            Invite Team Members
           </Button>
-          <button className="bg-[#F2F0F5] w-full h-17 px-15 rounded-md font-semibold text-lg font-bricolage text-[#404C59]" onClick={handleCloseModal}>
-             Continue
+          <button
+            className="font-bricolage h-17 w-full rounded-md bg-[#F2F0F5] px-15 text-lg font-semibold text-[#404C59]"
+            onClick={handleCloseModal}
+          >
+            Continue
           </button>
         </div>
       </div>

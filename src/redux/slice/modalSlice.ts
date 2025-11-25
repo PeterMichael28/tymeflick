@@ -38,6 +38,7 @@ interface ModalSlice {
 
   agileSprintModal: boolean
   agileSprintSuccessModal: boolean
+  editSprintRetrospectiveModal: boolean
 }
 
 const initialState: ModalSlice = {
@@ -67,6 +68,7 @@ const initialState: ModalSlice = {
   templateText: '',
   agileSprintModal: false,
   agileSprintSuccessModal: false,
+  editSprintRetrospectiveModal: false,
 }
 
 const modalSlice = createSlice({
@@ -120,7 +122,10 @@ const modalSlice = createSlice({
       state.editTimeEntryModal = false
     },
 
-    openAddTimeManualEntryModal: (state, action: PayloadAction<TimeEntryPayload | null>) => {
+    openAddTimeManualEntryModal: (
+      state,
+      action: PayloadAction<TimeEntryPayload | null>
+    ) => {
       state.addTimeManualEntryModal = true
       state.selectedManualTimeEntry = action.payload
     },
@@ -188,6 +193,12 @@ const modalSlice = createSlice({
     closeAgileSprintSuccessModal: (state) => {
       state.agileSprintSuccessModal = false
     },
+    openEditSprintRetrospectiveModal: (state) => {
+      state.editSprintRetrospectiveModal = true
+    },
+    closeEditSprintRetrospectiveModal: (state) => {
+      state.editSprintRetrospectiveModal = false
+    },
   },
 })
 
@@ -226,6 +237,8 @@ export const {
   closeAgileSprintModal,
   openAgileSprintSuccessModal,
   closeAgileSprintSuccessModal,
+  openEditSprintRetrospectiveModal,
+  closeEditSprintRetrospectiveModal,
 } = modalSlice.actions
 
 export default modalSlice.reducer

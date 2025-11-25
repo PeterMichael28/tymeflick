@@ -25,13 +25,13 @@ const list = [
     image: '/icon/retro.svg',
     active: '/icon/retroActive.svg',
     text: 'Retrospectives',
-    path: '/',
+    path: 'retrospective',
   },
   {
     image: '/icon/grant.svg',
     active: '/icon/grantActive.svg',
     text: 'Gantt Chart',
-    path: '/',
+    path: 'grant-chart',
   },
   {
     image: '/icon/timeLogs.svg',

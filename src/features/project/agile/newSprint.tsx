@@ -1,15 +1,13 @@
-import Hero from "../../../components/ui/hero"
-import { useNavigate } from "react-router-dom"
+import Hero from '../../../components/ui/hero'
+import { useNavigate } from 'react-router-dom'
 import Input from '../../../components/ui/input'
 import { Formik, Form, Field, type FieldProps } from 'formik'
 import * as Yup from 'yup'
 import Button from '../../../components/button/button'
 import DropDown from './ui/dropdown'
 
-
 const NewSprint = () => {
   const navigate = useNavigate()
-
 
   return (
     <div>
@@ -25,26 +23,24 @@ const NewSprint = () => {
 
         <Formik
           initialValues={{
-            sprintname: "",
-            sprintDuration: "",
-            customSprintDuration: "",
-            sprintStart: "",
-            sprintEnd: "",
-            sprintGoal: "",
+            sprintname: '',
+            sprintDuration: '',
+            customSprintDuration: '',
+            sprintStart: '',
+            sprintEnd: '',
+            sprintGoal: '',
           }}
-
           validationSchema={Yup.object({
-            sprintname: Yup.string().required("Sprint Name is required"),
-            sprintDuration: Yup.string().required("Select a duration"),
+            sprintname: Yup.string().required('Sprint Name is required'),
+            sprintDuration: Yup.string().required('Select a duration'),
             customSprintDuration: Yup.string().optional(),
-            sprintStart: Yup.string().required("Start Date is required"),
-            sprintEnd: Yup.string().required("End Date is required"),
-            sprintGoal: Yup.string().required("Objective is required"),
+            sprintStart: Yup.string().required('Start Date is required'),
+            sprintEnd: Yup.string().required('End Date is required'),
+            sprintGoal: Yup.string().required('Objective is required'),
           })}
-
           onSubmit={(values) => {
             console.log(values)
-            navigate("/add-work-item")
+            navigate('/add-work-item')
           }}
         >
           {({ values }) => (
@@ -58,8 +54,8 @@ const NewSprint = () => {
               />
 
               {/* Sprint Duration */}
-              <div className="flex justify-between items-center gap-4">
-                <div className="flex flex-col gap-5 flex-1">
+              <div className="flex items-center justify-between gap-4">
+                <div className="flex flex-1 flex-col gap-5">
                   <p className="text-grey900 font-bricolage text-[16px]">
                     Sprint Duration
                   </p>
@@ -67,14 +63,13 @@ const NewSprint = () => {
                   <Field name="sprintDuration">
                     {({ field }: FieldProps) => (
                       <div className="flex justify-between">
-
                         {/** 1 WEEK */}
                         <span className="flex items-center gap-3">
                           <input
                             type="radio"
                             name="sprintDuration"
                             value="1"
-                            checked={field.value === "1"}
+                            checked={field.value === '1'}
                             onChange={field.onChange}
                             className="accent-primary"
                           />
@@ -87,7 +82,7 @@ const NewSprint = () => {
                             type="radio"
                             name="sprintDuration"
                             value="2"
-                            checked={field.value === "2"}
+                            checked={field.value === '2'}
                             onChange={field.onChange}
                             className="accent-primary"
                           />
@@ -100,7 +95,7 @@ const NewSprint = () => {
                             type="radio"
                             name="sprintDuration"
                             value="3"
-                            checked={field.value === "3"}
+                            checked={field.value === '3'}
                             onChange={field.onChange}
                             className="accent-primary"
                           />
@@ -113,7 +108,7 @@ const NewSprint = () => {
                             type="radio"
                             name="sprintDuration"
                             value="custom"
-                            checked={field.value === "custom"}
+                            checked={field.value === 'custom'}
                             onChange={field.onChange}
                             className="accent-primary"
                           />
@@ -131,14 +126,24 @@ const NewSprint = () => {
                     name="customSprintDuration"
                     type="text"
                     height="small"
-                    disabled={values.sprintDuration !== "custom"}
+                    disabled={values.sprintDuration !== 'custom'}
                   />
                 </div>
               </div>
 
               {/* Dates */}
-              <Input label="Start Date" name="sprintStart" type="date" height="small" />
-              <Input label="End Date" name="sprintEnd" type="date" height="small" />
+              <Input
+                label="Start Date"
+                name="sprintStart"
+                type="date"
+                height="small"
+              />
+              <Input
+                label="End Date"
+                name="sprintEnd"
+                type="date"
+                height="small"
+              />
 
               {/* Objective */}
               <Input

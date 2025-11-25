@@ -9,7 +9,6 @@ import { loginRoutes } from './router/login.route'
 import { signupRoutes } from './router/signup.route'
 import { dashboardRoutes } from './router/dashboard.route'
 
-
 const App = () => {
   return (
     <Router>
@@ -67,7 +66,6 @@ const App = () => {
             )
           )}
         </Route>
-        
       </Routes>
     </Router>
   )

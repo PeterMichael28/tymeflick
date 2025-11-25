@@ -109,7 +109,6 @@ const getChildren = (row: ItemRow) => {
 // simple row id function
 const getRowId = (row: ItemRow) => `${row.itemType}-${row.title}`
 
-
 const AgileDashboard = () => {
   const [currentPage, setCurrentPage] = useState(0)
   const pageCount = Math.ceil(tableData.length / ITEMS_PER_PAGE)
@@ -117,26 +116,26 @@ const AgileDashboard = () => {
     currentPage * ITEMS_PER_PAGE,
     currentPage * ITEMS_PER_PAGE + ITEMS_PER_PAGE
   )
-    const [showDropDown, setShowDropdown] = useState(false)
-    const dropRef = useRef<HTMLDivElement>(null)
-    const navigate = useNavigate()
-  
-    useEffect(() => {
-      function handleClickOutside(e: MouseEvent) {
-        if (dropRef.current && !dropRef.current.contains(e.target as Node)) {
-          setShowDropdown(false)
-        }
+  const [showDropDown, setShowDropdown] = useState(false)
+  const dropRef = useRef<HTMLDivElement>(null)
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    function handleClickOutside(e: MouseEvent) {
+      if (dropRef.current && !dropRef.current.contains(e.target as Node)) {
+        setShowDropdown(false)
       }
-  
-      document.addEventListener('mousedown', handleClickOutside)
-      return () => document.removeEventListener('mousedown', handleClickOutside)
-    }, [])
+    }
+
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => document.removeEventListener('mousedown', handleClickOutside)
+  }, [])
   return (
     <div>
-        <div className="flex gap-5">
+      <div className="flex gap-5">
         <div ref={dropRef} className="relative">
           <Button
-            className="font-bricolage h-10 font-normal text-sm"
+            className="font-bricolage h-10 text-sm font-normal"
             onClick={() => setShowDropdown(!showDropDown)}
           >
             Create Work Entry
@@ -160,7 +159,10 @@ const AgileDashboard = () => {
           )}
         </div>
 
-        <button className="font-bricolage border-primary text-primary text-sm h-10 rounded-lg border px-8 py-2 font-normal" onClick={() => navigate('/new-sprint')}>
+        <button
+          className="font-bricolage border-primary text-primary h-10 rounded-lg border px-8 py-2 text-sm font-normal"
+          onClick={() => navigate('/new-sprint')}
+        >
           Create New Sprint
         </button>
       </div>
