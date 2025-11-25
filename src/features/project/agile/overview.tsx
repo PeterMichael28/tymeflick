@@ -55,7 +55,7 @@ const AgileOverview = () => {
       <div className="flex gap-5">
         <div ref={dropRef} className="relative">
           <Button
-            className="font-bricolage h-10 font-normal text-sm"
+            className="font-bricolage h-10 text-sm font-normal"
             onClick={() => setShowDropdown(!showDropDown)}
           >
             Create Work Entry
@@ -79,7 +79,10 @@ const AgileOverview = () => {
           )}
         </div>
 
-        <button className="font-bricolage border-primary text-primary text-sm h-10 rounded-lg border px-8 py-2 font-normal" onClick={() => navigate('/new-sprint')}>
+        <button
+          className="font-bricolage border-primary text-primary h-10 rounded-lg border px-8 py-2 text-sm font-normal"
+          onClick={() => navigate('/new-sprint')}
+        >
           Create New Sprint
         </button>
       </div>

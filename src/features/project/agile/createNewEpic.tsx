@@ -109,7 +109,9 @@ const CreateNewEpic = () => {
             />
 
             <div className="flex justify-end">
-               <Button className='h-13 text-sm font-normal font-bricolage w-[10vw]'>Save</Button>
+              <Button className="font-bricolage h-13 w-[10vw] text-sm font-normal">
+                Save
+              </Button>
             </div>
           </Form>
         </Formik>
