@@ -3,6 +3,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { closeDeleteTimeEntryModal } from "../../../../redux/slice/modalSlice";
 import { type RootState } from "../../../../redux/store";
+import { X } from "lucide-react";
 
 export default function DeleteTimeEntryModal() {
   const dispatch = useDispatch();
@@ -13,16 +14,16 @@ export default function DeleteTimeEntryModal() {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-1xs">
       <div className="bg-white rounded-lg shadow-lg w-full max-w-md p-6 relative">
-        <button
-          onClick={() => dispatch(closeDeleteTimeEntryModal())}
-          className="absolute top-3 right-3 text-gray-500 hover:text-gray-700"
-        >
-          ✕
-        </button>
-
-        <h2 className="text-xl font-semibold text-gray-900 mb-3">
-          Delete Time Entry
-        </h2>
+        {/* Header */}
+        <div className="flex justify-between items-center mb-4">
+            <h2 className="text-xl font-semibold text-gray-800">Delete Time Entry</h2>
+            <button
+            onClick={() => dispatch(closeDeleteTimeEntryModal())}
+            className="text-gray-500 hover:text-gray-700 transition"
+            >
+            <X className="w-5 h-5" />
+            </button>
+        </div>
 
         <div className="flex items-start gap-2 text-sm text-gray-700 mb-4">
           <span className="text-red-500 text-lg">
