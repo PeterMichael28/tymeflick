@@ -19,6 +19,11 @@ import HybridTemplate from '../features/projectTemplate/hybridTemplate'
 import ProjectAgileIndex from '../features/project/agile'
 import AgileOverview from '../features/project/agile/overview'
 import AgileDashboard from '../features/project/agile/dashboard'
+import CreateNewEpic from '../features/project/agile/createNewEpic'
+import CreateNewFeature from '../features/project/agile/createNewFeature'
+import CreateNewStory from '../features/project/agile/createNewStory'
+import CreateNewTask from '../features/project/agile/createNewTask'
+import NewSprint from '../features/project/agile/newSprint'
 import TimetrackerIndex from '../features/timeTracker'
 import SubmitWeeklyTimeLogs from '../features/timeTracker/components/screens/submitWeeklyTimelog'
 import ViewAllPage from '../features/timeTracker/components/screens/viewAll'
@@ -38,6 +43,11 @@ import TeamsPage from '../features/teams'
 import TeamSummary from '../features/teams/components/screens/teamSummary'
 import ViewUserPage from '../features/teams/components/screens/viewUser'
 
+import AddworkItem from '../features/project/agile/addworkItem'
+import SprintBoard from '../features/project/agile/sprintBoard'
+import Retrospective from '../features/project/agile/retrospective'
+// import GrantChart from '../features/project/agile/grantChart'
+
 export const dashboardRoutes = [
   { path: '', element: <DashBoardIndex /> },
   { path: 'project', element: <Project /> },
@@ -46,8 +56,35 @@ export const dashboardRoutes = [
     element: <ProjectAgileIndex />,
     children: [
       { path: '', element: <AgileOverview /> }, // overview page for agile project
-      { path: 'dashboard', element: <AgileDashboard /> }, // dashboard page for agile project
+      { path: 'dashboard', element: <AgileDashboard /> }, // dashboard page for agile projec
+      { path: 'sprint-board', element: <SprintBoard /> }, // sprint board page for agile project
+      { path: 'retrospective', element: <Retrospective /> }, // retrospective page for agile project
+      // { path: 'grant-chart', element: <GrantChart /> }, // grant chart page for agile project
     ],
+  },
+  {
+    path: 'create-epic',
+    element: <CreateNewEpic />,
+  },
+  {
+    path: 'create-feature',
+    element: <CreateNewFeature />,
+  },
+  {
+    path: 'create-story',
+    element: <CreateNewStory />,
+  },
+  {
+    path: 'create-task',
+    element: <CreateNewTask />,
+  },
+  {
+    path: 'new-sprint',
+    element: <NewSprint />,
+  },
+  {
+    path: 'add-work-item',
+    element: <AddworkItem />,
   },
   {
     path: 'create-project',

@@ -10,6 +10,9 @@ import AddManualEntryModal from '../features/timeTracker/components/modals/AddMa
 import SubmissionSentModal from '../features/timeTracker/components/modals/SubmissionSent'
 import SubmissionApprovedModal from '../features/timeTracker/components/modals/SubmissionApprovedModal'
 import SubmissionRejectedModal from '../features/timeTracker/components/modals/SubmissionRejectedModal'
+import Review from '../features/project/agile/modal/review'
+import SprintSaved from '../features/project/agile/modal/sprintSaved'
+import EditSprintRetrospective from '../features/project/agile/modal/editSprintRetrospective'
 import ApprovalNotesModal from '../features/timeTracker/components/modals/ApprovalNotesModal'
 import RejectionNotesModal from '../features/timeTracker/components/modals/RejectionNotesModal'
 import TemplateReady from '../features/projectTemplate/modal/templateReady'
@@ -23,6 +26,11 @@ import EditUserModal from '../features/teams/components/modals/EditUserModal'
 
 const GlobalModal = () => {
   const modal = useSelector((state: RootState) => state.modal)
+  const {
+    agileSprintModal,
+    agileSprintSuccessModal,
+    editSprintRetrospectiveModal,
+  } = useSelector((state: RootState) => state.modal)
 
   if (modal.createAccountModal) return <CreateAccount />
   if (modal.enterPriceSuccessModal) return <SuccessModal />
@@ -42,6 +50,9 @@ const GlobalModal = () => {
   if (modal.createTeamModal) return <CreateNewTeamModal />
   if (modal.addUserModal) return <AddUserModal />
   if (modal.editUserModal) return <EditUserModal /> // ✅ Added
+  if (agileSprintModal) return <Review />
+  if (agileSprintSuccessModal) return <SprintSaved /> // ✅ added
+  if (editSprintRetrospectiveModal) return <EditSprintRetrospective /> // ✅ added
 
   return null
 }

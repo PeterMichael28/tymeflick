@@ -1,20 +1,42 @@
-"use client";
+'use client'
 
+<<<<<<< HEAD
 import { useDispatch, useSelector } from "react-redux";
 import { closeEditTimeEntryModal } from "../../../../redux/slice/modalSlice";
 import { type RootState } from "../../../../redux/store";
 import { X } from "lucide-react";
+=======
+import { useDispatch, useSelector } from 'react-redux'
+import { closeEditTimeEntryModal } from '../../../../redux/slice/modalSlice'
+import { type RootState } from '../../../../redux/store'
+>>>>>>> 5f820ff209764b5de508ad2c9f74591f7131f474
 
 export default function EditTimeEntryModal() {
-  const dispatch = useDispatch();
-  const { editTimeEntryModal } = useSelector((state: RootState) => state.modal);
+  const dispatch = useDispatch()
+  const { editTimeEntryModal } = useSelector((state: RootState) => state.modal)
 
-  if (!editTimeEntryModal) return null;
+  if (!editTimeEntryModal) return null
 
   return (
+<<<<<<< HEAD
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-1xs">
       
       <div className="bg-white rounded-lg shadow-lg w-full max-w-md p-6 relative">        
+=======
+    <div className="backdrop-blur-1xs fixed inset-0 z-50 flex items-center justify-center bg-black/40">
+      <div className="relative w-full max-w-md rounded-lg bg-white p-6 shadow-lg">
+        <button
+          onClick={() => dispatch(closeEditTimeEntryModal())}
+          className="absolute top-3 right-3 text-gray-500 hover:text-gray-700"
+        >
+          ✕
+        </button>
+
+        <h2 className="font-inter mb-4 text-lg text-gray-900">
+          Edit Time Entry
+        </h2>
+
+>>>>>>> 5f820ff209764b5de508ad2c9f74591f7131f474
         <form className="space-y-4">
 
           {/* Header */}
@@ -30,36 +52,44 @@ export default function EditTimeEntryModal() {
 
           {/* Date */}
           <div>
-            <label className="block text-sm font-inter text-gray-700">Date</label>
+            <label className="font-inter block text-sm text-gray-700">
+              Date
+            </label>
             <input
               type="date"
-              className="mt-1 w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:ring-green-500 focus:border-green-500"
+              className="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-green-500 focus:ring-green-500"
             />
           </div>
 
           {/* Start & End Time */}
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <label className="block text-sm font-inter text-gray-700">Start Time</label>
+              <label className="font-inter block text-sm text-gray-700">
+                Start Time
+              </label>
               <input
                 type="time"
-                className="mt-1 w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:ring-green-500 focus:border-green-500"
+                className="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-green-500 focus:ring-green-500"
               />
             </div>
             <div>
-              <label className="block text-sm font-inter text-gray-700">End Time</label>
+              <label className="font-inter block text-sm text-gray-700">
+                End Time
+              </label>
               <input
                 type="time"
-                className="mt-1 w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:ring-green-500 focus:border-green-500"
+                className="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-green-500 focus:ring-green-500"
               />
             </div>
           </div>
 
           {/* Description */}
           <div>
-            <label className="block text-sm font-inter text-gray-700">Description</label>
+            <label className="font-inter block text-sm text-gray-700">
+              Description
+            </label>
             <textarea
-              className="mt-1 w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:ring-green-500 focus:border-green-500 resize-none"
+              className="mt-1 w-full resize-none rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-green-500 focus:ring-green-500"
               rows={2}
             />
           </div>
@@ -68,14 +98,14 @@ export default function EditTimeEntryModal() {
           <div className="space-y-2 pt-2">
             <button
               type="submit"
-              className="w-full bg-primary hover:bg-green-600 text-white py-2 rounded-md font-inter transition"
+              className="bg-primary font-inter w-full rounded-md py-2 text-white transition hover:bg-green-600"
             >
               Save Changes
             </button>
             <button
               type="button"
               onClick={() => dispatch(closeEditTimeEntryModal())}
-              className="w-full border border-gray-100 text-gray-700 py-2 rounded-md hover:bg-gray-50 transition font-inter"
+              className="font-inter w-full rounded-md border border-gray-100 py-2 text-gray-700 transition hover:bg-gray-50"
             >
               Cancel
             </button>
@@ -83,5 +113,5 @@ export default function EditTimeEntryModal() {
         </form>
       </div>
     </div>
-  );
+  )
 }

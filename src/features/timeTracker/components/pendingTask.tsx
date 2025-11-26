@@ -1,4 +1,4 @@
-import ProjectDistributionChart from "../../../features/dashboard/components/ui/projectDistributionCart"
+import ProjectDistributionChart from '../../../features/dashboard/components/ui/projectDistributionCart'
 
 const pendingTaskList = [
   {

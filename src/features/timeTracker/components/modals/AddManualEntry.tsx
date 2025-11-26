@@ -1,52 +1,51 @@
-"use client";
+'use client'
 
-import { useDispatch, useSelector } from "react-redux";
-import type { RootState } from "../../../../redux/store";
+import { useDispatch, useSelector } from 'react-redux'
+import type { RootState } from '../../../../redux/store'
 import {
   closeAddTimeManualEntryModal,
   // openSaveEntrySuccessModal
-} from "../../../../redux/slice/modalSlice";
-import Button from "../../../../components/button/button";
+} from '../../../../redux/slice/modalSlice'
+import Button from '../../../../components/button/button'
 //import { Calendar, Clock } from "lucide-react";
-import { useState } from "react";
+import { useState } from 'react'
 
 const AddManualEntryModal = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
   const entry = useSelector(
     (state: RootState) => state.modal.selectedManualTimeEntry
-  );
+  )
 
   const [formData, setFormData] = useState({
-    date: entry?.date || "",
-    startTime: entry?.startTime || "",
-    endTime: entry?.endTime || "",
-    description: entry?.description || "",
-    client: entry?.client || "",
-    project: entry?.project || "",
+    date: entry?.date || '',
+    startTime: entry?.startTime || '',
+    endTime: entry?.endTime || '',
+    description: entry?.description || '',
+    client: entry?.client || '',
+    project: entry?.project || '',
     billable: entry?.billable ?? true,
-  });
+  })
 
   const handleChange = (field: string, value: any) => {
     setFormData((prev) => ({
       ...prev,
       [field]: value,
-    }));
-  };
+    }))
+  }
 
   const handleSaveEntry = () => {
-    console.log("Manual Entry Saved:", formData);
-    dispatch(closeAddTimeManualEntryModal());
+    console.log('Manual Entry Saved:', formData)
+    dispatch(closeAddTimeManualEntryModal())
     // dispatch(openSaveEntrySuccessModal());
-  };
+  }
 
   return (
-    <div className="fixed inset-0 z-50 bg-black/40 flex items-center justify-center overflow-y-auto">
-      <div className="bg-white w-[420px] md:w-[480px] p-6 rounded-xl flex flex-col gap-5">
-
+    <div className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto bg-black/40">
+      <div className="flex w-[420px] flex-col gap-5 rounded-xl bg-white p-6 md:w-[480px]">
         {/* HEADER */}
         <div className="flex items-center justify-between">
-          <p className="text-xl font-bold font-bricolage uppercase">
+          <p className="font-bricolage text-xl font-bold uppercase">
             ADD MANUAL ENTRY
           </p>
           <p
@@ -63,24 +62,24 @@ const AddManualEntryModal = () => {
           <div className="relative mt-1">
             <input
               type="date"
-              className="w-full px-3 py-2 border rounded-lg"
+              className="w-full rounded-lg border px-3 py-2"
               value={formData.date}
-              onChange={(e) => handleChange("date", e.target.value)}
+              onChange={(e) => handleChange('date', e.target.value)}
             />
           </div>
         </div>
 
         {/* Start & End Time */}
         <div className="grid grid-cols-2 gap-3">
-          {["startTime", "endTime"].map((field) => (
+          {['startTime', 'endTime'].map((field) => (
             <div key={field}>
               <label className="text-sm font-medium">
-                {field === "startTime" ? "Start Time" : "End Time"}
+                {field === 'startTime' ? 'Start Time' : 'End Time'}
               </label>
               <div className="relative mt-1">
                 <input
                   type="time"
-                  className="w-full px-3 py-2 border rounded-lg"
+                  className="w-full rounded-lg border px-3 py-2"
                   value={(formData as any)[field]}
                   onChange={(e) => handleChange(field, e.target.value)}
                 />
@@ -95,7 +94,7 @@ const AddManualEntryModal = () => {
           <input
             disabled
             value="Auto Calculated based on inputted time"
-            className="w-full px-3 py-2 border rounded-lg text-gray-500"
+            className="w-full rounded-lg border px-3 py-2 text-gray-500"
           />
         </div>
 
@@ -104,11 +103,9 @@ const AddManualEntryModal = () => {
           <label className="text-sm font-medium">Description</label>
           <textarea
             placeholder="What did you work on?"
-            className="w-full px-3 py-2 border rounded-lg resize-none"
+            className="w-full resize-none rounded-lg border px-3 py-2"
             value={formData.description}
-            onChange={(e) =>
-              handleChange("description", e.target.value)
-            }
+            onChange={(e) => handleChange('description', e.target.value)}
           />
         </div>
 
@@ -116,8 +113,8 @@ const AddManualEntryModal = () => {
         <div>
           <label className="text-sm font-medium">Client</label>
           <select
-            className="w-full px-3 py-2 border rounded-lg"
-            onChange={(e) => handleChange("client", e.target.value)}
+            className="w-full rounded-lg border px-3 py-2"
+            onChange={(e) => handleChange('client', e.target.value)}
           >
             <option>Select Client</option>
           </select>
@@ -127,8 +124,8 @@ const AddManualEntryModal = () => {
         <div>
           <label className="text-sm font-medium">Project</label>
           <select
-            className="w-full px-3 py-2 border rounded-lg"
-            onChange={(e) => handleChange("project", e.target.value)}
+            className="w-full rounded-lg border px-3 py-2"
+            onChange={(e) => handleChange('project', e.target.value)}
           >
             <option>Select Project</option>
           </select>
@@ -139,7 +136,7 @@ const AddManualEntryModal = () => {
           <input
             type="checkbox"
             checked={formData.billable}
-            onChange={(e) => handleChange("billable", e.target.checked)}
+            onChange={(e) => handleChange('billable', e.target.checked)}
             className="accent-[#4CAF50]"
           />
           Billable
@@ -155,14 +152,14 @@ const AddManualEntryModal = () => {
         </Button>
 
         <button
-          className="text-gray-500 w-full py-2 rounded-lg hover:bg-gray-100"
+          className="w-full rounded-lg py-2 text-gray-500 hover:bg-gray-100"
           onClick={() => dispatch(closeAddTimeManualEntryModal())}
         >
           Cancel
         </button>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default AddManualEntryModal;
+export default AddManualEntryModal

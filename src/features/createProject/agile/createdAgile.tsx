@@ -15,7 +15,7 @@ const CreatedAgile = () => {
     { title: 'Agile Rituals', label: '4/4' },
   ]
   return (
-    <div className="h-full min-h-[calc(110vh-80px)] overflow-y-scroll rounded-lg bg-white p-5">
+    <div className="h-full overflow-y-scroll rounded-lg bg-white p-5">
       <div className="w-full">
         <div className="flex justify-between">
           {stepList.map((step, index) => (

@@ -19,19 +19,19 @@ const list = [
     image: '/icon/sprint.svg',
     active: '/icon/sprintActive.svg',
     text: 'Sprint Boards',
-    path: '/',
+    path: 'sprint-board',
   },
   {
     image: '/icon/retro.svg',
     active: '/icon/retroActive.svg',
     text: 'Retrospectives',
-    path: '/',
+    path: 'retrospective',
   },
   {
     image: '/icon/grant.svg',
     active: '/icon/grantActive.svg',
     text: 'Gantt Chart',
-    path: '/',
+    path: 'grant-chart',
   },
   {
     image: '/icon/timeLogs.svg',

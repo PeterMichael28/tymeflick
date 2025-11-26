@@ -35,6 +35,10 @@ interface ModalSlice {
   createTeamModal: boolean
   addUserModal: boolean
   editUserModal: boolean // ✅ Added
+
+  agileSprintModal: boolean
+  agileSprintSuccessModal: boolean
+  editSprintRetrospectiveModal: boolean
 }
 
 const initialState: ModalSlice = {
@@ -61,6 +65,9 @@ const initialState: ModalSlice = {
   createTeamModal: false,
   addUserModal: false,
   editUserModal: false, // ✅ Added
+  agileSprintModal: false,
+  agileSprintSuccessModal: false,
+  editSprintRetrospectiveModal: false,
 }
 
 const modalSlice = createSlice({
@@ -94,7 +101,10 @@ const modalSlice = createSlice({
     openEditTimeEntryModal: (state) => { state.editTimeEntryModal = true },
     closeEditTimeEntryModal: (state) => { state.editTimeEntryModal = false },
 
-    openAddTimeManualEntryModal: (state, action: PayloadAction<TimeEntryPayload | null>) => {
+    openAddTimeManualEntryModal: (
+      state,
+      action: PayloadAction<TimeEntryPayload | null>
+    ) => {
       state.addTimeManualEntryModal = true
       state.selectedManualTimeEntry = action.payload
     },
@@ -138,6 +148,24 @@ const modalSlice = createSlice({
     // ✅ Edit User Modal
     openEditUserModal: (state) => { state.editUserModal = true },
     closeEditUserModal: (state) => { state.editUserModal = false },
+    openAgileSprintModal: (state) => {
+      state.agileSprintModal = true
+    },
+    closeAgileSprintModal: (state) => {
+      state.agileSprintModal = false
+    },
+    openAgileSprintSuccessModal: (state) => {
+      state.agileSprintSuccessModal = true
+    },
+    closeAgileSprintSuccessModal: (state) => {
+      state.agileSprintSuccessModal = false
+    },
+    openEditSprintRetrospectiveModal: (state) => {
+      state.editSprintRetrospectiveModal = true
+    },
+    closeEditSprintRetrospectiveModal: (state) => {
+      state.editSprintRetrospectiveModal = false
+    },
   },
 })
 
@@ -178,6 +206,12 @@ export const {
   closeAddUserModal,
   openEditUserModal,
   closeEditUserModal, // ✅ Added
+  openAgileSprintModal,
+  closeAgileSprintModal,
+  openAgileSprintSuccessModal,
+  closeAgileSprintSuccessModal,
+  openEditSprintRetrospectiveModal,
+  closeEditSprintRetrospectiveModal,
 } = modalSlice.actions
 
 export default modalSlice.reducer

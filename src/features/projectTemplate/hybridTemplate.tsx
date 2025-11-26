@@ -42,7 +42,7 @@ const HybridTemplate = () => {
     },
   ]
   return (
-    <div className="flex min-h-[calc(150vh-80px)] flex-col gap-4 overflow-y-scroll rounded-lg bg-white p-4">
+    <div className="flex flex-col gap-4 overflow-y-scroll rounded-lg bg-white p-4">
       <div className="flex flex-col gap-3">
         <span className="flex items-center gap-4">
           <img
