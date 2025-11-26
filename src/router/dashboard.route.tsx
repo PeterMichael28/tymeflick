@@ -43,7 +43,7 @@ import RevenuePage from '../features/timeTracker/components/screens/clientTimelo
 import AddworkItem from '../features/project/agile/addworkItem'
 import SprintBoard from '../features/project/agile/sprintBoard'
 import Retrospective from '../features/project/agile/retrospective'
-// import GrantChart from '../features/project/agile/grantChart'
+import GrantChart from '../features/project/agile/grantChart'
 
 export const dashboardRoutes = [
   { path: '', element: <DashBoardIndex /> },
@@ -56,7 +56,7 @@ export const dashboardRoutes = [
       { path: 'dashboard', element: <AgileDashboard /> }, // dashboard page for agile projec
       { path: 'sprint-board', element: <SprintBoard /> }, // sprint board page for agile project
       { path: 'retrospective', element: <Retrospective /> }, // retrospective page for agile project
-      // { path: 'grant-chart', element: <GrantChart /> }, // grant chart page for agile project
+      { path: 'grant-chart', element: <GrantChart /> }, // grant chart page for agile project
     ],
   },
   {
