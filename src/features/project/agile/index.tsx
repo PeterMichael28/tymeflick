@@ -37,13 +37,13 @@ const list = [
     image: '/icon/timeLogs.svg',
     active: '/icon/timeLogActive.svg',
     text: 'Time Logs',
-    path: '/',
+    path: 'time-log',
   },
   {
     image: '/icon/person.svg',
     active: '/icon/personActive.svg',
     text: 'Team Member',
-    path: '/',
+    path: 'team-member',
   },
 ]
 

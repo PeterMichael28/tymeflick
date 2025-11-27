@@ -21,6 +21,8 @@ interface ModalSlice {
   uploadFailedModal: boolean
   templateReadyModal: boolean
   templateText: string
+  invitationSentModal: boolean
+
   editTimeEntryModal: boolean
   addTimeManualEntryModal: boolean
   selectedManualTimeEntry: TimeEntryPayload | null
@@ -39,6 +41,11 @@ interface ModalSlice {
   agileSprintModal: boolean
   agileSprintSuccessModal: boolean
   editSprintRetrospectiveModal: boolean
+
+  editEpicModal: boolean
+  editFeatureModal: boolean
+  editStoryModal: boolean
+  editTaskModal: boolean
 }
 
 const initialState: ModalSlice = {
@@ -68,6 +75,12 @@ const initialState: ModalSlice = {
   agileSprintModal: false,
   agileSprintSuccessModal: false,
   editSprintRetrospectiveModal: false,
+  invitationSentModal: false,
+  editEpicModal: false,
+  editFeatureModal: false,
+  editStoryModal: false,
+  editTaskModal: false,
+  
 }
 
 const modalSlice = createSlice({
@@ -166,6 +179,36 @@ const modalSlice = createSlice({
     closeEditSprintRetrospectiveModal: (state) => {
       state.editSprintRetrospectiveModal = false
     },
+    openInvitationSentModal: (state) => {
+      state.invitationSentModal = true
+    },
+    closeInvitationSentModal: (state) => {
+      state.invitationSentModal = false
+    },
+    openEditEpicModal: (state) => {
+      state.editEpicModal = true
+    },
+    closeEditEpicModal: (state) => {
+      state.editEpicModal = false
+    },
+    openEditFeatureModal: (state) => {
+      state.editFeatureModal = true
+    },
+    closeEditFeatureModal: (state) => {
+      state.editFeatureModal = false
+    },
+    openEditStoryModal: (state) => {
+      state.editStoryModal = true
+    },
+    closeEditStoryModal: (state) => {
+      state.editStoryModal = false
+    },
+    openEditTaskModal: (state) => {
+      state.editTaskModal = true
+    },
+    closeEditTaskModal: (state) => {
+      state.editTaskModal = false
+    },
   },
 })
 
@@ -212,6 +255,16 @@ export const {
   closeAgileSprintSuccessModal,
   openEditSprintRetrospectiveModal,
   closeEditSprintRetrospectiveModal,
+  openInvitationSentModal,
+  closeInvitationSentModal,
+  openEditEpicModal,
+  closeEditEpicModal,
+  openEditFeatureModal,
+  closeEditFeatureModal,
+  openEditStoryModal,
+  closeEditStoryModal,
+  openEditTaskModal,
+  closeEditTaskModal,
 } = modalSlice.actions
 
 export default modalSlice.reducer

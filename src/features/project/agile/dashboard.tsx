@@ -10,6 +10,11 @@ import ReactPaginate from 'react-paginate'
 import { useNavigate } from 'react-router-dom'
 import { useEffect, useRef } from 'react'
 import Button from '../../../components/button/button'
+import { useDispatch } from 'react-redux'
+import { openEditEpicModal } from '../../../redux/slice/modalSlice'
+import { openEditFeatureModal } from '../../../redux/slice/modalSlice'
+import { openEditStoryModal } from '../../../redux/slice/modalSlice'
+import { openEditTaskModal } from '../../../redux/slice/modalSlice'
 
 const workThiWeekChartData = [
   { name: 'Mon', value: 8 },
@@ -44,59 +49,6 @@ const workEntryList = [
   { title: 'Task', link: '/create-task' },
 ]
 
-// define columns
-const columns: Column<ItemRow>[] = [
-  {
-    header: 'Item',
-    accessor: 'title',
-    render: (_, row) => (
-      <div
-        className={`flex items-center gap-2 rounded-md p-2 ${row.itemType === 'Epic' ? 'border border-[#66C61C] bg-[#F5F0FA] text-[#66C61C]' : row.itemType === 'Feature' ? 'border border-[#0B54FF] bg-[#CCDBFF4D] text-[#0B54FF]' : row.itemType === 'Story' ? 'border border-[#1FC16B] bg-[#1FC16B1A] text-[#1FC16B]' : 'border border-[#FF8800] bg-[#FFDB431A] text-[#FF8800]'}`}
-      >
-        <span
-          className={`size-4 rounded-[5px] ${row.itemType === 'Epic' ? 'bg-[#66C61C]' : row.itemType === 'Feature' ? 'bg-[#0B54FF]' : row.itemType === 'Story' ? 'bg-[#1FC16B]' : 'bg-[#FF8800]'}`}
-        />
-        <div className="text-sm">{row.itemType}</div>
-      </div>
-    ),
-  },
-  { header: 'Title', accessor: 'title' },
-  { header: 'Assigned To', accessor: 'Assigned To' },
-  {
-    header: 'Status',
-    accessor: 'status',
-    render: (value) => (
-      <div
-        className={`rounded-full px-3 py-1 text-xs font-medium ${value === 'In Progress' ? 'bg-[#CCDBFF80] text-[#002C92]' : 'bg-[#F2F0F5] text-[#0B0D0F]'}`}
-      >
-        {value}
-      </div>
-    ),
-  },
-  {
-    header: 'Priority',
-    accessor: 'Priority',
-    render: (value) => (
-      <div
-        className={`rounded-full px-3 py-1 text-xs font-medium ${value === 'High' ? 'bg-[#FB37481A] text-[#D00416]' : value === 'Medium' ? 'bg-[#FFDB431A] text-[#FF8800]' : 'bg-[#F2F0F5] text-[#0B0D0F]'}`}
-      >
-        {value}
-      </div>
-    ),
-  },
-  { header: 'Sprint', accessor: 'Sprint' },
-  { header: 'Due', accessor: 'DueDate' },
-  {
-    header: 'Actions',
-    accessor: '',
-    render: (value, row) => (
-      <button onClick={() => console.log(value, row)}>
-        <img src="/icon/Frame 1618869120.svg" alt="Action button" />
-      </button>
-    ),
-  },
-]
-
 // helper to return children regardless of which child key they appear under
 const getChildren = (row: ItemRow) => {
   // search for recognized keys
@@ -119,6 +71,81 @@ const AgileDashboard = () => {
   const [showDropDown, setShowDropdown] = useState(false)
   const dropRef = useRef<HTMLDivElement>(null)
   const navigate = useNavigate()
+  const dispatch = useDispatch()
+
+  const handleEdit = (itemType: string) => {
+    if (itemType === 'Epic') {
+      dispatch(openEditEpicModal())
+    }
+    if (itemType === 'Feature') {
+      dispatch(openEditFeatureModal())
+    }
+    if (itemType === 'Story') {
+      dispatch(openEditStoryModal())
+    }
+    if (itemType === 'Task') {
+      dispatch(openEditTaskModal())
+    }
+  }
+
+  // define columns
+  const columns: Column<ItemRow>[] = [
+    {
+      header: 'Item',
+      accessor: 'title',
+      render: (_, row) => (
+        <div
+          className={`flex items-center gap-2 rounded-md p-2 ${row.itemType === 'Epic' ? 'border border-[#66C61C] bg-[#F5F0FA] text-[#66C61C]' : row.itemType === 'Feature' ? 'border border-[#0B54FF] bg-[#CCDBFF4D] text-[#0B54FF]' : row.itemType === 'Story' ? 'border border-[#1FC16B] bg-[#1FC16B1A] text-[#1FC16B]' : 'border border-[#FF8800] bg-[#FFDB431A] text-[#FF8800]'}`}
+        >
+          <span
+            className={`size-4 rounded-[5px] ${row.itemType === 'Epic' ? 'bg-[#66C61C]' : row.itemType === 'Feature' ? 'bg-[#0B54FF]' : row.itemType === 'Story' ? 'bg-[#1FC16B]' : 'bg-[#FF8800]'}`}
+          />
+          <div className="text-sm">{row.itemType}</div>
+        </div>
+      ),
+    },
+    { header: 'Title', accessor: 'title' },
+    { header: 'Assigned To', accessor: 'Assigned To' },
+    {
+      header: 'Status',
+      accessor: 'status',
+      render: (value) => (
+        <div
+          className={`rounded-full px-3 py-1 text-xs font-medium ${value === 'In Progress' ? 'bg-[#CCDBFF80] text-[#002C92]' : 'bg-[#F2F0F5] text-[#0B0D0F]'}`}
+        >
+          {value}
+        </div>
+      ),
+    },
+    {
+      header: 'Priority',
+      accessor: 'Priority',
+      render: (value) => (
+        <div
+          className={`rounded-full px-3 py-1 text-xs font-medium ${value === 'High' ? 'bg-[#FB37481A] text-[#D00416]' : value === 'Medium' ? 'bg-[#FFDB431A] text-[#FF8800]' : 'bg-[#F2F0F5] text-[#0B0D0F]'}`}
+        >
+          {value}
+        </div>
+      ),
+    },
+    { header: 'Sprint', accessor: 'Sprint' },
+    { header: 'Due', accessor: 'DueDate' },
+    {
+      header: 'Actions',
+      accessor: '',
+      render: (_, row) => (
+        <button
+          onClick={(e) => {
+            e.stopPropagation() //  Prevent triggering parent click
+            e.preventDefault() // (Optional)
+            handleEdit(row.itemType) // Your edit function
+          }}
+        >
+          <img src="/icon/Frame 1618869120.svg" alt="Action button" />
+        </button>
+      ),
+    },
+  ]
 
   useEffect(() => {
     function handleClickOutside(e: MouseEvent) {
