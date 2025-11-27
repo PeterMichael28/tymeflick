@@ -146,7 +146,7 @@ export default function TeamsPage() {
       {/* Pagination */}
       <div className="w-full h=full bg-white space-y-8">
         <Pagination />
-      </div>      
+      </div>
     </div>
   );
 }
