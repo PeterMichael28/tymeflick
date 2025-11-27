@@ -39,6 +39,9 @@ import OverallPage from '../features/timeTracker/components/screens/clientTimelo
 import YourTimeLogHistoryPage from '../features/timeTracker/components/screens/clientTimelogScreens/yourTimelogHistory'
 import OtherMemberLogsPage from '../features/timeTracker/components/screens/clientTimelogScreens/otherMemberLogs'
 import RevenuePage from '../features/timeTracker/components/screens/clientTimelogScreens/revenue'
+import TeamsPage from '../features/teams'
+import TeamSummary from '../features/teams/components/screens/teamSummary'
+import ViewUserPage from '../features/teams/components/screens/viewUser'
 
 import AddworkItem from '../features/project/agile/addworkItem'
 import SprintBoard from '../features/project/agile/sprintBoard'
@@ -124,4 +127,9 @@ export const dashboardRoutes = [
   { path: 'yourTimelogHistory', element: <YourTimeLogHistoryPage /> },
   { path: 'otherMemberLogs', element: <OtherMemberLogsPage /> },
   { path: 'revenue', element: <RevenuePage /> },
+
+  //Teams routes can be added here
+  { path: 'teams', element: <TeamsPage /> },
+  { path: 'teams/teamSummary', element: <TeamSummary /> },
+  { path: 'teams/viewUser', element: <ViewUserPage /> },
 ]

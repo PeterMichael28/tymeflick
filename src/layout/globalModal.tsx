@@ -13,53 +13,43 @@ import SubmissionRejectedModal from '../features/timeTracker/components/modals/S
 import Review from '../features/project/agile/modal/review'
 import SprintSaved from '../features/project/agile/modal/sprintSaved'
 import EditSprintRetrospective from '../features/project/agile/modal/editSprintRetrospective'
-
-// ✅ Existing imports
 import ApprovalNotesModal from '../features/timeTracker/components/modals/ApprovalNotesModal'
 import RejectionNotesModal from '../features/timeTracker/components/modals/RejectionNotesModal'
 import TemplateReady from '../features/projectTemplate/modal/templateReady'
-
-// ✅ New imports
 import DeleteTimeEntryModal from '../features/timeTracker/components/modals/DeleteTimeEntry'
 import EditTimeEntryModal from '../features/timeTracker/components/modals/EditTimeEntry'
+import CreateNewTeamModal from '../features/teams/components/modals/CreateNewTeamModal'
+import AddUserModal from '../features/teams/components/modals/AddUserModal'
+
+// ✅ New import
+import EditUserModal from '../features/teams/components/modals/EditUserModal'
 
 const GlobalModal = () => {
+  const modal = useSelector((state: RootState) => state.modal)
   const {
-    createAccountModal,
-    enterPriceSuccessModal,
-    uploadTimeLogModal,
-    reviewTimeLogModal,
-    uploadFailedModal,
-    uploadSuccessModal,
-    addTimeManualEntryModal,
-    submissionSentModal,
-    submissionApprovedModal,
-    submissionRejectedModal,
-    approvalNotesModal,
-    rejectionNotesModal,
-    templateReadyModal,
-    deleteTimeEntryModal,
-    editTimeEntryModal, // ✅ new
     agileSprintModal,
     agileSprintSuccessModal,
     editSprintRetrospectiveModal,
   } = useSelector((state: RootState) => state.modal)
 
-  if (createAccountModal) return <CreateAccount />
-  if (enterPriceSuccessModal) return <SuccessModal />
-  if (uploadTimeLogModal) return <UploadTimeLog />
-  if (reviewTimeLogModal) return <TimeLogPreview />
-  if (uploadFailedModal) return <UploadFailed />
-  if (uploadSuccessModal) return <UploadSuccessful />
-  if (addTimeManualEntryModal) return <AddManualEntryModal />
-  if (submissionSentModal) return <SubmissionSentModal />
-  if (submissionApprovedModal) return <SubmissionApprovedModal />
-  if (submissionRejectedModal) return <SubmissionRejectedModal />
-  if (approvalNotesModal) return <ApprovalNotesModal />
-  if (rejectionNotesModal) return <RejectionNotesModal />
-  if (templateReadyModal) return <TemplateReady />
-  if (deleteTimeEntryModal) return <DeleteTimeEntryModal />
-  if (editTimeEntryModal) return <EditTimeEntryModal /> // ✅ added
+  if (modal.createAccountModal) return <CreateAccount />
+  if (modal.enterPriceSuccessModal) return <SuccessModal />
+  if (modal.uploadTimeLogModal) return <UploadTimeLog />
+  if (modal.reviewTimeLogModal) return <TimeLogPreview />
+  if (modal.uploadFailedModal) return <UploadFailed />
+  if (modal.uploadSuccessModal) return <UploadSuccessful />
+  if (modal.addTimeManualEntryModal) return <AddManualEntryModal />
+  if (modal.submissionSentModal) return <SubmissionSentModal />
+  if (modal.submissionApprovedModal) return <SubmissionApprovedModal />
+  if (modal.submissionRejectedModal) return <SubmissionRejectedModal />
+  if (modal.approvalNotesModal) return <ApprovalNotesModal />
+  if (modal.rejectionNotesModal) return <RejectionNotesModal />
+  if (modal.templateReadyModal) return <TemplateReady />
+  if (modal.deleteTimeEntryModal) return <DeleteTimeEntryModal />
+  if (modal.editTimeEntryModal) return <EditTimeEntryModal />
+  if (modal.createTeamModal) return <CreateNewTeamModal />
+  if (modal.addUserModal) return <AddUserModal />
+  if (modal.editUserModal) return <EditUserModal /> // ✅ Added
   if (agileSprintModal) return <Review />
   if (agileSprintSuccessModal) return <SprintSaved /> // ✅ added
   if (editSprintRetrospectiveModal) return <EditSprintRetrospective /> // ✅ added
