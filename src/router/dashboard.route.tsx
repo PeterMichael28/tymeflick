@@ -47,6 +47,10 @@ import AddworkItem from '../features/project/agile/addworkItem'
 import SprintBoard from '../features/project/agile/sprintBoard'
 import Retrospective from '../features/project/agile/retrospective'
 import GrantChart from '../features/project/agile/grantChart'
+import TimeLog from '../features/project/agile/timeLog'
+import TeamMember from '../features/project/agile/teamMember'
+
+import InviteTeamMember from '../features/project/agile/inviteTeamMember'
 
 export const dashboardRoutes = [
   { path: '', element: <DashBoardIndex /> },
@@ -60,6 +64,8 @@ export const dashboardRoutes = [
       { path: 'sprint-board', element: <SprintBoard /> }, // sprint board page for agile project
       { path: 'retrospective', element: <Retrospective /> }, // retrospective page for agile project
       { path: 'grant-chart', element: <GrantChart /> }, // grant chart page for agile project
+      { path: 'time-log', element: <TimeLog /> },
+      { path: 'team-member', element: <TeamMember /> }, // team member page for agile project
     ],
   },
   {
@@ -85,6 +91,10 @@ export const dashboardRoutes = [
   {
     path: 'add-work-item',
     element: <AddworkItem />,
+  },
+  {
+    path: 'invite-team-member',
+    element: <InviteTeamMember />,
   },
   {
     path: 'create-project',
