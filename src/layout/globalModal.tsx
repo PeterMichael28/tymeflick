@@ -28,12 +28,23 @@ import AddClientModal from '../features/clients/modals/AddClientModal'
 import EditClientModal from '../features/clients/modals/EditClientModal'
 import DeleteClientModal from '../features/clients/modals/DeleteClientModal'
 
+import InvitationSent from '../features/project/agile/modal/invitationSent'
+import EditEpic from '../features/project/agile/modal/epic/EditEpic'
+import EditFeature from '../features/project/agile/modal/feature/EditFeature'
+import EditStory from '../features/project/agile/modal/story/editStory'
+import EditTask from '../features/project/agile/modal/task/editTask'
+
 const GlobalModal = () => {
   const modal = useSelector((state: RootState) => state.modal)
   const {
     agileSprintModal,
     agileSprintSuccessModal,
     editSprintRetrospectiveModal,
+    invitationSentModal,
+    editEpicModal,
+    editFeatureModal,
+    editStoryModal,
+    editTaskModal,
   } = useSelector((state: RootState) => state.modal)
 
   if (modal.createAccountModal) return <CreateAccount />
@@ -63,6 +74,13 @@ const GlobalModal = () => {
   if (agileSprintModal) return <Review />
   if (agileSprintSuccessModal) return <SprintSaved />
   if (editSprintRetrospectiveModal) return <EditSprintRetrospective />
+  if (agileSprintSuccessModal) return <SprintSaved />
+  if (editSprintRetrospectiveModal) return <EditSprintRetrospective />
+  if (invitationSentModal) return <InvitationSent />
+  if (editEpicModal) return <EditEpic />
+  if (editFeatureModal) return <EditFeature />
+  if (editStoryModal) return <EditStory />
+  if (editTaskModal) return <EditTask />
 
   return null
 }
