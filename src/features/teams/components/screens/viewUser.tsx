@@ -27,7 +27,7 @@ export default function ViewUserPage() {
             {/* Header */}
             <div className="flex items-center justify-between bg-white border border-gray-200 rounded-lg p-6 shadow-sm space-y-4">
                 <div className="flex items-center gap-2">
-                    <ArrowLeft className="w-5 h-5 text-gray-600" 
+                    <ArrowLeft className="w-5 h-5 text-gray-600 cursor-pointer" 
                     onClick={() => navigate("/teams")}
                     />
                     <h1 className="text-lg font-semibold text-gray-800">
@@ -59,7 +59,7 @@ export default function ViewUserPage() {
                     </div>
 
                     <button
-                        className="bg-primary hover:bg-green-600 text-white text-sm px-4 py-2 rounded-md font-medium transition flex justify-between items-center gap-2"
+                        className="bg-primary hover:bg-[#5bb13e] text-white text-sm px-4 py-2 rounded-md font-medium transition flex justify-between items-center gap-2"
                         onClick={() => dispatch(openEditUserModal())}
                     >
                         <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">

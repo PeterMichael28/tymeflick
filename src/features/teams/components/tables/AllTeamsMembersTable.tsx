@@ -105,17 +105,18 @@ export default function AllTeamsMembersTable() {
 
   return (
     <div className="overflow-x-auto w-full rounded-lg bg-white shadow-xs">
-      <table className="min-w-full border-collapse font-inter text-sm">
-        <thead className="bg-gray-50 text-xs text-gray-600 border-b border-gray-200 uppercase tracking-wide">
+      <table className="min-w-full border-collapse font-inter text-sm text-center">
+        <thead className="bg-[#F3F3F3] text-xs text-gray-600 border-b border-gray-200 uppercase tracking-wide">
           <tr>
-            <th className="p-3 text-left font-semibold">USER</th>
-            <th className="p-3 text-left font-semibold">ROLE</th>
-            <th className="p-3 text-left font-semibold">TEAM</th>
-            <th className="p-3 text-left font-semibold">STATUS</th>
-            <th className="p-3 text-left font-semibold">TOTAL TIME</th>
-            <th className="p-3 text-left font-semibold">LAST LOGIN</th>
+            <th className="p-3 font-semibold text-center">USER</th>
+            <th className="p-3 font-semibold text-center">ROLE</th>
+            <th className="p-3 font-semibold text-center">TEAM</th>
+            <th className="p-3 font-semibold text-center">STATUS</th>
+            <th className="p-3 font-semibold text-center">TOTAL TIME</th>
+            <th className="p-3 font-semibold text-center">LAST LOGIN</th>
           </tr>
         </thead>
+
 
         <tbody>
           {members.map((member, index) => (
@@ -126,14 +127,14 @@ export default function AllTeamsMembersTable() {
               }}
               className="border-b border-gray-100 hover:bg-gray-50 transition text-gray-800 relative"
             >
-              <td className="p-3">
+              <td className="p-3 text-center">
                 <div>
                   <p className="font-medium">{member.user}</p>
                   <p className="text-xs text-gray-500">{member.email}</p>
                 </div>
               </td>
 
-              <td className="p-3">
+              <td className="p-3 text-center">
                 <span
                   className={`px-3 py-1 text-xs font-medium rounded-full ${member.roleColor}`}
                 >
@@ -141,9 +142,9 @@ export default function AllTeamsMembersTable() {
                 </span>
               </td>
 
-              <td className="p-3">{member.team}</td>
+              <td className="p-3 text-center">{member.team}</td>
 
-              <td className="p-3">
+              <td className="p-3 text-center">
                 <span
                   className={`px-3 py-1 text-xs font-medium rounded-full ${member.statusColor}`}
                 >
@@ -151,8 +152,8 @@ export default function AllTeamsMembersTable() {
                 </span>
               </td>
 
-              <td className="p-3">{member.totalTime}</td>
-              <td className="p-3 flex justify-between items-center">
+              <td className="p-3 text-center">{member.totalTime}</td>
+              <td className="p-3 flex justify-center items-center gap-2 text-center">
                 {member.lastLogin}
                 <MoreVertical
                   className="w-5 h-5 text-gray-600 cursor-pointer"
@@ -170,9 +171,8 @@ export default function AllTeamsMembersTable() {
 
                     {/* Menu */}
                     <div
-                      className={`absolute right-6 ${
-                        dropdownPosition === "up" ? "bottom-8" : "top-8"
-                      } bg-white border border-gray-200 rounded-lg shadow-lg w-36 z-20`}
+                      className={`absolute right-6 ${dropdownPosition === "up" ? "bottom-8" : "top-8"
+                        } bg-white border border-gray-200 rounded-lg shadow-lg w-36 z-20`}
                     >
                       <ul className="text-sm text-gray-700 divide-y divide-gray-100">
                         <li className="px-4 py-2 hover:bg-gray-50 cursor-pointer"

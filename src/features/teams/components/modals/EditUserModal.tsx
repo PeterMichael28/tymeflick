@@ -89,7 +89,7 @@ export default function EditUserModal() {
               <input
                 type="checkbox"
                 id="welcome"
-                className="rounded border-gray-300 text-green-500 focus:ring-green-500"
+                className="accent-[#5bb13e]"
               />
               <label htmlFor="welcome" className="text-sm text-gray-700">
                 Send welcome email
@@ -100,7 +100,7 @@ export default function EditUserModal() {
             <div className="flex flex-col gap-3 pt-3">
               <button
                 type="submit"
-                className="bg-green-500 hover:bg-green-600 text-white w-full py-2 rounded-md text-sm font-medium transition"
+                className="bg-primary hover:bg-[#5bb13e] text-white w-full py-2 rounded-md text-sm font-medium transition"
               >
                 Save Changes
               </button>

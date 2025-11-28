@@ -86,17 +86,17 @@ export default function WeeklyTimeLogTable() {
   ]
 
   return (
-    <div className="rounded-lg border border-gray-200 bg-white shadow-sm">
+    <div className="rounded-lg bg-white">
       <table className="font-inter min-w-full border-collapse">
-        <thead className="border-b border-gray-200 bg-gray-50 text-xs text-gray-600">
+        <thead className="border-b border-gray-200 bg-[#F3F3F3] text-xs text-gray-600">
           <tr>
-            <th className="p-3 text-left font-semibold">DATE</th>
-            <th className="p-3 text-left font-semibold">PROJECT</th>
-            <th className="p-3 text-left font-semibold">CLIENT</th>
-            <th className="p-3 text-left font-semibold">DESCRIPTION</th>
-            <th className="p-3 text-left font-semibold">HOURS</th>
-            <th className="p-3 text-left font-semibold">BILLABLE</th>
-            <th className="p-3 text-left font-semibold">RATE</th>
+            <th className="p-3 text-center font-semibold">DATE</th>
+            <th className="p-3 text-center font-semibold">PROJECT</th>
+            <th className="p-3 text-center font-semibold">CLIENT</th>
+            <th className="p-3 text-center font-semibold">DESCRIPTION</th>
+            <th className="p-3 text-center font-semibold">HOURS</th>
+            <th className="p-3 text-center font-semibold">BILLABLE</th>
+            <th className="p-3 text-center font-semibold">RATE</th>
           </tr>
         </thead>
 
@@ -106,12 +106,12 @@ export default function WeeklyTimeLogTable() {
               key={index}
               className="border-b border-gray-100 text-sm text-gray-800 hover:bg-gray-50"
             >
-              <td className="p-3">{entry.date}</td>
-              <td className="p-3">{entry.project}</td>
-              <td className="p-3">{entry.client}</td>
-              <td className="p-3">{entry.description}</td>
-              <td className="p-3">{entry.hours}</td>
-              <td className="p-3">
+              <td className="p-3 text-center">{entry.date}</td>
+              <td className="p-3 text-center">{entry.project}</td>
+              <td className="p-3 text-center">{entry.client}</td>
+              <td className="p-3 text-center">{entry.description}</td>
+              <td className="p-3 text-center">{entry.hours}</td>
+              <td className="p-3 text-center">
                 {entry.billable ? (
                   <span className="rounded border border-green-100 bg-green-50 px-3 py-1 text-xs font-medium text-green-700">
                     Billable

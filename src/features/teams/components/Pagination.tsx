@@ -15,7 +15,7 @@ export default function Pagination() {
       <div className="flex items-center gap-2 text-sm text-gray-500 justify-center flex-grow">
         <button className="hover:text-gray-900">1</button>
         <button className="hover:text-gray-900">2</button>
-        <button className="border border-green-500 text-green-600 px-2 py-1 rounded-md">
+        <button className="border border-green-500 text-primary px-2 py-1 rounded-md">
           3
         </button>
         <span className="text-gray-400">...</span>

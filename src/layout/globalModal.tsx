@@ -1,5 +1,6 @@
 import { useSelector } from 'react-redux'
 import { type RootState } from '../redux/store'
+
 import CreateAccount from '../features/login/modal/createAccount'
 import SuccessModal from '../features/signUp/enterpriseAccount/ui/successModal'
 import UploadTimeLog from '../features/dashboard/components/modal/uploadTimeLog'
@@ -20,9 +21,12 @@ import DeleteTimeEntryModal from '../features/timeTracker/components/modals/Dele
 import EditTimeEntryModal from '../features/timeTracker/components/modals/EditTimeEntry'
 import CreateNewTeamModal from '../features/teams/components/modals/CreateNewTeamModal'
 import AddUserModal from '../features/teams/components/modals/AddUserModal'
-
-// ✅ New import
 import EditUserModal from '../features/teams/components/modals/EditUserModal'
+
+// ✅ New Client modals
+import AddClientModal from '../features/clients/modals/AddClientModal'
+import EditClientModal from '../features/clients/modals/EditClientModal'
+import DeleteClientModal from '../features/clients/modals/DeleteClientModal'
 
 const GlobalModal = () => {
   const modal = useSelector((state: RootState) => state.modal)
@@ -49,10 +53,16 @@ const GlobalModal = () => {
   if (modal.editTimeEntryModal) return <EditTimeEntryModal />
   if (modal.createTeamModal) return <CreateNewTeamModal />
   if (modal.addUserModal) return <AddUserModal />
-  if (modal.editUserModal) return <EditUserModal /> // ✅ Added
+  if (modal.editUserModal) return <EditUserModal />
+
+  // ✅ Client modals
+  if (modal.addClientModal) return <AddClientModal />
+  if (modal.editClientModal) return <EditClientModal />
+  if (modal.deleteClientModal) return <DeleteClientModal />
+
   if (agileSprintModal) return <Review />
-  if (agileSprintSuccessModal) return <SprintSaved /> // ✅ added
-  if (editSprintRetrospectiveModal) return <EditSprintRetrospective /> // ✅ added
+  if (agileSprintSuccessModal) return <SprintSaved />
+  if (editSprintRetrospectiveModal) return <EditSprintRetrospective />
 
   return null
 }

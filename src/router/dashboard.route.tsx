@@ -48,6 +48,10 @@ import SprintBoard from '../features/project/agile/sprintBoard'
 import Retrospective from '../features/project/agile/retrospective'
 // import GrantChart from '../features/project/agile/grantChart'
 
+// Clients routes
+import ClientsPage from '../features/clients'
+import ViewClientDetails from '../features/clients/screens/viewClientDetailsPage'
+
 export const dashboardRoutes = [
   { path: '', element: <DashBoardIndex /> },
   { path: 'project', element: <Project /> },
@@ -132,4 +136,8 @@ export const dashboardRoutes = [
   { path: 'teams', element: <TeamsPage /> },
   { path: 'teams/teamSummary', element: <TeamSummary /> },
   { path: 'teams/viewUser', element: <ViewUserPage /> },
+
+  // Clients routes
+  { path: 'clients', element: <ClientsPage /> },
+  { path: 'clients/viewClientDetails', element: <ViewClientDetails /> },
 ]
