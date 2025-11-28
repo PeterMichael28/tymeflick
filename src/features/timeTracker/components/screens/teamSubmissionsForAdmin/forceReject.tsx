@@ -4,14 +4,17 @@ import { useDispatch } from 'react-redux'
 import {
   ArrowLeft,
   LockKeyhole,
-  XCircle,
   FileText,
   CheckCircle2,
 } from 'lucide-react'
 import { openRejectionNotesModal } from '../../../../../redux/slice/modalSlice'
 import SubmitWeeklyTimeLogTable from '../../tables/WeeklyTimeLogTable'
+import { RejectButton } from '../../ui/TeamSubmissionButtons'
+import Hero from '../../../../../components/ui/hero'
+import { useNavigate } from 'react-router-dom'
 
 const ForceRejectAdmin = () => {
+  const navigate = useNavigate()
   const dispatch = useDispatch()
 
   const handleReject = () => {
@@ -19,21 +22,24 @@ const ForceRejectAdmin = () => {
   }
 
   return (
-    <div className="font-inter space-y-8 p-6">
+    <div className="font-inter space-y-8 p-3">
+      <Hero
+        title=""
+        description=""
+      />
+
       {/* Header Section */}
-      <div className="flex items-start justify-between rounded-lg border border-gray-200 bg-gray-50 p-4">
+      <div className="flex items-start justify-between rounded-lg bg-white p-4">
         <div>
           <div className="mb-1 flex items-center gap-2">
-            <ArrowLeft className="h-5 w-5 text-gray-700" />
+            <ArrowLeft className="h-5 w-5 text-gray-700 cursor-pointer" onClick={() => navigate('/teamSubmissionForAdmin')} />
             <h2 className="font-semibold text-gray-900">
               Sarah Bello – June 24–30
             </h2>
           </div>
-          <p className="text-sm text-gray-700">Department: Engineering</p>
-          <p className="text-sm text-gray-700">Project Lead: Alex Johnson</p>
-          <p className="text-sm text-gray-700">
-            Submitted: Jun 30, 2025, 05:30 PM
-          </p>
+          <p className="text-sm text-gray-700 pl-7">Department: Engineering</p>
+          <p className="text-sm text-gray-700 pl-7">Project Lead: Alex Johnson</p>
+          <p className="text-sm text-gray-700 pl-7">Submitted: Jun 30, 2025, 05:30 PM</p>
         </div>
         <span className="h-fit rounded-full border border-green-300 px-3 py-1 text-sm text-green-600">
           Approved
@@ -45,7 +51,7 @@ const ForceRejectAdmin = () => {
         <SubmitWeeklyTimeLogTable />
 
         {/* Summary & Actions */}
-        <div className="mt-5 flex items-center justify-between">
+        <div className="flex flex-col items-left justify-left gap-3 rounded-b-lg bg-white px-6 py-4 text-sm">
           <p className="font-semibold text-gray-700">
             Total hours: <span className="font-normal">35 hours</span>
           </p>
@@ -53,18 +59,13 @@ const ForceRejectAdmin = () => {
             <button className="flex items-center gap-1 rounded-md border border-yellow-400 px-3 py-1 text-sm text-yellow-600 hover:bg-yellow-50">
               <LockKeyhole className="h-4 w-4" /> Unlock Week
             </button>
-            <button
-              onClick={handleReject}
-              className="flex items-center gap-1 rounded-md border border-red-400 px-3 py-1 text-sm text-red-600 hover:bg-red-50"
-            >
-              <XCircle className="h-4 w-4" /> Force Reject
-            </button>
+            <RejectButton onClick={handleReject} isAdmin />
           </div>
         </div>
       </div>
 
       {/* Activity Timeline */}
-      <div className="rounded-lg border border-gray-200 bg-gray-50 p-4">
+      <div className="mb-4 rounded-lg border-l-4 border-blue-500 bg-white p-4">
         <h3 className="mb-3 font-semibold text-gray-800">Activity Timeline</h3>
         <div className="space-y-4">
           <div className="flex items-start gap-3">

@@ -36,7 +36,12 @@ interface ModalSlice {
   // ✅ New modals
   createTeamModal: boolean
   addUserModal: boolean
-  editUserModal: boolean // ✅ Added
+  editUserModal: boolean
+
+  // ✅ Client modals
+  addClientModal: boolean
+  editClientModal: boolean
+  deleteClientModal: boolean
 
   agileSprintModal: boolean
   agileSprintSuccessModal: boolean
@@ -68,10 +73,16 @@ const initialState: ModalSlice = {
   templateReadyModal: false,
   templateText: '',
 
-  // ✅ new
+  // ✅ Existing modals
   createTeamModal: false,
   addUserModal: false,
-  editUserModal: false, // ✅ Added
+  editUserModal: false,
+
+  // ✅ New client modals
+  addClientModal: false,
+  editClientModal: false,
+  deleteClientModal: false,
+
   agileSprintModal: false,
   agileSprintSuccessModal: false,
   editSprintRetrospectiveModal: false,
@@ -114,10 +125,7 @@ const modalSlice = createSlice({
     openEditTimeEntryModal: (state) => { state.editTimeEntryModal = true },
     closeEditTimeEntryModal: (state) => { state.editTimeEntryModal = false },
 
-    openAddTimeManualEntryModal: (
-      state,
-      action: PayloadAction<TimeEntryPayload | null>
-    ) => {
+    openAddTimeManualEntryModal: (state, action: PayloadAction<TimeEntryPayload | null>) => {
       state.addTimeManualEntryModal = true
       state.selectedManualTimeEntry = action.payload
     },
@@ -150,35 +158,35 @@ const modalSlice = createSlice({
     },
     closeTemplateReadyModal: (state) => { state.templateReadyModal = false },
 
-    // ✅ Create Team Modal
+    // ✅ Team modals
     openCreateTeamModal: (state) => { state.createTeamModal = true },
     closeCreateTeamModal: (state) => { state.createTeamModal = false },
 
-    // ✅ Add User Modal
     openAddUserModal: (state) => { state.addUserModal = true },
     closeAddUserModal: (state) => { state.addUserModal = false },
 
-    // ✅ Edit User Modal
     openEditUserModal: (state) => { state.editUserModal = true },
     closeEditUserModal: (state) => { state.editUserModal = false },
-    openAgileSprintModal: (state) => {
-      state.agileSprintModal = true
-    },
-    closeAgileSprintModal: (state) => {
-      state.agileSprintModal = false
-    },
-    openAgileSprintSuccessModal: (state) => {
-      state.agileSprintSuccessModal = true
-    },
-    closeAgileSprintSuccessModal: (state) => {
-      state.agileSprintSuccessModal = false
-    },
-    openEditSprintRetrospectiveModal: (state) => {
-      state.editSprintRetrospectiveModal = true
-    },
-    closeEditSprintRetrospectiveModal: (state) => {
-      state.editSprintRetrospectiveModal = false
-    },
+
+    // ✅ Client modals
+    openAddClientModal: (state) => { state.addClientModal = true },
+    closeAddClientModal: (state) => { state.addClientModal = false },
+
+    openEditClientModal: (state) => { state.editClientModal = true },
+    closeEditClientModal: (state) => { state.editClientModal = false },
+
+    openDeleteClientModal: (state) => { state.deleteClientModal = true },
+    closeDeleteClientModal: (state) => { state.deleteClientModal = false },
+
+    // Agile-related
+    openAgileSprintModal: (state) => { state.agileSprintModal = true },
+    closeAgileSprintModal: (state) => { state.agileSprintModal = false },
+
+    openAgileSprintSuccessModal: (state) => { state.agileSprintSuccessModal = true },
+    closeAgileSprintSuccessModal: (state) => { state.agileSprintSuccessModal = false },
+
+    openEditSprintRetrospectiveModal: (state) => { state.editSprintRetrospectiveModal = true },
+    closeEditSprintRetrospectiveModal: (state) => { state.editSprintRetrospectiveModal = false },
     openInvitationSentModal: (state) => {
       state.invitationSentModal = true
     },
@@ -248,7 +256,16 @@ export const {
   openAddUserModal,
   closeAddUserModal,
   openEditUserModal,
-  closeEditUserModal, // ✅ Added
+  closeEditUserModal,
+
+  // ✅ Client modals
+  openAddClientModal,
+  closeAddClientModal,
+  openEditClientModal,
+  closeEditClientModal,
+  openDeleteClientModal,
+  closeDeleteClientModal,
+
   openAgileSprintModal,
   closeAgileSprintModal,
   openAgileSprintSuccessModal,

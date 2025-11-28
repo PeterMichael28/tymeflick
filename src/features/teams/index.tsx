@@ -45,15 +45,16 @@ export default function TeamsPage() {
             </div>
 
             {/* Date Picker */}
-            <div className="relative bg-white rounded-md p-1">
+            <div className="relative bg-white rounded-md p-1 flex items-center justify-between w-60 border border-gray-200">
               <input
                 type="text"
                 value="Mon Jun 02 2025 - Mon Jun 02 2025"
                 readOnly
-                className="rounded-md pr-5 py-2 text-xs w-60 focus:outline-none focus:ring-1 focus:ring-green-500"
+                className="bg-transparent text-xs text-gray-800 focus:outline-none px-3 py-2 w-full"
               />
-              <Calendar className="absolute right-5 top-2.5 w-5 h-4 text-gray-400" />
+              <Calendar className="w-4 h-4 text-gray-800 mr-3" />
             </div>
+
 
             {/* Add Team Button */}
             <button
@@ -95,11 +96,12 @@ export default function TeamsPage() {
             <div className="relative bg-white rounded-md">
               <button
                 onClick={() => setFilterOpen(!filterOpen)}
-                className="flex items-center gap-1 border border-gray-300 px-4 py-2 rounded-md text-sm text-gray-600 hover:bg-gray-50 transition"
+                className="flex items-center gap-2 border border-gray-300 px-4 py-2 rounded-md text-sm text-gray-600 hover:bg-gray-50 transition"
               >
+                <span>Filter</span>
                 <Filter className="w-4 h-4" />
-                Filter
               </button>
+
 
               {/* Filter Modal (appears next to the icon) */}
               {filterOpen && (

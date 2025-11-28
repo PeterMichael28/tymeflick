@@ -67,7 +67,7 @@ export default function AddUserModal() {
 
           {/* Checkbox */}
           <label className="flex items-center space-x-2 text-sm text-gray-700">
-            <input type="checkbox" className="w-4 h-4 rounded border-gray-300" />
+            <input type="checkbox" className="accent-[#5bb13e]" />
             <span>Send welcome email</span>
           </label>
 

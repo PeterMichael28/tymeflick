@@ -44,15 +44,15 @@ export default function TeamsOverviewTable() {
 
   return (
     <div className="overflow-x-auto w-full rounded-lg bg-white shadow-xs">
-      <table className="min-w-full border-collapse font-inter text-sm">
-        <thead className="bg-gray-50 text-xs text-gray-600 border-b border-gray-200 uppercase tracking-wide">
+      <table className="min-w-full border-collapse font-inter text-sm text-center">
+        <thead className="bg-[#F3F3F3] text-xs text-gray-600 border-b border-gray-200 uppercase tracking-wide">
           <tr>
-            <th className="p-3 text-left font-semibold">TEAMS</th>
-            <th className="p-3 text-left font-semibold">MANAGER</th>
-            <th className="p-3 text-left font-semibold">MEMBER</th>
-            <th className="p-3 text-left font-semibold">ACTIVE PROJECTS</th>
-            <th className="p-3 text-left font-semibold">TOTAL HOURS</th>
-            <th className="p-3 text-left font-semibold">ACTION</th>
+            <th className="p-3 text-center font-semibold">TEAMS</th>
+            <th className="p-3 text-center font-semibold">MANAGER</th>
+            <th className="p-3 text-center font-semibold">MEMBER</th>
+            <th className="p-3 text-center font-semibold">ACTIVE PROJECTS</th>
+            <th className="p-3 text-center font-semibold">TOTAL HOURS</th>
+            <th className="p-3 text-center font-semibold">ACTION</th>
           </tr>
         </thead>
 
@@ -64,25 +64,26 @@ export default function TeamsOverviewTable() {
             >
               {/* TEAM INFO */}
               <td className="p-3">
-                <div className="flex items-center gap-3">
+                <div className="flex items-center justify-center gap-3">
                   <div
                     className={`w-8 h-8 flex items-center justify-center rounded-md text-white font-semibold ${team.color}`}
                   >
                     {team.id}
                   </div>
-                  <div>
+                  <div className="text-center">
                     <p className="font-medium text-gray-900">{team.name}</p>
                     <p className="text-xs text-gray-500">{team.description}</p>
                   </div>
                 </div>
               </td>
 
-              <td className="p-3">{team.manager}</td>
-              <td className="p-3">{team.members}</td>
-              <td className="p-3">{team.projects}</td>
-              <td className="p-3">{team.hours}</td>
 
-              <td className="p-3">
+              <td className="p-3 text-center">{team.manager}</td>
+              <td className="p-3 text-center">{team.members}</td>
+              <td className="p-3 text-center">{team.projects}</td>
+              <td className="p-3 text-center">{team.hours}</td>
+
+              <td className="p-3 text-center">
                 <button
                   onClick={() => handleViewClick()}
                   className="bg-primary hover:bg-[#5bb13e] text-white px-4 py-1 rounded-md text-sm font-medium transition"
