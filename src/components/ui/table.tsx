@@ -10,13 +10,15 @@ export type Column<T> = {
 type TableProps<T> = {
   columns: Column<T>[]
   data: T[]
-  gridTemplate?: string // <--- NEW
+  gridTemplate?: string
+  onRowClick?: (row: T) => void
 }
 
 export default function Table<T>({
   columns,
   data,
   gridTemplate,
+  onRowClick,
 }: TableProps<T>) {
   const defaultTemplate = `repeat(${columns.length}, 1fr)`
 
@@ -46,6 +48,7 @@ export default function Table<T>({
       {data.map((row, rowIndex) => (
         <div
           key={rowIndex}
+          onClick={() => onRowClick?.(row)}
           className="grid items-center border-b border-[#F2F0F5] py-3 text-sm transition hover:bg-gray-50"
           style={{ gridTemplateColumns: gridTemplate || defaultTemplate }}
         >

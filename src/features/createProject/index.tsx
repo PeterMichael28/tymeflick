@@ -18,6 +18,7 @@ const CreateProject = () => {
         'Flexible Scheduling',
       ],
       useTemplateLink: '/create-project/agile',
+      viewDetailsLink: '/project-template/agile',
     },
     {
       title: 'Waterfall Project Template',
@@ -32,6 +33,7 @@ const CreateProject = () => {
         'Structured Planning',
       ],
       useTemplateLink: '/create-project/waterfall',
+      viewDetailsLink: '/project-template/waterfall',
     },
     {
       title: 'Hybrid Project Template',
@@ -46,6 +48,7 @@ const CreateProject = () => {
         'Flexible Delivery',
       ],
       useTemplateLink: '/create-project/hybrid',
+      viewDetailsLink: '/project-template/hybrid',
     },
   ]
 

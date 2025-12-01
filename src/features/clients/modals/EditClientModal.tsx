@@ -1,18 +1,18 @@
-import { useDispatch } from "react-redux";
-import { closeEditClientModal } from "../../../redux/slice/modalSlice";
-import { X } from "lucide-react";
+import { useDispatch } from 'react-redux'
+import { closeEditClientModal } from '../../../redux/slice/modalSlice'
+import { X } from 'lucide-react'
 
 export default function EditClientModal() {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/30 backdrop-blur-2xs">
+    <div className="backdrop-blur-2xs fixed inset-0 z-50 flex items-center justify-center bg-black/30">
       <div className="w-full max-w-md rounded-lg bg-white p-6 shadow-lg">
         {/* Header */}
-        <div className="flex items-center justify-between mb-4">
+        <div className="mb-4 flex items-center justify-between">
           <h2 className="text-lg font-semibold text-gray-800">Edit Client</h2>
           <button onClick={() => dispatch(closeEditClientModal())}>
-            <X className="w-5 h-5 text-gray-500 hover:text-gray-700" />
+            <X className="h-5 w-5 text-gray-500 hover:text-gray-700" />
           </button>
         </div>
 
@@ -30,7 +30,9 @@ export default function EditClientModal() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700">Phone Number</label>
+            <label className="block text-sm font-medium text-gray-700">
+              Phone Number
+            </label>
             <input
               type="text"
               value="(555) 123-4567"
@@ -39,7 +41,9 @@ export default function EditClientModal() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700">Email</label>
+            <label className="block text-sm font-medium text-gray-700">
+              Email
+            </label>
             <input
               type="email"
               value="contact@acme.com"
@@ -49,7 +53,7 @@ export default function EditClientModal() {
 
           <button
             type="button"
-            className="w-full rounded-md bg-primary py-2 text-sm font-semibold text-white hover:bg-green-700"
+            className="bg-primary w-full rounded-md py-2 text-sm font-semibold text-white hover:bg-green-700"
           >
             Save Changes
           </button>
@@ -64,5 +68,5 @@ export default function EditClientModal() {
         </form>
       </div>
     </div>
-  );
+  )
 }

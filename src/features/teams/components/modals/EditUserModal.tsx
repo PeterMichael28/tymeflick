@@ -1,31 +1,31 @@
-"use client";
+'use client'
 
-import { X } from "lucide-react";
-import { useDispatch } from "react-redux";
-import { closeEditUserModal } from "../../../../redux/slice/modalSlice";
+import { X } from 'lucide-react'
+import { useDispatch } from 'react-redux'
+import { closeEditUserModal } from '../../../../redux/slice/modalSlice'
 
 export default function EditUserModal() {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
   return (
     <>
       {/* Overlay */}
       <div
-        className="fixed inset-0 bg-black/30 backdrop-blur-2xs z-40"
+        className="backdrop-blur-2xs fixed inset-0 z-40 bg-black/30"
         onClick={() => dispatch(closeEditUserModal())}
       ></div>
 
       {/* Modal */}
-      <div className="fixed inset-0 flex items-center justify-center z-50 p-4">
-        <div className="bg-white rounded-lg shadow-lg w-full max-w-md md:max-w-lg relative p-6 space-y-6">
+      <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+        <div className="relative w-full max-w-md space-y-6 rounded-lg bg-white p-6 shadow-lg md:max-w-lg">
           {/* Header */}
-          <div className="flex justify-between items-center border-b pb-3">
+          <div className="flex items-center justify-between border-b pb-3">
             <h2 className="text-lg font-semibold text-gray-800">Edit User</h2>
             <button
               onClick={() => dispatch(closeEditUserModal())}
-              className="text-gray-400 hover:text-gray-600 transition"
+              className="text-gray-400 transition hover:text-gray-600"
             >
-              <X className="w-5 h-5" />
+              <X className="h-5 w-5" />
             </button>
           </div>
 
@@ -39,7 +39,7 @@ export default function EditUserModal() {
               <input
                 type="text"
                 placeholder="Bassey Bassey"
-                className="mt-1 w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-green-500"
+                className="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:ring-1 focus:ring-green-500 focus:outline-none"
               />
             </div>
 
@@ -51,14 +51,14 @@ export default function EditUserModal() {
               <input
                 type="email"
                 placeholder="Bassey.Bassey@company.com"
-                className="mt-1 w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-green-500"
+                className="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:ring-1 focus:ring-green-500 focus:outline-none"
               />
             </div>
 
             {/* Role */}
             <div>
               <label className="text-sm font-medium text-gray-700">Role</label>
-              <select className="mt-1 w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-green-500">
+              <select className="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:ring-1 focus:ring-green-500 focus:outline-none">
                 <option>User</option>
                 <option>Manager</option>
                 <option>Admin</option>
@@ -68,7 +68,7 @@ export default function EditUserModal() {
             {/* Team */}
             <div>
               <label className="text-sm font-medium text-gray-700">Team</label>
-              <select className="mt-1 w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-green-500">
+              <select className="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:ring-1 focus:ring-green-500 focus:outline-none">
                 <option>Development Team</option>
                 <option>Marketing Team</option>
                 <option>Design Team</option>
@@ -77,8 +77,10 @@ export default function EditUserModal() {
 
             {/* Status */}
             <div>
-              <label className="text-sm font-medium text-gray-700">Status</label>
-              <select className="mt-1 w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-green-500">
+              <label className="text-sm font-medium text-gray-700">
+                Status
+              </label>
+              <select className="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:ring-1 focus:ring-green-500 focus:outline-none">
                 <option>Active</option>
                 <option>Inactive</option>
               </select>
@@ -100,14 +102,14 @@ export default function EditUserModal() {
             <div className="flex flex-col gap-3 pt-3">
               <button
                 type="submit"
-                className="bg-primary hover:bg-[#5bb13e] text-white w-full py-2 rounded-md text-sm font-medium transition"
+                className="bg-primary w-full rounded-md py-2 text-sm font-medium text-white transition hover:bg-[#5bb13e]"
               >
                 Save Changes
               </button>
               <button
                 type="button"
                 onClick={() => dispatch(closeEditUserModal())}
-                className="border border-gray-300 text-gray-700 w-full py-2 rounded-md text-sm font-medium hover:bg-gray-50 transition"
+                className="w-full rounded-md border border-gray-300 py-2 text-sm font-medium text-gray-700 transition hover:bg-gray-50"
               >
                 Cancel
               </button>
@@ -116,5 +118,5 @@ export default function EditUserModal() {
         </div>
       </div>
     </>
-  );
+  )
 }

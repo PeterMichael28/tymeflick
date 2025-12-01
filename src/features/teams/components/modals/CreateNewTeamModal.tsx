@@ -1,23 +1,25 @@
-"use client";
+'use client'
 
-import { useDispatch } from "react-redux";
-import { X } from "lucide-react";
-import { closeCreateTeamModal } from "../../../../redux/slice/modalSlice";
+import { useDispatch } from 'react-redux'
+import { X } from 'lucide-react'
+import { closeCreateTeamModal } from '../../../../redux/slice/modalSlice'
 
 export default function CreateNewTeamModal() {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-black/30 backdrop-blur-2xs z-50">
-      <div className="bg-white rounded-xl w-full max-w-md p-6 shadow-xl relative">
+    <div className="backdrop-blur-2xs fixed inset-0 z-50 flex items-center justify-center bg-black/30">
+      <div className="relative w-full max-w-md rounded-xl bg-white p-6 shadow-xl">
         {/* Header */}
-        <div className="flex justify-between items-center mb-4">
-          <h2 className="text-xl font-semibold text-gray-800">Create New Team</h2>
+        <div className="mb-4 flex items-center justify-between">
+          <h2 className="text-xl font-semibold text-gray-800">
+            Create New Team
+          </h2>
           <button
             onClick={() => dispatch(closeCreateTeamModal())}
-            className="text-gray-500 hover:text-gray-700 transition"
+            className="text-gray-500 transition hover:text-gray-700"
           >
-            <X className="w-5 h-5" />
+            <X className="h-5 w-5" />
           </button>
         </div>
 
@@ -30,7 +32,7 @@ export default function CreateNewTeamModal() {
             <input
               type="text"
               placeholder="Enter client name"
-              className="w-full border border-gray-300 rounded-md px-3 py-2 mt-1 text-sm focus:ring-2 focus:ring-green-500 outline-none"
+              className="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-green-500"
             />
           </div>
 
@@ -40,15 +42,13 @@ export default function CreateNewTeamModal() {
             </label>
             <textarea
               placeholder="Enter project name"
-              className="w-full border border-gray-300 rounded-md px-3 py-2 mt-1 text-sm h-20 resize-none focus:ring-2 focus:ring-green-500 outline-none"
+              className="mt-1 h-20 w-full resize-none rounded-md border border-gray-300 px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-green-500"
             />
           </div>
 
           <div>
             <label className="text-sm font-medium text-gray-700">Manager</label>
-            <select
-              className="w-full border border-gray-300 rounded-md px-3 py-2 mt-1 text-sm focus:ring-2 focus:ring-green-500 outline-none"
-            >
+            <select className="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-green-500">
               <option value="">Select Manager</option>
               <option>Bassey Bassey</option>
               <option>Sarah Johnson</option>
@@ -58,16 +58,23 @@ export default function CreateNewTeamModal() {
 
           {/* Team Colors */}
           <div>
-            <label className="text-sm font-medium text-gray-700">Team Colour Tag</label>
-            <div className="flex items-center gap-3 mt-2">
-              {["bg-primary", "bg-green-500", "bg-purple-500", "bg-blue-500", "bg-red-500", "bg-yellow-400"].map(
-                (color, i) => (
-                  <div
-                    key={i}
-                    className={`w-6 h-6 rounded-full ${color} cursor-pointer border border-gray-200 hover:scale-110 transition`}
-                  ></div>
-                )
-              )}
+            <label className="text-sm font-medium text-gray-700">
+              Team Colour Tag
+            </label>
+            <div className="mt-2 flex items-center gap-3">
+              {[
+                'bg-primary',
+                'bg-green-500',
+                'bg-purple-500',
+                'bg-blue-500',
+                'bg-red-500',
+                'bg-yellow-400',
+              ].map((color, i) => (
+                <div
+                  key={i}
+                  className={`h-6 w-6 rounded-full ${color} cursor-pointer border border-gray-200 transition hover:scale-110`}
+                ></div>
+              ))}
             </div>
           </div>
 
@@ -78,17 +85,17 @@ export default function CreateNewTeamModal() {
           </label>
 
           {/* Buttons */}
-          <div className="pt-2 space-y-2">
+          <div className="space-y-2 pt-2">
             <button
               type="button"
-              className="w-full bg-primary hover:bg-[#5bb13e] text-white py-2 rounded-md font-medium transition"
+              className="bg-primary w-full rounded-md py-2 font-medium text-white transition hover:bg-[#5bb13e]"
             >
               Send Invitation
             </button>
             <button
               type="button"
               onClick={() => dispatch(closeCreateTeamModal())}
-              className="w-full text-gray-600 hover:text-gray-800 font-medium py-2 rounded-md transition"
+              className="w-full rounded-md py-2 font-medium text-gray-600 transition hover:text-gray-800"
             >
               Cancel
             </button>
@@ -96,5 +103,5 @@ export default function CreateNewTeamModal() {
         </form>
       </div>
     </div>
-  );
+  )
 }

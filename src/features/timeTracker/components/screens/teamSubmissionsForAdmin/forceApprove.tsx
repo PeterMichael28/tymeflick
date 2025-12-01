@@ -1,12 +1,7 @@
 'use client'
 
 import { useDispatch } from 'react-redux'
-import {
-  ArrowLeft,
-  LockKeyhole,
-  FileText,
-  CheckCircle2,
-} from 'lucide-react'
+import { ArrowLeft, LockKeyhole, FileText, CheckCircle2 } from 'lucide-react'
 import { openApprovalNotesModal } from '../../../../../redux/slice/modalSlice'
 import SubmitWeeklyTimeLogTable from '../../tables/WeeklyTimeLogTable'
 import { ApproveButton } from '../../ui/TeamSubmissionButtons'
@@ -23,26 +18,32 @@ const ForceApproveAdmin = () => {
 
   return (
     <div className="font-inter space-y-8 p-6">
-      <Hero
-        title=""
-        description=""
-      />
+      <Hero title="" description="" />
 
-      <div className="bg-white p-4 rounded-lg">
+      <div className="rounded-lg bg-white p-4">
         {/* Header Section */}
         <div className="flex items-start justify-between rounded-lg bg-white p-4">
           <div>
             <div className="mb-1 flex items-center gap-2">
-              <ArrowLeft className="h-5 w-5 text-gray-700 cursor-pointer" onClick={() => navigate('/teamSubmissionForAdmin')}/>
+              <ArrowLeft
+                className="h-5 w-5 cursor-pointer text-gray-700"
+                onClick={() => navigate('/teamSubmissionForAdmin')}
+              />
               <h2 className="font-semibold text-gray-900">
                 Sarah Bello – June 24–30
               </h2>
             </div>
-            <p className="text-sm text-gray-700 pl-7">Department: Engineering</p>
-            <p className="text-sm text-gray-700 pl-7">Project Lead: Alex Johnson</p>
-            <p className="text-sm text-gray-700 pl-7">Submitted: Jun 30, 2025, 05:30 PM</p>
+            <p className="pl-7 text-sm text-gray-700">
+              Department: Engineering
+            </p>
+            <p className="pl-7 text-sm text-gray-700">
+              Project Lead: Alex Johnson
+            </p>
+            <p className="pl-7 text-sm text-gray-700">
+              Submitted: Jun 30, 2025, 05:30 PM
+            </p>
           </div>
-          <span className="h-fit rounded-full border border-red-300 px-3 py-1 text-sm bg-[#FB37481A] text-red-600">
+          <span className="h-fit rounded-full border border-red-300 bg-[#FB37481A] px-3 py-1 text-sm text-red-600">
             Rejected
           </span>
         </div>
@@ -65,7 +66,7 @@ const ForceApproveAdmin = () => {
         <SubmitWeeklyTimeLogTable />
 
         {/* Summary and Actions */}
-        <div className="flex flex-col items-left justify-left gap-3 rounded-b-lg bg-white px-6 py-4 text-sm">
+        <div className="items-left justify-left flex flex-col gap-3 rounded-b-lg bg-white px-6 py-4 text-sm">
           <p className="font-semibold text-gray-700">
             Total hours: <span className="font-normal">35 hours</span>
           </p>

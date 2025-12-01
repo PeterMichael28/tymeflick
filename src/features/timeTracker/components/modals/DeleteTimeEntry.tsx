@@ -1,6 +1,6 @@
 'use client'
 
-import { X } from "lucide-react";
+import { X } from 'lucide-react'
 import { useDispatch, useSelector } from 'react-redux'
 import { closeDeleteTimeEntryModal } from '../../../../redux/slice/modalSlice'
 import { type RootState } from '../../../../redux/store'
@@ -14,16 +14,18 @@ export default function DeleteTimeEntryModal() {
   if (!deleteTimeEntryModal) return null
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-1xs">
-      <div className="bg-white rounded-lg shadow-lg w-full max-w-md p-6 relative">
+    <div className="backdrop-blur-1xs fixed inset-0 z-50 flex items-center justify-center bg-black/40">
+      <div className="relative w-full max-w-md rounded-lg bg-white p-6 shadow-lg">
         {/* Header */}
-        <div className="flex justify-between items-center mb-4">
-          <h2 className="text-xl font-semibold text-gray-800">Delete Time Entry</h2>
+        <div className="mb-4 flex items-center justify-between">
+          <h2 className="text-xl font-semibold text-gray-800">
+            Delete Time Entry
+          </h2>
           <button
             onClick={() => dispatch(closeDeleteTimeEntryModal())}
-            className="text-gray-500 hover:text-gray-700 transition"
+            className="text-gray-500 transition hover:text-gray-700"
           >
-            <X className="w-5 h-5" />
+            <X className="h-5 w-5" />
           </button>
         </div>
         <div className="backdrop-blur-1xs fixed inset-0 z-50 flex items-center justify-center bg-black/40">
@@ -59,13 +61,17 @@ export default function DeleteTimeEntryModal() {
               </span>
               <p>
                 Are you sure you want to delete this time entry? <br />
-                <span className="text-gray-500">This action cannot be undone.</span>
+                <span className="text-gray-500">
+                  This action cannot be undone.
+                </span>
               </p>
             </div>
 
             <div className="mb-6 rounded-md border border-gray-100 bg-gray-50 p-3">
               <p className="font-medium text-gray-800">Daily standup meeting</p>
-              <p className="text-sm text-gray-600">9:00 AM - 10:30 AM (1h 30m)</p>
+              <p className="text-sm text-gray-600">
+                9:00 AM - 10:30 AM (1h 30m)
+              </p>
             </div>
 
             <div className="space-y-2">

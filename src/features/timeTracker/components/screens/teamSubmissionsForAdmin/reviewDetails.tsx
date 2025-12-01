@@ -1,12 +1,7 @@
 'use client'
 
 import { useDispatch } from 'react-redux'
-import {
-  ArrowLeft,
-  LockKeyhole,
-  FileText,
-  Clock3,
-} from 'lucide-react'
+import { ArrowLeft, LockKeyhole, FileText, Clock3 } from 'lucide-react'
 import {
   openSubmissionApprovedModal,
   openSubmissionRejectedModal,
@@ -30,23 +25,27 @@ const ReviewDetailsAdmin = () => {
 
   return (
     <div className="font-inter space-y-4 p-2">
-      <Hero
-        title=""
-        description=""
-      />
-      
+      <Hero title="" description="" />
+
       {/* Header Section */}
       <div className="flex items-start justify-between rounded-lg border border-gray-200 bg-white p-4">
         <div>
           <div className="mb-1 flex items-center gap-2">
-            <ArrowLeft className="h-5 w-5 text-gray-700 cursor-pointer" onClick={() => navigate('/teamSubmissionForAdmin')} />
+            <ArrowLeft
+              className="h-5 w-5 cursor-pointer text-gray-700"
+              onClick={() => navigate('/teamSubmissionForAdmin')}
+            />
             <h2 className="font-semibold text-gray-900">
               Sarah Bello – June 24–30
             </h2>
           </div>
-          <p className="text-sm text-gray-700 pl-7">Department: Engineering</p>
-          <p className="text-sm text-gray-700 pl-7">Project Lead: Alex Johnson</p>
-          <p className="text-sm text-gray-700 pl-7">Submitted: Jun 30, 2025, 05:30 PM</p>
+          <p className="pl-7 text-sm text-gray-700">Department: Engineering</p>
+          <p className="pl-7 text-sm text-gray-700">
+            Project Lead: Alex Johnson
+          </p>
+          <p className="pl-7 text-sm text-gray-700">
+            Submitted: Jun 30, 2025, 05:30 PM
+          </p>
         </div>
         <span className="h-fit rounded-full border border-blue-300 bg-[#CCDBFF4D] px-3 py-1 text-sm text-blue-600">
           Submitted
@@ -58,7 +57,7 @@ const ReviewDetailsAdmin = () => {
         <WeeklyTimeLogTable />
 
         {/* Summary & Actions */}
-        <div className="flex flex-col items-start rounded-b-lg bg-white px-6 py-4 text-sm gap-4">
+        <div className="flex flex-col items-start gap-4 rounded-b-lg bg-white px-6 py-4 text-sm">
           <p className="font-semibold text-gray-700">
             Total hours: <span className="font-normal">35 hours</span>
           </p>

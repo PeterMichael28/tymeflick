@@ -55,6 +55,14 @@ import InviteTeamMember from '../features/project/agile/inviteTeamMember'
 // Clients routes
 import ClientsPage from '../features/clients'
 import ViewClientDetails from '../features/clients/screens/viewClientDetailsPage'
+import ProjectWaterfallIndex from '../features/project/waterfall'
+import WaterFallOverview from '../features/project/waterfall/overview'
+import Phase from '../features/project/waterfall/phase'
+import WaterFallGrantChart from '../features/project/waterfall/grantChart'
+import Document from '../features/project/waterfall/document'
+import WaterFallTimeLog from '../features/project/waterfall/timeLog'
+
+import ProjectHybridIndex from '../features/project/hybrid'
 
 export const dashboardRoutes = [
   { path: '', element: <DashBoardIndex /> },
@@ -71,6 +79,22 @@ export const dashboardRoutes = [
       { path: 'time-log', element: <TimeLog /> },
       { path: 'team-member', element: <TeamMember /> }, // team member page for agile project
     ],
+  },
+  {
+    path: 'project/waterfall',
+    element: <ProjectWaterfallIndex />,
+    children: [
+      { path: '', element: <WaterFallOverview /> },
+      { path: 'phase', element: <Phase /> },
+      { path: 'grant-chart', element: <WaterFallGrantChart /> },
+      { path:'document', element:<Document/>},
+      { path:'time-log', element:<WaterFallTimeLog/>},
+      { path: 'team-member', element: <TeamMember /> },
+    ],
+  },
+  {
+    path: 'project/hybrid',
+    element:<ProjectHybridIndex />,
   },
   {
     path: 'create-epic',
