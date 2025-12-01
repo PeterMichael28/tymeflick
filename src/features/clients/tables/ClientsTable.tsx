@@ -29,7 +29,7 @@ export default function ClientsTable() {
     const clients: Client[] = [
         {
             id: 1,
-            logo: "/public/icon/clientIcons/acmeSVG.svg",
+            logo: "/icon/clientIcons/acmeSVG.svg",
             name: "ACME Corporation",
             email: "contact@acme.com",
             phone: "(555) 123-4567",
@@ -40,7 +40,7 @@ export default function ClientsTable() {
         },
         {
             id: 2,
-            logo: "/public/icon/clientIcons/techcorpSVG.svg",
+            logo: "/icon/clientIcons/techCorpSVG.svg",
             name: "TechCorp Solutions",
             email: "hello@techcorp.io",
             phone: "(555) 987-6543",
@@ -51,7 +51,7 @@ export default function ClientsTable() {
         },
         {
             id: 3,
-            logo: "/public/icon/clientIcons/internalSVG.svg",
+            logo: "/icon/clientIcons/internalSVG.svg",
             name: "Internal",
             email: "internal@company.com",
             phone: "",
@@ -97,29 +97,32 @@ export default function ClientsTable() {
                             }}
                             className="border-b border-gray-100 hover:bg-gray-50 transition text-gray-800 relative"
                         >
+                            {/* CLIENT LOGO */}
+                            <td className="p-4 text-center align-middle">
+                                <img
+                                    src={client.logo}
+                                    alt={client.name}
+                                    className="w-14 h-14 mx-auto rounded-md object-contain"
+                                />
+                            </td>
+
                             {/* CLIENT DETAILS */}
-                            <td className="p-4 text-left">
-                                <div className="flex items-center gap-4">
-                                    <img
-                                        src={client.logo}
-                                        alt={client.name}
-                                        className="w-15 h-15 rounded-md object-contain"
-                                    />
-                                    <div>
-                                        <p className="font-medium text-gray-900">{client.name}</p>
+                            <td className="p-4 text-left align-middle">
+                                <div>
+                                    <p className="font-medium text-gray-900">{client.name}</p>
+                                    <p className="flex items-center gap-1 text-gray-500 text-xs">
+                                        <MailIcon className="w-4 h-4 mr-1" />
+                                        {client.email}
+                                    </p>
+                                    {client.phone && (
                                         <p className="flex items-center gap-1 text-gray-500 text-xs">
-                                            <MailIcon className="w-4 h-4 mr-1" />
-                                            {client.email}
+                                            <PhoneIcon className="w-4 h-4 mr-1" />
+                                            {client.phone}
                                         </p>
-                                        {client.phone && (
-                                            <p className="flex items-center gap-1 text-gray-500 text-xs">
-                                                <PhoneIcon className="w-4 h-4 mr-1" />
-                                                {client.phone}
-                                            </p>
-                                        )}
-                                    </div>
+                                    )}
                                 </div>
                             </td>
+
 
                             {/* ACTIVE PROJECTS */}
                             <td className="p-4 text-center">
@@ -182,7 +185,7 @@ export default function ClientsTable() {
                                                 >
                                                     View Client Details
                                                 </li>
-                                                <li 
+                                                <li
                                                     className="px-4 py-2 text-red-600 hover:bg-red-50 cursor-pointer"
                                                     onClick={() => dispatch(openDeleteClientModal())}
                                                 >
