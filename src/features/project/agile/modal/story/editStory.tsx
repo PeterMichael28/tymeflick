@@ -45,7 +45,7 @@ const EditStory = () => {
         </div>
 
         {tab === 0 && <Details />}
-        {tab === 1 && <StoryPlanning/>}
+        {tab === 1 && <StoryPlanning />}
         {tab === 2 && <ChildItem />}
       </div>
     </div>

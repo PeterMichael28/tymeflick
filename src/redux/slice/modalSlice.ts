@@ -91,21 +91,32 @@ const initialState: ModalSlice = {
   editFeatureModal: false,
   editStoryModal: false,
   editTaskModal: false,
-  
 }
 
 const modalSlice = createSlice({
   name: 'modalSlice',
   initialState,
   reducers: {
-    openCreateAccountModal: (state) => { state.createAccountModal = true },
-    closeCreateAccountModal: (state) => { state.createAccountModal = false },
+    openCreateAccountModal: (state) => {
+      state.createAccountModal = true
+    },
+    closeCreateAccountModal: (state) => {
+      state.createAccountModal = false
+    },
 
-    openEnterPriceSuccessModal: (state) => { state.enterPriceSuccessModal = true },
-    closeEnterPriceSuccessModal: (state) => { state.enterPriceSuccessModal = false },
+    openEnterPriceSuccessModal: (state) => {
+      state.enterPriceSuccessModal = true
+    },
+    closeEnterPriceSuccessModal: (state) => {
+      state.enterPriceSuccessModal = false
+    },
 
-    openUploadTimeLogModal: (state) => { state.uploadTimeLogModal = true },
-    closeUploadTimeLogModal: (state) => { state.uploadTimeLogModal = false },
+    openUploadTimeLogModal: (state) => {
+      state.uploadTimeLogModal = true
+    },
+    closeUploadTimeLogModal: (state) => {
+      state.uploadTimeLogModal = false
+    },
 
     openReviewTimeLogModal: (state, action: PayloadAction<File | null>) => {
       state.reviewTimeLogModal = true
@@ -116,16 +127,31 @@ const modalSlice = createSlice({
       state.selectedFile = null
     },
 
-    openUploadSuccessModal: (state) => { state.uploadSuccessModal = true },
-    closeUploadSuccessModal: (state) => { state.uploadSuccessModal = false },
+    openUploadSuccessModal: (state) => {
+      state.uploadSuccessModal = true
+    },
+    closeUploadSuccessModal: (state) => {
+      state.uploadSuccessModal = false
+    },
 
-    openUploadFailedModal: (state) => { state.uploadFailedModal = true },
-    closeUploadFailedModal: (state) => { state.uploadFailedModal = false },
+    openUploadFailedModal: (state) => {
+      state.uploadFailedModal = true
+    },
+    closeUploadFailedModal: (state) => {
+      state.uploadFailedModal = false
+    },
 
-    openEditTimeEntryModal: (state) => { state.editTimeEntryModal = true },
-    closeEditTimeEntryModal: (state) => { state.editTimeEntryModal = false },
+    openEditTimeEntryModal: (state) => {
+      state.editTimeEntryModal = true
+    },
+    closeEditTimeEntryModal: (state) => {
+      state.editTimeEntryModal = false
+    },
 
-    openAddTimeManualEntryModal: (state, action: PayloadAction<TimeEntryPayload | null>) => {
+    openAddTimeManualEntryModal: (
+      state,
+      action: PayloadAction<TimeEntryPayload | null>
+    ) => {
       state.addTimeManualEntryModal = true
       state.selectedManualTimeEntry = action.payload
     },
@@ -134,59 +160,121 @@ const modalSlice = createSlice({
       state.selectedManualTimeEntry = null
     },
 
-    openSubmissionSentModal: (state) => { state.submissionSentModal = true },
-    closeSubmissionSentModal: (state) => { state.submissionSentModal = false },
+    openSubmissionSentModal: (state) => {
+      state.submissionSentModal = true
+    },
+    closeSubmissionSentModal: (state) => {
+      state.submissionSentModal = false
+    },
 
-    openSubmissionApprovedModal: (state) => { state.submissionApprovedModal = true },
-    closeSubmissionApprovedModal: (state) => { state.submissionApprovedModal = false },
+    openSubmissionApprovedModal: (state) => {
+      state.submissionApprovedModal = true
+    },
+    closeSubmissionApprovedModal: (state) => {
+      state.submissionApprovedModal = false
+    },
 
-    openSubmissionRejectedModal: (state) => { state.submissionRejectedModal = true },
-    closeSubmissionRejectedModal: (state) => { state.submissionRejectedModal = false },
+    openSubmissionRejectedModal: (state) => {
+      state.submissionRejectedModal = true
+    },
+    closeSubmissionRejectedModal: (state) => {
+      state.submissionRejectedModal = false
+    },
 
-    openApprovalNotesModal: (state) => { state.approvalNotesModal = true },
-    closeApprovalNotesModal: (state) => { state.approvalNotesModal = false },
+    openApprovalNotesModal: (state) => {
+      state.approvalNotesModal = true
+    },
+    closeApprovalNotesModal: (state) => {
+      state.approvalNotesModal = false
+    },
 
-    openRejectionNotesModal: (state) => { state.rejectionNotesModal = true },
-    closeRejectionNotesModal: (state) => { state.rejectionNotesModal = false },
+    openRejectionNotesModal: (state) => {
+      state.rejectionNotesModal = true
+    },
+    closeRejectionNotesModal: (state) => {
+      state.rejectionNotesModal = false
+    },
 
-    openDeleteTimeEntryModal: (state) => { state.deleteTimeEntryModal = true },
-    closeDeleteTimeEntryModal: (state) => { state.deleteTimeEntryModal = false },
+    openDeleteTimeEntryModal: (state) => {
+      state.deleteTimeEntryModal = true
+    },
+    closeDeleteTimeEntryModal: (state) => {
+      state.deleteTimeEntryModal = false
+    },
 
     openTemplateReadyModal: (state, action: PayloadAction<any>) => {
       state.templateReadyModal = true
       state.templateText = action.payload.templateText || ''
     },
-    closeTemplateReadyModal: (state) => { state.templateReadyModal = false },
+    closeTemplateReadyModal: (state) => {
+      state.templateReadyModal = false
+    },
 
     // ✅ Team modals
-    openCreateTeamModal: (state) => { state.createTeamModal = true },
-    closeCreateTeamModal: (state) => { state.createTeamModal = false },
+    openCreateTeamModal: (state) => {
+      state.createTeamModal = true
+    },
+    closeCreateTeamModal: (state) => {
+      state.createTeamModal = false
+    },
 
-    openAddUserModal: (state) => { state.addUserModal = true },
-    closeAddUserModal: (state) => { state.addUserModal = false },
+    openAddUserModal: (state) => {
+      state.addUserModal = true
+    },
+    closeAddUserModal: (state) => {
+      state.addUserModal = false
+    },
 
-    openEditUserModal: (state) => { state.editUserModal = true },
-    closeEditUserModal: (state) => { state.editUserModal = false },
+    openEditUserModal: (state) => {
+      state.editUserModal = true
+    },
+    closeEditUserModal: (state) => {
+      state.editUserModal = false
+    },
 
     // ✅ Client modals
-    openAddClientModal: (state) => { state.addClientModal = true },
-    closeAddClientModal: (state) => { state.addClientModal = false },
+    openAddClientModal: (state) => {
+      state.addClientModal = true
+    },
+    closeAddClientModal: (state) => {
+      state.addClientModal = false
+    },
 
-    openEditClientModal: (state) => { state.editClientModal = true },
-    closeEditClientModal: (state) => { state.editClientModal = false },
+    openEditClientModal: (state) => {
+      state.editClientModal = true
+    },
+    closeEditClientModal: (state) => {
+      state.editClientModal = false
+    },
 
-    openDeleteClientModal: (state) => { state.deleteClientModal = true },
-    closeDeleteClientModal: (state) => { state.deleteClientModal = false },
+    openDeleteClientModal: (state) => {
+      state.deleteClientModal = true
+    },
+    closeDeleteClientModal: (state) => {
+      state.deleteClientModal = false
+    },
 
     // Agile-related
-    openAgileSprintModal: (state) => { state.agileSprintModal = true },
-    closeAgileSprintModal: (state) => { state.agileSprintModal = false },
+    openAgileSprintModal: (state) => {
+      state.agileSprintModal = true
+    },
+    closeAgileSprintModal: (state) => {
+      state.agileSprintModal = false
+    },
 
-    openAgileSprintSuccessModal: (state) => { state.agileSprintSuccessModal = true },
-    closeAgileSprintSuccessModal: (state) => { state.agileSprintSuccessModal = false },
+    openAgileSprintSuccessModal: (state) => {
+      state.agileSprintSuccessModal = true
+    },
+    closeAgileSprintSuccessModal: (state) => {
+      state.agileSprintSuccessModal = false
+    },
 
-    openEditSprintRetrospectiveModal: (state) => { state.editSprintRetrospectiveModal = true },
-    closeEditSprintRetrospectiveModal: (state) => { state.editSprintRetrospectiveModal = false },
+    openEditSprintRetrospectiveModal: (state) => {
+      state.editSprintRetrospectiveModal = true
+    },
+    closeEditSprintRetrospectiveModal: (state) => {
+      state.editSprintRetrospectiveModal = false
+    },
     openInvitationSentModal: (state) => {
       state.invitationSentModal = true
     },

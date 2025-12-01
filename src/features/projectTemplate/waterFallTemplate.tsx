@@ -89,7 +89,7 @@ const WaterFallTemplate = () => {
 
       <div className="flex flex-col gap-3">
         <p className="text-[18px] font-medium"> Team Roles</p>
-        <div className="grid w-[75%] grid-cols-2 gap-3">
+        <div className="grid w-full grid-cols-3 gap-3">
           {list.map((role, index) => (
             <div
               key={index}
@@ -121,7 +121,7 @@ const WaterFallTemplate = () => {
       </div>
 
       <Button
-        className="mt-5 h-[63px] w-full"
+        className="mt-5 h-13 w-full"
         onClick={() =>
           dispatch(openTemplateReadyModal({ templateText: 'Waterfall' }))
         }

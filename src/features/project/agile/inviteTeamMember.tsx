@@ -3,11 +3,13 @@ import Hero from '../../../components/ui/hero'
 import Button from '../../../components/button/button'
 import { useDispatch } from 'react-redux'
 import { openInvitationSentModal } from '../../../redux/slice/modalSlice'
+import { useNavigate } from 'react-router-dom'
 
 const InviteTeamMember = () => {
   const [emails, setEmails] = useState<string[]>([])
   const [inputValue, setInputValue] = useState('')
   const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   const addEmails = (value: string) => {
     const newEmails = value
@@ -38,7 +40,7 @@ const InviteTeamMember = () => {
 
       <div className="flex justify-between rounded-lg bg-white p-4">
         <div className="flex gap-3">
-          <img src="/icon/Frame 1000008159.svg" alt="Icon" className="size-9" />
+          <img src="/icon/Frame 1000008159.svg" alt="Icon" className="size-9 cursor-pointer" onClick={() => navigate(-1)} />
           <div>
             <p className="font-bricolage text-[20px] font-medium">
               ACME Website Redesign

@@ -4,7 +4,7 @@ import DropDown from '../../../ui/dropDown'
 
 const ChildItem = () => {
   const dispatch = useDispatch()
-  const handleCloseModal = () => dispatch(closeEditStoryModal ())
+  const handleCloseModal = () => dispatch(closeEditStoryModal())
   return (
     <div className="flex flex-col gap-2">
       <p className="font-bricolage text-sm font-normal text-[#4F5E6E]">

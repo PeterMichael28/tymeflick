@@ -1,8 +1,8 @@
-'use client';
-import React from 'react';
+'use client'
+import React from 'react'
 
 // 👇 TypeScript type ensures full SVG prop support (width, height, className, etc.)
-type IconProps = React.SVGProps<SVGSVGElement>;
+type IconProps = React.SVGProps<SVGSVGElement>
 
 export const MailIcon: React.FC<IconProps> = (props) => (
   <svg
@@ -24,7 +24,7 @@ export const MailIcon: React.FC<IconProps> = (props) => (
       fill="#606060"
     />
   </svg>
-);
+)
 
 export const PhoneIcon: React.FC<IconProps> = (props) => (
   <svg
@@ -43,4 +43,4 @@ export const PhoneIcon: React.FC<IconProps> = (props) => (
       strokeLinejoin="round"
     />
   </svg>
-);
+)

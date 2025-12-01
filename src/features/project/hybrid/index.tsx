@@ -13,26 +13,27 @@ const list = [
   {
     image: '/icon/phase.svg',
     active: '/icon/phaseActive.svg',
-    text: 'Dashboard',
-    path: 'dashboard',
+    text: 'Phases',
+    path: 'phase',
   },
-  {
-    image: '/icon/sprint.svg',
-    active: '/icon/sprintActive.svg',
-    text: 'Sprint Boards',
-    path: 'sprint-board',
-  },
-  {
-    image: '/icon/retro.svg',
-    active: '/icon/retroActive.svg',
-    text: 'Retrospectives',
-    path: 'retrospective',
-  },
+  // {
+  //   image: '/icon/sprint.svg',
+  //   active: '/icon/sprintActive.svg',
+  //   text: 'Sprint Boards',
+  //   path: 'sprint-board',
+  // },
+ 
   {
     image: '/icon/grant.svg',
     active: '/icon/grantActive.svg',
     text: 'Gantt Chart',
     path: 'grant-chart',
+  },
+   {
+    image: '/icon/document.svg',
+    active: '/icon/documentActive.svg',
+    text: 'Documents',
+    path: 'document',
   },
   {
     image: '/icon/timeLogs.svg',
@@ -48,7 +49,7 @@ const list = [
   },
 ]
 
-const ProjectAgileIndex = () => {
+const ProjectHybridIndex = () => {
   const navigate = useNavigate()
   return (
     <div>
@@ -133,4 +134,4 @@ const ProjectAgileIndex = () => {
   )
 }
 
-export default ProjectAgileIndex
+export default ProjectHybridIndex

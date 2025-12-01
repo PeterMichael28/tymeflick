@@ -25,7 +25,7 @@ export default function TimerSection() {
       <div className="flex justify-end gap-3">
         {/* Admin Submissions */}
         <button
-          className="flex items-center gap-2 cursor-pointer rounded-md border border-[#66CC33] bg-white px-4 py-2 text-xs font-medium text-[#66CC33] hover:bg-[#E9F9E4]"
+          className="flex cursor-pointer items-center gap-2 rounded-md border border-[#66CC33] bg-white px-4 py-2 text-xs font-medium text-[#66CC33] hover:bg-[#E9F9E4]"
           onClick={() => navigate('/teamSubmissionForAdmin')}
         >
           <Users size={14} />
@@ -34,7 +34,7 @@ export default function TimerSection() {
 
         {/* Member Submissions */}
         <button
-          className="flex items-center gap-2 cursor-pointer rounded-md border border-[#66CC33] bg-white px-4 py-2 text-xs font-medium text-[#66CC33] hover:bg-[#E9F9E4]"
+          className="flex cursor-pointer items-center gap-2 rounded-md border border-[#66CC33] bg-white px-4 py-2 text-xs font-medium text-[#66CC33] hover:bg-[#E9F9E4]"
           onClick={() => navigate('/teamSubmissions')}
         >
           <Users size={14} />
@@ -43,7 +43,7 @@ export default function TimerSection() {
 
         {/* Submit Week Time Log */}
         <button
-          className="flex items-center gap-2 cursor-pointer rounded-md bg-[#66CC33] px-4 py-2 text-xs font-medium text-white hover:bg-[#57b028]"
+          className="flex cursor-pointer items-center gap-2 rounded-md bg-[#66CC33] px-4 py-2 text-xs font-medium text-white hover:bg-[#57b028]"
           onClick={() => navigate('/submitWeeklyTimelog')}
         >
           <Clock size={14} />

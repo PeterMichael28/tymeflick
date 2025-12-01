@@ -1,33 +1,37 @@
-import { useDispatch } from "react-redux";
-import { closeAddClientModal } from "../../../redux/slice/modalSlice";
-import { X } from "lucide-react";
-import DropDown from "../../dashboard/components/ui/dropDown";
+import { useDispatch } from 'react-redux'
+import { closeAddClientModal } from '../../../redux/slice/modalSlice'
+import { X } from 'lucide-react'
+import DropDown from '../../dashboard/components/ui/dropDown'
 
 export default function AddClientModal() {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/30 backdrop-blur-2xs">
+    <div className="backdrop-blur-2xs fixed inset-0 z-50 flex items-center justify-center bg-black/30">
       <div className="w-full max-w-md rounded-lg bg-white p-6 shadow-lg">
         {/* Header */}
-        <div className="flex items-center justify-between mb-4">
-          <h2 className="text-lg font-semibold text-gray-800">Add New Client</h2>
+        <div className="mb-4 flex items-center justify-between">
+          <h2 className="text-lg font-semibold text-gray-800">
+            Add New Client
+          </h2>
           <button onClick={() => dispatch(closeAddClientModal())}>
-            <X className="w-5 h-5 text-gray-500 hover:text-gray-700" />
+            <X className="h-5 w-5 text-gray-500 hover:text-gray-700" />
           </button>
         </div>
 
         {/* Add Image Section (from Figma highlight) */}
-        <div className="flex items-center gap-3 mb-6">
-          <div className="w-[149px] h-[141px] flex items-center justify-center rounded-md border border-dashed border-green-400 bg-green-100/20">
+        <div className="mb-6 flex items-center gap-3">
+          <div className="flex h-[141px] w-[149px] items-center justify-center rounded-md border border-dashed border-green-400 bg-green-100/20">
             <img
               src="/icon/AddCross.svg"
               alt="Add Image"
-              className="w-6 h-6 text-green-500"
+              className="h-6 w-6 text-green-500"
             />
           </div>
           <div>
-            <p className="text-sm font-medium text-gray-700">Client Logo/Photo</p>
+            <p className="text-sm font-medium text-gray-700">
+              Client Logo/Photo
+            </p>
             <p className="text-xs text-gray-500">PNG/JPEG | 5mb max</p>
           </div>
         </div>
@@ -46,7 +50,9 @@ export default function AddClientModal() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700">Phone Number</label>
+            <label className="block text-sm font-medium text-gray-700">
+              Phone Number
+            </label>
             <input
               type="text"
               placeholder="Enter phone number"
@@ -55,7 +61,9 @@ export default function AddClientModal() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700">Email</label>
+            <label className="block text-sm font-medium text-gray-700">
+              Email
+            </label>
             <input
               type="email"
               placeholder="Contact@client.com"
@@ -64,7 +72,9 @@ export default function AddClientModal() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700">Website</label>
+            <label className="block text-sm font-medium text-gray-700">
+              Website
+            </label>
             <input
               type="text"
               placeholder="https://client.com"
@@ -87,7 +97,9 @@ export default function AddClientModal() {
           />
 
           <div>
-            <label className="block text-sm font-medium text-gray-700">Notes</label>
+            <label className="block text-sm font-medium text-gray-700">
+              Notes
+            </label>
             <textarea
               placeholder="Additional notes about the client"
               rows={3}
@@ -97,7 +109,7 @@ export default function AddClientModal() {
 
           <button
             type="button"
-            className="w-full rounded-md bg-primary py-2 text-sm font-semibold text-white hover:bg-green-700"
+            className="bg-primary w-full rounded-md py-2 text-sm font-semibold text-white hover:bg-green-700"
           >
             Add Client
           </button>
@@ -112,5 +124,5 @@ export default function AddClientModal() {
         </form>
       </div>
     </div>
-  );
+  )
 }

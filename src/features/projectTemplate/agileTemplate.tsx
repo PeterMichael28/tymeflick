@@ -96,7 +96,7 @@ const AgileTemplate = () => {
         ))}
       </div>
       <Button
-        className="mt-5 w-full"
+        className="mt-5 h-13 w-full"
         onClick={() =>
           dispatch(openTemplateReadyModal({ templateText: 'Agile' }))
         }
