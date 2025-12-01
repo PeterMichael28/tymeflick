@@ -77,28 +77,31 @@ const Project = () => {
       header: 'CLIENT',
       accessor: 'client',
       render: (value, _) => {
-        return <p className="rounded-full bg-[#F2F0F5] px-4 py-2">{value}</p>
+        return (
+          <p className="max-w-fit min-w-[100px] rounded-full bg-[#F2F0F5] px-4 py-2 text-xs whitespace-nowrap">
+            {value}
+          </p>
+        )
       },
     },
+
     {
       header: 'STATUS',
       accessor: 'status',
       render: (value, _) => {
-        // Map each status to a Tailwind + custom background
         const statusStyles: Record<string, string> = {
-          Active: 'bg-[#1FC16B1A] text-[#067138] px-4 py-2 rounded-full',
-          'In Progress': 'bg-[#FFDB431A] text-[#C68D00] px-4 py-2 rounded-full',
-          'On Hold': 'bg-[#CCDBFF] text-[#002C92] px-4 py-2 rounded-full',
-          Completed: 'bg-[#F2F0F5] text-[#0B0D0F] px-4 py-2 rounded-full',
-          // Add more statuses if needed
+          Active: 'bg-[#1FC16B1A] text-[#067138]',
+          'In Progress': 'bg-[#FFDB431A] text-[#C68D00]',
+          'On Hold': 'bg-[#CCDBFF] text-[#002C92]',
+          Completed: 'bg-[#F2F0F5] text-[#0B0D0F]',
         }
 
-        const colorClass =
-          statusStyles[value] ||
-          'bg-gray-100 text-gray-500 px-4 py-2 rounded-full'
+        const colorClass = statusStyles[value] || 'bg-gray-100 text-gray-500'
 
         return (
-          <div className={`${colorClass} w-[100px] text-xs font-normal`}>
+          <div
+            className={`${colorClass} max-w-fit min-w-[100px] rounded-full px-4 py-2 text-xs font-normal whitespace-nowrap`}
+          >
             {value}
           </div>
         )
@@ -125,9 +128,9 @@ const Project = () => {
                 if (row.type === 'agile') {
                   navigate('/project/agile')
                 } else if (row.type === 'waterfall') {
-                  navigate('project/waterfall')
+                  navigate('/project/waterfall')
                 } else {
-                  navigate('project/hybrid')
+                  navigate('/project/hybrid')
                 }
               }}
             >
@@ -200,6 +203,15 @@ const Project = () => {
           columns={columns}
           data={listData}
           gridTemplate="2fr 0.9fr 1fr 1fr 1fr 0.5fr"
+          onRowClick={(row) => {
+            if (row.type === 'agile') {
+              navigate('/project/agile')
+            } else if (row.type === 'waterfall') {
+              navigate('/project/waterfall')
+            } else {
+              navigate('/project/hybrid')
+            }
+          }}
         />
       </div>
     </div>

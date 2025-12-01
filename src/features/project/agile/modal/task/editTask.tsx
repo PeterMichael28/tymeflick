@@ -44,7 +44,7 @@ const EditTask = () => {
         </div>
 
         {tab === 0 && <Details />}
-        {tab === 1 && <UserStoryPlanning/>}
+        {tab === 1 && <UserStoryPlanning />}
       </div>
     </div>
   )

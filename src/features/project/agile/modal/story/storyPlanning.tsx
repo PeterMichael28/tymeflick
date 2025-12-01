@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux'
 import DropDown from '../../ui/dropdown'
 
 const StoryPlanning = () => {
- const dispatch = useDispatch()
+  const dispatch = useDispatch()
   const handleCloseModal = () => dispatch(closeEditStoryModal())
   const intialValues = {
     title: '',

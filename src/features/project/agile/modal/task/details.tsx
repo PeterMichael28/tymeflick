@@ -86,10 +86,12 @@ const Details = () => {
           />
 
           <div>
-            <p className='text-[#4F5E6E] font-normal font-bricolage'>Acceptance Criteria</p>
-            <div className='border border-[#D2D9DF] p-4 text-sm text-[#4F5E6E] rounded-lg '>
+            <p className="font-bricolage font-normal text-[#4F5E6E]">
+              Acceptance Criteria
+            </p>
+            <div className="rounded-lg border border-[#D2D9DF] p-4 text-sm text-[#4F5E6E]">
               <p>Mobile esponsiveness</p>
-              <ul className='list-disc p-2'>
+              <ul className="list-disc p-2">
                 <li>
                   The product listing page adjusts layout and components to fit
                   various mobile screen sizes (e.g., iPhone, Android devices).

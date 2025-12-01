@@ -18,7 +18,7 @@ const months = [
   'December',
 ]
 
-const GrantChart = () => {
+const WaterFallGrantChart = () => {
   const [sidebarWidth, setSidebarWidth] = useState(320)
   const [completedTasks, setCompletedTasks] = useState<Record<string, boolean>>(
     {}
@@ -50,9 +50,9 @@ const GrantChart = () => {
     title: string
   ) => {
     const statusColors: Record<string, string> = {
-      Completed: '#4CAF50',
-      'In Progress': '#FFC107',
-      Pending: '#B0BEC5',
+      Completed: '#0B54FF',
+      'In Progress': '#00206A',
+      Pending: '#1FC16B',
     }
     const color = statusColors[status] || '#2196F3'
     return months.map((_, monthIndex) => {
@@ -227,7 +227,7 @@ const GrantChart = () => {
                     </div>
                   ))}
                 </div>
-                <div className="border-primary pointer-events-none absolute top-0 right-0 h-[calc(80%+720px)] border-r" />
+                <div className="border-primary pointer-events-none absolute top-0 right-0 h-screen border-r" />
               </div>
             ))}
           </div>
@@ -273,4 +273,4 @@ const GrantChart = () => {
   )
 }
 
-export default GrantChart
+export default WaterFallGrantChart

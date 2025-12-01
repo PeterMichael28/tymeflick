@@ -1,51 +1,51 @@
-"use client";
+'use client'
 
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from 'react-router-dom'
 
 const teams = [
   {
-    id: "DT",
-    color: "bg-blue-600",
-    name: "Development Team",
-    description: "Frontend and Backend developers",
-    manager: "Bassey Bassey",
+    id: 'DT',
+    color: 'bg-blue-600',
+    name: 'Development Team',
+    description: 'Frontend and Backend developers',
+    manager: 'Bassey Bassey',
     members: 8,
     projects: 3,
-    hours: "320h",
+    hours: '320h',
   },
   {
-    id: "DT",
-    color: "bg-green-500",
-    name: "Design Team",
-    description: "UI/UX designers and creative team",
-    manager: "Sofia Ckucks",
+    id: 'DT',
+    color: 'bg-green-500',
+    name: 'Design Team',
+    description: 'UI/UX designers and creative team',
+    manager: 'Sofia Ckucks',
     members: 5,
     projects: 2,
-    hours: "180h",
+    hours: '180h',
   },
   {
-    id: "DT",
-    color: "bg-lime-500",
-    name: "Marketing Team",
-    description: "Digital marketing and content creation",
-    manager: "Sarah Johnson",
+    id: 'DT',
+    color: 'bg-lime-500',
+    name: 'Marketing Team',
+    description: 'Digital marketing and content creation',
+    manager: 'Sarah Johnson',
     members: 5,
     projects: 2,
-    hours: "180h",
+    hours: '180h',
   },
-];
+]
 
 export default function TeamsOverviewTable() {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   const handleViewClick = () => {
-    navigate("/teams/teamSummary");
-  };
+    navigate('/teams/teamSummary')
+  }
 
   return (
-    <div className="overflow-x-auto w-full rounded-lg bg-white shadow-xs">
-      <table className="min-w-full border-collapse font-inter text-sm text-center">
-        <thead className="bg-[#F3F3F3] text-xs text-gray-600 border-b border-gray-200 uppercase tracking-wide">
+    <div className="w-full overflow-x-auto rounded-lg bg-white shadow-xs">
+      <table className="font-inter min-w-full border-collapse text-center text-sm">
+        <thead className="border-b border-gray-200 bg-[#F3F3F3] text-xs tracking-wide text-gray-600 uppercase">
           <tr>
             <th className="p-3 text-center font-semibold">TEAMS</th>
             <th className="p-3 text-center font-semibold">MANAGER</th>
@@ -60,13 +60,13 @@ export default function TeamsOverviewTable() {
           {teams.map((team, index) => (
             <tr
               key={index}
-              className="border-b border-gray-100 hover:bg-gray-50 transition text-gray-800"
+              className="border-b border-gray-100 text-gray-800 transition hover:bg-gray-50"
             >
               {/* TEAM INFO */}
               <td className="p-3">
                 <div className="flex items-center justify-center gap-3">
                   <div
-                    className={`w-8 h-8 flex items-center justify-center rounded-md text-white font-semibold ${team.color}`}
+                    className={`flex h-8 w-8 items-center justify-center rounded-md font-semibold text-white ${team.color}`}
                   >
                     {team.id}
                   </div>
@@ -77,7 +77,6 @@ export default function TeamsOverviewTable() {
                 </div>
               </td>
 
-
               <td className="p-3 text-center">{team.manager}</td>
               <td className="p-3 text-center">{team.members}</td>
               <td className="p-3 text-center">{team.projects}</td>
@@ -86,7 +85,7 @@ export default function TeamsOverviewTable() {
               <td className="p-3 text-center">
                 <button
                   onClick={() => handleViewClick()}
-                  className="bg-primary hover:bg-[#5bb13e] text-white px-4 py-1 rounded-md text-sm font-medium transition"
+                  className="bg-primary rounded-md px-4 py-1 text-sm font-medium text-white transition hover:bg-[#5bb13e]"
                 >
                   View
                 </button>
@@ -96,5 +95,5 @@ export default function TeamsOverviewTable() {
         </tbody>
       </table>
     </div>
-  );
+  )
 }
