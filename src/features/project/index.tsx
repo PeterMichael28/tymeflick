@@ -117,6 +117,10 @@ const Project = () => {
       accessor: 'lastActivity',
     },
     {
+      header: 'PROJECT TYPE',
+      accessor: 'type',
+    },
+    {
       header: 'ACTION',
       accessor: 'project',
       render: (_, row) => {
@@ -202,7 +206,7 @@ const Project = () => {
         <Table
           columns={columns}
           data={listData}
-          gridTemplate="2fr 0.9fr 1fr 1fr 1fr 0.5fr"
+          gridTemplate="2fr 0.9fr 1fr 1fr 1fr 1fr 0.5fr"
           onRowClick={(row) => {
             if (row.type === 'agile') {
               navigate('/project/agile')

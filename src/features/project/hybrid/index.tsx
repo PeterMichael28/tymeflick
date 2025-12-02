@@ -16,25 +16,25 @@ const list = [
     text: 'Phases',
     path: 'phase',
   },
-  // {
-  //   image: '/icon/sprint.svg',
-  //   active: '/icon/sprintActive.svg',
-  //   text: 'Sprint Boards',
-  //   path: 'sprint-board',
-  // },
- 
+  {
+    image: '/icon/sprint.svg',
+    active: '/icon/sprintActive.svg',
+    text: 'Sprint Boards',
+    path: 'sprint-board',
+  },
+
   {
     image: '/icon/grant.svg',
     active: '/icon/grantActive.svg',
     text: 'Gantt Chart',
     path: 'grant-chart',
   },
-   {
-    image: '/icon/document.svg',
-    active: '/icon/documentActive.svg',
-    text: 'Documents',
-    path: 'document',
-  },
+  // {
+  //   image: '/icon/document.svg',
+  //   active: '/icon/documentActive.svg',
+  //   text: 'Documents',
+  //   path: 'document',
+  // },
   {
     image: '/icon/timeLogs.svg',
     active: '/icon/timeLogActive.svg',

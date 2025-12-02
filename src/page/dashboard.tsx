@@ -102,7 +102,7 @@ const Dashboard = () => {
 
                     return `font-bricolage flex items-center gap-3 rounded-[10px] text-[14px] transition-all duration-200 ${
                       activeState
-                        ? 'text-primary border-r-2 bg-[#F5F0FA]'
+                        ? 'text-primary border-r-2 bg-[#F3FEE7]'
                         : 'text-[#2B323B]'
                     } ${showPanel ? 'px-4 py-3' : 'justifycenter px-2 py-3'}`
                   }}

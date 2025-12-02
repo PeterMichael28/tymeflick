@@ -22,14 +22,14 @@ const list = [
   //   text: 'Sprint Boards',
   //   path: 'sprint-board',
   // },
- 
+
   {
     image: '/icon/grant.svg',
     active: '/icon/grantActive.svg',
     text: 'Gantt Chart',
     path: 'grant-chart',
   },
-   {
+  {
     image: '/icon/document.svg',
     active: '/icon/documentActive.svg',
     text: 'Documents',
