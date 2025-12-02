@@ -40,7 +40,12 @@ const InviteTeamMember = () => {
 
       <div className="flex justify-between rounded-lg bg-white p-4">
         <div className="flex gap-3">
-          <img src="/icon/Frame 1000008159.svg" alt="Icon" className="size-9 cursor-pointer" onClick={() => navigate(-1)} />
+          <img
+            src="/icon/Frame 1000008159.svg"
+            alt="Icon"
+            className="size-9 cursor-pointer"
+            onClick={() => navigate(-1)}
+          />
           <div>
             <p className="font-bricolage text-[20px] font-medium">
               ACME Website Redesign

@@ -63,6 +63,9 @@ import Document from '../features/project/waterfall/document'
 import WaterFallTimeLog from '../features/project/waterfall/timeLog'
 
 import ProjectHybridIndex from '../features/project/hybrid'
+import HybridOverview from '../features/project/hybrid/overview'
+import HybridPhase from '../features/project/hybrid/phase'
+import ReportIndex from '../features/report'
 
 export const dashboardRoutes = [
   { path: '', element: <DashBoardIndex /> },
@@ -87,14 +90,26 @@ export const dashboardRoutes = [
       { path: '', element: <WaterFallOverview /> },
       { path: 'phase', element: <Phase /> },
       { path: 'grant-chart', element: <WaterFallGrantChart /> },
-      { path:'document', element:<Document/>},
-      { path:'time-log', element:<WaterFallTimeLog/>},
+      { path: 'document', element: <Document /> },
+      { path: 'time-log', element: <WaterFallTimeLog /> },
       { path: 'team-member', element: <TeamMember /> },
     ],
   },
   {
     path: 'project/hybrid',
-    element:<ProjectHybridIndex />,
+    element: <ProjectHybridIndex />,
+    children: [
+      { path: '', element: <HybridOverview /> },
+      { path: 'phase', element: <HybridPhase /> },
+      { path: 'sprint-board', element: <SprintBoard /> },
+      { path: 'grant-chart', element: <WaterFallGrantChart /> },
+      { path: 'time-log', element: <WaterFallTimeLog /> },
+      { path: 'team-member', element: <TeamMember /> },
+    ],
+  },
+  {
+    path: 'reports',
+    element: <ReportIndex />,
   },
   {
     path: 'create-epic',
