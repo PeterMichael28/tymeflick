@@ -3,6 +3,7 @@
 import { useDispatch } from 'react-redux'
 import { X } from 'lucide-react'
 import { closeCreateTeamModal } from '../../../../redux/slice/modalSlice'
+import DropDown from '../../../../features/project/ui/dropDown'
 
 export default function CreateNewTeamModal() {
   const dispatch = useDispatch()
@@ -47,13 +48,16 @@ export default function CreateNewTeamModal() {
           </div>
 
           <div>
-            <label className="text-sm font-medium text-gray-700">Manager</label>
-            <select className="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-green-500">
-              <option value="">Select Manager</option>
-              <option>Bassey Bassey</option>
-              <option>Sarah Johnson</option>
-              <option>David Smith</option>
-            </select>
+            <DropDown
+              options={[
+                'Bassey Bassey',
+                'Sarah Johnson',
+              ]}
+              value="Select Manager"
+              onChange={console.log}
+              placeholder="Filter"
+              className="w-full"
+            />
           </div>
 
           {/* Team Colors */}

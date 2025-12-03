@@ -3,6 +3,7 @@
 import { X } from 'lucide-react'
 import { useDispatch } from 'react-redux'
 import { closeEditUserModal } from '../../../../redux/slice/modalSlice'
+import DropDown from '../../../../features/project/ui/dropDown'
 
 export default function EditUserModal() {
   const dispatch = useDispatch()
@@ -16,10 +17,10 @@ export default function EditUserModal() {
       ></div>
 
       {/* Modal */}
-      <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-        <div className="relative w-full max-w-md space-y-6 rounded-lg bg-white p-6 shadow-lg md:max-w-lg">
+      <div className="backdrop-blur-2xs fixed inset-0 z-50 flex items-center justify-center bg-black/30">
+        <div className="relative w-full max-w-md rounded-xl bg-white p-6 shadow-xl">
           {/* Header */}
-          <div className="flex items-center justify-between border-b pb-3">
+          <div className="flex items-center justify-between pb-3">
             <h2 className="text-lg font-semibold text-gray-800">Edit User</h2>
             <button
               onClick={() => dispatch(closeEditUserModal())}
@@ -53,37 +54,53 @@ export default function EditUserModal() {
                 placeholder="Bassey.Bassey@company.com"
                 className="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:ring-1 focus:ring-green-500 focus:outline-none"
               />
-            </div>
+            </div>            
 
             {/* Role */}
             <div>
               <label className="text-sm font-medium text-gray-700">Role</label>
-              <select className="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:ring-1 focus:ring-green-500 focus:outline-none">
-                <option>User</option>
-                <option>Manager</option>
-                <option>Admin</option>
-              </select>
+              <DropDown
+                options={[
+                  'Admin',
+                  'Manager',
+                  'Regular User',
+                ]}
+                value="Select Role"
+                onChange={console.log}
+                placeholder="Filter"
+                className="w-full"
+              />
             </div>
 
             {/* Team */}
             <div>
               <label className="text-sm font-medium text-gray-700">Team</label>
-              <select className="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:ring-1 focus:ring-green-500 focus:outline-none">
-                <option>Development Team</option>
-                <option>Marketing Team</option>
-                <option>Design Team</option>
-              </select>
+              <DropDown
+                options={[
+                  'Development Team',
+                  'Design Team',
+                  'Marketing Team',
+                ]}
+                value="Select Team"
+                onChange={console.log}
+                placeholder="Filter"
+                className="w-full"
+              />
             </div>
 
             {/* Status */}
             <div>
-              <label className="text-sm font-medium text-gray-700">
-                Status
-              </label>
-              <select className="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:ring-1 focus:ring-green-500 focus:outline-none">
-                <option>Active</option>
-                <option>Inactive</option>
-              </select>
+              <label className="text-sm font-medium text-gray-700">Status</label>
+              <DropDown
+                options={[
+                  'Active',
+                  'Inactive',
+                ]}
+                value="Select Status"
+                onChange={console.log}
+                placeholder="Filter"
+                className="w-full"
+              />
             </div>
 
             {/* Send welcome email */}
@@ -91,7 +108,7 @@ export default function EditUserModal() {
               <input
                 type="checkbox"
                 id="welcome"
-                className="accent-[#5bb13e]"
+                className="accent-primary"
               />
               <label htmlFor="welcome" className="text-sm text-gray-700">
                 Send welcome email
@@ -109,7 +126,7 @@ export default function EditUserModal() {
               <button
                 type="button"
                 onClick={() => dispatch(closeEditUserModal())}
-                className="w-full rounded-md border border-gray-300 py-2 text-sm font-medium text-gray-700 transition hover:bg-gray-50"
+                className="w-full rounded-md py-2 text-sm font-medium text-gray-700 transition hover:bg-gray-50"
               >
                 Cancel
               </button>

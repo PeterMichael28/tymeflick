@@ -100,7 +100,7 @@ export default function ClientsTable() {
                             ref={(el: HTMLTableRowElement | null) => {
                                 rowRefs.current[index] = el
                             }}
-                            className="relative border-b border-gray-100 text-gray-800 transition hover:bg-gray-50"
+                            className="relative border-b border-gray-100 text-gray-800 transition hover:bg-gray-50 grid grid-cols-[200px_1fr_1fr_1fr_1fr_1fr_40px]"
                         >
                             {/* CLIENT LOGO */}
                             <td className="p-4 text-center align-middle">
