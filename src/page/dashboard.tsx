@@ -65,7 +65,7 @@ const Dashboard = () => {
     {
       title: 'Settings',
       image: '/icon/settings.svg',
-      activeImage: '/icon/settings.svg',
+      activeImage: '/icon/settingsActive.svg',
       path: '/settings',
     },
   ]

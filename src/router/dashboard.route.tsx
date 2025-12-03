@@ -67,6 +67,8 @@ import HybridOverview from '../features/project/hybrid/overview'
 import HybridPhase from '../features/project/hybrid/phase'
 import ReportIndex from '../features/report'
 
+import SettingIndex from '../features/settings'
+
 export const dashboardRoutes = [
   { path: '', element: <DashBoardIndex /> },
   { path: 'project', element: <Project /> },
@@ -106,6 +108,10 @@ export const dashboardRoutes = [
       { path: 'time-log', element: <WaterFallTimeLog /> },
       { path: 'team-member', element: <TeamMember /> },
     ],
+  },
+  {
+     path:'settings',
+     element:<SettingIndex/>
   },
   {
     path: 'reports',
