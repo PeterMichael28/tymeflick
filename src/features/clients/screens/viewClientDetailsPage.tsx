@@ -18,7 +18,7 @@ export default function ViewClientDetails() {
         <div className="mb-6 flex justify-between">
           <div className="flex items-start gap-4">
             <img
-              src="/public/icon/clientIcons/acmeSVG.svg"
+              src="/icon/clientIcons/acmeSVG.svg"
               alt="Client Logo"
               className="h-20 w-20 rounded-md border border-gray-200 object-contain"
             />
