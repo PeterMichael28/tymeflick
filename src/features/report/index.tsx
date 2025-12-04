@@ -6,11 +6,7 @@ import RecentTime from './recentTime'
 import DropDown from '../createProject/ui/dropdown'
 import Button from '../../components/button/button'
 
-
-
-
 const ReportIndex = () => {
- 
   const project = [
     { name: 'Project Alpha', hours: '15h', color: '#9966CC', percent: 80 },
     { name: 'Project Beta', hours: '10h', color: '#D00416', percent: 60 },
@@ -18,9 +14,9 @@ const ReportIndex = () => {
     { name: 'Project Gamma', hours: '8h', color: '#DF6400', percent: 20 },
   ]
   const list = [
-    {name:'Most productive day: Tuesday (avg 6.2h)', color:'#1FC16B'},
-    {name: 'Longest session: 4h 35m on May 15', color:'#66C61C'},
-    {name:'Most frequent project: ACME Website', color:'#D00416'}
+    { name: 'Most productive day: Tuesday (avg 6.2h)', color: '#1FC16B' },
+    { name: 'Longest session: 4h 35m on May 15', color: '#66C61C' },
+    { name: 'Most frequent project: ACME Website', color: '#D00416' },
   ]
   return (
     <div className="space-y-5">
@@ -29,7 +25,7 @@ const ReportIndex = () => {
         description="Your Hub for Performance Trends and Deep Analytics"
       />
 
-      <div className="rounded-lg bg-white p-4 space-y-4">
+      <div className="space-y-4 rounded-lg bg-white p-4">
         <div className="flex justify-between">
           <span className="font-bricolage flex items-center gap-2">
             <Clock className="size-5 font-bold" />
@@ -74,12 +70,16 @@ const ReportIndex = () => {
             </div>
           </div>
         </div>
-        <div className="flex flex-2 flex-col gap-2 rounded-lg bg-white ">
+        <div className="flex flex-2 flex-col gap-2 rounded-lg bg-white">
           <div className="flex justify-between">
             <p className="font-bricolage text-[18px] font-bold">
               Top Projects This Week
             </p>
-            <img src="/icon/folderOutline.svg" alt="Folder Icon" className='text-primary' />
+            <img
+              src="/icon/folderOutline.svg"
+              alt="Folder Icon"
+              className="text-primary"
+            />
           </div>
 
           <div className="mt-2 flex flex-col gap-4">
@@ -104,53 +104,67 @@ const ReportIndex = () => {
         </div>
 
         <div>
-             <p>Productivity Insights</p>
-             <div className='bg-[#AD85D626] p-4 rounded-lg space-y-2 mt-3'>
-                {list.map((item, index) => (
-                    <div key={index} className='flex items-center gap-2 font-bricolage font-normal text-base'>
-                         <p className='size-4 rounded-full' style={{backgroundColor:item.color}}></p>
-                         <p>{item.name}</p>
-                    </div>
-                ))}
-
-             </div>
+          <p>Productivity Insights</p>
+          <div className="mt-3 space-y-2 rounded-lg bg-[#AD85D626] p-4">
+            {list.map((item, index) => (
+              <div
+                key={index}
+                className="font-bricolage flex items-center gap-2 text-base font-normal"
+              >
+                <p
+                  className="size-4 rounded-full"
+                  style={{ backgroundColor: item.color }}
+                ></p>
+                <p>{item.name}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 
       <div>
-        <TimeSummary/>
-       
+        <TimeSummary />
       </div>
-       <ProjectTimeBreakdown/>
+      <ProjectTimeBreakdown />
 
-       <RecentTime/>
+      <RecentTime />
 
-       <div>
-
-        <div className='bg-white p-4 rounded-lg space-y-4'>
+      <div>
+        <div className="space-y-4 rounded-lg bg-white p-4">
           <p className="font-bold">Report Builder</p>
-           
-            <div className='space-y-3 '>
-               <p className='text-[#101928] font-normal'>Date Renge</p>
-                <div className='flex justify-between gap-3'>
-                      <span className='border border-[#D0D5DD] w-full flex justify-between p-3 items-center rounded-md text-[#101928] '>
-                        <input type='text' placeholder='dd-mm-yy' className='placeholder:text-[#101928]' />
-                        <Calendar className='text-[#101928]'/>
-                    </span>
-                    <span className='border border-[#D0D5DD] w-full flex justify-between p-3 items-center rounded-md text-[#101928] '>
-                        <input type='text' placeholder='dd-mm-yy' className='placeholder:text-[#101928]' />
-                      <Calendar className='text-[#101928]'/>
-                    </span>
-                </div>
-            </div>
 
-            <DropDown label='Projects' onChange={() => console} value='' options={[]} placeholder='Select Projects'/>
-            <Button className='w-full h-12 font-semibold '>
-               Generate Report
-            </Button>
+          <div className="space-y-3">
+            <p className="font-normal text-[#101928]">Date Renge</p>
+            <div className="flex justify-between gap-3">
+              <span className="flex w-full items-center justify-between rounded-md border border-[#D0D5DD] p-3 text-[#101928]">
+                <input
+                  type="text"
+                  placeholder="dd-mm-yy"
+                  className="placeholder:text-[#101928]"
+                />
+                <Calendar className="text-[#101928]" />
+              </span>
+              <span className="flex w-full items-center justify-between rounded-md border border-[#D0D5DD] p-3 text-[#101928]">
+                <input
+                  type="text"
+                  placeholder="dd-mm-yy"
+                  className="placeholder:text-[#101928]"
+                />
+                <Calendar className="text-[#101928]" />
+              </span>
+            </div>
+          </div>
+
+          <DropDown
+            label="Projects"
+            onChange={() => console}
+            value=""
+            options={[]}
+            placeholder="Select Projects"
+          />
+          <Button className="h-12 w-full font-semibold">Generate Report</Button>
         </div>
-         
-       </div>
+      </div>
     </div>
   )
 }

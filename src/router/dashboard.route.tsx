@@ -110,8 +110,8 @@ export const dashboardRoutes = [
     ],
   },
   {
-     path:'settings',
-     element:<SettingIndex/>
+    path: 'settings',
+    element: <SettingIndex />,
   },
   {
     path: 'reports',
