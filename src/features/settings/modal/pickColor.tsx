@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import Button from '../../../components/button/button'
 
+
 // Convert HSL + A to CSS rgba
 // function hslToRgba(h: number, s: number, l: number, a: number) {
 //   s /= 100
@@ -46,6 +47,7 @@ const ColorPicker = () => {
   const [saturation, setSaturation] = useState(50)
   const [lightness, setLightness] = useState(50)
   const [alpha, setAlpha] = useState(1)
+
 
   //   const rgbaColor = hslToRgba(hue, saturation, lightness, alpha)
   const hexColor = hslaToHex(hue, saturation, lightness, alpha)
