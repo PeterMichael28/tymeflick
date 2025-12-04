@@ -1,5 +1,3 @@
-'use client'
-
 import { useDispatch } from 'react-redux'
 import { X } from 'lucide-react'
 import { closeAddUserModal } from '../../../../redux/slice/modalSlice'
@@ -9,7 +7,7 @@ export default function AddUserModal() {
 
   return (
     <div className="backdrop-blur-2xs fixed inset-0 z-50 flex items-center justify-center bg-black/30">
-      <div className="relative w-full max-w-md rounded-xl bg-white p-6 shadow-xl">
+      <div className="relative w-full max-w-lg rounded-xl bg-white p-4 shadow-xl">
         {/* Header */}
         <div className="mb-4 flex items-center justify-between">
           <h2 className="text-xl font-semibold text-gray-800">Add User</h2>

@@ -51,6 +51,7 @@ interface ModalSlice {
   editFeatureModal: boolean
   editStoryModal: boolean
   editTaskModal: boolean
+  themeCustomizerModal: boolean
 }
 
 const initialState: ModalSlice = {
@@ -91,6 +92,7 @@ const initialState: ModalSlice = {
   editFeatureModal: false,
   editStoryModal: false,
   editTaskModal: false,
+  themeCustomizerModal: false,
 }
 
 const modalSlice = createSlice({
@@ -305,6 +307,12 @@ const modalSlice = createSlice({
     closeEditTaskModal: (state) => {
       state.editTaskModal = false
     },
+    openThemeCustomizerModal: (state) => {
+      state.themeCustomizerModal = true
+    },
+    closeThemeCustomizerModal: (state) => {
+      state.themeCustomizerModal = false
+    },
   },
 })
 
@@ -370,6 +378,9 @@ export const {
   closeEditStoryModal,
   openEditTaskModal,
   closeEditTaskModal,
+
+  openThemeCustomizerModal,
+  closeThemeCustomizerModal,
 } = modalSlice.actions
 
 export default modalSlice.reducer

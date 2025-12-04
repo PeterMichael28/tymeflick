@@ -33,6 +33,7 @@ import EditEpic from '../features/project/agile/modal/epic/EditEpic'
 import EditFeature from '../features/project/agile/modal/feature/EditFeature'
 import EditStory from '../features/project/agile/modal/story/editStory'
 import EditTask from '../features/project/agile/modal/task/editTask'
+import ThemeCustomizer from '../features/settings/modal'
 
 const GlobalModal = () => {
   const modal = useSelector((state: RootState) => state.modal)
@@ -45,6 +46,7 @@ const GlobalModal = () => {
     editFeatureModal,
     editStoryModal,
     editTaskModal,
+    themeCustomizerModal,
   } = useSelector((state: RootState) => state.modal)
 
   if (modal.createAccountModal) return <CreateAccount />
@@ -81,6 +83,7 @@ const GlobalModal = () => {
   if (editFeatureModal) return <EditFeature />
   if (editStoryModal) return <EditStory />
   if (editTaskModal) return <EditTask />
+  if (themeCustomizerModal) return <ThemeCustomizer />
 
   return null
 }
