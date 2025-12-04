@@ -61,6 +61,7 @@ export default function TeamsOverviewTable() {
             <tr
               key={index}
               className="border-b border-gray-100 text-gray-800 transition hover:bg-gray-50"
+              onClick={() => handleViewClick()}
             >
               {/* TEAM INFO */}
               <td className="p-3">

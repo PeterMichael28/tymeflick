@@ -1,13 +1,14 @@
 import { useDispatch } from 'react-redux'
 import { X } from 'lucide-react'
 import { closeAddUserModal } from '../../../../redux/slice/modalSlice'
+import DropDown from '../../../../features/project/ui/dropDown'
 
 export default function AddUserModal() {
   const dispatch = useDispatch()
 
   return (
     <div className="backdrop-blur-2xs fixed inset-0 z-50 flex items-center justify-center bg-black/30">
-      <div className="relative w-full max-w-lg rounded-xl bg-white p-4 shadow-xl">
+      <div className="relative w-full rounded-xl bg-white p-6 shadow-xl">
         {/* Header */}
         <div className="mb-4 flex items-center justify-between">
           <h2 className="text-xl font-semibold text-gray-800">Add User</h2>
@@ -45,22 +46,32 @@ export default function AddUserModal() {
 
           <div>
             <label className="text-sm font-medium text-gray-700">Role</label>
-            <select className="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-green-500">
-              <option value="">Select Role</option>
-              <option>Admin</option>
-              <option>Manager</option>
-              <option>Regular User</option>
-            </select>
+            <DropDown
+              options={[
+                'Admin',
+                'Manager',
+                'Regular User',
+              ]}
+              value="Select Role"
+              onChange={console.log}
+              placeholder="Filter"
+              className="w-full"
+            />
           </div>
 
           <div>
             <label className="text-sm font-medium text-gray-700">Team</label>
-            <select className="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-green-500">
-              <option value="">Select Team</option>
-              <option>Development Team</option>
-              <option>Design Team</option>
-              <option>Marketing Team</option>
-            </select>
+            <DropDown
+              options={[
+                'Development Team',
+                'Design Team',
+                'Marketing Team',
+              ]}
+              value="Select Team"
+              onChange={console.log}
+              placeholder="Filter"
+              className="w-full"
+            />
           </div>
 
           {/* Checkbox */}
