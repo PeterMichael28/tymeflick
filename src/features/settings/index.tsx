@@ -1,125 +1,104 @@
-import { useState } from "react";
-import Hero from "../../components/ui/hero";
+import Hero from '../../components/ui/hero'
+import { useState } from 'react'
+import TimeTracking from './timeTracking'
+import Profile from './profile'
+import Notification from './notification'
+import TeamManagement from './teamManagement'
+import Report from './report'
+import Integration from './integration'
+import Security from './security'
+import BrandTheme from './brandTheme'
 
-// Import each settings tab page
-import TimeTracking from "./tabs/TimeTracking";
-import Profile from "./tabs/Profile";
-import Notification from "./tabs/Notification";
-import TeamManagement from "./tabs/TeamManagement";
-import Report from "./tabs/Report";
-import Integrations from "./tabs/Integrations";
-import Security from "./tabs/Security";
+const SettingIndex = () => {
+  const [tab, setTab] = useState(0)
 
-export default function SettingsPage() {
-    const icons = {
-        time: (
-            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M9 18C13.9706 18 18 13.9706 18 9C18 4.02944 13.9706 0 9 0C4.02944 0 0 4.02944 0 9C0 13.9706 4.02944 18 9 18ZM9 5.5C9 4.94772 8.55229 4.5 8 4.5C7.44772 4.5 7 4.94772 7 5.5V10.5C7 11.0523 7.44772 11.5 8 11.5H11C11.5523 11.5 12 11.0523 12 10.5C12 9.94772 11.5523 9.5 11 9.5H9V5.5Z" fill="#66C61C" />
-            </svg>
+  const list = [
+    {
+      text: 'Time Trackings',
+      icon: '/icon/settings/clock.svg',
+      iconActive: '/icon/settings/clockActive.svg',
+    },
+    {
+      text: 'Profile',
+      icon: '/icon/settings/icon.svg',
+      iconActive: '/icon/settings/PersonActive.svg',
+    },
+    {
+      text: 'Notification',
+      icon: '/icon/settings/bell.svg',
+      iconActive: '/icon/settings/bellActive.svg',
+    },
+    {
+      text: 'Team Management',
+      icon: '/icon/user-group.svg',
+      iconActive: '/icon/user-groupActive.svg',
+    },
+    {
+      text: 'Report',
+      icon: '/icon/bar-chart-v.svg',
+      iconActive: '/icon/bar-chart-v-active.svg',
+    },
+    {
+      text: 'Intergration',
+      icon: '/icon/settings/link.svg',
+      iconActive: '/icon/settings/linkActive.svg',
+    },
+    {
+      text: 'Security',
+      icon: '/icon/settings/shield-tick.svg',
+      iconActive: '/icon/settings/shield-tickActive.svg',
+    },
+    {
+      text: 'Brand & Theme',
+      icon: '/icon/settings/pencil-edit.svg',
+      iconActive: '/icon/settings/pencil-editActive.svg',
+    },
+  ]
 
-        ),
-        profile: (
-            <svg width="19" height="21" viewBox="0 0 19 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M3 5C3 2.23858 5.23858 0 8 0C10.7614 0 13 2.23858 13 5C13 7.76142 10.7614 10 8 10C5.23858 10 3 7.76142 3 5ZM8 2C6.34315 2 5 3.34315 5 5C5 6.65685 6.34315 8 8 8C9.65685 8 11 6.65685 11 5C11 3.34315 9.65685 2 8 2Z" fill="#4F5E6E" />
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M2.55543 19.9174C4.22982 20.6502 6.4595 21 8 21C9.5405 21 11.7702 20.6502 13.4446 19.9174C14.2666 19.5576 15.1025 19.0427 15.5882 18.2974C15.8437 17.9054 16.0052 17.4437 15.9999 16.9282C15.9946 16.4174 15.8266 15.9281 15.5441 15.4728C14.1747 13.2656 11.3732 11 8 11C4.62679 11 1.82532 13.2656 0.455915 15.4728C0.173439 15.9281 0.00537077 16.4174 0.000126279 16.9282C-0.00516667 17.4437 0.156317 17.9054 0.411753 18.2974C0.897452 19.0427 1.73343 19.5576 2.55543 19.9174ZM2.00002 16.9487C2.00077 16.8757 2.02372 16.7394 2.15539 16.5272C3.27754 14.7185 5.51566 13 8 13C10.4843 13 12.7225 14.7185 13.8446 16.5272C13.9763 16.7394 13.9992 16.8757 14 16.9487C14.0007 17.017 13.9831 17.0973 13.9126 17.2055C13.7465 17.4605 13.3429 17.7787 12.6427 18.0852C11.2726 18.6848 9.32676 19 8 19C6.67324 19 4.72744 18.6848 3.35732 18.0852C2.65707 17.7787 2.25354 17.4605 2.08736 17.2055C2.01686 17.0973 1.99932 17.017 2.00002 16.9487Z" fill="#4F5E6E" />
-                <path d="M18.6961 2.20709C19.0866 1.81657 19.0866 1.1834 18.6961 0.792879C18.3056 0.402354 17.6724 0.402353 17.2819 0.792876L15.3431 2.73161L15.0613 2.44973C14.6707 2.0592 14.0376 2.0592 13.647 2.44973C13.2565 2.84025 13.2565 3.47342 13.647 3.86394L14.636 4.85293C15.0266 5.24345 15.6597 5.24346 16.0503 4.85293L18.6961 2.20709Z" fill="#4F5E6E" />
-            </svg>
+  return (
+    <div>
+      <Hero
+        title="Settings"
+        description="Manage your preferences and customize your experience."
+      />
 
-        ),
-        bell: (
-            <svg width="17" height="21" viewBox="0 0 17 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M9.23668 1C9.23668 0.447715 8.78897 0 8.23668 0C7.68439 0 7.23668 0.447715 7.23668 1V1.57087C3.84456 2.05593 1.23668 4.97223 1.23668 8.4989L1.23668 12.4993C1.23668 12.4993 1.23669 12.4991 1.23668 12.4993C1.23658 12.5012 1.2359 12.5146 1.23157 12.5409C1.22636 12.5724 1.21712 12.6152 1.20186 12.6703C1.17094 12.782 1.12171 12.9211 1.05295 13.0855C0.915086 13.4151 0.720725 13.7947 0.505769 14.1776C0.101623 14.8975 -0.102092 15.7554 0.0508464 16.5712C0.21213 17.4316 0.765921 18.1819 1.71174 18.542C2.55665 18.8637 3.68131 19.1579 5.16654 19.333C5.20188 19.3637 5.24367 19.3987 5.29167 19.4371C5.44196 19.5574 5.65668 19.7132 5.92804 19.8682C6.46661 20.176 7.2629 20.5 8.23668 20.5C9.21046 20.5 10.0068 20.176 10.5453 19.8682C10.8167 19.7132 11.0314 19.5574 11.1817 19.4371C11.2297 19.3987 11.2715 19.3637 11.3068 19.333C12.792 19.1579 13.9167 18.8637 14.7616 18.542C15.7074 18.1819 16.2612 17.4316 16.4225 16.5712C16.5755 15.7554 16.3717 14.8975 15.9676 14.1776C15.7526 13.7947 15.5583 13.4151 15.4204 13.0855C15.3516 12.9211 15.3024 12.782 15.2715 12.6703C15.2562 12.6152 15.247 12.5724 15.2418 12.5409C15.2375 12.5146 15.2368 12.5015 15.2367 12.4996C15.2367 12.4994 15.2367 12.4996 15.2367 12.4996L15.2367 12.4911V8.49938C15.2367 4.9728 12.6289 2.05601 9.23668 1.57088V1ZM3.23668 8.4989C3.23668 5.73772 5.47502 3.5 8.23668 3.5C10.9982 3.5 13.2367 5.73809 13.2367 8.49938V12.5C13.2367 12.9629 13.4101 13.4623 13.5753 13.8571C13.7547 14.2861 13.9897 14.74 14.2236 15.1566C14.451 15.5616 14.5052 15.9444 14.4568 16.2027C14.4167 16.4166 14.3098 16.574 14.0499 16.6729C12.9751 17.0822 11.1606 17.5 8.23668 17.5C5.31275 17.5 3.49828 17.0822 2.42343 16.6729C2.16357 16.574 2.05669 16.4166 2.0166 16.2027C1.96817 15.9444 2.02239 15.5616 2.24977 15.1566C2.48361 14.74 2.71871 14.2861 2.8981 13.8571C3.06323 13.4623 3.23668 12.9629 3.23668 12.5V8.4989Z" fill="#4F5E6E" />
-            </svg>
-
-        ),
-        team: (
-            <svg width="22" height="17" viewBox="0 0 22 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M11.0002 0C8.79108 0 7.00022 1.79086 7.00022 4C7.00022 6.20914 8.79108 8 11.0002 8C13.2094 8 15.0002 6.20914 15.0002 4C15.0002 1.79086 13.2094 0 11.0002 0ZM9.00022 4C9.00022 2.89543 9.89565 2 11.0002 2C12.1048 2 13.0002 2.89543 13.0002 4C13.0002 5.10457 12.1048 6 11.0002 6C9.89565 6 9.00022 5.10457 9.00022 4Z" fill="#4F5E6E" />
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M11.0002 17C9.86334 17 8.22409 16.7313 6.98006 16.1596C6.36982 15.8792 5.71504 15.4632 5.32882 14.8409C5.12493 14.5124 4.99611 14.1251 5.00032 13.6941C5.0045 13.2672 5.13838 12.8623 5.35761 12.4913C6.36008 10.7947 8.43977 9 11.0002 9C13.5607 9 15.6404 10.7947 16.6428 12.4913C16.8621 12.8623 16.9959 13.2672 17.0001 13.6941C17.0043 14.1251 16.8755 14.5124 16.6716 14.8409C16.2854 15.4632 15.6306 15.8792 15.0204 16.1596C13.7763 16.7313 12.1371 17 11.0002 17ZM7.07948 13.5087C7.00289 13.6383 7.00033 13.7027 7.00023 13.7136C7.00014 13.7209 6.99989 13.7407 7.02814 13.7862C7.10753 13.9142 7.33812 14.1231 7.8152 14.3423C8.74582 14.77 10.0891 15 11.0002 15C11.9114 15 13.2546 14.77 14.1852 14.3423C14.6623 14.1231 14.8929 13.9142 14.9723 13.7862C15.0005 13.7407 15.0003 13.7214 15.0002 13.7141C15.0001 13.7032 14.9976 13.6383 14.921 13.5087C14.1438 12.1934 12.6237 11 11.0002 11C9.37671 11 7.85669 12.1934 7.07948 13.5087Z" fill="#4F5E6E" />
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M1.50022 7C1.50022 5.34315 2.84337 4 4.50022 4C6.15708 4 7.50022 5.34315 7.50022 7C7.50022 8.65685 6.15708 10 4.50022 10C2.84337 10 1.50022 8.65685 1.50022 7ZM4.50022 6C3.94794 6 3.50022 6.44772 3.50022 7C3.50022 7.55228 3.94794 8 4.50022 8C5.05251 8 5.50022 7.55228 5.50022 7C5.50022 6.44772 5.05251 6 4.50022 6Z" fill="#4F5E6E" />
-                <path d="M1.89595 14.4446C1.65041 14.9393 1.05033 15.1413 0.555629 14.8957C0.060929 14.6502 -0.141053 14.0501 0.104488 13.5554C0.471873 12.8152 1.02795 12.0721 1.72747 11.5034C2.42726 10.9346 3.32399 10.5 4.34739 10.5C4.89968 10.5 5.34739 10.9477 5.34739 11.5C5.34739 12.0523 4.89968 12.5 4.34739 12.5C3.90641 12.5 3.441 12.688 2.98902 13.0554C2.53678 13.423 2.15146 13.9298 1.89595 14.4446Z" fill="#4F5E6E" />
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M14.8103 7C14.8103 5.34315 16.1534 4 17.8103 4C19.4671 4 20.8103 5.34315 20.8103 7C20.8103 8.65685 19.4671 10 17.8103 10C16.1534 10 14.8103 8.65685 14.8103 7ZM17.8103 6C17.258 6 16.8103 6.44772 16.8103 7C16.8103 7.55228 17.258 8 17.8103 8C18.3626 8 18.8103 7.55228 18.8103 7C18.8103 6.44772 18.3626 6 17.8103 6Z" fill="#4F5E6E" />
-                <path d="M21.9004 13.5554C22.1459 14.0501 21.9439 14.6502 21.4492 14.8957C20.9545 15.1413 20.3544 14.9393 20.1089 14.4446C19.8534 13.9298 19.4681 13.423 19.0158 13.0554C18.5638 12.688 18.0984 12.5 17.6574 12.5C17.1052 12.5 16.6574 12.0523 16.6574 11.5C16.6574 10.9477 17.1052 10.5 17.6574 10.5C18.6809 10.5 19.5776 10.9346 20.2774 11.5034C20.9769 12.0721 21.533 12.8152 21.9004 13.5554Z" fill="#4F5E6E" />
-            </svg>
-
-        ),
-        barChart: (
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M13.5 0C12.1193 0 11 1.11929 11 2.5V17.5C11 18.8807 12.1193 20 13.5 20H17.5C18.8807 20 20 18.8807 20 17.5V2.5C20 1.11929 18.8807 0 17.5 0H13.5ZM13 2.5C13 2.22386 13.2239 2 13.5 2H17.5C17.7761 2 18 2.22386 18 2.5V17.5C18 17.7761 17.7761 18 17.5 18H13.5C13.2239 18 13 17.7761 13 17.5V2.5Z" fill="#4F5E6E" />
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M2.5 9C1.11929 9 0 10.1193 0 11.5V17.5C0 18.8807 1.11929 20 2.5 20H6.5C7.88071 20 9 18.8807 9 17.5V11.5C9 10.1193 7.88071 9 6.5 9H2.5ZM2 11.5C2 11.2239 2.22386 11 2.5 11H6.5C6.77614 11 7 11.2239 7 11.5V17.5C7 17.7761 6.77614 18 6.5 18H2.5C2.22386 18 2 17.7761 2 17.5V11.5Z" fill="#4F5E6E" />
-            </svg>
-
-        ),
-        link: (
-            <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M17.0208 1.46447C15.0682 -0.488155 11.9024 -0.488155 9.94975 1.46447L7.12132 4.29289C6.7308 4.68342 6.7308 5.31658 7.12132 5.70711C7.51184 6.09763 8.14501 6.09763 8.53553 5.70711L11.364 2.87868C12.5355 1.70711 14.435 1.70711 15.6066 2.87868C16.7782 4.05025 16.7782 5.94975 15.6066 7.12132L12.7782 9.94975C12.3876 10.3403 12.3876 10.9734 12.7782 11.364C13.1687 11.7545 13.8019 11.7545 14.1924 11.364L17.0208 8.53553C18.9734 6.58291 18.9734 3.41709 17.0208 1.46447Z" fill="#4F5E6E" />
-                <path d="M11.364 8.53553C11.7545 8.14501 11.7545 7.51184 11.364 7.12132C10.9734 6.7308 10.3403 6.7308 9.94975 7.12132L7.12132 9.94975C6.7308 10.3403 6.7308 10.9734 7.12132 11.364C7.51184 11.7545 8.14501 11.7545 8.53553 11.364L11.364 8.53553Z" fill="#4F5E6E" />
-                <path d="M5.70711 8.53553C6.09763 8.14501 6.09763 7.51184 5.70711 7.12132C5.31658 6.7308 4.68342 6.7308 4.29289 7.12132L1.46447 9.94975C-0.488155 11.9024 -0.488155 15.0682 1.46447 17.0208C3.41709 18.9734 6.58291 18.9734 8.53553 17.0208L11.364 14.1924C11.7545 13.8019 11.7545 13.1687 11.364 12.7782C10.9734 12.3877 10.3403 12.3876 9.94975 12.7782L7.12132 15.6066C5.94975 16.7782 4.05025 16.7782 2.87868 15.6066C1.70711 14.435 1.70711 12.5355 2.87868 11.364L5.70711 8.53553Z" fill="#4F5E6E" />
-            </svg>
-
-        ),
-        shield: (
-            <svg width="18" height="21" viewBox="0 0 18 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M11.6961 9.47527C12.0866 9.08475 12.0866 8.45158 11.6961 8.06106C11.3056 7.67053 10.6724 7.67053 10.2819 8.06105L8.34315 9.99979L8.06126 9.7179C7.67074 9.32738 7.03757 9.32738 6.64705 9.7179C6.25652 10.1084 6.25652 10.7416 6.64705 11.1321L7.63604 12.1211C8.02656 12.5116 8.65973 12.5116 9.05025 12.1211L11.6961 9.47527Z" fill="#4F5E6E" />
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M10.4876 0.286925C9.53277 -0.0956417 8.46723 -0.0956415 7.51236 0.286925L3.88578 1.73991C3.87451 1.74443 3.86331 1.74915 3.8522 1.75408L2.30467 2.44056C0.947452 3.04262 -0.000130163 4.36822 1.34114e-08 5.91187C0.000166251 7.87909 0.141994 11.2088 1.06685 13.4934C1.6818 15.0125 2.78937 16.3291 3.91503 17.3813C5.04877 18.441 6.25663 19.2839 7.14506 19.8448C8.28358 20.5637 9.71642 20.5637 10.8549 19.8448C11.7434 19.2839 12.9512 18.441 14.085 17.3813C15.2106 16.3291 16.3182 15.0125 16.9332 13.4934C17.858 11.2088 17.9998 7.87909 18 5.91187C18.0001 4.36822 17.0525 3.04262 15.6953 2.44056L14.1478 1.75408C14.1367 1.74915 14.1255 1.74443 14.1142 1.73991L10.4876 0.286925ZM8.25618 2.14346C8.73361 1.95218 9.26639 1.95218 9.74382 2.14346L13.3535 3.58967L14.8843 4.26876C15.5732 4.57431 16.0001 5.21705 16 5.9117C15.9998 7.89252 15.8415 10.86 15.0793 12.7429C14.6173 13.8841 13.7387 14.9673 12.7193 15.9202C11.7079 16.8656 10.6116 17.6332 9.78713 18.1537C9.30091 18.4608 8.69909 18.4608 8.21287 18.1537C7.38842 17.6332 6.29215 16.8656 5.28075 15.9202C4.26127 14.9673 3.38268 13.8841 2.9207 12.7429C2.15846 10.86 2.00017 7.89252 2 5.9117C1.99994 5.21705 2.42684 4.57431 3.11565 4.26876L4.64653 3.58967L8.25618 2.14346Z" fill="#4F5E6E" />
-            </svg>
-
-        ),
-    };
-
-    const [activeTab, setActiveTab] = useState("Time Tracking");
-
-    const tabs = [
-        { key: "Time Tracking", component: <TimeTracking />, icon: icons.time },
-        { key: "Profile", component: <Profile />, icon: icons.profile },
-        { key: "Notification", component: <Notification />, icon: icons.bell },
-        { key: "Team Management", component: <TeamManagement />, icon: icons.team },
-        { key: "Report", component: <Report />, icon: icons.barChart },
-        { key: "Integrations", component: <Integrations />, icon: icons.link },
-        { key: "Security", component: <Security />, icon: icons.shield },
-    ];
-
-    const renderActiveTab = () => {
-        const current = tabs.find((t) => t.key === activeTab);
-        return current ? current.component : null;
-    };
-
-    return (
-        <div className="min-h-screen flex justify-center bg-none">
-            <div className="w-full bg-none rounded-lg shadow-sm space-y-6">
-                {/* Header */}
-                <Hero title="Settings" description="Make changes to the app" />
-
-                <div className="bg-white rounded-lg p-6 space-y-2">
-                    {/* Tab Buttons */}
-                    <div className="flex flex-wrap gap-2 border-gray-200 pb-2">
-                        {tabs.map((tab) => (
-                            <button
-                                key={tab.key}
-                                onClick={() => setActiveTab(tab.key)}
-                                className={`flex items-center gap-2 rounded-md border px-4 py-2 text-sm font-medium transition 
-                                    ${activeTab === tab.key
-                                        ? "border-green-400 bg-green-50 text-green-700"
-                                        : "border-gray-200 text-gray-600 hover:bg-gray-100"
-                                    }`}
-                            >
-                                {tab.icon}
-                                {tab.key}
-                            </button>
-                        ))}
-                    </div>
-
-                    {/* Render Active Page */}
-                    <div className="min-h-[400px]">{renderActiveTab()}</div>
-
-                    {/* Save Settings Button */}
-                    <div className="flex justify-start pt-4 border-t border-gray-100">
-                        <button className="rounded-md bg-primary px-6 py-2 text-sm font-semibold text-white hover:bg-green-600">
-                            Save Settings
-                        </button>
-                    </div>
-                </div>
-            </div>
+      <div className="mt-4 flex flex-col gap-3 rounded-lg bg-white p-4">
+        <div className="mt-4 flex gap-3 bg-white">
+          {list.map((item, index) => {
+            const isActive = tab === index
+            return (
+              <div
+                key={index}
+                className={`font-bricolage flex w-full cursor-pointer items-center gap-3 rounded-lg border px-2 ${
+                  isActive ? 'border-primary bg-[#F3FEE7]' : 'border-[#4F5E6E]'
+                }`}
+                onClick={() => setTab(index)}
+              >
+                <img
+                  src={isActive ? item.iconActive : item.icon}
+                  alt={item.text}
+                  className="h-5 w-5"
+                />
+                <p
+                  className={`text-sm font-medium ${isActive ? 'text-primary' : 'text-[#606060]'}`}
+                >
+                  {item.text}
+                </p>
+              </div>
+            )
+          })}
         </div>
-    );
+        {tab === 0 && <TimeTracking />}
+        {tab === 1 && <Profile />}
+        {tab === 2 && <Notification />}
+        {tab === 3 && <TeamManagement />}
+        {tab === 4 && <Report />}
+        {tab === 5 && <Integration />}
+        {tab === 6 && <Security />}
+        {tab === 7 && <BrandTheme />}
+      </div>
+    </div>
+  )
 }
+
+export default SettingIndex

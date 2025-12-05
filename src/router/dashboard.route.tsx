@@ -73,6 +73,8 @@ import NotificationsPage from '../features/notifications'
 // settings imports
 import SettingsPage from '../features/settings'
 
+import SettingIndex from '../features/settings'
+
 export const dashboardRoutes = [
   { path: '', element: <DashBoardIndex /> },
   { path: 'project', element: <Project /> },
@@ -112,6 +114,10 @@ export const dashboardRoutes = [
       { path: 'time-log', element: <WaterFallTimeLog /> },
       { path: 'team-member', element: <TeamMember /> },
     ],
+  },
+  {
+    path: 'settings',
+    element: <SettingIndex />,
   },
   {
     path: 'reports',

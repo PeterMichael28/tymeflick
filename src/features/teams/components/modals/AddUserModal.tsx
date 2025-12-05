@@ -1,5 +1,3 @@
-'use client'
-
 import { useDispatch } from 'react-redux'
 import { X } from 'lucide-react'
 import { closeAddUserModal } from '../../../../redux/slice/modalSlice'
