@@ -51,7 +51,7 @@ export default function ClientsPage() {
             {/* Add Team Button */}
             <button
               onClick={() => dispatch(openAddClientModal())}
-              className="bg-primary flex items-center gap-1 rounded-md px-4 py-2 text-sm font-medium text-white transition hover:bg-[#5bb13e]"
+              className="bg-primary flex items-center gap-1 rounded-md px-4 py-2 text-sm font-medium text-white transition hover:bg-[#5bb13e] cursor-pointer"
             >
               <Plus className="h-4 w-4" />
               New Client

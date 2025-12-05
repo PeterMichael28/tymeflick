@@ -9,8 +9,8 @@ export default function AddUserModal() {
   const dispatch = useDispatch()
 
   return (
-    <div className="backdrop-blur-2xs fixed inset-0 z-50 flex items-center justify-center bg-black/30">
-      <div className="relative w-full rounded-xl bg-white p-6 shadow-xl">
+    <div className="backdrop-blur-2xs fixed inset-0 z-50 flex items-center justify-center bg-black/30 max-w-screen overflow-auto p-4">
+      <div className="relative w-[30%] rounded-xl bg-white p-6 shadow-xl">
         {/* Header */}
         <div className="mb-4 flex items-center justify-between">
           <h2 className="text-xl font-semibold text-gray-800">Add User</h2>
@@ -18,7 +18,7 @@ export default function AddUserModal() {
             onClick={() => dispatch(closeAddUserModal())}
             className="text-gray-500 transition hover:text-gray-700"
           >
-            <X className="h-5 w-5" />
+            <X className="h-5 w-5 cursor-pointer" />
           </button>
         </div>
 
@@ -86,14 +86,14 @@ export default function AddUserModal() {
           <div className="space-y-2 pt-2">
             <button
               type="button"
-              className="bg-primary w-full rounded-md py-2 font-medium text-white transition hover:bg-[#5bb13e]"
+              className="cursor-pointer bg-primary w-full rounded-md py-2 font-medium text-white transition hover:bg-[#5bb13e]"
             >
               Send Invitation
             </button>
             <button
               type="button"
               onClick={() => dispatch(closeAddUserModal())}
-              className="w-full rounded-md py-2 font-medium text-gray-600 transition hover:text-gray-800"
+              className="cursor-pointer w-full rounded-md py-2 font-medium text-gray-600 transition hover:text-gray-800"
             >
               Cancel
             </button>

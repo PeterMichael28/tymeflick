@@ -41,13 +41,13 @@ const Dashboard = () => {
     {
       title: 'Clients',
       image: '/icon/users-active.svg',
-      activeImage: '/icon/users.svg',
+      activeImage: '/icon/clients-icon.svg',
       path: '/clients',
     },
     {
       title: 'Teams',
       image: '/icon/user-group.svg',
-      activeImage: '/icon/user-groupActive.svg',
+      activeImage: '/icon/teams-icon.svg',
       path: '/teams',
     },
     {
@@ -59,13 +59,13 @@ const Dashboard = () => {
     {
       title: 'Notifications',
       image: '/icon/bell.svg',
-      activeImage: '/icon/bellActive.svg',
+      activeImage: '/icon/notifications-icon.svg',
       path: '/notifications',
     },
     {
       title: 'Settings',
       image: '/icon/settings.svg',
-      activeImage: '/icon/settings.svg',
+      activeImage: '/icon/settings-icon.svg',
       path: '/settings',
     },
   ]
