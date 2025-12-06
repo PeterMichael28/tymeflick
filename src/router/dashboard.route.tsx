@@ -67,6 +67,12 @@ import HybridOverview from '../features/project/hybrid/overview'
 import HybridPhase from '../features/project/hybrid/phase'
 import ReportIndex from '../features/report'
 
+// notifications imports
+import NotificationsPage from '../features/notifications'
+
+// settings imports
+import SettingsPage from '../features/settings'
+
 import SettingIndex from '../features/settings'
 
 export const dashboardRoutes = [
@@ -195,4 +201,10 @@ export const dashboardRoutes = [
   // Clients routes
   { path: 'clients', element: <ClientsPage /> },
   { path: 'clients/viewClientDetails', element: <ViewClientDetails /> },
+
+  // Notifications route
+  { path: 'notifications', element: <NotificationsPage />},
+
+  // Settings route
+  { path: 'settings', element: <SettingsPage /> },
 ]

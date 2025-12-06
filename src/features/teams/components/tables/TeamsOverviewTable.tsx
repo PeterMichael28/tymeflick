@@ -86,7 +86,7 @@ export default function TeamsOverviewTable() {
               <td className="p-3 text-center">
                 <button
                   onClick={() => handleViewClick()}
-                  className="bg-primary rounded-md px-4 py-1 text-sm font-medium text-white transition hover:bg-[#5bb13e]"
+                  className="cursor-pointer bg-primary rounded-md px-4 py-1 text-sm font-medium text-white transition hover:bg-[#5bb13e]"
                 >
                   View
                 </button>
