@@ -8,6 +8,14 @@ import Report from './report'
 import Integration from './integration'
 import Security from './security'
 import BrandTheme from './brandTheme'
+import ClockActive from '../../../svgComponent/clockActive'
+import BellActive from '../../../svgComponent/bellActive'
+import LinkActive from '../../../svgComponent/linkActive'
+import PersonActive from '../../../svgComponent/PersonActive'
+import PencilActive from '../../../svgComponent/pencileditActive'
+import ShielActive from '../../../svgComponent/shield-tickActive'
+import UserGroupActive from '../../../svgComponent/user-groupActive'
+import BarChartActive from '../../../svgComponent/bar-chart-v-active'
 
 const SettingIndex = () => {
   const [tab, setTab] = useState(0)
@@ -16,42 +24,42 @@ const SettingIndex = () => {
     {
       text: 'Time Trackings',
       icon: '/icon/settings/clock.svg',
-      iconActive: '/icon/settings/clockActive.svg',
+      iconActive: ClockActive,
     },
     {
       text: 'Profile',
       icon: '/icon/settings/icon.svg',
-      iconActive: '/icon/settings/PersonActive.svg',
+      iconActive:PersonActive,
     },
     {
       text: 'Notification',
       icon: '/icon/settings/bell.svg',
-      iconActive: '/icon/settings/bellActive.svg',
+      iconActive: BellActive,
     },
     {
       text: 'Team Management',
       icon: '/icon/user-group.svg',
-      iconActive: '/icon/user-groupActive.svg',
+      iconActive: UserGroupActive,
     },
     {
       text: 'Report',
       icon: '/icon/bar-chart-v.svg',
-      iconActive: '/icon/bar-chart-v-active.svg',
+      iconActive: BarChartActive,
     },
     {
       text: 'Intergration',
       icon: '/icon/settings/link.svg',
-      iconActive: '/icon/settings/linkActive.svg',
+      iconActive: LinkActive,
     },
     {
       text: 'Security',
       icon: '/icon/settings/shield-tick.svg',
-      iconActive: '/icon/settings/shield-tickActive.svg',
+      iconActive: ShielActive,
     },
     {
       text: 'Brand & Theme',
       icon: '/icon/settings/pencil-edit.svg',
-      iconActive: '/icon/settings/pencil-editActive.svg',
+      iconActive: PencilActive,
     },
   ]
 
@@ -69,18 +77,18 @@ const SettingIndex = () => {
             return (
               <div
                 key={index}
-                className={`font-bricolage flex w-full cursor-pointer items-center gap-3 rounded-lg border px-2 ${
-                  isActive ? 'border-primary bg-[#F3FEE7]' : 'border-[#4F5E6E]'
+                className={`font-bricolage wfull flex cursor-pointer items-center gap-3 rounded-lg border px-2.5 py-2 ${
+                  isActive ? 'border-primary bg-primary/10' : 'border-[#4F5E6E]'
                 }`}
                 onClick={() => setTab(index)}
               >
-                <img
-                  src={isActive ? item.iconActive : item.icon}
-                  alt={item.text}
-                  className="h-5 w-5"
-                />
+               {isActive ? (
+                          <item.iconActive className="text-primary size-5" />
+                        ) : (
+                          <img src={item.icon} className="size-5" />
+                        )}
                 <p
-                  className={`text-sm font-medium ${isActive ? 'text-primary' : 'text-[#606060]'}`}
+                  className={`text-sm font-medium ${isActive ? 'text-primary' : 'text-[#4F5E6E]'}`}
                 >
                   {item.text}
                 </p>
