@@ -45,7 +45,7 @@ const Hero: FC<Heroprop> = ({ title, description, isDashboard }) => {
 
 
         {/* Overlay text content */}
-        <div className="absolute top-0 left-0 flex w-[70%] flex-col px-4 py-6 z-50">
+        <div className="absolute top-0 left-0 flex w-[70%] flex-col px-4 py-6 z-30">
           <p className="font-inter text-[24px] font-medium text-black">{title}</p>
           {description && <p className="text-[14px] text-black">{description}</p>}
           {isDashboard && (
