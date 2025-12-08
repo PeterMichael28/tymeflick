@@ -15,13 +15,13 @@ export default function AddClientModal() {
             Add New Client
           </h2>
           <button onClick={() => dispatch(closeAddClientModal())}>
-            <X className="h-5 w-5 text-gray-500 hover:text-gray-700" />
+            <X className="h-5 w-5 text-gray-500 hover:text-gray-700 cursor-pointer" />
           </button>
         </div>
 
         {/* Add Image Section (from Figma highlight) */}
         <div className="mb-6 flex items-center gap-3">
-          <div className="flex h-[90px] w-[100px] items-center justify-center rounded-md border border-dashed border-green-400 bg-[#AD85D633]">
+          <div className="cursor-pointer flex h-[90px] w-[100px] items-center justify-center rounded-md border border-dashed border-green-400 bg-[#AD85D633]">
             <svg width="15" height="15" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path fill-rule="evenodd" clip-rule="evenodd" d="M11.25 22.5C17.4632 22.5 22.5 17.4632 22.5 11.25C22.5 5.0368 17.4632 0 11.25 0C5.0368 0 0 5.0368 0 11.25C0 17.4632 5.0368 22.5 11.25 22.5ZM12.5 7.5C12.5 6.80964 11.9404 6.25 11.25 6.25C10.5596 6.25 10 6.80964 10 7.5V10H7.5C6.80964 10 6.25 10.5596 6.25 11.25C6.25 11.9404 6.80964 12.5 7.5 12.5H10V15C10 15.6904 10.5596 16.25 11.25 16.25C11.9404 16.25 12.5 15.6904 12.5 15V12.5H15C15.6904 12.5 16.25 11.9404 16.25 11.25C16.25 10.5596 15.6904 10 15 10H12.5V7.5Z" fill="#66C61C" />
             </svg>
@@ -116,7 +116,7 @@ export default function AddClientModal() {
 
           <button
             type="button"
-            className="bg-primary w-full rounded-md py-2 text-sm font-semibold text-white hover:bg-green-700"
+            className="bg-primary w-full rounded-md py-2 text-sm font-semibold text-white hover:bg-green-700 cursor-pointer"
           >
             Add Client
           </button>
@@ -124,7 +124,7 @@ export default function AddClientModal() {
           <button
             type="button"
             onClick={() => dispatch(closeAddClientModal())}
-            className="w-full rounded-md py-2 text-sm font-medium text-gray-600 hover:bg-gray-100"
+            className="w-full rounded-md py-2 text-sm font-medium text-gray-600 hover:bg-gray-100 cursor-pointer"
           >
             Cancel
           </button>

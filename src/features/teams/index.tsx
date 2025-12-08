@@ -58,7 +58,7 @@ export default function TeamsPage() {
             {/* Add Team Button */}
             <button
               onClick={() => dispatch(openCreateTeamModal())}
-              className="bg-primary flex items-center gap-1 rounded-md px-4 py-2 text-sm font-medium text-white transition hover:bg-[#5bb13e]"
+              className="cursor-pointer bg-primary flex items-center gap-1 rounded-md px-4 py-2 text-sm font-medium text-white transition hover:bg-[#5bb13e]"
             >
               <Plus className="h-4 w-4" />
               New Team
@@ -131,7 +131,7 @@ export default function TeamsPage() {
             {/* Add User Button */}
             <button
               onClick={() => dispatch(openAddUserModal())}
-              className="bg-primary flex items-center gap-1 rounded-md px-4 py-2 text-sm font-medium text-white transition hover:bg-[#5bb13e]"
+              className="cursor-pointer bg-primary flex items-center gap-1 rounded-md px-4 py-2 text-sm font-medium text-white transition hover:bg-[#5bb13e]"
             >
               <Plus className="h-4 w-4" />
               Add User

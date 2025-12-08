@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import Button from '../../../components/button/button'
-
+import { closeThemeCustomizerModal } from '../../../redux/slice/modalSlice'
+import { useDispatch } from 'react-redux'
 
 // Convert HSL + A to CSS rgba
 // function hslToRgba(h: number, s: number, l: number, a: number) {
@@ -47,10 +48,15 @@ const ColorPicker = () => {
   const [saturation, setSaturation] = useState(50)
   const [lightness, setLightness] = useState(50)
   const [alpha, setAlpha] = useState(1)
-
+  const dispatch = useDispatch()
 
   //   const rgbaColor = hslToRgba(hue, saturation, lightness, alpha)
   const hexColor = hslaToHex(hue, saturation, lightness, alpha)
+
+  const applyColor = () => {
+    document.documentElement.style.setProperty('--user-primary', hexColor)
+    dispatch(closeThemeCustomizerModal())
+  }
 
   return (
     <div className="flex w-full flex-col gap-6 p-4">
@@ -151,8 +157,15 @@ const ColorPicker = () => {
       </div>
 
       <div className="flex justify-between">
-        <button className="w-full font-normal text-[#606060]">Cancle</button>
-        <Button className="h-11 w-full font-normal">Apply</Button>
+        <button
+          className="w-full font-normal text-[#606060]"
+          onClick={() => dispatch(closeThemeCustomizerModal())}
+        >
+          Cancel
+        </button>
+        <Button className="h-11 w-full font-normal" onClick={applyColor}>
+          Apply
+        </Button>
       </div>
     </div>
   )

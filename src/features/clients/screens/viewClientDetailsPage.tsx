@@ -2,13 +2,17 @@
 import { ArrowLeft } from 'lucide-react'
 import ClientActiveProjectsTable from '../tables/ClientActiveProjectsTable'
 import { Search } from 'lucide-react'
+import CompanyTimeSummary from '../ui/CompanyTimeSummary'
+import { useNavigate } from 'react-router-dom'
 
 export default function ViewClientDetails() {
+  const navigate = useNavigate()
+
   return (
     <div className="min-h-screen bg-none text-gray-800">
       {/* ===== Header ===== */}
       <div className="mb-6 flex items-center gap-2 rounded-lg bg-white p-4 shadow-sm">
-        <ArrowLeft className="h-5 w-5 cursor-pointer text-gray-700" />
+        <ArrowLeft className="h-5 w-5 cursor-pointer text-gray-700" onClick={() => navigate('/clients')}/>
         <h1 className="text-lg font-semibold">Clients – ACME Corporation</h1>
       </div>
 
@@ -118,6 +122,10 @@ export default function ViewClientDetails() {
           </div>
         </div>
         <ClientActiveProjectsTable />
+      </div>
+
+      <div className="mt-8 mb-3 flex items-center justify-between rounded-lg bg-[#F3F3F3] px-4 py-2 bg-white p-6 shadow-sm">
+        <CompanyTimeSummary />
       </div>
     </div>
   )

@@ -1,48 +1,55 @@
 import { NavLink, Outlet } from 'react-router-dom'
 import Hero from '../../../components/ui/hero'
 import { useNavigate } from 'react-router-dom'
+import AgileButton from '../../../../svgComponent/agileButton'
+import Phase from '../../../../svgComponent/phaseActive'
+import SprintActive from '../../../../svgComponent/sprintActive'
+import RetroActive from '../../../../svgComponent/retroActive'
+import GrantActive from '../../../../svgComponent/grantActive'
+import TimeLogActive from '../../../../svgComponent/timeLogActive'
+import  PersonActive from  '../../../../svgComponent/personActive2'
 
 const list = [
   {
     image: '/icon/button-icon.png',
-    active: '/icon/agileButton.svg',
+    active:AgileButton,
     text: 'Overview',
     path: '',
     end: true,
   },
   {
     image: '/icon/phase.svg',
-    active: '/icon/phaseActive.svg',
+    active:Phase,
     text: 'Dashboard',
     path: 'dashboard',
   },
   {
     image: '/icon/sprint.svg',
-    active: '/icon/sprintActive.svg',
+    active: SprintActive,
     text: 'Sprint Boards',
     path: 'sprint-board',
   },
   {
     image: '/icon/retro.svg',
-    active: '/icon/retroActive.svg',
+    active: RetroActive,
     text: 'Retrospectives',
     path: 'retrospective',
   },
   {
     image: '/icon/grant.svg',
-    active: '/icon/grantActive.svg',
+    active: GrantActive,
     text: 'Gantt Chart',
     path: 'grant-chart',
   },
   {
     image: '/icon/timeLogs.svg',
-    active: '/icon/timeLogActive.svg',
+    active: TimeLogActive,
     text: 'Time Logs',
     path: 'time-log',
   },
   {
     image: '/icon/person.svg',
-    active: '/icon/personActive.svg',
+    active: PersonActive,
     text: 'Team Member',
     path: 'team-member',
   },
@@ -106,11 +113,12 @@ const ProjectAgileIndex = () => {
                     isActive ? 'text-primary' : 'text-[#8898AA]'
                   }`}
                 >
-                  <img
-                    src={isActive ? item.active : item.image}
-                    alt={item.text}
-                    className="size-5"
-                  />
+                  {isActive ? (
+  <item.active className="size-5" />
+) : (
+  <img src={item.image} alt={item.text} className="size-5" />
+)}
+
                   <p>{item.text}</p>
 
                   {/* underline */}

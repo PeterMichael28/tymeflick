@@ -6,8 +6,19 @@ import { useState } from 'react'
 import Header from '../components/ui/header'
 import { useNavigate } from 'react-router-dom'
 import { useLocation } from 'react-router-dom'
+import ActiveCategory from '../../svgComponent/Category 1'
+import AlarmClockActive from '../../svgComponent/alarm-clock-active'
+import FolderActive from '../../svgComponent/folderActive'
+import UserActive from '../../svgComponent/users'
+import UserGroupActive from '../../svgComponent/user-groupActive'
+import BellActive from '../../svgComponent/bellActive'
+import SettingsActive from '../../svgComponent/settingsActive'
+import BarActive from '../../svgComponent/bar-chart-v-active'
+import { useSelector } from 'react-redux'
+import { type RootState } from '../redux/store'
 
 const Dashboard = () => {
+  const uploadedLogo = useSelector((state: RootState) => state.logo.fileUrl)
   const [showPanel, setShowPanel] = useState(true)
   const navigate = useNavigate()
   const location = useLocation()
@@ -16,56 +27,56 @@ const Dashboard = () => {
     {
       title: 'Dashboard',
       image: '/icon/Category 1 (1).svg',
-      activeImage: '/icon/Category 1.svg',
+      activeImage: ActiveCategory,
       path: '/',
       end: true,
     },
     {
       title: 'Time Tracker',
       image: '/icon/alarm-clock.svg',
-      activeImage: '/icon/alarm-clock-active.svg',
+      activeImage: AlarmClockActive,
       path: '/timeTracker',
     },
     {
       title: 'Projects',
       image: '/icon/folder.svg',
-      activeImage: '/icon/folderActive.svg',
+      activeImage: FolderActive,
       path: '/project',
     },
     {
       title: 'Project Template',
       image: '/icon/folder.svg',
-      activeImage: '/icon/folderActive.svg',
+      activeImage: FolderActive,
       path: '/project-template',
     },
     {
       title: 'Clients',
       image: '/icon/users-active.svg',
-      activeImage: '/icon/users.svg',
+      activeImage: UserActive,
       path: '/clients',
     },
     {
       title: 'Teams',
       image: '/icon/user-group.svg',
-      activeImage: '/icon/user-groupActive.svg',
+      activeImage: UserGroupActive,
       path: '/teams',
     },
     {
       title: 'Reports',
       image: '/icon/bar-chart-v.svg',
-      activeImage: '/icon/bar-chart-v-active.svg',
+      activeImage: BarActive,
       path: '/reports',
     },
     {
       title: 'Notifications',
       image: '/icon/bell.svg',
-      activeImage: '/icon/bellActive.svg',
+      activeImage: BellActive,
       path: '/notifications',
     },
     {
       title: 'Settings',
       image: '/icon/settings.svg',
-      activeImage: '/icon/settingsActive.svg',
+      activeImage: SettingsActive,
       path: '/settings',
     },
   ]
@@ -77,7 +88,10 @@ const Dashboard = () => {
       >
         <div className="flex flex-col gap-7">
           <div className="flex items-center justify-between">
-            {showPanel && <img src="/icon/Group (4).svg" alt="Icon" />}
+            {showPanel && <div className='flex'>
+              <img  src={uploadedLogo || '/icon/SeamSuiteLogo.svg'} alt="Icon" className='size-10' />
+              </div> 
+              }
             <button>
               {showPanel ? (
                 <PanelLeftClose onClick={() => setShowPanel(false)} />
@@ -102,7 +116,7 @@ const Dashboard = () => {
 
                     return `font-bricolage flex items-center gap-3 rounded-[10px] text-[14px] transition-all duration-200 ${
                       activeState
-                        ? 'text-primary border-r-2 bg-[#F3FEE7]'
+                        ? 'text-primary border-r-2 bg-primary/10'
                         : 'text-[#2B323B]'
                     } ${showPanel ? 'px-4 py-3' : 'justifycenter px-2 py-3'}`
                   }}
@@ -113,11 +127,11 @@ const Dashboard = () => {
 
                     return (
                       <div className="flex gap-3">
-                        <img
-                          src={activeState ? item.activeImage : item.image}
-                          alt={item.title}
-                          className="size-5"
-                        />
+                        {activeState ? (
+                          <item.activeImage className="text-primary size-5" />
+                        ) : (
+                          <img src={item.image} className="size-5" />
+                        )}
                         {showPanel && <span>{item.title}</span>}
                       </div>
                     )
