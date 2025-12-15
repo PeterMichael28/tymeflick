@@ -25,7 +25,7 @@ export default function CreateNewTeamModal() {
         </div>
 
         {/* Form */}
-        <form className="space-y-4">
+        <form className="space-y-6">
           <div>
             <label className="text-sm font-medium text-gray-700">
               Team Name <span className="text-red-500">*</span>
@@ -94,7 +94,7 @@ export default function CreateNewTeamModal() {
               type="button"
               className="bg-primary w-full rounded-md py-2 font-medium text-white transition hover:bg-[#5bb13e]"
             >
-              Send Invitation
+              Create Team
             </button>
             <button
               type="button"

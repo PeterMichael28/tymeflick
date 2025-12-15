@@ -16,6 +16,10 @@ import {
   Bar,
 } from 'recharts'
 import { useNavigate } from 'react-router-dom'
+import Hero from '../../../../../components/ui/hero'
+import { Calendar, Search } from 'lucide-react'
+import DropDown from '../../../../../features/project/ui/dropDown'
+import { ClockIcon, RevenueIcon, ActivityIcon, ComparisonIcon } from '../../ui/TimeTrackerIcons'
 
 const data = [
   { day: '01 May', total: 40, billable: 30 },
@@ -33,11 +37,11 @@ const billableData = [
 ]
 
 const teamPerformance = [
-  { name: 'Sofia', value: 180 },
-  { name: 'Success', value: 336 },
-  { name: 'Isaiah', value: 280 },
-  { name: 'Victor', value: 400 },
-  { name: 'Courage', value: 360 },
+  { name: 'Sofia', value: 180, color: '#3B82F6' },   // Blue
+  { name: 'Success', value: 336, color: '#10B981' }, // Green
+  { name: 'Isaiah', value: 280, color: '#FACC15' },  // Yellow
+  { name: 'Victor', value: 400, color: '#22C55E' },  // Bright Green
+  { name: 'Courage', value: 360, color: '#EF4444' }, // Red
 ]
 
 const COLORS = ['#3b82f6', '#22c55e']
@@ -47,62 +51,98 @@ export default function OverallPage() {
 
   return (
     <div className="space-y-6 p-6">
-      {/* Filter Section */}
-      <div className="flex flex-wrap items-center justify-between gap-3">
-        <div className="flex flex-wrap gap-3">
-          <button
-            className="rounded-md border border-green-500 bg-green-100 px-4 py-2 text-green-700"
-            onClick={() => navigate('/overall/')}
-          >
-            Overall
-          </button>
-          <button
-            className="rounded-md border border-gray-300 px-4 py-2 text-gray-600 hover:bg-gray-50"
-            onClick={() => navigate('/yourTimelogHistory/')}
-          >
-            Your Time Log History
-          </button>
-          <button
-            className="rounded-md border border-gray-300 px-4 py-2 text-gray-600 hover:bg-gray-50"
-            onClick={() => navigate('/otherMemberLogs/')}
-          >
-            Other Member Logs
-          </button>
-          <button
-            className="rounded-md border border-gray-300 px-4 py-2 text-gray-600 hover:bg-gray-50"
-            onClick={() => navigate('/revenue/')}
-          >
-            Revenue
-          </button>
+      {/* Page Header */}
+      <Hero
+        title="Insigh Mesh"
+        description="Insight Mesh Time Log"
+      />
+
+      <div className="space-y-6 rounded-lg bg-white p-6 shadow-sm">
+        <div className="flex flex-wrap items-center justify-between rounded-md bg-[#F3F3F3] p-3 gap-3">
+          {/* Left */}
+          <h2 className="text-md font-semibold text-gray-800">Filter</h2>
+
+          {/* Right Controls */}
+          <div className="flex items-center gap-3 flex-wrap justify-end">
+            {/* Search */}
+            <div className="relative rounded-md bg-white">
+              <input
+                type="text"
+                placeholder="Search"
+                className="w-48 rounded-md border border-gray-300 px-3 py-2 pl-2 text-sm focus:ring-1 focus:ring-green-500 focus:outline-none"
+              />
+              <Search className="absolute top-2.5 right-2 h-4 w-4 text-gray-400" />
+            </div>
+
+            {/* Date Picker */}
+            <div className="relative flex w-60 items-center justify-between rounded-md border border-gray-200 bg-white p-1">
+              <input
+                type="text"
+                value="Mon Jun 02 2025 - Mon Jun 02 2025"
+                readOnly
+                className="w-full bg-transparent px-3 py-2 text-xs text-gray-800 focus:outline-none"
+              />
+              <Calendar className="mr-3 h-4 w-4 text-gray-800" />
+            </div>
+
+            {/* Dropdown */}
+            <DropDown
+              options={['Sprint 1', 'Sprint 2', 'Sprint 3']}
+              value="Project Sprint"
+              onChange={console.log}
+              placeholder="Filter"
+              className="w-40"
+            />
+          </div>
         </div>
 
-        <div className="flex flex-wrap items-center gap-3">
-          <input
-            type="text"
-            placeholder="Search"
-            className="rounded-md border px-3 py-2"
-          />
-          <input type="date" className="rounded-md border px-3 py-2" />
-          <select className="rounded-md border px-3 py-2">
-            <option>Project Sprint</option>
-            <option>Monthly</option>
-            <option>Weekly</option>
-          </select>
+
+        {/* Filter Section */}
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          <div className="flex flex-wrap gap-3">
+            <button
+              className="rounded-md border border-gray-300 px-4 py-2 hover:bg-gray-50 bg-[#F3EDF9] text-[#66C61C]"
+              onClick={() => navigate('/overall/')}
+            >
+              Overall
+            </button>
+            <button
+              className="rounded-md border border-gray-300 px-4 py-2 text-gray-600 hover:bg-gray-50"
+              onClick={() => navigate('/yourTimelogHistory/')}
+            >
+              Your Time Log History
+            </button>
+            <button
+              className="rounded-md border border-gray-300 px-4 py-2 text-gray-600 hover:bg-gray-50"
+              onClick={() => navigate('/otherMemberLogs/')}
+            >
+              Other Member Logs
+            </button>
+            <button
+              className="rounded-md border border-gray-300 px-4 py-2 text-gray-600 hover:bg-gray-50"
+              onClick={() => navigate('/revenue/')}
+            >
+              Revenue
+            </button>
+          </div>
         </div>
       </div>
 
       {/* Stats Section */}
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {[
-          { label: 'Total Hours Worked', value: '420', change: '+12%' },
-          { label: 'Billable Hours', value: '300h', change: '+12%' },
-          { label: 'Total Revenue', value: '$15,000', change: '+12%' },
-          { label: 'Avg Hours per Day', value: '7.5', change: '+12%' },
+          { label: 'Total Hours Worked', value: '420', change: '+12%', icon: <ClockIcon /> },
+          { label: 'Billable Hours', value: '300h', change: '+12%', icon: <ActivityIcon /> },
+          { label: 'Total Revenue', value: '$15,000', change: '+12%', icon: <RevenueIcon /> },
+          { label: 'Avg Hours per Day', value: '7.5', change: '+12%', icon: <ComparisonIcon /> },
         ].map((stat) => (
           <div
             key={stat.label}
-            className="rounded-lg border bg-white p-4 shadow-sm"
+            className="rounded-lg bg-white p-4 shadow-sm"
           >
+            <div className="mb-4 text-green-600">
+              {stat.icon}
+            </div>
             <p className="text-sm text-gray-500">{stat.label}</p>
             <div className="mt-2 flex items-end justify-between">
               <p className="text-3xl font-semibold text-gray-800">
@@ -117,16 +157,18 @@ export default function OverallPage() {
       </div>
 
       {/* Charts Section */}
-      <div className="rounded-lg border bg-white p-4 shadow-sm">
-        <div className="mb-3 flex items-center justify-between">
+      <div className="rounded-lg bg-white p-4 shadow-sm">
+        <div className="mb-3 flex items-center justify-between bg-[#F3F3F3] p-3 rounded-md">
           <h2 className="font-semibold text-gray-700">
             Hours Logged Over Time
           </h2>
-          <select className="rounded-md border px-2 py-1 text-sm">
-            <option>Daily</option>
-            <option>Weekly</option>
-            <option>Monthly</option>
-          </select>
+          <DropDown
+            options={['Daily', 'Weekly', 'Monthly']}
+            value="Daily"
+            onChange={console.log}
+            placeholder="Filter"
+            className="w-40"
+          />
         </div>
 
         <div className="h-80">
@@ -172,7 +214,7 @@ export default function OverallPage() {
       {/* Lower Charts */}
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
         {/* Pie Chart */}
-        <div className="rounded-lg border bg-white p-4 shadow-sm">
+        <div className="rounded-lg bg-white p-4 shadow-sm">
           <h2 className="mb-3 font-semibold text-gray-700">
             Billable Distribution
           </h2>
@@ -202,7 +244,7 @@ export default function OverallPage() {
         </div>
 
         {/* Bar Chart */}
-        <div className="rounded-lg border bg-white p-4 shadow-sm">
+        <div className="rounded-lg bg-white p-4 shadow-sm">
           <h2 className="mb-3 font-semibold text-gray-700">Team Performance</h2>
           <div className="h-64">
             <ResponsiveContainer width="100%" height="100%">
