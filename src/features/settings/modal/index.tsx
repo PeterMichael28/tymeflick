@@ -3,6 +3,7 @@ import { useState } from 'react'
 import ColorPicker from './pickColor'
 import { closeThemeCustomizerModal } from '../../../redux/slice/modalSlice'
 import { useDispatch } from 'react-redux'
+import FromLogo from './fromLogo'
 
 const ThemeCustomizer = () => {
   const [tab, setTab] = useState(0)
@@ -23,7 +24,10 @@ const ThemeCustomizer = () => {
               palettes.
             </p>
           </span>
-          <X className="cursor-pointer" onClick={() => dispatch(closeThemeCustomizerModal())} />
+          <X
+            className="cursor-pointer"
+            onClick={() => dispatch(closeThemeCustomizerModal())}
+          />
         </div>
 
         <div className="mt-4 flex h-[4vh] w-fit items-center gap-8 rounded-md bg-[#F8F7FA] p-5">
@@ -52,7 +56,7 @@ const ThemeCustomizer = () => {
 
           {tab === 1 && (
             <div>
-              <p className="text-lg font-semibold">Upload Logo section here…</p>
+              <FromLogo />
             </div>
           )}
         </div>

@@ -12,7 +12,7 @@ const ToggleSwitch = () => {
       <button
         onClick={handleToggle}
         className={`flex h-6 w-12 items-center rounded-full p-1 duration-300 ${
-          isOn ? 'bg-green-500' : 'bg-gray-300'
+          isOn ? 'bg-primary' : 'bg-gray-300'
         }`}
       >
         <div
