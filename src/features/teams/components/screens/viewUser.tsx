@@ -63,7 +63,7 @@ export default function ViewUserPage() {
           </div>
 
           <button
-            className="bg-primary flex items-center justify-between gap-2 rounded-md px-4 py-2 text-sm font-medium text-white transition hover:bg-[#5bb13e]"
+            className="bg-primary flex items-center justify-between gap-2 rounded-md px-4 py-2 text-sm font-medium text-white transition hover:bg-primary/90"
             onClick={() => dispatch(openEditUserModal())}
           >
             <svg

@@ -30,7 +30,7 @@ export default function EditClientModal() {
             <p className="text-[10px] text-gray-500 mb-2">PNG/JPEG | 5mb max</p>
             <button
               type="button"
-              className="flex items-center justify-center gap-1 rounded-md bg-primary px-3 py-1.5 text-xs font-medium text-white hover:bg-primary/80"
+              className="flex items-center justify-center gap-1 rounded-md bg-primary px-3 py-1.5 text-xs font-medium text-white hover:bg-primary/90"
             >
               <Upload size={14} />
               Upload Picture
@@ -75,7 +75,7 @@ export default function EditClientModal() {
 
           <button
             type="button"
-            className="bg-primary w-full rounded-md py-2 text-sm font-semibold text-white hover:bg-primary/80"
+            className="bg-primary w-full rounded-md py-2 text-sm font-semibold text-white hover:bg-primary/90 cursor-pointer"
           >
             Save Changes
           </button>

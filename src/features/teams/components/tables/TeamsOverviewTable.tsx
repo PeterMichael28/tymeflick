@@ -90,7 +90,7 @@ export default function TeamsOverviewTable() {
             <div className="text-center">
               <button
                 onClick={handleViewClick}
-                className="cursor-pointer rounded-md bg-primary px-4 py-1 text-sm font-medium text-white transition hover:bg-[#5bb13e]"
+                className="cursor-pointer rounded-md bg-primary px-4 py-1 text-sm font-medium text-white transition hover:bg-primary/90"
               >
                 View
               </button>

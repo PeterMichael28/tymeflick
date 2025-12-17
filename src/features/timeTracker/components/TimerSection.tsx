@@ -25,7 +25,7 @@ export default function TimerSection() {
       <div className="flex justify-end gap-3">
         {/* Admin Submissions */}
         <button
-          className="flex cursor-pointer items-center gap-2 rounded-md border border-[#66CC33] bg-white px-4 py-2 text-xs font-medium text-[#66CC33] hover:bg-[#E9F9E4]"
+          className="flex cursor-pointer items-center gap-2 rounded-md border border-primary bg-white px-4 py-2 text-xs font-medium text-primary hover:bg-primary/10"
           onClick={() => navigate('/teamSubmissionForAdmin')}
         >
           <Users size={14} />
@@ -34,7 +34,7 @@ export default function TimerSection() {
 
         {/* Member Submissions */}
         <button
-          className="flex cursor-pointer items-center gap-2 rounded-md border border-[#66CC33] bg-white px-4 py-2 text-xs font-medium text-[#66CC33] hover:bg-[#E9F9E4]"
+          className="flex cursor-pointer items-center gap-2 rounded-md border border-primary bg-white px-4 py-2 text-xs font-medium text-primary hover:bg-primary/10"
           onClick={() => navigate('/teamSubmissions')}
         >
           <Users size={14} />
@@ -43,7 +43,7 @@ export default function TimerSection() {
 
         {/* Submit Week Time Log */}
         <button
-          className="flex cursor-pointer items-center gap-2 rounded-md bg-[#66CC33] px-4 py-2 text-xs font-medium text-white hover:bg-[#57b028]"
+          className="flex cursor-pointer items-center gap-2 rounded-md bg-primary px-4 py-2 text-xs font-medium text-white hover:bg-primary/90"
           onClick={() => navigate('/submitWeeklyTimelog')}
         >
           <Clock size={14} />
@@ -121,7 +121,7 @@ export default function TimerSection() {
 
       {/* Start Timer */}
       <button
-        className="mt-1 flex w-full items-center justify-center gap-2 rounded-md bg-[#66C61C] py-4 text-sm font-semibold text-white transition"
+        className="mt-1 flex w-full items-center justify-center gap-2 rounded-md bg-primary py-4 text-sm font-semibold text-white transition"
         onClick={() => setIsRunning(!isRunning)}
       >
         <Play className="h-4 w-4" />

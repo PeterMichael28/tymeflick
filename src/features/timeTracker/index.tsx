@@ -28,7 +28,7 @@ const TimetrackerIndex = () => {
 
             <button
               onClick={() => navigate('/viewAll')}
-              className="text-sm font-semibold text-[#66C61C] hover:underline"
+              className="text-sm font-semibold text-primary hover:underline"
             >
               View All
             </button>

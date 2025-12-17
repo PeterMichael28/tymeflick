@@ -85,7 +85,7 @@ export default function NotificationsPage() {
                     {notifications.length > 0 && (
                         <button
                             onClick={markAllAsRead}
-                            className="text-sm font-medium text-green-600 hover:text-green-700 cursor-pointer"
+                            className="text-sm font-medium text-primary hover:text-primary/90 cursor-pointer"
                         >
                             Mark all as read
                         </button>
