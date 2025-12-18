@@ -5,6 +5,7 @@ import { ArrowLeft, Mail, Users, MapPin, Calendar } from 'lucide-react'
 import { openEditUserModal } from '../../../../redux/slice/modalSlice'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+import ViewUserTable from '../tables/ViewUserTable'
 
 export default function ViewUserPage() {
   const dispatch = useDispatch()
@@ -31,7 +32,7 @@ export default function ViewUserPage() {
             className="h-5 w-5 cursor-pointer text-gray-600"
             onClick={() => navigate('/teams')}
           />
-          <h1 className="text-lg font-semibold text-gray-800">
+          <h1 className="text-lg font-bold text-gray-800">
             Teams - Development Team - {user.name}
           </h1>
         </div>
@@ -46,7 +47,7 @@ export default function ViewUserPage() {
               BB
             </div>
             <div>
-              <h2 className="text-lg font-semibold text-gray-900">
+              <h2 className="text-lg font-bold text-gray-900">
                 {user.name}
               </h2>
               <p className="text-sm text-gray-600">{user.role}</p>
@@ -62,7 +63,7 @@ export default function ViewUserPage() {
           </div>
 
           <button
-            className="bg-primary flex items-center justify-between gap-2 rounded-md px-4 py-2 text-sm font-medium text-white transition hover:bg-[#5bb13e]"
+            className="bg-primary flex items-center justify-between gap-2 rounded-md px-4 py-2 text-sm font-medium text-white transition hover:bg-primary/90"
             onClick={() => dispatch(openEditUserModal())}
           >
             <svg
@@ -89,7 +90,7 @@ export default function ViewUserPage() {
 
         {/* User Information */}
         <div className="border-t border-gray-200 pt-4">
-          <h3 className="text-md mb-3 flex items-center gap-2 font-semibold text-gray-800">
+          <h3 className="text-md mb-3 flex items-center gap-2 font-bold text-gray-800">
             <svg
               width="10"
               height="17"
@@ -112,41 +113,45 @@ export default function ViewUserPage() {
             </svg>
             User Information
           </h3>
-          <div className="space-y-2 text-sm text-gray-700">
+          <div className="grid grid-cols-4 gap-6 text-sm text-gray-700">
             <p className="flex items-center gap-2">
               <Mail className="h-4 w-4 text-gray-500" />
               <div className="flex flex-col items-start">
                 <p className="text-sm text-gray-500">Email</p>
-                <p className="font-semibold text-gray-900">{user.email}</p>
+                <p className="font-bold text-gray-900">{user.email}</p>
               </div>
             </p>
+
             <p className="flex items-center gap-2">
               <Users className="h-4 w-4 text-gray-500" />
               <div className="flex flex-col items-start">
                 <p className="text-sm text-gray-500">Team</p>
-                <p className="font-semibold text-gray-900">{user.team}</p>
+                <p className="font-bold text-gray-900">{user.team}</p>
               </div>
             </p>
+
             <p className="flex items-center gap-2">
               <MapPin className="h-4 w-4 text-gray-500" />
               <div className="flex flex-col items-start">
                 <p className="text-sm text-gray-500">Role</p>
-                <p className="font-semibold text-gray-900">{user.role}</p>
+                <p className="font-bold text-gray-900">{user.role}</p>
               </div>
             </p>
+
             <p className="flex items-center gap-2">
               <Calendar className="h-4 w-4 text-gray-500" />
               <div className="flex flex-col items-start">
                 <p className="text-sm text-gray-500">Last Login</p>
-                <p className="font-semibold text-gray-900">{user.lastLogin}</p>
+                <p className="font-bold text-gray-900">{user.lastLogin}</p>
               </div>
             </p>
           </div>
+
         </div>
 
         {/* ✅ Activity Summary (Updated Layout) */}
         <div className="border-t border-gray-200 pt-4">
-          <h3 className="text-md mb-3 flex items-center gap-2 font-semibold text-gray-800">
+          <h3 className="text-md mb-3 flex items-center gap-2 font-bold text-gray-800">
             <img src="/icon/clock.svg" alt="Icon" className="text-gray-500" />{' '}
             Activity Summary
           </h3>
@@ -156,7 +161,7 @@ export default function ViewUserPage() {
             <p className="mb-1 text-sm text-gray-600">Total Hours Logged</p>
 
             {/* Hours Value (Right aligned on same line) */}
-            <p className="text-sm font-semibold whitespace-nowrap text-gray-800">
+            <p className="text-sm font-bold whitespace-nowrap text-gray-800">
               {user.totalHours}h
             </p>
           </div>
@@ -177,17 +182,23 @@ export default function ViewUserPage() {
           <div className="mt-4 space-y-2 text-sm text-gray-700">
             <div className="flex items-center justify-between">
               <p className="text-xs text-gray-500">This Week:</p>
-              <p className="font-semibold">{user.weekly}h</p>
+              <p className="font-bold">{user.weekly}h</p>
             </div>
             <div className="flex items-center justify-between">
               <p className="text-xs text-gray-500">This Month:</p>
-              <p className="font-semibold">{user.monthly}h</p>
+              <p className="font-bold">{user.monthly}h</p>
             </div>
             <div className="flex items-center justify-between">
               <p className="text-xs text-gray-500">Average Daily:</p>
-              <p className="font-semibold">{user.daily}h</p>
+              <p className="font-bold">{user.daily}h</p>
             </div>
           </div>
+        </div>
+        <div>
+          <h3 className="text-md mb-3 flex items-center gap-2 font-bold text-gray-800 mt-6">
+            Last 10 Time Entries
+          </h3>
+          <ViewUserTable />
         </div>
       </div>
     </div>

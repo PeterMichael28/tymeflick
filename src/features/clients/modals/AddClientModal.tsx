@@ -116,7 +116,7 @@ export default function AddClientModal() {
 
           <button
             type="button"
-            className="bg-primary w-full rounded-md py-2 text-sm font-semibold text-white hover:bg-green-700 cursor-pointer"
+            className="bg-primary w-full rounded-md py-2 text-sm font-semibold text-white hover:bg-primary/90 cursor-pointer"
           >
             Add Client
           </button>

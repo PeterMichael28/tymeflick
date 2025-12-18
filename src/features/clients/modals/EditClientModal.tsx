@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux'
 import { closeEditClientModal } from '../../../redux/slice/modalSlice'
-import { X } from 'lucide-react'
+import { X, Upload } from 'lucide-react'
 
 export default function EditClientModal() {
   const dispatch = useDispatch()
@@ -14,6 +14,28 @@ export default function EditClientModal() {
           <button onClick={() => dispatch(closeEditClientModal())}>
             <X className="h-5 w-5 text-gray-500 hover:text-gray-700" />
           </button>
+        </div>
+
+        {/* Client Logo / Upload Section */}
+        <div className="mb-5 flex items-center gap-4 rounded-md">
+          <div className="flex h-25 w-25 items-center justify-center rounded-md bg-white shadow-sm">
+            <img
+              src="/icon/clientIcons/acmeSVG.svg"
+              alt="Client Logo"
+              className="h-25 w-25 object-contain"
+            />
+          </div>
+          <div className="flex flex-col">
+            <p className="text-sm font-semibold text-gray-800">Client Logo/Photo</p>
+            <p className="text-[10px] text-gray-500 mb-2">PNG/JPEG | 5mb max</p>
+            <button
+              type="button"
+              className="flex items-center justify-center gap-1 rounded-md bg-primary px-3 py-1.5 text-xs font-medium text-white hover:bg-primary/90"
+            >
+              <Upload size={14} />
+              Upload Picture
+            </button>
+          </div>
         </div>
 
         {/* Form */}
@@ -53,7 +75,7 @@ export default function EditClientModal() {
 
           <button
             type="button"
-            className="bg-primary w-full rounded-md py-2 text-sm font-semibold text-white hover:bg-green-700"
+            className="bg-primary w-full rounded-md py-2 text-sm font-semibold text-white hover:bg-primary/90 cursor-pointer"
           >
             Save Changes
           </button>

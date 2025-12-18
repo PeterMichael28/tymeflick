@@ -1,6 +1,6 @@
 'use client'
 
-import { Search } from 'lucide-react'
+import { Search, ArrowLeft } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
 import {
   openSubmissionApprovedModal,
@@ -34,28 +34,43 @@ export default function TeamSubmissions() {
       </div>
 
       {/* Header */}
-      <div className="flex items-center justify-end rounded-lg bg-white p-4 shadow-sm">
-        <div className="flex w-full items-center justify-end space-x-4 rounded-md bg-[#F3F3F3] p-3">
-          {/* Search Bar */}
-          <div className="flex h-10 w-64 items-center rounded-md border border-[#D9D9D9] bg-white px-3">
-            <input
-              type="text"
-              placeholder="Search"
-              className="w-full text-sm focus:outline-none"
-            />
-            <Search size={15} className="ml-2 text-gray-500" />
+      <div className="flex items-center justify-between rounded-lg bg-white p-4 shadow-sm">
+        <div className="flex w-full items-center justify-between rounded-md bg-[#F3F3F3] p-3">
+          {/* Go Back Section */}
+          <div className="flex items-center gap-2">
+            <button
+              onClick={() => navigate('/timeTracker')}
+              className="flex h-8 w-8 items-center justify-center rounded-md bg-white hover:bg-gray-50 transition cursor-pointer"
+            >
+              <ArrowLeft className="h-5 w-5 text-gray-700" />
+            </button>
+            <h1 className="text-base font-medium text-gray-800">Go back</h1>
           </div>
 
-          {/* Status Dropdown */}
-          <DropDown
-            options={['All', 'Active', 'Archived']}
-            value="All Status"
-            onChange={console.log}
-            placeholder="Filter"
-            className="w-32"
-          />
+          {/* Search and Filter Section */}
+          <div className="flex items-center gap-3">
+            {/* Search Bar */}
+            <div className="flex h-10 w-64 items-center rounded-md border border-[#D9D9D9] bg-white px-3">
+              <input
+                type="text"
+                placeholder="Search"
+                className="w-full text-sm text-gray-700 placeholder-gray-400 focus:outline-none"
+              />
+              <Search size={15} className="ml-2 text-gray-500" />
+            </div>
+
+            {/* Status Dropdown */}
+            <DropDown
+              options={['All', 'Active', 'Archived']}
+              value="All Status"
+              onChange={console.log}
+              placeholder="Filter"
+              className="w-32"
+            />
+          </div>
         </div>
       </div>
+
 
       {/* Summary Cards */}
       <div className="grid grid-cols-4 gap-4 rounded-lg bg-white p-4 shadow-sm">

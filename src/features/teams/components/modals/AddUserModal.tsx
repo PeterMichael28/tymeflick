@@ -84,7 +84,7 @@ export default function AddUserModal() {
           <div className="space-y-2 pt-2">
             <button
               type="button"
-              className="cursor-pointer bg-primary w-full rounded-md py-2 font-medium text-white transition hover:bg-[#5bb13e]"
+              className="cursor-pointer bg-primary w-full rounded-md py-2 font-medium text-white transition hover:bg-primary/90"
             >
               Send Invitation
             </button>
