@@ -5,13 +5,13 @@ import { Eye, EyeOff } from 'lucide-react'
 import { useState } from 'react'
 import Button from '../../components/button/button'
 import { useNavigate } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
-import { openCreateAccountModal } from '../../redux/slice/modalSlice'
+import { useLogin } from '../../hooks/authQuery'
 
 const Index = () => {
   const [showPassword, setShowPassword] = useState(false)
-  const dispatch = useDispatch()
   const navigate = useNavigate()
+  const loginMutation = useLogin()
+
   const validationSchema = Yup.object({
     email: Yup.string().email('Invalid email').required('Email is Required'),
     password: Yup.string().min(6, 'Too short').required('Password is Required'),
@@ -23,67 +23,75 @@ const Index = () => {
         <p className="text-officeBrow font-bricolage text-[26px] font-bold">
           Stay on Schedule
         </p>
-        <p
-          className="text-primary font-bricolage cursor-pointer text-[26px] font-bold"
-          onClick={() => dispatch(openCreateAccountModal())}
-        >
-          Create Account
-        </p>
       </div>
       <Formik
-        initialValues={{ email: '', password: '' }}
+        initialValues={{ email: '', password: '', rememberMe: false }}
         validationSchema={validationSchema}
-        onSubmit={(values) => console.log(values)}
+        onSubmit={async (values) => {
+          try {
+            await loginMutation.mutateAsync({
+              email: values.email,
+              password: values.password,
+              rememberMe: values.rememberMe,
+            })
+          } catch (error) {
+            console.error('Login error:', error)
+          }
+        }}
       >
-        <Form className="flex flex-col gap-5">
-          <Input
-            label="Email Address"
-            name="email"
-            placeholder="user@gmail.com"
-          />
-          <div className="relative w-full">
+        {() => (
+          <Form className="flex flex-col gap-5">
             <Input
-              label="Password"
-              name="password"
-              type={showPassword ? 'text' : 'password'}
-              placeholder="*************"
+              label="Email Address"
+              name="email"
+              placeholder="user@gmail.com"
             />
-            <button
-              type="button"
-              onClick={() => setShowPassword((prev) => !prev)}
-              className="absolute top-[60px] right-4 text-sm text-[#000000] focus:outline-none"
-            >
-              {showPassword ? (
-                <EyeOff className="text-primary50 size-[25px]" />
-              ) : (
-                <Eye className="text-primary50 size-[25px]" />
-              )}
-            </button>
-          </div>
-          <Button type="submit">Sign in</Button>
-          <div className="flex gap-5">
-            <Field
-              type={'checkbox'}
-              name={'Remember me'}
-              className="size-5 border border-[#D0D5DD]"
-            />
-            <p className="text-officeBrow font-inter text-[15px] font-normal">
-              Remember me
-            </p>
-          </div>
-          <div className="font-inter flex flex-col items-center justify-center gap-2 text-[18px]">
-            <p
-              className="text-primary cursor-pointer font-bold"
-              onClick={() => navigate('reset-password')}
-            >
-              Forgot Password?
-            </p>
-            <span className="flex gap-2 font-bold">
-              <p className="text-officeBrow">Need help?</p>
-              <p className="text-primary">Contact Support</p>
-            </span>
-          </div>
-        </Form>
+            <div className="relative w-full">
+              <Input
+                label="Password"
+                name="password"
+                type={showPassword ? 'text' : 'password'}
+                placeholder="*************"
+              />
+              <button
+                type="button"
+                onClick={() => setShowPassword((prev) => !prev)}
+                className="-translte-y-1/2 absolute top-1/2 right-4 text-sm text-[#000000] focus:outline-none"
+              >
+                {showPassword ? (
+                  <EyeOff className="text-primary50 size-[25px]" />
+                ) : (
+                  <Eye className="text-primary50 size-[25px]" />
+                )}
+              </button>
+            </div>
+            <Button type="submit" loading={loginMutation.isPending}>
+              {loginMutation.isPending ? 'Signing in...' : 'Sign in'}
+            </Button>
+            <div className="flex gap-5">
+              <Field
+                type={'checkbox'}
+                name={'rememberMe'}
+                className="size-5 border border-[#D0D5DD]"
+              />
+              <p className="text-officeBrow font-inter text-[15px] font-normal">
+                Remember me
+              </p>
+            </div>
+            <div className="font-inter flex flex-col items-center justify-center gap-2 text-[18px]">
+              <p
+                className="text-primary cursor-pointer font-bold"
+                onClick={() => navigate('reset-password')}
+              >
+                Forgot Password?
+              </p>
+              <span className="flex gap-2 font-bold">
+                <p className="text-officeBrow">Need help?</p>
+                <p className="text-primary cursor-pointer">Contact Support</p>
+              </span>
+            </div>
+          </Form>
+        )}
       </Formik>
     </div>
   )

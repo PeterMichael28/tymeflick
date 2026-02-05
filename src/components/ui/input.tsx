@@ -1,4 +1,5 @@
 import { useField } from 'formik'
+import type { ChangeEvent } from 'react'
 
 type InputProps = {
   label: string
@@ -8,6 +9,7 @@ type InputProps = {
   placeholder?: string
   height?: 'small' | 'medium' | 'large' | string
   disabled?: boolean
+  onChange?: (e: ChangeEvent<HTMLInputElement>) => void
 }
 
 const Input = ({
@@ -16,8 +18,9 @@ const Input = ({
   type = 'text',
   isRequired = false,
   placeholder = '',
-  height = '70px',
+  height = '48px',
   disabled = false,
+  onChange,
 }: InputProps) => {
   const [field, meta] = useField(name)
   const hasError = Boolean(meta.touched && meta.error)
@@ -32,6 +35,14 @@ const Input = ({
   // pick base height and adjust if there's an error
   const baseHeight = heightMap[height] || height
 
+  // Custom change handler that chains with Formik
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    field.onChange(e)
+    if (onChange) {
+      onChange(e)
+    }
+  }
+
   return (
     <div className="flex w-full flex-col gap-2">
       <label
@@ -43,6 +54,7 @@ const Input = ({
 
       <input
         {...field}
+        onChange={handleChange}
         id={name}
         type={type}
         placeholder={placeholder}

@@ -11,7 +11,7 @@ const Login = () => {
       </div>
 
       {/* Right side */}
-      <div className="relative flex flex-1 items-center justify-center overflow-hidden p-8">
+      <div className="relative flex flex-1 items-center justify-center overflow-hidden p-4 md:p-8">
         {/* Background image with overlay */}
         <div className="absolute inset-0">
           <img
@@ -22,7 +22,7 @@ const Login = () => {
         </div>
 
         {/* Form area (content stays above) */}
-        <div className="relative z-10 w-full p-5">
+        <div className="relative z-10 w-full p-2 md:p-5">
           <Suspense>
             <Outlet />
           </Suspense>

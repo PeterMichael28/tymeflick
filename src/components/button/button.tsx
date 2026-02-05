@@ -7,6 +7,7 @@ interface Props {
   className?: string
   type?: 'submit' | 'button'
   loading?: boolean
+  disabled?: boolean
 }
 
 const Button: FC<Props> = ({
@@ -15,13 +16,14 @@ const Button: FC<Props> = ({
   className = '',
   type = 'button',
   loading = false,
+  disabled = false,
 }) => {
   return (
     <button
       onClick={onClick}
-      className={`bg-primary text-shades50 font-bricolage flex cursor-pointer items-center justify-center gap-2 rounded-xl px-8 py-5 text-lg font-bold text-white disabled:cursor-not-allowed disabled:opacity-70 ${className}`}
+      className={`bg-primary text-shades50 font-bricolage flex cursor-pointer items-center justify-center gap-2 rounded-xl px-8 py-3 text-lg font-bold text-white disabled:cursor-not-allowed disabled:opacity-70 ${className}`}
       type={type}
-      disabled={loading}
+      disabled={loading || disabled}
     >
       {loading ? <ClipLoader size={20} color="#fff" /> : children}
     </button>

@@ -1,10 +1,8 @@
 import { Suspense } from 'react'
 import { Outlet, NavLink } from 'react-router-dom'
-import { PanelLeftClose } from 'lucide-react'
-import { PanelRightClose } from 'lucide-react'
+import { PanelLeftClose, PanelRightClose, Lock } from 'lucide-react'
 import { useState } from 'react'
 import Header from '../components/ui/header'
-import { useNavigate } from 'react-router-dom'
 import { useLocation } from 'react-router-dom'
 import ActiveCategory from '../../svgComponent/Category 1'
 import AlarmClockActive from '../../svgComponent/alarm-clock-active'
@@ -16,14 +14,29 @@ import SettingsActive from '../../svgComponent/settingsActive'
 import BarActive from '../../svgComponent/bar-chart-v-active'
 import { useSelector } from 'react-redux'
 import { type RootState } from '../redux/store'
+import { useLogout } from '../hooks/authQuery'
+import {
+  useSubscriptionAccess,
+  type FeatureKey,
+} from '../hooks/useSubscriptionAccess'
+
+interface DashboardItem {
+  title: string
+  image: string
+  activeImage: React.ComponentType<{ className?: string }>
+  path: string
+  end?: boolean
+  requiredFeature?: FeatureKey
+}
 
 const Dashboard = () => {
+  const logout = useLogout()
   const uploadedLogo = useSelector((state: RootState) => state.logo.fileUrl)
   const [showPanel, setShowPanel] = useState(true)
-  const navigate = useNavigate()
   const location = useLocation()
+  const { hasAccess } = useSubscriptionAccess()
 
-  const dashboardList = [
+  const dashboardList: DashboardItem[] = [
     {
       title: 'Dashboard',
       image: '/icon/Category 1 (1).svg',
@@ -54,12 +67,14 @@ const Dashboard = () => {
       image: '/icon/users-active.svg',
       activeImage: UserActive,
       path: '/clients',
+      requiredFeature: 'clients',
     },
     {
       title: 'Teams',
       image: '/icon/user-group.svg',
       activeImage: UserGroupActive,
       path: '/teams',
+      requiredFeature: 'teams',
     },
     {
       title: 'Reports',
@@ -81,6 +96,13 @@ const Dashboard = () => {
     },
   ]
 
+  /**
+   * Check if a sidebar item is locked
+   */
+  const isItemLocked = (item: DashboardItem): boolean => {
+    return item.requiredFeature ? !hasAccess(item.requiredFeature) : false
+  }
+
   return (
     <div className="flex h-full overflow-hidden">
       <div
@@ -88,10 +110,15 @@ const Dashboard = () => {
       >
         <div className="flex flex-col gap-7">
           <div className="flex items-center justify-between">
-            {showPanel && <div className='flex'>
-              <img  src={uploadedLogo || '/icon/SeamSuiteLogo.svg'} alt="Icon" className='size-10' />
-              </div> 
-              }
+            {showPanel && (
+              <div className="flex">
+                <img
+                  src={uploadedLogo || '/icon/SeamSuiteLogo.svg'}
+                  alt="Icon"
+                  className="size-10"
+                />
+              </div>
+            )}
             <button>
               {showPanel ? (
                 <PanelLeftClose onClick={() => setShowPanel(false)} />
@@ -104,6 +131,7 @@ const Dashboard = () => {
             {dashboardList.map((item, index) => {
               const isCreateProject = location.pathname === '/create-project'
               const isProjectTemplate = item.path === '/project-template'
+              const locked = isItemLocked(item)
 
               return (
                 <NavLink
@@ -116,8 +144,10 @@ const Dashboard = () => {
 
                     return `font-bricolage flex items-center gap-3 rounded-[10px] text-[14px] transition-all duration-200 ${
                       activeState
-                        ? 'text-primary border-r-2 bg-primary/10'
-                        : 'text-[#2B323B]'
+                        ? 'text-primary bg-primary/10 border-r-2'
+                        : locked
+                          ? 'text-[#9ca3af]'
+                          : 'text-[#2B323B]'
                     } ${showPanel ? 'px-4 py-3' : 'justifycenter px-2 py-3'}`
                   }}
                 >
@@ -126,13 +156,25 @@ const Dashboard = () => {
                       isActive || (isProjectTemplate && isCreateProject)
 
                     return (
-                      <div className="flex gap-3">
-                        {activeState ? (
-                          <item.activeImage className="text-primary size-5" />
-                        ) : (
-                          <img src={item.image} className="size-5" />
+                      <div className="flex w-full items-center justify-between gap-3">
+                        <div className="flex items-center gap-3">
+                          {activeState ? (
+                            <item.activeImage className="text-primary size-5" />
+                          ) : (
+                            <img
+                              src={item.image}
+                              className={`size-5 ${locked ? 'opacity-50' : ''}`}
+                            />
+                          )}
+                          {showPanel && (
+                            <span className={locked ? 'opacity-60' : ''}>
+                              {item.title}
+                            </span>
+                          )}
+                        </div>
+                        {showPanel && locked && (
+                          <Lock className="size-4 text-[#9ca3af]" />
                         )}
-                        {showPanel && <span>{item.title}</span>}
                       </div>
                     )
                   }}
@@ -142,8 +184,8 @@ const Dashboard = () => {
           </aside>
         </div>
         <div
-          className="font-bricolage ml-4 flex items-center gap-3 text-[14px]"
-          onClick={() => navigate('/login')}
+          className="hover:text-primary font-bricolage ml-4 flex cursor-pointer items-center gap-3 text-[14px]"
+          onClick={() => logout.mutate()}
         >
           <img src="/icon/sign-out.svg" alt="" className="size-5" />
           {showPanel && <p>Log out</p>}

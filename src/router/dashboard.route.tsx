@@ -75,6 +75,9 @@ import SettingsPage from '../features/settings'
 
 import SettingIndex from '../features/settings'
 
+// Access control
+import SubscriptionGate from '../components/access/SubscriptionGate'
+
 export const dashboardRoutes = [
   { path: '', element: <DashBoardIndex /> },
   { path: 'project', element: <Project /> },
@@ -194,16 +197,51 @@ export const dashboardRoutes = [
   { path: 'revenue', element: <RevenuePage /> },
 
   //Teams routes can be added here
-  { path: 'teams', element: <TeamsPage /> },
-  { path: 'teams/teamSummary', element: <TeamSummary /> },
-  { path: 'teams/viewUser', element: <ViewUserPage /> },
+  {
+    path: 'teams',
+    element: (
+      <SubscriptionGate feature="teams">
+        <TeamsPage />
+      </SubscriptionGate>
+    ),
+  },
+  {
+    path: 'teams/teamSummary',
+    element: (
+      <SubscriptionGate feature="teams">
+        <TeamSummary />
+      </SubscriptionGate>
+    ),
+  },
+  {
+    path: 'teams/viewUser',
+    element: (
+      <SubscriptionGate feature="teams">
+        <ViewUserPage />
+      </SubscriptionGate>
+    ),
+  },
 
   // Clients routes
-  { path: 'clients', element: <ClientsPage /> },
-  { path: 'clients/viewClientDetails', element: <ViewClientDetails /> },
+  {
+    path: 'clients',
+    element: (
+      <SubscriptionGate feature="clients">
+        <ClientsPage />
+      </SubscriptionGate>
+    ),
+  },
+  {
+    path: 'clients/viewClientDetails',
+    element: (
+      <SubscriptionGate feature="clients">
+        <ViewClientDetails />
+      </SubscriptionGate>
+    ),
+  },
 
   // Notifications route
-  { path: 'notifications', element: <NotificationsPage />},
+  { path: 'notifications', element: <NotificationsPage /> },
 
   // Settings route
   { path: 'settings', element: <SettingsPage /> },
