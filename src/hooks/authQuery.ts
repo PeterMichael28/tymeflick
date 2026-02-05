@@ -23,6 +23,7 @@ import type {
   ForgotPasswordFormData,
   ResetPasswordFormData,
 } from '../types/auth.types'
+import { APP_CONFIG } from '../config/urls'
 
 /**
  * Query hook for fetching current user
@@ -127,7 +128,7 @@ export const useLogin = () => {
  */
 export const useLogout = () => {
   const dispatch = useDispatch()
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
   const queryClient = useQueryClient()
 
   return useMutation({
@@ -135,7 +136,7 @@ export const useLogout = () => {
     onSettled: () => {
       dispatch(clearAuth())
       queryClient.clear()
-      navigate('/login')
+      window.location.href = APP_CONFIG.PARENT_APP_LOGIN
     },
   })
 }
