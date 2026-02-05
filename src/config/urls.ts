@@ -3,14 +3,14 @@
  * Centralized configuration for all redirect URLs
  * Update these values for different environments
  */
-const dev_config = 'http://localhost:5173'
-// const prod_config = 'https://seamsuite.com'
+// const dev_config = 'http://localhost:5173'
+const prod_config = 'https://seamsuite.vercel.app'
 export const APP_CONFIG = {
-  PARENT_APP_URL: dev_config,
+  PARENT_APP_URL: prod_config,
 
-  PARENT_APP_DASHBOARD: dev_config + '/dashboard',
+  PARENT_APP_DASHBOARD: prod_config + '/dashboard',
 
-  PARENT_APP_LOGIN: dev_config + '/auth/login',
+  PARENT_APP_LOGIN: prod_config + '/auth/login',
 
   AUTH_CALLBACK_PATH: '/auth/callback',
 } as const
