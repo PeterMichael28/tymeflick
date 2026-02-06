@@ -16,6 +16,14 @@ import {
 } from '../config/subscriptionConfig'
 import { type AccountType } from '../types/auth.types'
 
+/**
+ * Check if subscription checks should be bypassed (dev mode only)
+ * This is controlled via VITE_BYPASS_SUBSCRIPTION_CHECKS in .env.development
+ */
+const shouldBypassChecks = (): boolean => {
+  return import.meta.env.VITE_BYPASS_SUBSCRIPTION_CHECKS === 'true'
+}
+
 interface SubscriptionAccessReturn {
   /** Current user's account type */
   accountType: AccountType
@@ -40,6 +48,8 @@ interface SubscriptionAccessReturn {
   isFreeTier: boolean
   /** Check if user is on enterprise tier */
   isEnterprise: boolean
+  /** Whether bypass mode is active (dev only) */
+  isBypassMode: boolean
 }
 
 /**
@@ -49,18 +59,26 @@ interface SubscriptionAccessReturn {
 export const useSubscriptionAccess = (): SubscriptionAccessReturn => {
   const profile = useSelector((state: RootState) => state.auth.profile)
   const accountType: AccountType = profile?.accountType || 'individual'
+  const isBypassMode = shouldBypassChecks()
 
   const tierLevel = getTierLevel(accountType)
   const tierName = TIER_NAMES[accountType]
   const limits = TIER_LIMITS[accountType]
 
   const hasAccess = (feature: FeatureKey): boolean => {
+    // Bypass all checks in dev mode if flag is set
+    if (isBypassMode) {
+      return true
+    }
     return canAccessFeature(accountType, feature)
   }
 
   const getLockedFeatures = (): FeatureKey[] => {
+    if (isBypassMode) {
+      return [] // No locked features in bypass mode
+    }
     return (Object.keys(FEATURE_PERMISSIONS) as FeatureKey[]).filter(
-      (feature) => !hasAccess(feature)
+      (feature) => !canAccessFeature(accountType, feature)
     )
   }
 
@@ -78,6 +96,7 @@ export const useSubscriptionAccess = (): SubscriptionAccessReturn => {
     limits,
     isFreeTier: accountType === 'individual',
     isEnterprise: accountType === 'enterprise',
+    isBypassMode,
   }
 }
 
