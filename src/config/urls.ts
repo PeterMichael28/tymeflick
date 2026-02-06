@@ -4,7 +4,7 @@
  * Update these values for different environments
  */
 // const prod_config = 'http://localhost:5173'
-const prod_config = 'https://staging@seamsuite.com'
+const prod_config = 'https://staging.seamsuite.com'
 export const APP_CONFIG = {
   PARENT_APP_URL: prod_config,
 
