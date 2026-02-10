@@ -232,7 +232,7 @@ export const dashboardRoutes = [
     ),
   },
   {
-    path: 'clients/viewClientDetails',
+    path: 'clients/:id',
     element: (
       <SubscriptionGate feature="clients">
         <ViewClientDetails />

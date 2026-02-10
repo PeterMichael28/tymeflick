@@ -11,6 +11,19 @@ interface TimeEntryPayload {
   project?: string
 }
 
+// Client type for selected client in modals
+interface SelectedClient {
+  id: string
+  name: string
+  description?: string
+  email?: string
+  phone?: string
+  website?: string
+  notes?: string
+  logoUrl?: string
+  status?: string
+}
+
 interface ModalSlice {
   createAccountModal: boolean
   enterPriceSuccessModal: boolean
@@ -42,6 +55,7 @@ interface ModalSlice {
   addClientModal: boolean
   editClientModal: boolean
   deleteClientModal: boolean
+  selectedClient: SelectedClient | null
 
   agileSprintModal: boolean
   agileSprintSuccessModal: boolean
@@ -83,6 +97,7 @@ const initialState: ModalSlice = {
   addClientModal: false,
   editClientModal: false,
   deleteClientModal: false,
+  selectedClient: null,
 
   agileSprintModal: false,
   agileSprintSuccessModal: false,
@@ -254,6 +269,14 @@ const modalSlice = createSlice({
     },
     closeDeleteClientModal: (state) => {
       state.deleteClientModal = false
+      state.selectedClient = null
+    },
+
+    setSelectedClient: (
+      state,
+      action: PayloadAction<SelectedClient | null>
+    ) => {
+      state.selectedClient = action.payload
     },
 
     // Agile-related
@@ -361,6 +384,7 @@ export const {
   closeEditClientModal,
   openDeleteClientModal,
   closeDeleteClientModal,
+  setSelectedClient,
 
   openAgileSprintModal,
   closeAgileSprintModal,

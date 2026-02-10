@@ -24,4 +24,10 @@ dist-ssr
 *.ntvs*
 *.njsproj
 *.sln
+*.agent/*
+*.agents/*
+*.agent
+*.agents
+.agent
+.agents
 *.sw?

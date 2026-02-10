@@ -1,7 +1,7 @@
-import { Suspense } from 'react'
+import { Suspense, useState, useCallback } from 'react'
 import { Outlet, NavLink } from 'react-router-dom'
 import { PanelLeftClose, PanelRightClose, Lock } from 'lucide-react'
-import { useState } from 'react'
+import { ConfirmDeleteModal } from '../components/common/ConfirmDeleteModal'
 import Header from '../components/ui/header'
 import { useLocation } from 'react-router-dom'
 import ActiveCategory from '../../svgComponent/Category 1'
@@ -33,7 +33,20 @@ const Dashboard = () => {
   const logout = useLogout()
   const uploadedLogo = useSelector((state: RootState) => state.logo.fileUrl)
   const [showPanel, setShowPanel] = useState(true)
+  const [isLogoutModalOpen, setIsLogoutModalOpen] = useState(false)
   const location = useLocation()
+
+  const handleOpenLogoutModal = useCallback(() => {
+    setIsLogoutModalOpen(true)
+  }, [])
+
+  const handleCloseLogoutModal = useCallback(() => {
+    setIsLogoutModalOpen(false)
+  }, [])
+
+  const handleConfirmLogout = useCallback(() => {
+    logout.mutate()
+  }, [logout])
   const { hasAccess } = useSubscriptionAccess()
 
   const dashboardList: DashboardItem[] = [
@@ -185,11 +198,21 @@ const Dashboard = () => {
         </div>
         <div
           className="hover:text-primary font-bricolage ml-4 flex cursor-pointer items-center gap-3 text-[14px]"
-          onClick={() => logout.mutate()}
+          onClick={handleOpenLogoutModal}
         >
           <img src="/icon/sign-out.svg" alt="" className="size-5" />
           {showPanel && <p>Log out</p>}
         </div>
+
+        <ConfirmDeleteModal
+          isOpen={isLogoutModalOpen}
+          onClose={handleCloseLogoutModal}
+          onConfirm={handleConfirmLogout}
+          title="Sign Out"
+          message="Are you sure you want to log out? You will need to sign in again to access your account."
+          confirmText="Log Out"
+          isLoading={logout.isPending}
+        />
       </div>
 
       <main className="flex h-screen w-full flex-col overflow-hidden">

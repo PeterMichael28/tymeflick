@@ -1,5 +1,4 @@
-'use client'
-
+import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { openAddClientModal } from '../../redux/slice/modalSlice'
 
@@ -7,8 +6,12 @@ import Hero from '../../components/ui/hero'
 import ClientsTable from './tables/ClientsTable'
 import { Search, Plus, Calendar } from 'lucide-react'
 
+/**
+ * Clients management page with server-side search/pagination
+ */
 export default function ClientsPage() {
   const dispatch = useDispatch()
+  const [searchTerm, setSearchTerm] = useState('')
 
   return (
     <div className="min-h-screen w-full space-y-8 overflow-y-scroll">
@@ -27,18 +30,20 @@ export default function ClientsPage() {
 
           {/* Right Controls */}
           <div className="flex flex-wrap items-center gap-3">
-            {/* Search */}
+            {/* Search - debounced via useDebounce in queries hook */}
             <div className="relative rounded-md bg-white">
               <input
                 type="text"
-                placeholder="Search"
+                placeholder="Search clients..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
                 className="w-48 rounded-md border border-gray-300 px-3 py-2 pl-2 text-sm focus:ring-1 focus:ring-green-500 focus:outline-none"
               />
               <Search className="absolute top-2.5 right-2 h-4 w-4 text-gray-400" />
             </div>
 
             {/* Date Picker */}
-            <div className="relative flex w-60 items-center justify-between rounded-md border border-gray-200 bg-white p-1">
+            {/* <div className="relative flex w-60 items-center justify-between rounded-md border border-gray-200 bg-white p-1">
               <input
                 type="text"
                 value="Mon Jun 02 2025 - Mon Jun 02 2025"
@@ -46,12 +51,12 @@ export default function ClientsPage() {
                 className="w-full bg-transparent px-3 py-2 text-xs text-gray-800 focus:outline-none"
               />
               <Calendar className="mr-3 h-4 w-4 text-gray-800" />
-            </div>
+            </div> */}
 
             {/* Add Team Button */}
             <button
               onClick={() => dispatch(openAddClientModal())}
-              className="bg-primary flex items-center gap-1 rounded-md px-4 py-2 text-sm font-medium text-white transition hover:bg-primary/90 cursor-pointer"
+              className="bg-primary hover:bg-primary/90 flex cursor-pointer items-center gap-1 rounded-md px-4 py-2 text-sm font-medium text-white transition"
             >
               <Plus className="h-4 w-4" />
               New Client
@@ -59,7 +64,7 @@ export default function ClientsPage() {
           </div>
         </div>
         {/* Clients Table */}
-        <ClientsTable />
+        <ClientsTable searchTerm={searchTerm} />
       </div>
     </div>
   )

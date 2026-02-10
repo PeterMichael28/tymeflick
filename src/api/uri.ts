@@ -33,3 +33,13 @@ export const TYMEFLICK_ENDPOINTS = {
 export const ASSET_ENDPOINTS = {
   UPLOAD: '/assets/upload',
 } as const
+
+// Client endpoints
+export const CLIENT_ENDPOINTS = {
+  LIST: '/time-tracking/clients',
+  GET: (id: string) => `/time-tracking/clients/${id}`,
+  DETAILS: (id: string) => `/time-tracking/clients/${id}/details`,
+  CREATE: '/time-tracking/clients',
+  UPDATE: (id: string) => `/time-tracking/clients/${id}`,
+  DELETE: (id: string) => `/time-tracking/clients/${id}`,
+} as const

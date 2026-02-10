@@ -190,7 +190,7 @@ export const MediumBusinessForm: FC<MediumBusinessFormProps> = ({
                 disabled={createProfileMutation.isPending}
                 className="text-neutral600 rounded-lg bg-[#F9F9F9] px-8 py-4 font-semibold disabled:opacity-50 md:px-16"
               >
-                Back
+                Log Out
               </button>
               <Button type="submit" loading={createProfileMutation.isPending}>
                 Create Account

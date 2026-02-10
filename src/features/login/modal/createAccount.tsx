@@ -1,7 +1,8 @@
-import { useState, type FC } from 'react'
+import { useState, useCallback, type FC } from 'react'
 import { useSelector } from 'react-redux'
 import { selectUser, selectProfile } from '../../../redux/slice/authSlice'
 import type { AccountType } from '../../../types/auth.types'
+import { useLogout } from '../../../hooks/authQuery'
 import IndividualForm from './IndividualForm'
 import SmallBusinessForm from './SmallBusinessForm'
 import MediumBusinessForm from './MediumBusinessForm'
@@ -50,6 +51,7 @@ const accountTypeOptions: AccountTypeOption[] = [
 const CreateAccount: FC = () => {
   const user = useSelector(selectUser)
   const profile = useSelector(selectProfile)
+  const logout = useLogout()
 
   // If profile already has an accountType, skip step 1 and go directly to form
   const hasExistingAccountType = profile?.accountType != null
@@ -68,27 +70,22 @@ const CreateAccount: FC = () => {
     }
   }
 
-  const handleBack = () => {
-    if (step === 2 && !hasExistingAccountType) {
-      // Only allow going back to step 1 if user selected type (not from profile)
-      setStep(1)
-      setSelectedType(null)
-    }
-    // Note: No closing the modal - onboarding must be completed
-  }
+  const handleLogout = useCallback(() => {
+    logout.mutate()
+  }, [logout])
 
   const renderForm = () => {
     if (!user) return null
 
     switch (selectedType) {
       case 'individual':
-        return <IndividualForm user={user} onBack={handleBack} />
+        return <IndividualForm user={user} onBack={handleLogout} />
       case 'small_business':
-        return <SmallBusinessForm user={user} onBack={handleBack} />
+        return <SmallBusinessForm user={user} onBack={handleLogout} />
       case 'medium_business':
-        return <MediumBusinessForm user={user} onBack={handleBack} />
+        return <MediumBusinessForm user={user} onBack={handleLogout} />
       case 'enterprise':
-        return <EnterpriseForm user={user} onBack={handleBack} />
+        return <EnterpriseForm user={user} onBack={handleLogout} />
       default:
         return null
     }
@@ -128,10 +125,10 @@ const CreateAccount: FC = () => {
             {/* Step 1: Account Type Selection */}
             <div className="flex flex-col items-center justify-center text-center">
               <p className="text-neutral600 font-bricolage text-xl font-semibold sm:text-2xl md:text-[32px]">
-                Complete Your TymeFlick Account
+                Complete Your Onboarding
               </p>
               <p className="text-neutral400 mt-1 text-sm sm:text-base md:text-lg">
-                Choose the right account type for your needs
+                Select an account type to finish setting up your workspace
               </p>
             </div>
 
@@ -163,7 +160,7 @@ const CreateAccount: FC = () => {
               ))}
             </div>
 
-            <div className="flex justify-center pt-2">
+            <div className="flex flex-col items-center gap-3 pt-2 sm:flex-row sm:justify-center">
               <button
                 type="button"
                 onClick={handleContinue}
@@ -171,6 +168,14 @@ const CreateAccount: FC = () => {
                 className="bg-primary w-full rounded-lg px-8 py-3 font-semibold text-white disabled:cursor-not-allowed disabled:opacity-50 sm:w-auto sm:px-12 sm:py-4"
               >
                 Continue
+              </button>
+              <button
+                type="button"
+                onClick={handleLogout}
+                disabled={logout.isPending}
+                className="w-full rounded-lg px-8 py-3 font-semibold text-gray-500 hover:bg-gray-100 disabled:cursor-not-allowed disabled:opacity-50 sm:w-auto sm:px-12 sm:py-4"
+              >
+                {logout.isPending ? 'Logging out...' : 'Log Out'}
               </button>
             </div>
           </>

@@ -103,8 +103,9 @@ export const useLogin = () => {
 
         toast.success(`Welcome back, ${user.firstName}!`)
 
-        // 5. Check onboarding status - if incomplete, open modal
-        if (!profile.isOnboardingComplete) {
+        // 5. Check onboarding status - skip modal for individual accounts
+        const isIndividual = profile.accountType === 'individual'
+        if (!isIndividual && !profile.isOnboardingComplete) {
           dispatch(openCreateAccountModal())
         } else {
           // Navigate to dashboard

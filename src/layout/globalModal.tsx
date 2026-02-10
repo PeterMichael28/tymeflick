@@ -24,8 +24,7 @@ import AddUserModal from '../features/teams/components/modals/AddUserModal'
 import EditUserModal from '../features/teams/components/modals/EditUserModal'
 
 // ✅ New Client modals
-import AddClientModal from '../features/clients/modals/AddClientModal'
-import EditClientModal from '../features/clients/modals/EditClientModal'
+import ClientModal from '../features/clients/modals/ClientModal'
 import DeleteClientModal from '../features/clients/modals/DeleteClientModal'
 
 import InvitationSent from '../features/project/agile/modal/invitationSent'
@@ -68,9 +67,9 @@ const GlobalModal = () => {
   if (modal.addUserModal) return <AddUserModal />
   if (modal.editUserModal) return <EditUserModal />
 
-  // ✅ Client modals
-  if (modal.addClientModal) return <AddClientModal />
-  if (modal.editClientModal) return <EditClientModal />
+  // ✅ Client modals - using unified ClientModal with mode
+  if (modal.addClientModal) return <ClientModal mode="add" />
+  if (modal.editClientModal) return <ClientModal mode="edit" />
   if (modal.deleteClientModal) return <DeleteClientModal />
 
   if (agileSprintModal) return <Review />

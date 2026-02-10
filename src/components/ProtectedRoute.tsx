@@ -29,11 +29,13 @@ export const ProtectedRoute: FC<ProtectedRouteProps> = ({ children }) => {
 
   useEffect(() => {
     if (isAuthenticated && profile) {
-      if (!profile.isOnboardingComplete) {
-        // If authenticated but onboarding is not complete, open modal
+      const isIndividual = profile.accountType === 'individual'
+
+      if (!isIndividual && !profile.isOnboardingComplete) {
+        // Only open onboarding modal for non-individual accounts that haven't completed onboarding
         dispatch(openCreateAccountModal())
       } else {
-        // If onboarding is complete, ensure modal is closed
+        // Close modal for individual accounts or completed onboarding
         dispatch(closeCreateAccountModal())
       }
     }
